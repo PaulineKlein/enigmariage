@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
+    android:background="@color/colorPrimary"
+    app:cardElevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_cadena_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin_8"
+            android:padding="@dimen/margin_8"
+            android:background="@drawable/background_edittext_cadena"
+            android:hint="@string/embarquement_one_hint"
+            android:inputType="number"
+            android:maxLines="1"
+            android:textColor="@color/text"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:clickable="false"
+            android:focusable="false"
+            android:fontFamily="sans-serif"
+            app:layout_constraintBottom_toTopOf="@+id/table_keys"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TableLayout
+            android:id="@+id/table_keys"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_cadena_value">
+
+            <TableRow android:padding="@dimen/margin_8">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_un"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/un" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_deux"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:text="@string/deux" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_trois"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:text="@string/trois" />
+            </TableRow>
+
+            <TableRow android:padding="@dimen/margin_8">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_quatre"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/quatre" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_cinq"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:text="@string/cinq" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_six"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:text="@string/six" />
+            </TableRow>
+
+            <TableRow android:padding="@dimen/margin_8">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_sept"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/sept" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_huit"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:text="@string/huit" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_neuf"
+                    style="@style/button_cadena"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:text="@string/neuf" />
+            </TableRow>
+
+            <TableRow
+                android:gravity="center_horizontal"
+                android:padding="@dimen/margin_8">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/button_check"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/image_check_disabled" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_zero"
+                    style="@style/button_cadena"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/zero" />
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/button_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/image_back" />
+            </TableRow>
+        </TableLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

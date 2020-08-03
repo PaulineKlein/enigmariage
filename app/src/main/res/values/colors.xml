@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5f9ea0</color>
+    <color name="colorPrimaryDark">#3c6465</color>
+    <color name="colorAccent">#eb835e</color>
+    <color name="background">#a4c8c9</color>
+    <color name="bleuFonce">#002e3e</color>
+    <color name="navy">#191970</color>
+    <color name="navy_clair">#bbbbf0</color>
+    <color name="orangeFonce">#74290d</color>
+    <color name="erreur">#b0171f</color>
+    <color name="grey">#CCCCCC</color>
+    <color name="text">#454545</color>
+    <color name="parchemin">#e9d5b5</color>
+    <color name="parchemin_text">#a17430</color>
+    <color name="help">#a3d5b5</color>
+    <color name="help_text">#3d8657</color>
+</resources>

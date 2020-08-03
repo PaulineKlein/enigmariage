@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">mariage</string>
+    <string name="notification_channel_id" translatable="false">wedding_channel</string>
+    <string name="splash_titre">Grand jeu pour le mariage de Pauline et Adrien</string>
+    <string name="zero">0</string>
+    <string name="un">1</string>
+    <string name="deux">2</string>
+    <string name="trois">3</string>
+    <string name="quatre">4</string>
+    <string name="cinq">5</string>
+    <string name="six">6</string>
+    <string name="sept">7</string>
+    <string name="huit">8</string>
+    <string name="neuf">9</string>
+    <string name="commencer">commencer</string>
+    <string name="nvlle_partie">Nouvelle Partie</string>
+    <string name="continuer">continuer</string>
+    <string name="attention">Attention</string>
+    <string name="valider">Valider</string>
+    <string name="renvoyer">Renvoyer un message</string>
+    <string name="reponse">Ta réponse</string>
+    <string name="merci">Merci !!</string>
+    <string name="oui">Oui</string>
+    <string name="non">Non</string>
+    <string name="pauline">Pauline</string>
+    <string name="adrien">Adrien</string>
+    <string name="erreur">Ce n’est pas la bonne réponse, réessaye</string>
+    <string name="bonne_reponse">Bravo %s, tu as trouvé !</string>
+    <string name="popup_new_game">Si vous continuer, vous perdrez votre avancée dans le jeu, souhaitez vous continuer ?</string>
+    <string name="password_titre">Attention</string>
+    <string name="password_message">Ce jeu est réservé aux invités du mariage, pour continuer donnez le lieu où se déroule la cérémonie</string>
+    <string name="introduction_titre">Point sur la situation</string>
+    <string name="introduction_top">Le maléfique Ganondorf, jaloux de la fête sur le bateau souhaite se venger de ne pas avoir été invité.
+        Il cherche à créer un Elixir réduisant toute vie humaine à l’état de playmobile …</string>
+    <string name="introduction_versaille">Regardez, il a déja utilisé un Elixir prototype sur le chateau de Versaille :</string>
+    <string name="introduction_Bottom">S’il vous plait, aidez nous à arrêter Ganondorf avant qu’il ne soit trop tard …</string>
+    <string name="add_player_titre">Décline ton identité</string>
+    <string name="add_player_gender">Choisis ton personnage ?</string>
+    <string name="add_player_name">Quel est ton nom ?</string>
+    <string name="add_player_name_hint">Mon nom de héros trop stylé</string>
+    <string name="add_player_femme">Zelda</string>
+    <string name="add_player_homme">Link</string>
+    <string name="hyrule_desert">Désert Gerudo</string>
+    <string name="hyrule_village">Village Cocorico</string>
+    <string name="add_player_popup">Merci %s</string>
+    <string name="embarquement_one_titre">"Salle d’embarquement"</string>
+    <string name="embarquement_one_message_1">"Certaines personnes l’auraient vu se faufiler entre les invités pour embarquer. Peux-tu trouver des traces de son passage dans cette salle ?"</string>
+    <string name="embarquement_one_message_2">"Ses empreintes ressemblent à ça :"</string>
+    <string name="embarquement_one_message_3">"Peux-tu inscrire les chiffres que tu verras sur ses empreintes ? </string>
+    <string name="embarquement_one_hint">Inscris tes chiffres ici</string>
+    <string name="embarquement_two_message_1">Il est donc bien entré … et en plus il utilise notre année de naissance. Il en sait déjà trop sur nous … Il n’y a pas une minute à perdre !</string>
+    <string name="embarquement_two_notification_titre">Mouaahaha</string>
+    <string name="embarquement_two_notification_message">J’ai infiltré ton telephone …  signé Ganon</string>
+    <string name="embarquement_two_notification_message_retry_1">As-tu vu la notification ? Essaye de cliquer dessus pour voir !</string>
+    <string name="embarquement_two_notification_message_retry_2">Si tu ne l’as pas reçu re-clique sur le bouton ci dessous.</string>
+    <string name="embarquement_two_notification_message_retry_3">Si tu ne reçois vraiment rien, clique ici</string>
+    <string name="embarquement_three_enigme">FK NKXC VK CKVVO NO MYUDKSVC</string>
+    <string name="embarquement_three_message_1">Ganon a hacké nos téléphones :</string>
+    <string name="embarquement_three_message_2">Je viens de recevoir ce mot aussi, c’est peut-être une piste :</string>
+    <string name="embarquement_three_help">Même avec l’aide d’un AvautK vous ne m’arrêterez pas</string>
+    <string name="embarquement_three_question">Peux-tu traduire le message et inscrire la réponse ci-dessous ?</string>
+    <string name="embarquement_three_reponse_hint">Traduction du message</string>
+    <string name="faire_part_titre">"Vol de Faire Part"</string>
+    <string name="faire_part_message_1">"Ganondorf a falsifié un faire part pour pouvoir entrer."</string>
+    <string name="faire_part_message_2">"Parmis ces Kanjis, lesquels étaient présents sur l'invitation que Ganondorf aurait recopié ?"</string>
+    <string name="faire_part_response_message_1">"Bravo, tu as bien trouvé. Je te dois quelques explications maintenant."</string>
+    <string name="faire_part_response_message_2">"Si tu souhaites en savoir plus sur l'origine des kanjis choisis, clique sur chacune des images :"</string>
+    <string name="faire_part_response_message_3">"Sinon, continue ton investigation à l'aide du bouton ci-dessous"</string>
+    <string name="faire_part_kanji_title">"Kanji pour %s"</string>
+    <string name="faire_part_kanji_prononciation">"Prononciation :"</string>
+    <string name="faire_part_kanji_signification">"Signification :"</string>
+    <string name="faire_part_kanji_symbole">"Symbole :"</string>
+    <string name="faire_part_kanji_prononciation_p">"Rin ou Suzu"</string>
+    <string name="faire_part_kanji_signification_p">"clochette"</string>
+    <string name="faire_part_kanji_symbole_p">"La prononciation se rapproche phonetiquement de Pau’Line’. Ce kanji signifie une petite cloche ou clochette, ce qui rappelle la signification de Klein (petit en Allemand). De plus, la première partie du kanji est le métal, qui correspond à l'élement de l'année de naissance de Pauline. Enfin, si on se réfère au personnage Clochette, il rappelle la passion des Disneys de l'interessée"</string>
+    <string name="faire_part_kanji_prononciation_a">"Bu (de Bushido)"</string>
+    <string name="faire_part_kanji_signification_a">"Guerrier"</string>
+    <string name="faire_part_kanji_symbole_a">"Le prénom rappelle celui d'un empereur Romain. C'est aussi le saint protecteur des soldats. Avec une passion comme le karaté, ce kanji était fait pour lui !"</string>
+    <string name="coktail_one_titre">"Salle des Coktails"</string>
+    <string name="coktail_one_message">"Il doit bien avoir un indice quelque part dans cette pièce ? Cherche de nouveau son empreinte et inscrit le nombre vu dessus :"</string>
+    <string name="coktail_two_message">"2010, c'est notre année de rencontre à Télécom, mais à quel endroit correspond la photo juste à côté ? Elle doit dater de cette année :"</string>
+    <string name="coktail_three_message">"Essayerait-il de cacher son élixir sous forme de coktail ? Quelle couleur est typique de Saint Étienne ? C'est peut-être un indice"</string>
+    <string name="coktail_four_message">"Je suis sûre que son Elixir sera vert ! Vois-tu du vert dans cette pièce ? Peut-être qu'on trouvera un des ingrédients à noter ici :"</string>
+    <string name="coktail_five_message">"Où peut-il bien trouver du jus de cactus ? Rappelons-nous qu'il vient du monde d'Hyrule. Il a du en ramener d'une de ces régions, à ton avis laquelle ?"</string>
+    <string name="coktail_six_message">"Dans ce désert, le peuple Gerudo a du lui donner un contenant pour transporter son jus de cactus. Quel est-il ?
+Indice : c'est un anagramme de Gerudo"</string>
+    <string name="coktail_seven_message_1">"Une Gourde, en voilà une ! On dirait qu'une recette est écrite dessus, mais incomplète :"</string>
+    <string name="coktail_seven_message_2">"Il manque encore 3 ingrédients, Où les trouver ?"</string>
+    <string name="coktail_seven_message_3">"Cette énigme nous indiquera peut-être la prochaine salle à fouiller ?"</string>
+    <string name="coktail_seven_enigme">"Anagramme d’Adrien, j’ai utilisé.
+Pour connaître la salle, où je devais aller.
+Pour préparer mon Elixir,
+Il _ _ _ _ _ _ avec plaisir."</string>
+    <string name="diner_one_titre">"Salle de Diner"</string>
+    <string name="diner_one_message_1">"Rends-toi dans la salle de Diner pour chercher de nouveaux indices"</string>
+    <string name="diner_one_message_2">"Allons voir le tableau de placement de table si on peut trouver une trace de Ganon..."</string>
+</resources>

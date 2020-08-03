@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        motion:constraintSetEnd="@+id/end_p"
+        motion:constraintSetStart="@+id/start_p"
+        motion:duration="1000">
+        <OnClick motion:targetId="@id/iv_kanji_pauline" />
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start_p">
+        <Constraint android:id="@id/iv_kanji_pauline">
+            <Layout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                motion:layout_constraintBottom_toBottomOf="parent"
+                motion:layout_constraintEnd_toEndOf="parent"
+                motion:layout_constraintStart_toStartOf="parent"
+                motion:layout_constraintTop_toTopOf="parent" />
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet
+        android:id="@+id/end_p"
+        motion:deriveConstraintsFrom="@id/start_p">
+        <Constraint android:id="@id/iv_kanji_pauline">
+            <Layout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                motion:layout_constraintStart_toStartOf="parent" />
+        </Constraint>
+    </ConstraintSet>
+</MotionScene>

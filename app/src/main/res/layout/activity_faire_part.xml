@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_24">
+
+        <TextView
+            android:id="@+id/tv_faire_part_titre"
+            style="@style/Titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/faire_part_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_faire_part_message_1"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/faire_part_message_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_faire_part_titre" />
+
+        <TextView
+            android:id="@+id/tv_faire_part_message_2"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/faire_part_message_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_faire_part_message_1" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_kanji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/margin_32"
+            app:layout_constraintBottom_toTopOf="@+id/button_kanji"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_faire_part_message_2">
+
+            <RadioButton
+                android:id="@+id/radioReponse6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/un"
+                style="@style/SousTitre"
+                android:drawableEnd="@drawable/kanji_reponse6" />
+
+            <RadioButton
+                android:id="@+id/radioReponse3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/deux"
+                style="@style/SousTitre"
+                android:drawableEnd="@drawable/kanji_reponse3" />
+
+            <RadioButton
+                android:id="@+id/radioReponse8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/trois"
+                style="@style/SousTitre"
+                android:drawableEnd="@drawable/kanji_reponse8" />
+
+            <RadioButton
+                android:id="@+id/radioReponse4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/quatre"
+                style="@style/SousTitre"
+                android:drawableEnd="@drawable/kanji_reponse4" />
+
+            <RadioButton
+                android:id="@+id/radioReponse5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/cinq"
+                style="@style/SousTitre"
+                android:drawableEnd="@drawable/kanji_reponse5" />
+
+            <RadioButton
+                android:id="@+id/radioReponse1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/six"
+                style="@style/SousTitre"
+                android:drawableEnd="@drawable/kanji_reponse1" />
+
+            <RadioButton
+                android:id="@+id/radioReponse7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/sept"
+                style="@style/SousTitre"
+                android:drawableEnd="@drawable/kanji_reponse7" />
+
+            <RadioButton
+                android:id="@+id/radioReponse2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/huit"
+                style="@style/SousTitre"
+                android:drawableEnd="@drawable/kanji_reponse2" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_kanji"
+            style="@style/button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:enabled="true"
+            android:text="@string/valider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_kanji" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
