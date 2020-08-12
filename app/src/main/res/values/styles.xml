@@ -6,7 +6,6 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:fontFamily">@font/pacifico</item>
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
@@ -15,12 +14,14 @@
 
     <style name="Titre">
         <item name="android:textSize">30sp</item>
+        <item name="android:fontFamily">@font/pacifico</item>
         <item name="android:textColor">@color/bleuFonce</item>
         <item name="android:textAlignment">center</item>
     </style>
 
     <style name="SousTitre">
         <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/pacifico</item>
         <item name="android:textColor">@color/colorPrimaryDark</item>
     </style>
 
@@ -51,11 +52,13 @@
     <style name="Success">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/bleuFonce</item>
+        <item name="android:fontFamily">@font/pacifico</item>
     </style>
 
     <style name="Erreur">
         <item name="android:textSize">20sp</item>
         <item name="android:textColor">@color/erreur</item>
+        <item name="android:fontFamily">@font/pacifico</item>
     </style>
 
     <style name="button" parent="Widget.AppCompat.Button">

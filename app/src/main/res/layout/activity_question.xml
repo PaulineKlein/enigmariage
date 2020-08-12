@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/tv_question_message"
-        style="@style/SousTitre"
+        style="@style/Body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="Mon message qui peut etre très court ou très long"

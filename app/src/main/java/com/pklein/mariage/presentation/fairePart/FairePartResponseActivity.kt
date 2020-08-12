@@ -25,28 +25,30 @@ class FairePartResponseActivity : AppCompatActivity() {
         setContentView(R.layout.activity_faire_part_response)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.FAIRE_PART_RESPONSE)
 
-        iv_kanji_pauline?.setOnTouchListener { _, event ->
+        iv_kanji_pauline?.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
+                this.overridePendingTransition(R.anim.slide_in, R.anim.neutral)
+                view.performClick()
                 val handler = Handler()
                 handler.postDelayed({
                     val intent = Intent(this, FairePartKanjiActivity::class.java)
                     intent.putExtra(KANJI_EXTRA, KANJI.KANJI_PAULINE.name)
                     startActivity(intent)
-                    this.overridePendingTransition(R.anim.slide_in, R.anim.neutral)
-                }, 800)
+                }, 1000)
             }
             false
         }
 
-        iv_kanji_adrien?.setOnTouchListener { _, event ->
+        iv_kanji_adrien?.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
+                this.overridePendingTransition(R.anim.slide_in, R.anim.neutral)
+                view.performClick()
                 val handler = Handler()
                 handler.postDelayed({
                     val intent = Intent(this, FairePartKanjiActivity::class.java)
                     intent.putExtra(KANJI_EXTRA, KANJI.KANJI_ADRIEN.name)
                     startActivity(intent)
-                    this.overridePendingTransition(R.anim.slide_in, R.anim.neutral)
-                }, 800)
+                }, 1000)
             }
             false
         }
