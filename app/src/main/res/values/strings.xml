@@ -78,9 +78,14 @@
     <string name="faire_part_kanji_symbole_a">"Le prénom rappelle celui d'un empereur Romain. C'est aussi le saint protecteur des soldats. Avec une passion comme le karaté, ce kanji était fait pour lui !"</string>
     <string name="coktail_one_titre">"Salle des Coktails"</string>
     <string name="coktail_one_message">"Il doit bien avoir un indice quelque part dans cette pièce ? Cherche de nouveau son empreinte et inscrit le nombre vu dessus :"</string>
-    <string name="coktail_two_message">"2010, c'est notre année de rencontre à Télécom, mais à quel endroit correspond la photo juste à côté ? Elle doit dater de cette année :"</string>
-    <string name="coktail_three_message">"Essayerait-il de cacher son élixir sous forme de coktail ? Quelle couleur est typique de Saint Étienne ? C'est peut-être un indice"</string>
-    <string name="coktail_four_message">"Je suis sûre que son Elixir sera vert ! Vois-tu du vert dans cette pièce ? Peut-être qu'on trouvera un des ingrédients à noter ici :"</string>
+    <string name="coktail_two_message">"2010, c'est notre année de rencontre à Télécom, mais à quelle ville correspond la photo juste à côté ?
+C'est la ville de notre école :"</string>
+    <string name="coktail_three_message">"Essayerait-il de cacher son élixir sous forme de coktail ?
+
+Quelle couleur est typique de Saint Étienne ? C'est peut-être un indice"</string>
+    <string name="coktail_four_message">"Je suis sûre que son Elixir sera vert ! Vois-tu du vert dans cette pièce ?
+
+Peut-être qu'on trouvera un des ingrédients à noter ici :"</string>
     <string name="coktail_five_message">"Où peut-il bien trouver du jus de cactus ? Rappelons-nous qu'il vient du monde d'Hyrule. Il a du en ramener d'une de ces régions, à ton avis laquelle ?"</string>
     <string name="coktail_six_message">"Dans ce désert, le peuple Gerudo a du lui donner un contenant pour transporter son jus de cactus. Quel est-il ?
 Indice : c'est un anagramme de Gerudo"</string>
@@ -93,5 +98,13 @@ Pour préparer mon Elixir,
 Il _ _ _ _ _ _ avec plaisir."</string>
     <string name="diner_one_titre">"Salle de Diner"</string>
     <string name="diner_one_message_1">"Rends-toi dans la salle de Diner pour chercher de nouveaux indices"</string>
-    <string name="diner_one_message_2">"Allons voir le tableau de placement de table si on peut trouver une trace de Ganon..."</string>
+    <string name="diner_one_message_2">"Allons voir le tableau de placement de table si on peut trouver une trace de Ganon"</string>
+    <string name="diner_two_message">"2012, c'est l'année où nous sommes partis étudier à l'étranger.
+
+Pour connaître le pays, cherche où se sont déroulés les JO en 2010 :"</string>
+    <string name="diner_canada_one_message">"Quel arbre, symbole de ce pays est représenté sur notre faire-part ?"</string>
+    <string name="diner_canada_two_message">"Ganon doit certainement vouloir le sirop d'érable comme ingrédient !
+
+Tout d'abord, il a du collecter la sève. Mais de quel arbre ?
+Donne la couleur de ses feuilles :"</string>
 </resources>

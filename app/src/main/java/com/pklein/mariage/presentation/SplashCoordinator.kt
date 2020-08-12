@@ -8,7 +8,11 @@ import com.pklein.mariage.presentation.fairePart.FairePartActivity
 import com.pklein.mariage.presentation.fairePart.FairePartResponseActivity
 import com.pklein.mariage.presentation.introduction.AddPlayerActivity
 import com.pklein.mariage.presentation.introduction.IntroductionActivity
+import com.pklein.mariage.presentation.introduction.PasswordActivity
 import com.pklein.mariage.presentation.salleCoktails.*
+import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaOneActivity
+import com.pklein.mariage.presentation.salleDiner.SalleDinerTwoActivity
+import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaTwoActivity
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementOneActivity
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementThreeActivity
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementTwoActivity
@@ -28,7 +32,10 @@ enum class LAST_ACTIVITY_LAUNCH {
     SALLE_COKTAIL_5,
     SALLE_COKTAIL_6,
     SALLE_COKTAIL_7,
-    SALLE_DINER_1
+    SALLE_DINER_1,
+    SALLE_DINER_2,
+    SALLE_DINER_CANADA_1,
+    SALLE_DINER_CANADA_2
 }
 
 object SplashCoordinator {
@@ -80,8 +87,17 @@ object SplashCoordinator {
             LAST_ACTIVITY_LAUNCH.SALLE_DINER_1.name -> {
                 Intent(context, SalleDinerOneActivity::class.java)
             }
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_2.name -> {
+                Intent(context, SalleDinerTwoActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_1.name -> {
+                Intent(context, SalleDinerCanadaOneActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_2.name -> {
+                Intent(context, SalleDinerCanadaTwoActivity::class.java)
+            }
             else -> {
-                Intent(context, IntroductionActivity::class.java)
+                Intent(context, PasswordActivity::class.java)
             }
         }
         startActivity(context, activityToLaunch, null)
