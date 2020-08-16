@@ -26,9 +26,12 @@
     <string name="adrien">Adrien</string>
     <string name="erreur">Ce n’est pas la bonne réponse, réessaye</string>
     <string name="bonne_reponse">Bravo %s, tu as trouvé !</string>
+    <string name="indice">Besoin d’un indice ? Clique ici</string>
     <string name="popup_new_game">Si vous continuer, vous perdrez votre avancée dans le jeu, souhaitez vous continuer ?</string>
     <string name="password_titre">Attention</string>
-    <string name="password_message">Ce jeu est réservé aux invités du mariage, pour continuer donnez le lieu où se déroule la cérémonie</string>
+    <string name="password_message">Ce jeu est réservé aux invités du mariage.
+
+Pour continuer, donnez le lieu où se déroule la cérémonie :</string>
     <string name="introduction_titre">Point sur la situation</string>
     <string name="introduction_top">Le maléfique Ganondorf, jaloux de la fête sur le bateau souhaite se venger de ne pas avoir été invité.
         Il cherche à créer un Elixir réduisant toute vie humaine à l’état de playmobile …</string>
@@ -57,7 +60,10 @@
     <string name="embarquement_three_enigme">FK NKXC VK CKVVO NO MYUDKSVC</string>
     <string name="embarquement_three_message_1">Ganon a hacké nos téléphones :</string>
     <string name="embarquement_three_message_2">Je viens de recevoir ce mot aussi, c’est peut-être une piste :</string>
-    <string name="embarquement_three_help">Même avec l’aide d’un AvautK vous ne m’arrêterez pas</string>
+    <string name="embarquement_three_help">Même avec l’aide d’un Avocat vous ne m’arrêterez pas</string>
+    <string name="embarquement_three_clue">Avocat peut aussi se lire :
+
+A vaut K</string>
     <string name="embarquement_three_question">Peux-tu traduire le message et inscrire la réponse ci-dessous ?</string>
     <string name="embarquement_three_reponse_hint">Traduction du message</string>
     <string name="faire_part_titre">"Vol de Faire Part"</string>
@@ -78,8 +84,10 @@
     <string name="faire_part_kanji_symbole_a">"Le prénom rappelle celui d'un empereur Romain. C'est aussi le saint protecteur des soldats. Avec une passion comme le karaté, ce kanji était fait pour lui !"</string>
     <string name="coktail_one_titre">"Salle des Coktails"</string>
     <string name="coktail_one_message">"Il doit bien avoir un indice quelque part dans cette pièce ? Cherche de nouveau son empreinte et inscrit le nombre vu dessus :"</string>
-    <string name="coktail_two_message">"2010, c'est notre année de rencontre à Télécom, mais à quelle ville correspond la photo juste à côté ?
-C'est la ville de notre école :"</string>
+    <string name="coktail_two_message">"2010, c'est notre année de rencontre à Télécom !
+
+A quelle ville correspond la photo juste à côté ?"</string>
+    <string name="coktail_two_message_indice">"C'est la ville de notre école Télécom, précisée sur notre site internet"</string>
     <string name="coktail_three_message">"Essayerait-il de cacher son élixir sous forme de coktail ?
 
 Quelle couleur est typique de Saint Étienne ? C'est peut-être un indice"</string>
@@ -87,8 +95,9 @@ Quelle couleur est typique de Saint Étienne ? C'est peut-être un indice"</stri
 
 Peut-être qu'on trouvera un des ingrédients à noter ici :"</string>
     <string name="coktail_five_message">"Où peut-il bien trouver du jus de cactus ? Rappelons-nous qu'il vient du monde d'Hyrule. Il a du en ramener d'une de ces régions, à ton avis laquelle ?"</string>
-    <string name="coktail_six_message">"Dans ce désert, le peuple Gerudo a du lui donner un contenant pour transporter son jus de cactus. Quel est-il ?
-Indice : c'est un anagramme de Gerudo"</string>
+    <string name="coktail_six_message">"Dans ce désert, le peuple Gerudo a du lui donner un contenant pour transporter son jus de cactus.
+
+Quel est-il ? Indice : c'est un anagramme de Gerudo"</string>
     <string name="coktail_seven_message_1">"Une Gourde, en voilà une ! On dirait qu'une recette est écrite dessus, mais incomplète :"</string>
     <string name="coktail_seven_message_2">"Il manque encore 3 ingrédients, Où les trouver ?"</string>
     <string name="coktail_seven_message_3">"Cette énigme nous indiquera peut-être la prochaine salle à fouiller ?"</string>

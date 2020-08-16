@@ -11,7 +11,6 @@ import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
-import com.pklein.mariage.utils.uiUtils.PopinType
 import kotlinx.android.synthetic.main.activity_salle_embarquement_three.*
 
 class SalleEmbarquementThreeActivity : AppCompatActivity(), CheckEmptyTextWatcherListener {
@@ -24,12 +23,16 @@ class SalleEmbarquementThreeActivity : AppCompatActivity(), CheckEmptyTextWatche
         button_embarquement_three?.setOnClickListener {
             onValidateCLicked(et_embarquement_three_answer?.text.toString())
         }
+
+        layout_indice?.setOnClickListener {
+            Alerts.showClue(this, getString(R.string.embarquement_three_clue))
+        }
     }
 
     private fun onValidateCLicked(response: String) {
         if (response.formatAnswer() == "va dans la salle de coktails" || response == "1") {
             // todo enlever la reponse à 1
-            Alerts.showSuccess(this,::launchNext)
+            Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)
         }

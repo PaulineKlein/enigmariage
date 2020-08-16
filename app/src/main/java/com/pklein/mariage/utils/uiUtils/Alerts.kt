@@ -7,11 +7,13 @@ import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.utils.SharedPreferenceStored.updateClue
 
-enum class PopinType{
+enum class PopinType {
     SUCCESS,
     ERROR,
-    CLAPPING
+    CLAPPING,
+    CLUE
 }
 
 object Alerts {
@@ -46,15 +48,22 @@ object Alerts {
         popinType: PopinType
     ) {
         val dialog = Dialog(context)
-        when(popinType){
+        val delay = when (popinType) {
             PopinType.SUCCESS -> {
                 dialog.setContentView(R.layout.popup_success)
+                2500
             }
             PopinType.CLAPPING -> {
                 dialog.setContentView(R.layout.popup_clapping)
+                3000
             }
             PopinType.ERROR -> {
                 dialog.setContentView(R.layout.popup_failure)
+                2500
+            }
+            PopinType.CLUE -> {
+                dialog.setContentView(R.layout.popup_clue)
+                15000
             }
         }
 
@@ -66,12 +75,12 @@ object Alerts {
         dialog.show()
 
         val handler = Handler()
-        handler.postDelayed({ dialog.dismiss() }, 2500)
+        handler.postDelayed({ dialog.dismiss() }, delay.toLong())
     }
 
     fun showSuccess(context: Context, onDismiss: (() -> Unit)?) {
         val name = PlayerViewModel.getName()
-        Alerts.showPopup(
+        showPopup(
             context,
             context.getString(R.string.bonne_reponse, name),
             onDismiss,
@@ -80,7 +89,7 @@ object Alerts {
     }
 
     fun showError(context: Context) {
-        Alerts.showPopup(
+        showPopup(
             context,
             context.getString(R.string.erreur),
             null,
@@ -88,4 +97,12 @@ object Alerts {
         )
     }
 
+    fun showClue(context: Context, message: String) {
+        showPopup(
+            context,
+            message,
+            ::updateClue,
+            PopinType.CLUE
+        )
+    }
 }
