@@ -11,9 +11,7 @@ import com.pklein.mariage.presentation.introduction.PasswordActivity
 import com.pklein.mariage.presentation.salleCoktails.*
 import com.pklein.mariage.presentation.salleDiner.SalleDinerOneActivity
 import com.pklein.mariage.presentation.salleDiner.SalleDinerTwoActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaOneActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaThreeActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaTwoActivity
+import com.pklein.mariage.presentation.salleDiner.canada.*
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementOneActivity
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementThreeActivity
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementTwoActivity
@@ -37,7 +35,9 @@ enum class LAST_ACTIVITY_LAUNCH {
     SALLE_DINER_2,
     SALLE_DINER_CANADA_1,
     SALLE_DINER_CANADA_2,
-    SALLE_DINER_CANADA_3
+    SALLE_DINER_CANADA_3,
+    SALLE_DINER_CANADA_4,
+    SALLE_DINER_CANADA_5
 }
 
 object SplashCoordinator {
@@ -100,6 +100,12 @@ object SplashCoordinator {
             }
             LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_3.name -> {
                 Intent(context, SalleDinerCanadaThreeActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_4.name -> {
+                Intent(context, SalleDinerCanadaFourActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_5.name -> {
+                Intent(context, SalleDinerCanadaFiveActivity::class.java)
             }
             else -> {
                 Intent(context, PasswordActivity::class.java)

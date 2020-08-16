@@ -12,22 +12,27 @@ import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import kotlinx.android.synthetic.main.activity_question.*
 
-class SalleDinerCanadaThreeActivity : QuestionActivity() {
+class SalleDinerCanadaFourActivity : QuestionActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_3)
+        PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_4)
 
         tv_question_titre?.text = getString(R.string.diner_one_titre)
-        tv_question_message?.text = getString(R.string.diner_canada_three_message)
+        tv_question_message?.text = getString(R.string.diner_canada_four_message)
         animationQuestion_lottie?.visibility = View.GONE
         animationQuestion_image?.visibility = View.VISIBLE
-        animationQuestion_image?.setImageResource(R.drawable.image_calcul_1)
+        animationQuestion_image?.setImageResource(R.drawable.image_calcul_2)
         et_question_answer?.inputType = EditorInfo.TYPE_CLASS_NUMBER
+
+        layout_indice?.visibility = View.VISIBLE
+        layout_indice?.setOnClickListener {
+            Alerts.showClue(this, getString(R.string.diner_canada_four_indice))
+        }
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "104") {
+        if (response.formatAnswer() == "32") {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)
@@ -35,6 +40,6 @@ class SalleDinerCanadaThreeActivity : QuestionActivity() {
     }
 
     override fun launchNext() {
-        startActivity(Intent(this, SalleDinerCanadaFourActivity::class.java))
+        startActivity(Intent(this, SalleDinerCanadaFiveActivity::class.java))
     }
 }

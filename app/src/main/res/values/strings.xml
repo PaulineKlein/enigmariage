@@ -119,4 +119,11 @@ Donne la couleur de ses feuilles :"</string>
     <string name="diner_canada_three_message">"Ensuite il a fait chauffer cette sève à une certaine température pour obtenir du sirop.
 
 Mais laquelle ?"</string>
+    <string name="diner_canada_four_message">"104°C, pour évaporer la sève. il ne reste plus qu'à filtrer.
+
+Mais combien de litres de sève nous faudra t'il pour faire un litre de sirop ?"</string>
+    <string name="diner_canada_four_indice">"Rappelle-toi, une banane vaut 10, et une pomme 4. Alors une demi pomme ?"</string>
+    <string name="diner_canada_five_message">"Ok donc 32L de sève pour 1L de sirop d'erable.
+
+D'apres la gourde, il a besoin de 120L de sirop, combien faudra t'il de sève ?"</string>
 </resources>
