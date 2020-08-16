@@ -63,7 +63,7 @@ Pour continuer, donnez le lieu où se déroule la cérémonie :</string>
     <string name="embarquement_three_help">Même avec l’aide d’un Avocat vous ne m’arrêterez pas</string>
     <string name="embarquement_three_clue">Avocat peut aussi se lire :
 
-A vaut K</string>
+A vaut K, donc le début du message FK vaut VA</string>
     <string name="embarquement_three_question">Peux-tu traduire le message et inscrire la réponse ci-dessous ?</string>
     <string name="embarquement_three_reponse_hint">Traduction du message</string>
     <string name="faire_part_titre">"Vol de Faire Part"</string>
@@ -116,4 +116,7 @@ Pour connaître le pays, cherche où se sont déroulés les JO en 2010 :"</strin
 
 Tout d'abord, il a du collecter la sève. Mais de quel arbre ?
 Donne la couleur de ses feuilles :"</string>
+    <string name="diner_canada_three_message">"Ensuite il a fait chauffer cette sève à une certaine température pour obtenir du sirop.
+
+Mais laquelle ?"</string>
 </resources>

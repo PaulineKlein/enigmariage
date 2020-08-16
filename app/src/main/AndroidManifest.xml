@@ -85,6 +85,9 @@
         <activity
             android:name=".presentation.salleDiner.canada.SalleDinerCanadaTwoActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.canada.SalleDinerCanadaThreeActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
