@@ -29,6 +29,6 @@ class SalleDinerCanadaFiveActivity : QuestionActivity() {
     }
 
     override fun launchNext() {
-        startActivity(Intent(this, SalleDinerCanadaFiveActivity::class.java))
+        startActivity(Intent(this, SalleDinerCanadaSixActivity::class.java))
     }
 }

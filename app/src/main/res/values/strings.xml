@@ -126,4 +126,7 @@ Mais combien de litres de sève nous faudra t'il pour faire un litre de sirop ?"
     <string name="diner_canada_five_message">"Ok donc 32L de sève pour 1L de sirop d'erable.
 
 D'apres la gourde, il a besoin de 120L de sirop, combien faudra t'il de sève ?"</string>
+    <string name="diner_canada_six_message_1">"Après avoir amassé tout ce sucre, Ganon est parti en quête du prochain ingrédient.
+Il a laissé tomber un papier dans la cabane à sucre en partant"</string>
+    <string name="diner_canada_six_message_2">"A côté il y avait cet étrange alphabet :"</string>
 </resources>

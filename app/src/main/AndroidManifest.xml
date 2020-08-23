@@ -94,6 +94,9 @@
         <activity
             android:name=".presentation.salleDiner.canada.SalleDinerCanadaFiveActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.canada.SalleDinerCanadaSixActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
