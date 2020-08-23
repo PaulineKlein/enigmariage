@@ -97,6 +97,21 @@
         <activity
             android:name=".presentation.salleDiner.canada.SalleDinerCanadaSixActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.japon.SalleDinerJaponOneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.japon.SalleDinerJaponTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.japon.SalleDinerJaponThreeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.japon.SalleDinerJaponFourActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.japon.SalleDinerJaponFiveActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

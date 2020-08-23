@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
+import com.pklein.mariage.presentation.salleDiner.japon.SalleDinerJaponOneActivity
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
@@ -42,6 +43,6 @@ class SalleDinerCanadaSixActivity : AppCompatActivity(), CheckEmptyTextWatcherLi
     }
 
     private fun launchNext() {
-        startActivity(Intent(this, SalleDinerCanadaSixActivity::class.java))
+        startActivity(Intent(this, SalleDinerJaponOneActivity::class.java))
     }
 }

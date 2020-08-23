@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_24">
+
+        <TextView
+            android:id="@+id/tv_diner_japon_four_titre"
+            style="@style/Titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diner_one_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_diner_japon_four_message_1"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/diner_japon_four_message_1"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/tv_diner_japon_four_enigme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_diner_japon_four_titre"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/tv_diner_japon_four_enigme"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            app:cardBackgroundColor="@color/parchemin"
+            app:cardCornerRadius="@dimen/button_cadena_radius"
+            app:cardElevation="@dimen/button_elevation"
+            app:contentPadding="@dimen/margin_24"
+            app:layout_constraintBottom_toTopOf="@+id/tv_diner_japon_four_message_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_four_message_1">
+
+            <TextView
+                style="@style/Body_parchemin"
+                android:textSize="34sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/diner_japon_four_enigme" />
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/tv_diner_japon_four_message_2"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/diner_japon_four_message_2"
+            app:layout_constraintBottom_toTopOf="@+id/tv_diner_japon_four_enigme_help"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_four_enigme" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tv_diner_japon_four_enigme_help"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:src="@drawable/image_alphabet_morse"
+            app:layout_constraintBottom_toTopOf="@+id/tv_diner_japon_four_question"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_four_message_2" />
+
+
+        <TextView
+            android:id="@+id/tv_diner_japon_four_question"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/embarquement_three_question"
+            app:layout_constraintBottom_toTopOf="@+id/et_diner_japon_four_answer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_four_enigme_help" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_diner_japon_four_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:hint="@string/embarquement_three_reponse_hint"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toTopOf="@+id/button_diner_japon_four"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_four_question" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_diner_japon_four"
+            style="@style/button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_32"
+            android:enabled="false"
+            android:text="@string/valider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_diner_japon_four_answer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

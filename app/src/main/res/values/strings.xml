@@ -127,6 +127,25 @@ Mais combien de litres de sève nous faudra t'il pour faire un litre de sirop ?"
 
 D'apres la gourde, il a besoin de 120L de sirop, combien faudra t'il de sève ?"</string>
     <string name="diner_canada_six_message_1">"Après avoir amassé tout ce sucre, Ganon est parti en quête du prochain ingrédient.
-Il a laissé tomber un papier dans la cabane à sucre en partant"</string>
+Il a laissé tomber un papier dans la cabane à sucre en partant :"</string>
     <string name="diner_canada_six_message_2">"A côté il y avait cet étrange alphabet :"</string>
+    <string name="diner_japon_one_question">"Ah le Japon ! En quelle année y sommes nous allés ?
+
+C'etait pour nos 25 ans ?"</string>
+    <string name="diner_japon_one_help">"L'année se trouve à l'arrière d'une photo du Japon sur le plan de table !"</string>
+    <string name="diner_japon_two_question">"On y était pour le Tokyo Game Show : 270000 visiteurs, 11 halls, 4 fois plus grand que la japan expo !
+
+A quel jeu fait référence notre photo sur place ?"</string>
+    <string name="diner_japon_two_help">"C'est un jeu mobile en ligne, d'Affrontement de Clans, développé par le studio finlandais Supercell"</string>
+    <string name="diner_japon_three_question">"Si seulement on pouvait utiliser le cochon pour courir à travers la foule et aller plus vite ! Tout ça donne soif, allons voir si on trouve un stand à boire.
+
+A partir de quel Hall peut-on rejoindre la buvette ?"</string>
+    <string name="diner_japon_four_message_1">" Enfin arrivés, et il y a des empreintes de Ganon. Il a du passer par là !
+
+Qu'a-t-il pris ?"</string>
+    <string name="diner_japon_four_enigme">"−··· ··− −··· −··· ·−·· ·  − · ·−"</string>
+    <string name="diner_japon_four_message_2">"Pour ne pas se faire repérer, il a du envoyer un signal en morse !"</string>
+    <string name="diner_japon_five_question">"Il y a sûrement un ingrédient dans le bubble tea !
+
+C'est quoi ce rebus sur le verre ?"</string>
 </resources>
