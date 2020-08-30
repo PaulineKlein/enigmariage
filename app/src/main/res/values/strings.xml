@@ -102,10 +102,6 @@ Quel est-il ? Indice : c'est un anagramme de Gerudo"</string>
     <string name="coktail_seven_message_1">"Une Gourde, en voilà une ! On dirait qu'une recette est écrite dessus, mais incomplète :"</string>
     <string name="coktail_seven_message_2">"Il manque encore 3 ingrédients, Où les trouver ?"</string>
     <string name="coktail_seven_message_3">"Cette énigme nous indiquera peut-être la prochaine salle à fouiller ?"</string>
-    <string name="coktail_seven_enigme">"Anagramme d’Adrien, j’ai utilisé.
-Pour connaître la salle, où je devais aller.
-Pour préparer mon Elixir,
-Il _ _ _ _ _ _ avec plaisir."</string>
     <string name="diner_one_titre">"Salle de Diner"</string>
     <string name="diner_one_message_1">"Rends-toi dans la salle de Diner pour chercher de nouveaux indices"</string>
     <string name="diner_one_message_2">"Allons voir le tableau de placement de table si on peut trouver une trace de Ganon"</string>
