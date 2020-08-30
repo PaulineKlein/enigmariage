@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
+import com.pklein.mariage.presentation.salleDiner.cambodge.SalleDinerCambodgeOneActivity
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -42,6 +43,6 @@ class SalleDinerJaponSixActivity : AppCompatActivity(), SalleDinerJaponSixLayout
     }
 
     private fun launchNext() {
-        startActivity(Intent(this, SalleDinerJaponSixActivity::class.java))
+        startActivity(Intent(this, SalleDinerCambodgeOneActivity::class.java))
     }
 }

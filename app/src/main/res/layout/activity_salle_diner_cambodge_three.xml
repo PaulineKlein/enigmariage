@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_24">
+
+        <TextView
+            android:id="@+id/tv_diner_one_titre"
+            style="@style/Titre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diner_one_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_diner_cambodge_three_message_1"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/diner_cambodge_three_message_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_one_titre" />
+
+
+        <TextView
+            android:id="@+id/tv_diner_cambodge_three_message_2"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/diner_cambodge_three_message_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_cambodge_three_message_1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_kanji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_32"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:src="@drawable/image_kankucho"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_cambodge_three_message_2" />
+
+
+        <RadioGroup
+            android:id="@+id/radio_group_kanji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_32"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/button_diner_cambodge_three"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_kanji">
+
+            <RadioButton
+                android:id="@+id/radioReponse2"
+                style="@style/SousTitre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:checked="true"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/diner_cambodge_three_reponse_2" />
+
+            <RadioButton
+                android:id="@+id/radioReponse3"
+                style="@style/SousTitre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/diner_cambodge_three_reponse_3" />
+
+            <RadioButton
+                android:id="@+id/radioReponse1"
+                style="@style/SousTitre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/diner_cambodge_three_reponse_1" />
+
+            <RadioButton
+                android:id="@+id/radioReponse4"
+                style="@style/SousTitre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/diner_cambodge_three_reponse_4" />
+
+            <RadioButton
+                android:id="@+id/radioReponse5"
+                style="@style/SousTitre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawablePadding="@dimen/margin_24"
+                android:text="@string/diner_cambodge_three_reponse_5" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_diner_cambodge_three"
+            style="@style/button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:enabled="true"
+            android:text="@string/valider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_kanji" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

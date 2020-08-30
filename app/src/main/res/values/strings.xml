@@ -152,4 +152,20 @@ C'est quoi ce rebus sur le verre ?"</string>
 Voilà notre nouvel ingrédient !!"</string>
     <string name="diner_japon_six_message_2">"Regarde sur le ticket de caisse, encore un message bizarre de Ganon :"</string>
     <string name="diner_japon_six_message_3">"Et toujours cet étrange alphabet :"</string>
+    <string name="diner_cambodge_one_message_1">"Bienvenue à Angkor, plus qu'un ingrédient à trouver !"</string>
+    <string name="diner_cambodge_one_message_2">"Trouve la photo du Cambodge sur le plan de table, et cherche l'année où nous y sommes allés. C'était 2 ans après le Japon, ou 30 ans après une chanson de Calogero."</string>
+    <string name="diner_cambodge_one_message_3">"Inscris vite la date"</string>
+    <string name="diner_cambodge_two_question">"Nous voilà au fin fond de la forêt d'Angkor pour s'entraîner. Mais quel sport est pratiqué ?"</string>
+    <string name="diner_cambodge_three_message_1">"Adrien s'est même entrainé avec l'équipe national de Karaté du Cambodge !! Tous les matins, rendez-vous 6h au dojo pour travailler !"</string>
+    <string name="diner_cambodge_three_message_2">"Ganon a du se glisser ici pour copier leurs enchaînements de mouvements, pour devenir plus fort ! Quel Kata représenté en japonais et en Khmer ci dessous a été copié ?"</string>
+    <string name="diner_cambodge_three_reponse_1">"KanKuSho"</string>
+    <string name="diner_cambodge_three_reponse_2">"TaEuCho"</string>
+    <string name="diner_cambodge_three_reponse_3">"MetsTonPoncho"</string>
+    <string name="diner_cambodge_three_reponse_4">"VaAuCachot"</string>
+    <string name="diner_cambodge_three_reponse_5">"FaisLeManchot"</string>
+    <string name="diner_cambodge_four_question">"Tout ce sport donne soif, quel fruit a été très consommé pendant le stage ?"</string>
+    <string name="diner_cambodge_four_indice">"\"a vécu\" peut aussi se lire \"avec (la lettre) U\""</string>
+    <string name="diner_cambodge_five_message_1">"Le voilà notre dernier ingrédient ! Du jus de mangue !"</string>
+    <string name="diner_cambodge_five_message_2">"Savais-tu qu'Adrien était surnommé MangoKiller pendant son stage ?"</string>
+    <string name="diner_cambodge_five_message_3">"C'est bon, notre recette est complète ! Vite trouvons l'emplacement où Ganon va réaliser son plan machiavélique, avant qu'il ne soit trop tard"</string>
 </resources>

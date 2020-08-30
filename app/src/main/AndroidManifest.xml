@@ -115,6 +115,21 @@
         <activity
             android:name=".presentation.salleDiner.japon.SalleDinerJaponSixActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeOneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeThreeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeFourActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeFiveActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
