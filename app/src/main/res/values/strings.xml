@@ -148,4 +148,8 @@ Qu'a-t-il pris ?"</string>
     <string name="diner_japon_five_question">"Il y a sûrement un ingrédient dans le bubble tea !
 
 C'est quoi ce rebus sur le verre ?"</string>
+    <string name="diner_japon_six_message_1">"Des boules de tapioca !
+Voilà notre nouvel ingrédient !!"</string>
+    <string name="diner_japon_six_message_2">"Regarde sur le ticket de caisse, encore un message bizarre de Ganon :"</string>
+    <string name="diner_japon_six_message_3">"Et toujours cet étrange alphabet :"</string>
 </resources>

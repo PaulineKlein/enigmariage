@@ -44,7 +44,8 @@ enum class LAST_ACTIVITY_LAUNCH {
     SALLE_DINER_JAPON_2,
     SALLE_DINER_JAPON_3,
     SALLE_DINER_JAPON_4,
-    SALLE_DINER_JAPON_5
+    SALLE_DINER_JAPON_5,
+    SALLE_DINER_JAPON_6
 }
 
 object SplashCoordinator {
@@ -131,6 +132,9 @@ object SplashCoordinator {
             }
             LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_5.name -> {
                 Intent(context, SalleDinerJaponFiveActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_6.name -> {
+                Intent(context, SalleDinerJaponSixActivity::class.java)
             }
             else -> {
                 Intent(context, PasswordActivity::class.java)
