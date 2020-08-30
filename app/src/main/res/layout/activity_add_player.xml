@@ -65,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/button_player"
+            app:layout_constraintBottom_toTopOf="@+id/tv_add_player_clue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender">
@@ -90,6 +90,29 @@
                 android:textAlignment="center" />
         </RadioGroup>
 
+        <TextView
+            android:id="@+id/tv_add_player_clue"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:text="@string/indice_explication"
+            app:layout_constraintBottom_toTopOf="@+id/layout_indice"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender" />
+
+        <include
+            android:id="@+id/layout_indice"
+            layout="@layout/indice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4"
+            app:layout_constraintBottom_toTopOf="@+id/button_player"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_clue" />
+
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_player"
             style="@style/button"
@@ -101,7 +124,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender" />
+            app:layout_constraintTop_toBottomOf="@+id/layout_indice" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

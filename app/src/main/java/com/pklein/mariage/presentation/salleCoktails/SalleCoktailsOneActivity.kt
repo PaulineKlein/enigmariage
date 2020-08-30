@@ -10,6 +10,7 @@ import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementTwoAct
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
+import com.pklein.mariage.utils.uiUtils.PopinType
 import kotlinx.android.synthetic.main.activity_salle_embarquement_three.*
 
 class SalleCoktailsOneActivity: AppCompatActivity(), CadenaLayoutListener {
@@ -22,7 +23,7 @@ class SalleCoktailsOneActivity: AppCompatActivity(), CadenaLayoutListener {
 
     override fun onValidateCLicked(response: String) {
         if (response == "2010") {
-            Alerts.showSuccess(this, ::launchNext)
+            Alerts.showSuccess(this, ::launchNext, PopinType.UNLOCK_SUCCESS)
         } else {
             Alerts.showError(this)
         }

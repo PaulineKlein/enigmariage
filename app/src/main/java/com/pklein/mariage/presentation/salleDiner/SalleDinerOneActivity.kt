@@ -10,6 +10,7 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
+import com.pklein.mariage.utils.uiUtils.PopinType
 import kotlinx.android.synthetic.main.activity_salle_diner_one.*
 
 class SalleDinerOneActivity : AppCompatActivity(), CadenaLayoutListener {
@@ -34,7 +35,7 @@ class SalleDinerOneActivity : AppCompatActivity(), CadenaLayoutListener {
 
     override fun onValidateCLicked(response: String) {
         if (response == "2012") {
-            Alerts.showSuccess(this, ::launchNext)
+            Alerts.showSuccess(this, ::launchNext, PopinType.UNLOCK_SUCCESS)
         } else {
             Alerts.showError(this)
         }

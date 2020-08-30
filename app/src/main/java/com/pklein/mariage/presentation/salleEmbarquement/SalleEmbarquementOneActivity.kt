@@ -35,7 +35,7 @@ class SalleEmbarquementOneActivity : AppCompatActivity(), CadenaLayoutListener {
 
     override fun onValidateCLicked(response: String) {
         if (response == "1990") {
-            Alerts.showSuccess(this, ::launchNext)
+            Alerts.showSuccess(this, ::launchNext, PopinType.UNLOCK_SUCCESS)
         } else {
             Alerts.showError(this)
         }
