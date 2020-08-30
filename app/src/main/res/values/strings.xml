@@ -27,6 +27,7 @@
     <string name="erreur">Ce n’est pas la bonne réponse, réessaye</string>
     <string name="bonne_reponse">Bravo %s, tu as trouvé !</string>
     <string name="indice">Besoin d’un indice ? Clique ici</string>
+    <string name="indice_explication">Au cours de ton aventure, un indice appraîtra parfois sous cette forme. En cliquant dessus, cela impactera ton score final, alors utilises le avec parcimonie :</string>
     <string name="popup_new_game">Si vous continuer, vous perdrez votre avancée dans le jeu, souhaitez vous continuer ?</string>
     <string name="password_titre">Attention</string>
     <string name="password_message">Ce jeu est réservé aux invités du mariage.
@@ -168,4 +169,13 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="diner_cambodge_five_message_1">"Le voilà notre dernier ingrédient ! Du jus de mangue !"</string>
     <string name="diner_cambodge_five_message_2">"Savais-tu qu'Adrien était surnommé MangoKiller pendant son stage ?"</string>
     <string name="diner_cambodge_five_message_3">"C'est bon, notre recette est complète ! Vite trouvons l'emplacement où Ganon va réaliser son plan machiavélique, avant qu'il ne soit trop tard"</string>
+    <string name="photobooth_one_titre">"Photobooth"</string>
+    <string name="photobooth_one_titre2">"Dernière salle"</string>
+    <string name="photobooth_one_enigme">"Cherche la dernière salle, vite !"</string>
+    <string name="photobooth_two_message_1">"Vite, il ne reste plus beaucoup de temps. le Coffre avec l'Elixir est juste là. Il faut trouver le code"</string>
+    <string name="photobooth_two_message_2">"Cherche une empreinte de Ganon dans la pièce, dépèche toi"</string>
+    <string name="combatFinal_titre">"Combat Final"</string>
+    <string name="combatFinal_one_message">"Tu as peut-être récupéré mon Elixir, mais je peux encore me battre ! Affronte moi si tu l'oses !"</string>
+    <string name="combatFinal_one_notification_titre">Nooooooooooooooooooon</string>
+    <string name="combatFinal_one_notification_message">Mon Elixir est perduuuuuuuuuuu à cause de TOI !!</string>
 </resources>

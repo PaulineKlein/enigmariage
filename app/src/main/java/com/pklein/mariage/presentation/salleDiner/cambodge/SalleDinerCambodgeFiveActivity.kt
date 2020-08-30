@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
+import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothOneActivity
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import kotlinx.android.synthetic.main.activity_salle_diner_cambodge_five.*
 
@@ -31,6 +32,6 @@ class SalleDinerCambodgeFiveActivity : AppCompatActivity(), SalleDinerCambodgeFi
     }
 
     override fun onClickButton() {
-        startActivity(Intent(this, SalleDinerCambodgeFiveActivity::class.java))
+        startActivity(Intent(this, SallePhotoboothOneActivity::class.java))
     }
 }

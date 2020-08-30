@@ -26,6 +26,20 @@ object Notification {
         )
     }
 
+    fun sendNotificationCombatFinal(context: Context) {
+        val notificationManager = ContextCompat.getSystemService(
+            context,
+            NotificationManager::class.java
+        ) as NotificationManager
+
+        notificationManager.sendNotification(
+            context.getString(R.string.combatFinal_one_notification_titre),
+            context.getString(R.string.combatFinal_one_notification_message),
+            context,
+            null
+        )
+    }
+
     fun cancelNotification(context: Context) {
         val notificationManager = ContextCompat.getSystemService(
             context,

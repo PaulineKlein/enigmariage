@@ -3,6 +3,7 @@ package com.pklein.mariage.presentation
 import android.content.Context
 import android.content.Intent
 import androidx.core.content.ContextCompat.startActivity
+import com.pklein.mariage.presentation.combatFinal.CombatFinalOneActivity
 import com.pklein.mariage.presentation.fairePart.FairePartActivity
 import com.pklein.mariage.presentation.fairePart.FairePartResponseActivity
 import com.pklein.mariage.presentation.introduction.AddPlayerActivity
@@ -17,6 +18,8 @@ import com.pklein.mariage.presentation.salleDiner.japon.*
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementOneActivity
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementThreeActivity
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementTwoActivity
+import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothOneActivity
+import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothTwoActivity
 
 enum class LAST_ACTIVITY_LAUNCH {
     INTRODUCTION,
@@ -51,7 +54,10 @@ enum class LAST_ACTIVITY_LAUNCH {
     SALLE_DINER_CAMBODGE_2,
     SALLE_DINER_CAMBODGE_3,
     SALLE_DINER_CAMBODGE_4,
-    SALLE_DINER_CAMBODGE_5
+    SALLE_DINER_CAMBODGE_5,
+    SALLE_PHOTOBOOTH_1,
+    SALLE_PHOTOBOOTH_2,
+    COMBAT_FINAL_1
 }
 
 object SplashCoordinator {
@@ -156,6 +162,15 @@ object SplashCoordinator {
             }
             LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_5.name -> {
                 Intent(context, SalleDinerCambodgeFiveActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.SALLE_PHOTOBOOTH_1.name -> {
+                Intent(context, SallePhotoboothOneActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.SALLE_PHOTOBOOTH_2.name -> {
+                Intent(context, SallePhotoboothTwoActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_1.name -> {
+                Intent(context, CombatFinalOneActivity::class.java)
             }
             else -> {
                 Intent(context, PasswordActivity::class.java)

@@ -11,6 +11,7 @@ import com.pklein.mariage.utils.SharedPreferenceStored.updateClue
 
 enum class PopinType {
     SUCCESS,
+    UNLOCK_SUCCESS,
     ERROR,
     CLAPPING,
     CLUE
@@ -53,6 +54,10 @@ object Alerts {
                 dialog.setContentView(R.layout.popup_success)
                 2500
             }
+            PopinType.UNLOCK_SUCCESS -> {
+                dialog.setContentView(R.layout.popup_unlock_success)
+                2500
+            }
             PopinType.CLAPPING -> {
                 dialog.setContentView(R.layout.popup_clapping)
                 3000
@@ -78,13 +83,13 @@ object Alerts {
         handler.postDelayed({ dialog.dismiss() }, delay.toLong())
     }
 
-    fun showSuccess(context: Context, onDismiss: (() -> Unit)?) {
+    fun showSuccess(context: Context, onDismiss: (() -> Unit)?, popinType : PopinType = PopinType.SUCCESS) {
         val name = PlayerViewModel.getName()
         showPopup(
             context,
             context.getString(R.string.bonne_reponse, name),
             onDismiss,
-            PopinType.SUCCESS
+            popinType
         )
     }
 
