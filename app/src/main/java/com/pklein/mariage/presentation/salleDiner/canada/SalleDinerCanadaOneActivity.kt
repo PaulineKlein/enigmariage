@@ -1,5 +1,6 @@
 package com.pklein.mariage.presentation.salleDiner.canada
 
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.R
@@ -14,7 +15,10 @@ class SalleDinerCanadaOneActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_1)
-        tv_question_titre?.text = getString(R.string.diner_one_titre)
+        animationQuestion_lottie?.setAnimation("animation_leaves.json")
+        animationQuestion_lottie?.playAnimation()
+        animationQuestion_lottie?.repeatCount = ValueAnimator.INFINITE
+        tv_question_titre?.text = getString(R.string.diner_titre_canada)
         tv_question_message?.text = getString(R.string.diner_canada_one_message)
     }
 

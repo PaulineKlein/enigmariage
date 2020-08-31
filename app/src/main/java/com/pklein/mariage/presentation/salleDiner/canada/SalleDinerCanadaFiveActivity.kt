@@ -1,5 +1,6 @@
 package com.pklein.mariage.presentation.salleDiner.canada
 
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
@@ -15,7 +16,10 @@ class SalleDinerCanadaFiveActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_5)
-        tv_question_titre?.text = getString(R.string.diner_one_titre)
+        animationQuestion_lottie?.setAnimation("animation_eyes.json")
+        animationQuestion_lottie?.playAnimation()
+        animationQuestion_lottie?.repeatCount = ValueAnimator.INFINITE
+        tv_question_titre?.text = getString(R.string.diner_titre_canada)
         tv_question_message?.text = getString(R.string.diner_canada_five_message)
         et_question_answer?.inputType = EditorInfo.TYPE_CLASS_NUMBER
     }

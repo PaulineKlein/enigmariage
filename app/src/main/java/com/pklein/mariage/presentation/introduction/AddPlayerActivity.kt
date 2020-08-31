@@ -3,9 +3,9 @@ package com.pklein.mariage.presentation.introduction
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.pklein.mariage.R
 import com.pklein.mariage.data.PLAYER_GENDER
 import com.pklein.mariage.data.PlayerViewModel
-import com.pklein.mariage.R
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.fairePart.FairePartActivity
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -31,7 +31,7 @@ class AddPlayerActivity : AppCompatActivity(), CheckEmptyTextWatcherListener {
     private fun storeInformation() {
         val genderId = radio_group_gender.checkedRadioButtonId
         val gender =
-            if (resources.getResourceEntryName(genderId) == getString(R.string.add_player_homme)) {
+            if (genderId == R.id.radioMen) {
                 PLAYER_GENDER.MALE
             } else {
                 PLAYER_GENDER.FEMALE

@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun initButton() {
-        val page = SharedPreferenceStored.getValue(SHARED_PREFERENCE_KEY.PLAYER_PAGE)
+        val page = PlayerViewModel.getPage()
 
         if (page.isNullOrEmpty()) {
             button_nvlle_partie?.setOnClickListener {

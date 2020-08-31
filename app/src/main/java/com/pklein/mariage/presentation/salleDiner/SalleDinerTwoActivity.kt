@@ -2,6 +2,7 @@ package com.pklein.mariage.presentation.salleDiner
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
@@ -17,6 +18,10 @@ class SalleDinerTwoActivity : QuestionActivity() {
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_2)
         tv_question_titre?.text = getString(R.string.diner_one_titre)
         tv_question_message?.text = getString(R.string.diner_two_message)
+
+        animationQuestion_lottie?.visibility = View.GONE
+        animationQuestion_image?.visibility = View.VISIBLE
+        animationQuestion_image?.setImageResource(R.drawable.image_jo_flag)
     }
 
     override fun onValidateCLicked(response: String) {

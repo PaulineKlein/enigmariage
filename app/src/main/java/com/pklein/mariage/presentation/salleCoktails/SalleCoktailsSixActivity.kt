@@ -2,6 +2,7 @@ package com.pklein.mariage.presentation.salleCoktails
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
@@ -16,6 +17,10 @@ class SalleCoktailsSixActivity : QuestionActivity() {
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_6)
         tv_question_titre?.text = getString(R.string.coktail_one_titre)
         tv_question_message?.text = getString(R.string.coktail_six_message)
+
+        animationQuestion_lottie?.visibility = View.GONE
+        animationQuestion_image?.visibility = View.VISIBLE
+        animationQuestion_image?.setImageResource(R.drawable.image_hyrule_desert)
     }
 
     override fun onValidateCLicked(response: String) {

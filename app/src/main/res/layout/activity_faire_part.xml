@@ -12,7 +12,7 @@
         <TextView
             android:id="@+id/tv_faire_part_titre"
             style="@style/Titre"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/faire_part_titre"
             app:layout_constraintEnd_toEndOf="parent"

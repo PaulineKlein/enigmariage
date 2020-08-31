@@ -1,5 +1,6 @@
 package com.pklein.mariage.presentation.salleCoktails
 
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -15,6 +16,9 @@ class SalleCoktailsTwoActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_2)
+        animationQuestion_lottie?.setAnimation("animation_student.json")
+        animationQuestion_lottie?.playAnimation()
+        animationQuestion_lottie?.repeatCount = ValueAnimator.INFINITE
         tv_question_titre?.text = getString(R.string.coktail_one_titre)
         tv_question_message?.text = getString(R.string.coktail_two_message)
         layout_indice?.visibility = View.VISIBLE

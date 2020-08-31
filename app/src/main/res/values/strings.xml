@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">mariage</string>
     <string name="notification_channel_id" translatable="false">wedding_channel</string>
-    <string name="splash_titre">Grand jeu pour le mariage de Pauline et Adrien</string>
+    <string name="splash_titre">Grand jeu privé pour un mariage de folie</string>
     <string name="zero">0</string>
     <string name="un">1</string>
     <string name="deux">2</string>
@@ -26,20 +26,21 @@
     <string name="adrien">Adrien</string>
     <string name="erreur">Ce n’est pas la bonne réponse, réessaye</string>
     <string name="bonne_reponse">Bravo %s, tu as trouvé !</string>
-    <string name="indice">Besoin d’un indice ? Clique ici</string>
-    <string name="indice_explication">Au cours de ton aventure, un indice appraîtra parfois sous cette forme. En cliquant dessus, cela impactera ton score final, alors utilises le avec parcimonie :</string>
-    <string name="popup_new_game">Si vous continuer, vous perdrez votre avancée dans le jeu, souhaitez vous continuer ?</string>
+    <string name="indice">Besoin d’un indice </string>
+    <string name="indice_explication">Au cours de ton aventure, un indice appraîtra parfois sous cette forme (attention, en cliquant dessus, cela impactera ton score final) :</string>
+    <string name="popup_new_game">Si tu continue, tu perdras ton avancée dans le jeu, souhaites-tu recommencer ?</string>
     <string name="password_titre">Attention</string>
-    <string name="password_message">Ce jeu est réservé aux invités du mariage.
+    <string name="password_message">"Ce jeu est réservé exclusivement aux invités du mariage.
 
-Pour continuer, donnez le lieu où se déroule la cérémonie :</string>
+Pour continuer, donnez le lieu où se déroule la cérémonie :"</string>
     <string name="introduction_titre">Point sur la situation</string>
     <string name="introduction_top">Le maléfique Ganondorf, jaloux de la fête sur le bateau souhaite se venger de ne pas avoir été invité.
         Il cherche à créer un Elixir réduisant toute vie humaine à l’état de playmobile …</string>
     <string name="introduction_versaille">Regardez, il a déja utilisé un Elixir prototype sur le chateau de Versaille :</string>
     <string name="introduction_Bottom">S’il vous plait, aidez nous à arrêter Ganondorf avant qu’il ne soit trop tard …</string>
     <string name="add_player_titre">Décline ton identité</string>
-    <string name="add_player_gender">Choisis ton personnage ?</string>
+    <string name="add_player_gender">Choisis ton personnage :</string>
+    <string name="add_player_clue">Besoin d’aide ?</string>
     <string name="add_player_name">Quel est ton nom ?</string>
     <string name="add_player_name_hint">Mon nom de héros trop stylé</string>
     <string name="add_player_femme">Zelda</string>
@@ -55,16 +56,17 @@ Pour continuer, donnez le lieu où se déroule la cérémonie :</string>
     <string name="embarquement_two_message_1">Il est donc bien entré … et en plus il utilise notre année de naissance. Il en sait déjà trop sur nous … Il n’y a pas une minute à perdre !</string>
     <string name="embarquement_two_notification_titre">Mouaahaha</string>
     <string name="embarquement_two_notification_message">J’ai infiltré ton telephone …  signé Ganon</string>
-    <string name="embarquement_two_notification_message_retry_1">As-tu vu la notification ? Essaye de cliquer dessus pour voir !</string>
+    <string name="embarquement_two_notification_message_retry_1">"As-tu vu la notification ?
+Essaye de cliquer dessus pour voir !"</string>
     <string name="embarquement_two_notification_message_retry_2">Si tu ne l’as pas reçu re-clique sur le bouton ci dessous.</string>
     <string name="embarquement_two_notification_message_retry_3">Si tu ne reçois vraiment rien, clique ici</string>
     <string name="embarquement_three_enigme">FK NKXC VK CKVVO NO MYUDKSVC</string>
     <string name="embarquement_three_message_1">Ganon a hacké nos téléphones :</string>
     <string name="embarquement_three_message_2">Je viens de recevoir ce mot aussi, c’est peut-être une piste :</string>
     <string name="embarquement_three_help">Même avec l’aide d’un Avocat vous ne m’arrêterez pas</string>
-    <string name="embarquement_three_clue">Avocat peut aussi se lire :
+    <string name="embarquement_three_clue">"\"Avocat\" peut aussi se lire :
 
-A vaut K, donc le début du message FK vaut VA</string>
+\"A vaut K\", donc le début du message \"FK\" vaut \"VA\""</string>
     <string name="embarquement_three_question">Peux-tu traduire le message et inscrire la réponse ci-dessous ?</string>
     <string name="embarquement_three_reponse_hint">Traduction du message</string>
     <string name="faire_part_titre">"Vol de Faire Part"</string>
@@ -87,7 +89,7 @@ A vaut K, donc le début du message FK vaut VA</string>
     <string name="coktail_one_message">"Il doit bien avoir un indice quelque part dans cette pièce ? Cherche de nouveau son empreinte et inscrit le nombre vu dessus :"</string>
     <string name="coktail_two_message">"2010, c'est notre année de rencontre à Télécom !
 
-A quelle ville correspond la photo juste à côté ?"</string>
+A quelle ville correspond la photo de soirée de l'école, juste à côté ?"</string>
     <string name="coktail_two_message_indice">"C'est la ville de notre école Télécom, précisée sur notre site internet"</string>
     <string name="coktail_three_message">"Essayerait-il de cacher son élixir sous forme de coktail ?
 
@@ -174,4 +176,7 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="combatFinal_one_message">"Tu as peut-être récupéré mon Elixir, mais je peux encore me battre ! Affronte moi si tu l'oses !"</string>
     <string name="combatFinal_one_notification_titre">Nooooooooooooooooooon</string>
     <string name="combatFinal_one_notification_message">Mon Elixir est perduuuuuuuuuuu à cause de TOI !!</string>
+    <string name="diner_titre_canada">Diner au Canada</string>
+    <string name="diner_titre_japon">Diner au Japon</string>
+    <string name="diner_titre_cambodge">Diner au Cambodge</string>
 </resources>

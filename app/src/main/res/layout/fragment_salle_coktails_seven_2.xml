@@ -1,59 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <TextView
-        android:id="@+id/tv_coktail_seven_message_1"
-        style="@style/Body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/coktail_seven_message_3"
-        app:layout_constraintBottom_toTopOf="@+id/tv_coktail_seven_enigme"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/tv_coktail_seven_enigme"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:cropToPadding="false"
-        android:src="@drawable/image_parchemin_anagramme"
-        app:layout_constraintBottom_toTopOf="@+id/et_question_answer"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_coktail_seven_message_1" />
-
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_question_answer"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_32"
-        android:layout_marginEnd="@dimen/margin_32"
-        android:hint="@string/reponse"
-        android:imeOptions="actionDone"
-        android:inputType="text"
-        android:textColor="@color/text"
-        app:layout_constraintBottom_toTopOf="@+id/button_cocktail_seven"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_coktail_seven_enigme" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_coktail_seven_message_1"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/coktail_seven_message_3"
+            app:layout_constraintBottom_toTopOf="@+id/tv_coktail_seven_enigme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/tv_coktail_seven_enigme"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:src="@drawable/image_parchemin_anagramme"
+            app:layout_constraintBottom_toTopOf="@+id/et_question_answer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_coktail_seven_message_1" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_question_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_32"
+            android:layout_marginEnd="@dimen/margin_32"
+            android:hint="@string/reponse"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textColor="@color/text"
+            app:layout_constraintBottom_toTopOf="@+id/button_cocktail_seven"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_coktail_seven_enigme" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_cocktail_seven"
-        style="@style/button"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="wrap_content"
-        android:enabled="false"
-        android:text="@string/valider"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_question_answer" />
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_cocktail_seven"
+            style="@style/button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:text="@string/valider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_question_answer" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

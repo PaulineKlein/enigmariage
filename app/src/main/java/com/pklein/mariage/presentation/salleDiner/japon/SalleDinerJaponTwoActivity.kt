@@ -15,7 +15,7 @@ class SalleDinerJaponTwoActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_2)
-        tv_question_titre?.text = getString(R.string.diner_one_titre)
+        tv_question_titre?.text = getString(R.string.diner_titre_japon)
         tv_question_message?.text = getString(R.string.diner_japon_two_question)
 
         animationQuestion_lottie?.visibility = View.GONE

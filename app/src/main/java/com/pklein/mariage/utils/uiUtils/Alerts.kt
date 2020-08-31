@@ -5,7 +5,9 @@ import android.content.Context
 import android.os.Handler
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatImageView
 import com.pklein.mariage.R
+import com.pklein.mariage.data.PLAYER_GENDER
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.utils.SharedPreferenceStored.updateClue
 
@@ -46,7 +48,8 @@ object Alerts {
         context: Context,
         message: String,
         onDismiss: (() -> Unit)?,
-        popinType: PopinType
+        popinType: PopinType,
+        gender: PLAYER_GENDER? = null
     ) {
         val dialog = Dialog(context)
         val delay = when (popinType) {
@@ -74,6 +77,14 @@ object Alerts {
 
         dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
         dialog.findViewById<TextView>(R.id.tv_popup_title).text = message
+        gender?.let {
+            if (it == PLAYER_GENDER.FEMALE)
+                dialog.findViewById<AppCompatImageView>(R.id.iv_user)
+                    ?.setImageResource(R.drawable.image_zelda_rond)
+            else
+                dialog.findViewById<AppCompatImageView>(R.id.iv_user)
+                    ?.setImageResource(R.drawable.image_link_rond)
+        }
         dialog.setOnDismissListener {
             onDismiss?.invoke()
         }
@@ -83,13 +94,22 @@ object Alerts {
         handler.postDelayed({ dialog.dismiss() }, delay.toLong())
     }
 
-    fun showSuccess(context: Context, onDismiss: (() -> Unit)?, popinType : PopinType = PopinType.SUCCESS) {
+    fun showSuccess(
+        context: Context,
+        onDismiss: (() -> Unit)?,
+        popinType: PopinType = PopinType.SUCCESS
+    ) {
         val name = PlayerViewModel.getName()
+        val genderStr = PlayerViewModel.getGender()
+        val gender =
+            if (genderStr == PLAYER_GENDER.FEMALE.name) PLAYER_GENDER.FEMALE else PLAYER_GENDER.MALE
+
         showPopup(
             context,
             context.getString(R.string.bonne_reponse, name),
             onDismiss,
-            popinType
+            popinType,
+            gender
         )
     }
 

@@ -15,7 +15,7 @@
         <TextView
             android:id="@+id/tv_add_player_titre"
             style="@style/Titre"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="@string/add_player_titre"
             app:layout_constraintEnd_toEndOf="parent"
@@ -65,7 +65,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/tv_add_player_clue"
+            android:layout_marginTop="@dimen/margin_4"
+            app:layout_constraintBottom_toTopOf="@+id/tv_add_player_clue_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender">
@@ -91,16 +92,28 @@
         </RadioGroup>
 
         <TextView
+            android:id="@+id/tv_add_player_clue_title"
+            style="@style/SousTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:text="@string/add_player_clue"
+            app:layout_constraintBottom_toTopOf="@+id/tv_add_player_clue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender" />
+
+        <TextView
             android:id="@+id/tv_add_player_clue"
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_4"
             android:text="@string/indice_explication"
             app:layout_constraintBottom_toTopOf="@+id/layout_indice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_clue_title" />
 
         <include
             android:id="@+id/layout_indice"

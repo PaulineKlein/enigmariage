@@ -12,9 +12,9 @@
         <TextView
             android:id="@+id/tv_diner_one_titre"
             style="@style/Titre"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/diner_one_titre"
+            android:text="@string/diner_titre_cambodge"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

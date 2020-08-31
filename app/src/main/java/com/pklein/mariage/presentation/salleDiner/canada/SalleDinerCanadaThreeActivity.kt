@@ -18,7 +18,7 @@ class SalleDinerCanadaThreeActivity : QuestionActivity() {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_3)
 
-        tv_question_titre?.text = getString(R.string.diner_one_titre)
+        tv_question_titre?.text = getString(R.string.diner_titre_canada)
         tv_question_message?.text = getString(R.string.diner_canada_three_message)
         animationQuestion_lottie?.visibility = View.GONE
         animationQuestion_image?.visibility = View.VISIBLE

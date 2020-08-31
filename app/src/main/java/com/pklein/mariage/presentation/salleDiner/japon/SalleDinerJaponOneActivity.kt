@@ -1,5 +1,6 @@
 package com.pklein.mariage.presentation.salleDiner.japon
 
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -18,7 +19,8 @@ class SalleDinerJaponOneActivity : QuestionActivity() {
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_1)
         animationQuestion_lottie?.setAnimation("animation_japan.json")
         animationQuestion_lottie?.playAnimation()
-        tv_question_titre?.text = getString(R.string.diner_one_titre)
+        animationQuestion_lottie?.repeatCount = ValueAnimator.INFINITE
+        tv_question_titre?.text = getString(R.string.diner_titre_japon)
         tv_question_message?.text = getString(R.string.diner_japon_one_question)
         et_question_answer?.inputType = EditorInfo.TYPE_CLASS_NUMBER
 

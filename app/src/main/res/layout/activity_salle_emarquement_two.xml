@@ -7,7 +7,7 @@
     <TextView
         android:id="@+id/tv_embarquement_two_titre"
         style="@style/Titre"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/embarquement_one_titre"
         app:layout_constraintEnd_toEndOf="parent"
