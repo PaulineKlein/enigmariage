@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_24">
+
+        <TextView
+            android:id="@+id/tv_combatFinal_titre"
+            style="@style/Titre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/combatFinal_sucess_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_combatFinal_two_message_1"
+            style="@style/Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/combatFinal_three_message_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_titre" />
+
+        <TextView
+            android:id="@+id/tv_combatFinal_three_message"
+            style="@style/Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/combatFinal_three_message_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_two_message_1" />
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/animation_ko"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/button_combatFinal_three"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_three_message">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animation_ko_lottie"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:scaleType="fitCenter"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="animation_burst.json"
+                app:lottie_loop="false" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/animation_ko_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:cropToPadding="false"
+                android:src="@drawable/image_ganondorf_lego"
+                android:visibility="gone" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_combatFinal_three"
+            style="@style/button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:enabled="false"
+            android:text="@string/combatFinal_three_validation"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

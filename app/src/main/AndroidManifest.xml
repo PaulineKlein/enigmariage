@@ -139,6 +139,12 @@
         <activity
             android:name=".presentation.combatFinal.CombatFinalOneActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.combatFinal.CombatFinalTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.combatFinal.CombatFinalThreeActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

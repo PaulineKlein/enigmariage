@@ -4,6 +4,8 @@ import android.content.Context
 import android.content.Intent
 import androidx.core.content.ContextCompat.startActivity
 import com.pklein.mariage.presentation.combatFinal.CombatFinalOneActivity
+import com.pklein.mariage.presentation.combatFinal.CombatFinalThreeActivity
+import com.pklein.mariage.presentation.combatFinal.CombatFinalTwoActivity
 import com.pklein.mariage.presentation.fairePart.FairePartActivity
 import com.pklein.mariage.presentation.fairePart.FairePartResponseActivity
 import com.pklein.mariage.presentation.introduction.AddPlayerActivity
@@ -57,7 +59,9 @@ enum class LAST_ACTIVITY_LAUNCH {
     SALLE_DINER_CAMBODGE_5,
     SALLE_PHOTOBOOTH_1,
     SALLE_PHOTOBOOTH_2,
-    COMBAT_FINAL_1
+    COMBAT_FINAL_1,
+    COMBAT_FINAL_2,
+    COMBAT_FINAL_3
 }
 
 object SplashCoordinator {
@@ -171,6 +175,12 @@ object SplashCoordinator {
             }
             LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_1.name -> {
                 Intent(context, CombatFinalOneActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_2.name -> {
+                Intent(context, CombatFinalTwoActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_3.name -> {
+                Intent(context, CombatFinalThreeActivity::class.java)
             }
             else -> {
                 Intent(context, PasswordActivity::class.java)

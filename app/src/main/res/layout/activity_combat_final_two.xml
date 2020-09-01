@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_24">
+
+        <TextView
+            android:id="@+id/tv_combatFinal_titre"
+            style="@style/Titre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/combatFinal_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_combatFinal_two_message_1"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/combatFinal_two_message_1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_titre" />
+
+        <TextView
+            android:id="@+id/tv_combatFinal_two_message_2"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/combatFinal_two_message_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_two_message_1" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_combatFinal_maze"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_32"
+            android:adjustViewBounds="true"
+            android:cropToPadding="false"
+            android:src="@drawable/image_maze_final_link"
+            app:layout_constraintBottom_toTopOf="@+id/radio_group_coups"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_two_message_2" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_coups"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/button_combatFinal_reponse"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_combatFinal_maze">
+
+            <RadioButton
+                android:id="@+id/radioReponse1"
+                style="@style/Body_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:checked="true"
+                android:drawableBottom="@drawable/image_coup_empi_uchi"
+                android:drawablePadding="@dimen/margin_8"
+                android:text="@string/combatFinal_coup_1" />
+
+            <RadioButton
+                android:id="@+id/radioReponse2"
+                style="@style/Body_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawableBottom="@drawable/image_coup_mawashi_geri"
+                android:drawablePadding="@dimen/margin_8"
+                android:text="@string/combatFinal_coup_2" />
+
+            <RadioButton
+                android:id="@+id/radioReponse3"
+                style="@style/Body_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawableBottom="@drawable/image_coup_yoko_geri"
+                android:drawablePadding="@dimen/margin_8"
+                android:text="@string/combatFinal_coup_3" />
+
+            <RadioButton
+                android:id="@+id/radioReponse4"
+                style="@style/Body_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawableBottom="@drawable/image_coup_yama_zuki"
+                android:drawablePadding="@dimen/margin_8"
+                android:text="@string/combatFinal_coup_4" />
+
+            <RadioButton
+                android:id="@+id/radioReponse5"
+                style="@style/Body_link"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_8"
+                android:drawableBottom="@drawable/image_coup_gyaku_zuki"
+                android:drawablePadding="@dimen/margin_8"
+                android:text="@string/combatFinal_coup_5" />
+        </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_combatFinal_reponse"
+            style="@style/button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:enabled="true"
+            android:text="@string/valider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_coups" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

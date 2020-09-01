@@ -18,7 +18,7 @@ class CombatFinalOneActivity : AppCompatActivity() {
         launchNotification()
 
         button_combatFinal_one?.setOnClickListener {
-            startActivity(Intent(this, CombatFinalOneActivity::class.java))
+            startActivity(Intent(this, CombatFinalTwoActivity::class.java))
         }
     }
 

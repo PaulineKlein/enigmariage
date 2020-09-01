@@ -14,6 +14,7 @@ import com.pklein.mariage.utils.SharedPreferenceStored.updateClue
 enum class PopinType {
     SUCCESS,
     UNLOCK_SUCCESS,
+    FINAL_SUCCESS,
     ERROR,
     CLAPPING,
     CLUE
@@ -61,6 +62,10 @@ object Alerts {
                 dialog.setContentView(R.layout.popup_unlock_success)
                 2500
             }
+            PopinType.FINAL_SUCCESS -> {
+                dialog.setContentView(R.layout.popup_final_success)
+                6000
+            }
             PopinType.CLAPPING -> {
                 dialog.setContentView(R.layout.popup_clapping)
                 3000
@@ -71,7 +76,7 @@ object Alerts {
             }
             PopinType.CLUE -> {
                 dialog.setContentView(R.layout.popup_clue)
-                15000
+                20000
             }
         }
 
