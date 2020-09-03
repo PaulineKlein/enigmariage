@@ -74,22 +74,12 @@
                 android:drawableEnd="@drawable/kanji_reponse3" />
 
             <RadioButton
-                android:id="@+id/radioReponse5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/margin_8"
-                android:drawablePadding="@dimen/margin_24"
-                android:text="@string/trois"
-                style="@style/SousTitre"
-                android:drawableEnd="@drawable/kanji_reponse5" />
-
-            <RadioButton
                 android:id="@+id/radioReponse1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_8"
                 android:drawablePadding="@dimen/margin_24"
-                android:text="@string/quatre"
+                android:text="@string/trois"
                 style="@style/SousTitre"
                 android:drawableEnd="@drawable/kanji_reponse1" />
 
@@ -99,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_8"
                 android:drawablePadding="@dimen/margin_24"
-                android:text="@string/cinq"
+                android:text="@string/quatre"
                 style="@style/SousTitre"
                 android:drawableEnd="@drawable/kanji_reponse2" />
         </RadioGroup>

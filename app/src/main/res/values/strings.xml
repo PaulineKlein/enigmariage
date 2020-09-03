@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">mariage</string>
+    <string name="app_name">EnigMariage</string>
     <string name="notification_channel_id" translatable="false">wedding_channel</string>
     <string name="splash_titre">Grand jeu privé pour un mariage de folie</string>
     <string name="zero">0</string>
