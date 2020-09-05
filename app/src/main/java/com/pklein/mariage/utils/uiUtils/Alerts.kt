@@ -2,6 +2,8 @@ package com.pklein.mariage.utils.uiUtils
 
 import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Handler
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
@@ -94,6 +96,7 @@ object Alerts {
         dialog.setOnDismissListener {
             onDismiss?.invoke()
         }
+        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
 
         val handler = Handler()
