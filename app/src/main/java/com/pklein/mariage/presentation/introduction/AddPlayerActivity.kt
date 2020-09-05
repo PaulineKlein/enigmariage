@@ -7,7 +7,7 @@ import com.pklein.mariage.R
 import com.pklein.mariage.data.PLAYER_GENDER
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
-import com.pklein.mariage.presentation.fairePart.FairePartActivity
+import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauOneActivity
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
@@ -51,8 +51,7 @@ class AddPlayerActivity : AppCompatActivity(), CheckEmptyTextWatcherListener {
     }
 
     private fun launchNext() {
-        val intent = Intent(this, FairePartActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, LocalisationBateauOneActivity::class.java))
     }
 
     override fun onTextEmpty() {

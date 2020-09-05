@@ -32,6 +32,15 @@
             android:name=".presentation.introduction.AddPlayerActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".presentation.localisationBateau.LocalisationBateauOneActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.localisationBateau.LocalisationBateauTwoActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.localisationBateau.LocalisationBateauThreeActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".presentation.fairePart.FairePartActivity"
             android:screenOrientation="portrait" />
         <activity

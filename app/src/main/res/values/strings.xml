@@ -60,7 +60,7 @@ Pour continuer, donnez le lieu où se déroule la cérémonie :"</string>
 Essaye de cliquer dessus pour voir !"</string>
     <string name="embarquement_two_notification_message_retry_2">Si tu ne l’as pas reçu re-clique sur le bouton ci dessous.</string>
     <string name="embarquement_two_notification_message_retry_3">Si tu ne reçois vraiment rien, clique ici</string>
-    <string name="embarquement_three_enigme">FK NKXC VK CKVVO NO MYUDKSVC</string>
+    <string name="embarquement_three_enigme">FK NKXC VK CKVVO NO MYMUDKSVC</string>
     <string name="embarquement_three_message_1">Ganon a hacké nos téléphones :</string>
     <string name="embarquement_three_message_2">Je viens de recevoir ce mot aussi, c’est peut-être une piste :</string>
     <string name="embarquement_three_help">Même avec l’aide d’un Avocat vous ne m’arrêterez pas</string>
@@ -70,8 +70,8 @@ Essaye de cliquer dessus pour voir !"</string>
     <string name="embarquement_three_question">Peux-tu traduire le message et inscrire la réponse ci-dessous ?</string>
     <string name="embarquement_three_reponse_hint">Traduction du message</string>
     <string name="faire_part_titre">"Vol de Faire Part"</string>
-    <string name="faire_part_message_1">"Ganondorf a falsifié un faire part pour pouvoir entrer."</string>
-    <string name="faire_part_message_2">"Parmis ces Kanjis, lesquels étaient présents sur l'invitation que Ganondorf aurait recopié ?"</string>
+    <string name="faire_part_message_1">"Ganondorf a utilisé le faire part falsifié pour entrer."</string>
+    <string name="faire_part_message_2">"Parmis ces 4 Kanjis, lesquels étaient présents sur l'invitation que Ganondorf aurait recopié ?"</string>
     <string name="faire_part_response_message_1">"Bravo, tu as bien trouvé. Je te dois quelques explications maintenant."</string>
     <string name="faire_part_response_message_2">"Si tu souhaites en savoir plus sur l'origine des kanjis choisis, clique sur chacune des images :"</string>
     <string name="faire_part_response_message_3">"Sinon, continue ton investigation à l'aide du bouton ci-dessous"</string>
@@ -135,7 +135,7 @@ C'etait pour nos 25 ans ?"</string>
     <string name="diner_japon_two_question">"On y était pour le Tokyo Game Show : 270000 visiteurs, 11 halls, 4 fois plus grand que la japan expo !
 
 A quel jeu fait référence notre photo sur place ?"</string>
-    <string name="diner_japon_two_help">"C'est un jeu mobile en ligne, d'Affrontement de Clans, développé par le studio finlandais Supercell"</string>
+    <string name="diner_japon_two_help">"C'est un jeu mobile en ligne, développé par le studio finlandais Supercell. En bref se sont des clans qui se clashent"</string>
     <string name="diner_japon_three_question">"Si seulement on pouvait utiliser le cochon pour courir à travers la foule et aller plus vite ! Tout ça donne soif, allons voir si on trouve un stand à boire.
 
 A partir de quel Hall peut-on rejoindre la buvette ?"</string>
@@ -155,7 +155,7 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="diner_cambodge_one_message_2">"Trouve la photo du Cambodge sur le plan de table, et cherche l'année où nous y sommes allés. C'était 2 ans après le Japon, ou 30 ans après une chanson de Calogero."</string>
     <string name="diner_cambodge_one_message_3">"Inscris vite la date"</string>
     <string name="diner_cambodge_two_question">"Nous voilà au fin fond de la forêt d'Angkor pour s'entraîner. Mais quel sport est pratiqué ?"</string>
-    <string name="diner_cambodge_three_message_1">"Adrien s'est même entrainé avec l'équipe national de Karaté du Cambodge !! Tous les matins, rendez-vous 6h au dojo pour travailler !"</string>
+    <string name="diner_cambodge_three_message_1">"Adrien s'est même entrainé avec l'équipe nationale de Karaté du Cambodge !! Tous les matins, rendez-vous 6h au dojo pour travailler !"</string>
     <string name="diner_cambodge_three_message_2">"Ganon a du se glisser ici pour copier leurs enchaînements de mouvements, pour devenir plus fort ! Quel Kata représenté en japonais et en Khmer ci dessous a été copié ?"</string>
     <string name="diner_cambodge_three_reponse_1">"KanKuSho"</string>
     <string name="diner_cambodge_three_reponse_2">"TaEuCho"</string>
@@ -191,4 +191,16 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="diner_titre_canada">Diner au Canada</string>
     <string name="diner_titre_japon">Diner au Japon</string>
     <string name="diner_titre_cambodge">Diner au Cambodge</string>
+    <string name="diner_titre_localisation">Localiser le Bateau !</string>
+    <string name="localisation_one_question">"Comment Ganon a-t-il eu vent de l'organisation de ce mariage ? Qui a bien pu lui dévoiler l'information ?
+
+Résous cette énigme pour le savoir"</string>
+    <string name="localisation_one_indice">Ariel en est une !</string>
+    <string name="localisation_two_question">"Le peuple de l'eau, les Zora a été obligé de donner le nom de la compagnie fluviale.
+
+Mais pour entraver Ganon, il l'a caché sous forme de dessins, sauras-tu le retrouver aussi ?"</string>
+    <string name="localisation_three_question">"Maintenant que Ganon sait où se trouve le bateau, il ne lui reste plus qu'un faire part à trouver pour monter à bord !
+
+Et justement, il a réussi à en voler un à un invité, mais lequel ?"</string>
+    <string name="localisation_three_indice">4 personnes ont ce rôle à ce mariage ! 2 pour la mariée, 2 pour le marié !</string>
 </resources>

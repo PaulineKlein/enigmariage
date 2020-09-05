@@ -11,6 +11,9 @@ import com.pklein.mariage.presentation.fairePart.FairePartResponseActivity
 import com.pklein.mariage.presentation.introduction.AddPlayerActivity
 import com.pklein.mariage.presentation.introduction.IntroductionActivity
 import com.pklein.mariage.presentation.introduction.PasswordActivity
+import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauOneActivity
+import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauThreeActivity
+import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauTwoActivity
 import com.pklein.mariage.presentation.salleCoktails.*
 import com.pklein.mariage.presentation.salleDiner.SalleDinerOneActivity
 import com.pklein.mariage.presentation.salleDiner.SalleDinerTwoActivity
@@ -26,6 +29,9 @@ import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothTwoActivit
 enum class LAST_ACTIVITY_LAUNCH {
     INTRODUCTION,
     ADD_PLAYER,
+    LOCALISATION_BATEAU_1,
+    LOCALISATION_BATEAU_2,
+    LOCALISATION_BATEAU_3,
     FAIRE_PART,
     FAIRE_PART_RESPONSE,
     SALLE_EMBARQUEMENT_1,
@@ -73,6 +79,15 @@ object SplashCoordinator {
             }
             LAST_ACTIVITY_LAUNCH.ADD_PLAYER.name -> {
                 Intent(context, AddPlayerActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.LOCALISATION_BATEAU_1.name -> {
+                Intent(context, LocalisationBateauOneActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.LOCALISATION_BATEAU_2.name -> {
+                Intent(context, LocalisationBateauTwoActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.LOCALISATION_BATEAU_3.name -> {
+                Intent(context, LocalisationBateauThreeActivity::class.java)
             }
             LAST_ACTIVITY_LAUNCH.FAIRE_PART.name -> {
                 Intent(context, FairePartActivity::class.java)
