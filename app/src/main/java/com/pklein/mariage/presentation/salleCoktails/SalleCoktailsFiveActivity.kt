@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.uiUtils.Alerts
 import kotlinx.android.synthetic.main.activity_add_player.*
@@ -15,7 +16,7 @@ enum class CITY {
     COCORICO,
 }
 
-class SalleCoktailsFiveActivity : AppCompatActivity() {
+class SalleCoktailsFiveActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

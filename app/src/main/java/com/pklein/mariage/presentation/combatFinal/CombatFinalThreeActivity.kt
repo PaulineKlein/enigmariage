@@ -4,14 +4,14 @@ import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.resultat.ResultsActivity
 import kotlinx.android.synthetic.main.activity_combat_final_three.*
 
-class CombatFinalThreeActivity : AppCompatActivity() {
+class CombatFinalThreeActivity : BaseActivity() {
 
     private var nbRepeat = 1
     private val animationListener = object : Animator.AnimatorListener {

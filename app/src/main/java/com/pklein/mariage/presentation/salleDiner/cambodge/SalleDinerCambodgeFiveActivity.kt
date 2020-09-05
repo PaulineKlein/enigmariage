@@ -3,15 +3,15 @@ package com.pklein.mariage.presentation.salleDiner.cambodge
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothOneActivity
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import kotlinx.android.synthetic.main.activity_salle_diner_cambodge_five.*
 
-class SalleDinerCambodgeFiveActivity : AppCompatActivity(), SalleDinerCambodgeFiveLayoutListener {
+class SalleDinerCambodgeFiveActivity : BaseActivity(), SalleDinerCambodgeFiveLayoutListener {
     private var dotPagerList: MutableList<ImageView> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {

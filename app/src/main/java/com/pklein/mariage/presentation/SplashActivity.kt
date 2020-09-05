@@ -2,18 +2,14 @@ package com.pklein.mariage.presentation
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
-import com.pklein.mariage.presentation.introduction.IntroductionActivity
 import com.pklein.mariage.presentation.introduction.PasswordActivity
-import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
-import com.pklein.mariage.utils.SharedPreferenceStored
 import com.pklein.mariage.utils.uiUtils.Alerts
 import kotlinx.android.synthetic.main.activity_splash.*
 
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

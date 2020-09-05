@@ -3,9 +3,9 @@ package com.pklein.mariage.presentation.salleDiner.japon
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.salleDiner.cambodge.SalleDinerCambodgeOneActivity
 import com.pklein.mariage.utils.ViewPagerDotsUtils
@@ -14,7 +14,7 @@ import com.pklein.mariage.utils.uiUtils.Alerts
 import kotlinx.android.synthetic.main.activity_salle_diner_japon_six.*
 import kotlinx.android.synthetic.main.activity_salle_emarquement_one.pager_dots
 
-class SalleDinerJaponSixActivity : AppCompatActivity(), SalleDinerJaponSixLayoutListener {
+class SalleDinerJaponSixActivity : BaseActivity(), SalleDinerJaponSixLayoutListener {
     private var dotPagerList: MutableList<ImageView> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {

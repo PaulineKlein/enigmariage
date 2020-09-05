@@ -2,11 +2,12 @@ package com.pklein.mariage.presentation.fairePart
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.pklein.mariage.R
+import com.pklein.mariage.presentation.BaseActivity
 import kotlinx.android.synthetic.main.activity_faire_part_kanji.*
 
-class FairePartKanjiActivity : AppCompatActivity() {
+class FairePartKanjiActivity : BaseActivity() {
 
     private var kanji = ""
     private var name = ""
@@ -20,21 +21,21 @@ class FairePartKanjiActivity : AppCompatActivity() {
         setContentView(R.layout.activity_faire_part_kanji)
 
         if (intent.hasExtra(KANJI_EXTRA)) {
-            kanji = intent.getStringExtra(KANJI_EXTRA)
+            kanji = intent.getStringExtra(KANJI_EXTRA) ?: ""
         }
 
-        if(kanji == KANJI.KANJI_PAULINE.name) {
+        if (kanji == KANJI.KANJI_PAULINE.name) {
             name = getString(R.string.pauline)
             prononciation = getString(R.string.faire_part_kanji_prononciation_p)
             signification = getString(R.string.faire_part_kanji_signification_p)
             symbole = getString(R.string.faire_part_kanji_symbole_p)
-            image = getDrawable(R.drawable.kanji_pauline)
+            image = ContextCompat.getDrawable(this, R.drawable.kanji_pauline)
         } else {
             name = getString(R.string.adrien)
             prononciation = getString(R.string.faire_part_kanji_prononciation_a)
             signification = getString(R.string.faire_part_kanji_signification_a)
             symbole = getString(R.string.faire_part_kanji_symbole_a)
-            image = getDrawable(R.drawable.kanji_adrien)
+            image = ContextCompat.getDrawable(this, R.drawable.kanji_adrien)
         }
 
         initDescription()

@@ -4,9 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementOneActivity
 import kotlinx.android.synthetic.main.activity_faire_part_response.*
@@ -19,7 +19,7 @@ enum class KANJI {
     KANJI_ADRIEN
 }
 
-class FairePartResponseActivity : AppCompatActivity() {
+class FairePartResponseActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_faire_part_response)

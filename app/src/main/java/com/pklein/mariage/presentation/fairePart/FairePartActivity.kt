@@ -2,14 +2,14 @@ package com.pklein.mariage.presentation.fairePart
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.uiUtils.Alerts
 import kotlinx.android.synthetic.main.activity_faire_part.*
 
-class FairePartActivity : AppCompatActivity() {
+class FairePartActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_faire_part)

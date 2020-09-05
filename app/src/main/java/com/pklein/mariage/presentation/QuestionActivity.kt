@@ -1,13 +1,12 @@
 package com.pklein.mariage.presentation
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
 import kotlinx.android.synthetic.main.activity_question.*
 
-abstract class QuestionActivity : AppCompatActivity(), CheckEmptyTextWatcherListener {
+abstract class QuestionActivity : BaseActivity(), CheckEmptyTextWatcherListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_question)

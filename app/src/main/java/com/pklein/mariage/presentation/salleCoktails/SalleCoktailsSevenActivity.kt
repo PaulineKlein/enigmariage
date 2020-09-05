@@ -6,6 +6,7 @@ import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.salleDiner.SalleDinerOneActivity
 import com.pklein.mariage.utils.ViewPagerDotsUtils
@@ -15,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_salle_coktails_seven.*
 import kotlinx.android.synthetic.main.activity_salle_emarquement_one.pager_dots
 
 
-class SalleCoktailsSevenActivity : AppCompatActivity(), SalleCoktailsSevenLayoutListener {
+class SalleCoktailsSevenActivity : BaseActivity(), SalleCoktailsSevenLayoutListener {
     private var dotPagerList: MutableList<ImageView> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
