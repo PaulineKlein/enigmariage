@@ -24,7 +24,7 @@ class SalleDinerJaponThreeActivity : QuestionActivity() {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "hall a" || response == "a") {
+        if (response.formatAnswer() == "hall a" || response.formatAnswer() == "a") {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)

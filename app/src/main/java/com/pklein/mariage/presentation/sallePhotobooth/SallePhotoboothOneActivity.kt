@@ -20,11 +20,11 @@ class SallePhotoboothOneActivity : QuestionActivity() {
 
         animationQuestion_lottie?.visibility = View.GONE
         animationQuestion_image?.visibility = View.VISIBLE
-        animationQuestion_image?.setImageResource(R.drawable.image_parchemin_photobooth)
+        animationQuestion_image?.setImageResource(R.drawable.image_parchemin_photomaton)
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "photobooth") {
+        if (response.formatAnswer() == "photomaton") {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)
