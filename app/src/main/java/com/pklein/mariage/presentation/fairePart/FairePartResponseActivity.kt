@@ -27,30 +27,26 @@ class FairePartResponseActivity : BaseActivity() {
 
         iv_kanji_pauline?.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                this.overridePendingTransition(R.anim.slide_in, R.anim.neutral)
                 view.performClick()
-                val handler = Handler()
-                handler.postDelayed({
+                Handler().postDelayed({
                     val intent = Intent(this, FairePartKanjiActivity::class.java)
                     intent.putExtra(KANJI_EXTRA, KANJI.KANJI_PAULINE.name)
                     startActivity(intent)
                 }, 1000)
             }
-            false
+            true
         }
 
         iv_kanji_adrien?.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                this.overridePendingTransition(R.anim.slide_in, R.anim.neutral)
                 view.performClick()
-                val handler = Handler()
-                handler.postDelayed({
+                Handler().postDelayed({
                     val intent = Intent(this, FairePartKanjiActivity::class.java)
                     intent.putExtra(KANJI_EXTRA, KANJI.KANJI_ADRIEN.name)
                     startActivity(intent)
                 }, 1000)
             }
-            false
+            true
         }
 
         button_response_faire_part?.setOnClickListener {
