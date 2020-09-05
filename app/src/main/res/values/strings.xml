@@ -19,6 +19,7 @@
     <string name="valider">Valider</string>
     <string name="renvoyer">Renvoyer un message</string>
     <string name="reponse">Ta réponse</string>
+    <string name="erreurs">Erreur</string>
     <string name="merci">Merci !!</string>
     <string name="oui">Oui</string>
     <string name="non">Non</string>
@@ -203,4 +204,9 @@ Mais pour entraver Ganon, il l'a caché sous forme de dessins, sauras-tu le retr
 
 Et justement, il a réussi à en voler un à un invité, mais lequel ?"</string>
     <string name="localisation_three_indice">4 personnes ont ce rôle à ce mariage ! 2 pour la mariée, 2 pour le marié !</string>
+    <string name="resultat_titre">Résultats :</string>
+    <string name="resultat_temps">Ton temps :</string>
+    <string name="resultat_score">Ton score :</string>
+    <string name="resultat_message">Va demander ta récompense aux mariés et prendre une photo de Winner au PhotoMaton</string>
+    <string name="resultat_bouton">"Revenir à l'accueil"</string>
 </resources>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_24">
+
+        <TextView
+            android:id="@+id/tv_resultat_titre"
+            style="@style/Titre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/resultat_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_resultat_temps_titre"
+            style="@style/SousTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/resultat_temps"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resultat_titre" />
+
+        <TextView
+            android:id="@+id/tv_resultat_temps_reponse"
+            style="@style/Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_temps_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/tv_resultat_temps_titre"
+            app:layout_constraintTop_toTopOf="@+id/tv_resultat_temps_titre"
+            tool:text="@string/un" />
+
+        <TextView
+            android:id="@+id/tv_resultat_score_titre"
+            style="@style/SousTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
+            android:text="@string/resultat_score"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resultat_temps_titre" />
+
+        <TextView
+            android:id="@+id/tv_resultat_score_reponse"
+            style="@style/Body"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_16"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_score_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintStart_toEndOf="@+id/tv_resultat_score_titre"
+            app:layout_constraintTop_toTopOf="@+id/tv_resultat_score_titre"
+            tool:text="@string/un" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_score_lottie"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@+id/tv_resultat_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resultat_score_titre"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="animation_cup.json"
+            app:lottie_loop="true" />
+
+        <TextView
+            android:id="@+id/tv_resultat_message"
+            style="@style/Body_big"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/resultat_message"
+            app:layout_constraintBottom_toTopOf="@+id/button_resultat"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animation_score_lottie" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_resultat"
+            style="@style/button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:enabled="true"
+            android:text="@string/resultat_bouton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

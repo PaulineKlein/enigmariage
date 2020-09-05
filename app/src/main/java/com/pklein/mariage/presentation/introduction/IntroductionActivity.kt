@@ -10,8 +10,8 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.SharedPreferenceStored
 import com.pklein.mariage.utils.ViewPagerDotsUtils
+import com.pklein.mariage.utils.currentTimeToString
 import kotlinx.android.synthetic.main.activity_introduction.*
-import java.util.*
 
 class IntroductionActivity : AppCompatActivity(), IntroLayoutListener {
     private var dotPagerList: MutableList<ImageView> = mutableListOf()
@@ -22,7 +22,7 @@ class IntroductionActivity : AppCompatActivity(), IntroLayoutListener {
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.INTRODUCTION)
         SharedPreferenceStored.storeValue(
             SHARED_PREFERENCE_KEY.PLAYER_START_TIME,
-            Date().time.toString()
+            currentTimeToString()
         )
 
         viewpagerIntroduction.adapter = IntroductionViewPagerAdapter(this, this)
@@ -38,7 +38,6 @@ class IntroductionActivity : AppCompatActivity(), IntroLayoutListener {
     }
 
     override fun onClickButton() {
-        val intent = Intent(this, AddPlayerActivity::class.java)
-        startActivity(intent)
+        startActivity(Intent(this, AddPlayerActivity::class.java))
     }
 }

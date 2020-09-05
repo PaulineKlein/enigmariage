@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
+import com.pklein.mariage.presentation.resultat.ResultsActivity
 import kotlinx.android.synthetic.main.activity_combat_final_three.*
 
 class CombatFinalThreeActivity : AppCompatActivity() {
@@ -45,7 +46,7 @@ class CombatFinalThreeActivity : AppCompatActivity() {
 
         animation_ko_lottie?.addAnimatorListener(animationListener)
         button_combatFinal_three?.setOnClickListener {
-            startActivity(Intent(this, CombatFinalThreeActivity::class.java))
+            startActivity(Intent(this, ResultsActivity::class.java))
         }
     }
 }

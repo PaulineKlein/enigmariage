@@ -8,6 +8,7 @@ import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.SharedPreferenceStored
+import com.pklein.mariage.utils.currentTimeToString
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
 import kotlinx.android.synthetic.main.activity_combat_final_two.*
@@ -22,10 +23,6 @@ class CombatFinalTwoActivity : AppCompatActivity() {
         button_combatFinal_reponse?.setOnClickListener {
             val kanjiId = radio_group_coups.checkedRadioButtonId
             if (kanjiId == R.id.radioReponse2) {
-                SharedPreferenceStored.storeValue(
-                    SHARED_PREFERENCE_KEY.PLAYER_END_TIME,
-                    Date().time.toString()
-                )
                 Alerts.showPopup(
                     this,
                     getString(R.string.combatFinal_sucess),
@@ -39,6 +36,10 @@ class CombatFinalTwoActivity : AppCompatActivity() {
     }
 
     private fun launchNext() {
+        SharedPreferenceStored.storeValue(
+            SHARED_PREFERENCE_KEY.PLAYER_END_TIME,
+            currentTimeToString()
+        )
         startActivity(Intent(this, CombatFinalThreeActivity::class.java))
     }
 }

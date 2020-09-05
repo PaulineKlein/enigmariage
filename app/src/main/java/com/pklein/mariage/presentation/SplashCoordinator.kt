@@ -14,6 +14,7 @@ import com.pklein.mariage.presentation.introduction.PasswordActivity
 import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauOneActivity
 import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauThreeActivity
 import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauTwoActivity
+import com.pklein.mariage.presentation.resultat.ResultsActivity
 import com.pklein.mariage.presentation.salleCoktails.*
 import com.pklein.mariage.presentation.salleDiner.SalleDinerOneActivity
 import com.pklein.mariage.presentation.salleDiner.SalleDinerTwoActivity
@@ -67,7 +68,8 @@ enum class LAST_ACTIVITY_LAUNCH {
     SALLE_PHOTOBOOTH_2,
     COMBAT_FINAL_1,
     COMBAT_FINAL_2,
-    COMBAT_FINAL_3
+    COMBAT_FINAL_3,
+    RESULT
 }
 
 object SplashCoordinator {
@@ -196,6 +198,9 @@ object SplashCoordinator {
             }
             LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_3.name -> {
                 Intent(context, CombatFinalThreeActivity::class.java)
+            }
+            LAST_ACTIVITY_LAUNCH.RESULT.name -> {
+                Intent(context, ResultsActivity::class.java)
             }
             else -> {
                 Intent(context, PasswordActivity::class.java)

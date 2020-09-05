@@ -20,7 +20,7 @@ object SharedPreferenceStored {
         .getSharedPreferences(SHARED_PREFERENCE_FILE, Context.MODE_PRIVATE)
 
     fun getValue(key: SHARED_PREFERENCE_KEY): String? {
-        return preferences.getString(key.name, "") ?: null
+        return preferences.getString(key.name, "")
     }
 
     fun storeValue(key: SHARED_PREFERENCE_KEY, value: String?) {
