@@ -9,7 +9,8 @@ enum class SHARED_PREFERENCE_KEY {
     PLAYER_PAGE,
     PLAYER_START_TIME,
     PLAYER_END_TIME,
-    PLAYER_CLUES
+    PLAYER_CLUES,
+    PLAYER_ERRORS
 }
 
 object SharedPreferenceStored {
@@ -38,6 +39,16 @@ object SharedPreferenceStored {
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_CLUES, newNbOfCLue.toString())
     }
 
+    fun updateError() {
+        val actualNbOfError = preferences.getString(SHARED_PREFERENCE_KEY.PLAYER_ERRORS.name, "")
+        val newNbOfError = if (actualNbOfError.isNullOrEmpty()) {
+            1
+        } else {
+            actualNbOfError.toInt() + 1
+        }
+        storeValue(SHARED_PREFERENCE_KEY.PLAYER_ERRORS, newNbOfError.toString())
+    }
+
     fun resetPreference() {
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_NAME, null)
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_GENDER, null)
@@ -45,5 +56,6 @@ object SharedPreferenceStored {
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_START_TIME, null)
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_END_TIME, null)
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_CLUES, null)
+        storeValue(SHARED_PREFERENCE_KEY.PLAYER_ERRORS, null)
     }
 }

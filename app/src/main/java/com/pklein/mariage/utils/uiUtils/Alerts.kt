@@ -10,6 +10,7 @@ import com.pklein.mariage.R
 import com.pklein.mariage.data.PLAYER_GENDER
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.utils.SharedPreferenceStored.updateClue
+import com.pklein.mariage.utils.SharedPreferenceStored.updateError
 
 enum class PopinType {
     SUCCESS,
@@ -122,7 +123,7 @@ object Alerts {
         showPopup(
             context,
             context.getString(R.string.erreur),
-            null,
+            ::updateError,
             PopinType.ERROR
         )
     }
