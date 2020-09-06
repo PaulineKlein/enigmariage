@@ -15,7 +15,7 @@ enum class SHARED_PREFERENCE_KEY {
 
 object SharedPreferenceStored {
 
-    const val SHARED_PREFERENCE_FILE = "mariage-shared-preference"
+    private const val SHARED_PREFERENCE_FILE = "mariage-shared-preference"
     private val preferences = MariageApplication.getAppContext()
         .getSharedPreferences(SHARED_PREFERENCE_FILE, Context.MODE_PRIVATE)
 

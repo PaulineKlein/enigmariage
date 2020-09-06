@@ -168,7 +168,7 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="diner_cambodge_five_message_1">"Le voilà notre dernier ingrédient ! Du jus de mangue !"</string>
     <string name="diner_cambodge_five_message_2">"Savais-tu qu'Adrien était surnommé MangoKiller pendant son stage ?"</string>
     <string name="diner_cambodge_five_message_3">"C'est bon, notre recette est complète ! Vite trouvons l'emplacement où Ganon va réaliser son plan machiavélique, avant qu'il ne soit trop tard"</string>
-    <string name="photobooth_one_titre">"Photobooth"</string>
+    <string name="photobooth_one_titre">"Photomaton"</string>
     <string name="photobooth_one_titre2">"Dernière salle"</string>
     <string name="photobooth_one_enigme">"Cherche la dernière salle, vite !"</string>
     <string name="photobooth_two_message_1">"Vite, il ne reste plus beaucoup de temps. le Coffre avec l'Elixir est juste là. Il faut trouver le code"</string>
@@ -207,6 +207,6 @@ Et justement, il a réussi à en voler un à un invité, mais lequel ?"</string>
     <string name="resultat_titre">Résultats :</string>
     <string name="resultat_temps">Ton temps :</string>
     <string name="resultat_score">Ton score :</string>
-    <string name="resultat_message">Va demander ta récompense aux mariés et prendre une photo de Winner au PhotoMaton</string>
+    <string name="resultat_message">Va demander ta récompense aux mariés et prendre une photo de Winner au Photomaton</string>
     <string name="resultat_bouton">"Revenir à l'accueil"</string>
 </resources>

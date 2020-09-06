@@ -2,7 +2,6 @@ package com.pklein.mariage.presentation.resultat
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.BaseActivity

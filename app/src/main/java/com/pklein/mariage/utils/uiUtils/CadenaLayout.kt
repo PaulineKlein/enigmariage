@@ -20,7 +20,7 @@ class CadenaLayout @JvmOverloads constructor(
     defStyleAttr: Int = 0
 ) : CardView(context, attrs, defStyleAttr), CheckEmptyTextWatcherListener {
     private var arrayButtons: Array<AppCompatButton>
-    var listener : CadenaLayoutListener? = null
+    private var listener : CadenaLayoutListener? = null
 
     init {
         LayoutInflater.from(context).inflate(R.layout.cadena, this, true)
@@ -66,7 +66,7 @@ class CadenaLayout @JvmOverloads constructor(
         }
     }
 
-    fun getEditTextValue(): String {
+    private fun getEditTextValue(): String {
         return et_cadena_value?.text.toString()
     }
 

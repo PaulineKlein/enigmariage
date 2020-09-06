@@ -3,7 +3,6 @@ package com.pklein.mariage.presentation.salleCoktails
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.BaseActivity
