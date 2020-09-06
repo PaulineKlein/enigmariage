@@ -12,3 +12,6 @@
 /captures
 .externalNativeBuild
 .cxx
+key_pklein.jks
+gradle.properties
+app/release/
