@@ -26,7 +26,7 @@ class SalleDinerCanadaSixActivity : BaseActivity(), CheckEmptyTextWatcherListene
     }
 
     private fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "direction le japon" || response == "1") {
+        if (response.formatAnswer() == "direction le japon") {
             // todo enlever la reponse à 1
             Alerts.showSuccess(this, ::launchNext)
         } else {

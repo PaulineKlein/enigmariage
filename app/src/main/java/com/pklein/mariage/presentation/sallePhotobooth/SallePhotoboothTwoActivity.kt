@@ -9,6 +9,7 @@ import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.combatFinal.CombatFinalOneActivity
 import com.pklein.mariage.utils.ViewPagerDotsUtils
+import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.PopinType
@@ -36,7 +37,7 @@ class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response == "2020") {
+        if (response.formatAnswer() == "2020") {
             Alerts.showSuccess(this, ::launchNext, PopinType.UNLOCK_SUCCESS)
         } else {
             Alerts.showError(this)

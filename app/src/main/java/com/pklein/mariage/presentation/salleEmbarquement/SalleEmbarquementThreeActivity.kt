@@ -30,7 +30,7 @@ class SalleEmbarquementThreeActivity : BaseActivity(), CheckEmptyTextWatcherList
     }
 
     private fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "va dans la salle de cocktails" || response == "1") {
+        if (response.formatAnswer() == "va dans la salle de cocktails") {
             // todo enlever la reponse à 1
             Alerts.showSuccess(this, ::launchNext)
         } else {
