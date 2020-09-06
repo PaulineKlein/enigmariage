@@ -5,6 +5,14 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 29
 
+    signingConfigs {
+        release {
+            storeFile file(STORE_FILE)
+            storePassword STORE_PASSWORD
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+        }
+    }
 
     defaultConfig {
         applicationId "com.pklein.enigmariage"
@@ -17,9 +25,17 @@ android {
     }
 
     buildTypes {
-        release {
+        debug {
             minifyEnabled false
+            testCoverageEnabled true
+            applicationIdSuffix ".ci"
+            signingConfig signingConfigs.release
+        }
+        release {
+            minifyEnabled true
+            testCoverageEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 

@@ -1,1 +1,16 @@
 /build
+*.iml
+.gradle
+/local.properties
+.idea
+.DS_Store
+/captures
+.externalNativeBuild
+/app/debug
+/app/release
+/app/gradlew
+/app/gradlew.bat
+/app/local.properties
+/app/gradle/
+key_pklein.jks
+gradle.properties
