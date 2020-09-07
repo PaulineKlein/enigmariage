@@ -2,15 +2,20 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+Properties properties = new Properties()
+if (project.rootProject.file('local.properties').canRead()) {
+    properties.load(project.rootProject.file("local.properties").newDataInputStream())
+}
+
 android {
     compileSdkVersion 29
 
     signingConfigs {
         release {
-            storeFile file(STORE_FILE)
-            storePassword STORE_PASSWORD
-            keyAlias KEY_ALIAS
-            keyPassword KEY_PASSWORD
+            storeFile file(properties.getProperty("STORE_FILE") ?: "myFile")
+            storePassword properties.getProperty("STORE_PASSWORD" ?: "myPwd")
+            keyAlias properties.getProperty("KEY_ALIAS" ?: "myAlias")
+            keyPassword properties.getProperty("KEY_PASSWORD" ?: "myPwd")
         }
     }
 
@@ -26,12 +31,14 @@ android {
 
     buildTypes {
         debug {
+            debuggable true
             minifyEnabled false
             testCoverageEnabled true
             applicationIdSuffix ".ci"
             signingConfig signingConfigs.release
         }
         release {
+            debuggable false
             minifyEnabled true
             testCoverageEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
