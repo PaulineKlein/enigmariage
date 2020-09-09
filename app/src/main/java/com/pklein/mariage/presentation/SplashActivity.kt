@@ -29,6 +29,7 @@ class SplashActivity : BaseActivity() {
             button_continuer?.isEnabled = true
             button_continuer?.setOnClickListener {
                 SplashCoordinator.launchGame(page, this)
+                launchCountDown()
             }
             button_nvlle_partie?.setOnClickListener {
                 showAlert()

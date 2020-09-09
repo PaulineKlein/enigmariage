@@ -5,13 +5,16 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatImageView
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PLAYER_GENDER
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.utils.CountDown
 import com.pklein.mariage.utils.SharedPreferenceStored.updateClue
+import com.pklein.mariage.utils.SharedPreferenceStored.updateCountDown
 import com.pklein.mariage.utils.SharedPreferenceStored.updateError
 
 enum class PopinType {
@@ -24,6 +27,8 @@ enum class PopinType {
 }
 
 object Alerts {
+
+    private var isPopupShown = false
 
     fun showAlert(
         context: Context,
@@ -95,9 +100,11 @@ object Alerts {
         }
         dialog.setOnDismissListener {
             onDismiss?.invoke()
+            isPopupShown = false
         }
         dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         dialog.show()
+        isPopupShown = true
 
         val handler = Handler()
         handler.postDelayed({ dialog.dismiss() }, delay.toLong())
@@ -138,5 +145,38 @@ object Alerts {
             ::updateClue,
             PopinType.CLUE
         )
+    }
+
+    fun showCountDown(context: Context, step: Int) {
+        if (step < 12) { // les photos vont jusqu'au chiffre 11 :
+            val dialog = Dialog(context)
+            dialog.setContentView(R.layout.popup_countdown)
+            dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
+
+            val countdownStr =
+                context.resources.getIdentifier("countdown_$step", "string", context.packageName)
+            val countdownIv =
+                context.resources.getIdentifier("playmobil_$step", "drawable", context.packageName)
+
+            dialog.findViewById<TextView>(R.id.tv_popup_title).text =
+                context.getString(countdownStr)
+            dialog.findViewById<ImageView>(R.id.iv_popup).setImageResource(countdownIv)
+
+            dialog.setOnDismissListener {
+                if (step < 11) {
+                    updateCountDown()
+                    CountDown.start()
+                }
+            }
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+            if (isPopupShown) {
+                Handler().postDelayed({ dialog.show() }, 10000)
+            } else {
+                dialog.show()
+            }
+
+            Handler().postDelayed({ dialog.dismiss() }, 10000)
+        }
     }
 }

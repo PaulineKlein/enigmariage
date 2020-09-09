@@ -28,6 +28,7 @@ class IntroductionActivity : BaseActivity(), IntroLayoutListener {
         viewpagerIntroduction.adapter = IntroductionViewPagerAdapter(this, this)
         viewpagerIntroduction.addOnPageChangeListener(ViewPagerDotsUtils(dotPagerList, 2))
         setupDots()
+        launchCountDown()
     }
 
     private fun setupDots() {

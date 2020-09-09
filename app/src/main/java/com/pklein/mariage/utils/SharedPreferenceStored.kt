@@ -10,7 +10,8 @@ enum class SHARED_PREFERENCE_KEY {
     PLAYER_START_TIME,
     PLAYER_END_TIME,
     PLAYER_CLUES,
-    PLAYER_ERRORS
+    PLAYER_ERRORS,
+    COUNT_DOWN
 }
 
 object SharedPreferenceStored {
@@ -49,6 +50,16 @@ object SharedPreferenceStored {
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_ERRORS, newNbOfError.toString())
     }
 
+    fun updateCountDown() {
+        val actualNbOfCountDown = preferences.getString(SHARED_PREFERENCE_KEY.COUNT_DOWN.name, "")
+        val newNbOfCountDown = if (actualNbOfCountDown.isNullOrEmpty()) {
+            1
+        } else {
+            actualNbOfCountDown.toInt() + 1
+        }
+        storeValue(SHARED_PREFERENCE_KEY.COUNT_DOWN, newNbOfCountDown.toString())
+    }
+
     fun resetPreference() {
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_NAME, null)
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_GENDER, null)
@@ -57,5 +68,6 @@ object SharedPreferenceStored {
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_END_TIME, null)
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_CLUES, null)
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_ERRORS, null)
+        storeValue(SHARED_PREFERENCE_KEY.COUNT_DOWN, null)
     }
 }

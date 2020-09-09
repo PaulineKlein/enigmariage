@@ -36,7 +36,7 @@
 Pour continuer, donnez le lieu où se déroule la cérémonie :"</string>
     <string name="introduction_titre">Point sur la situation</string>
     <string name="introduction_top">Le maléfique Ganondorf, jaloux de la fête sur le bateau souhaite se venger de ne pas avoir été invité.
-        Il cherche à créer un Elixir réduisant toute vie humaine à l’état de playmobile …</string>
+        Il cherche à créer un Elixir réduisant toute vie humaine à l’état de Playmobil …</string>
     <string name="introduction_versaille">Regardez, il a déja utilisé un Elixir prototype sur le chateau de Versaille :</string>
     <string name="introduction_Bottom">S’il vous plait, aidez nous à arrêter Ganondorf avant qu’il ne soit trop tard …</string>
     <string name="add_player_titre">Décline ton identité</string>
@@ -86,13 +86,13 @@ Essaye de cliquer dessus pour voir !"</string>
     <string name="faire_part_kanji_prononciation_a">"Bu (de Bushido)"</string>
     <string name="faire_part_kanji_signification_a">"Guerrier"</string>
     <string name="faire_part_kanji_symbole_a">"Le prénom rappelle celui d'un empereur Romain. C'est aussi le saint protecteur des soldats. Avec une passion comme le karaté, ce kanji était fait pour lui !"</string>
-    <string name="coktail_one_titre">"Salle des Coktails"</string>
+    <string name="coktail_one_titre">"Salle des Cocktails"</string>
     <string name="coktail_one_message">"Il doit bien avoir un indice quelque part dans cette pièce ? Cherche de nouveau son empreinte et inscrit le nombre vu dessus :"</string>
     <string name="coktail_two_message">"2010, c'est notre année de rencontre à Télécom !
 
 A quelle ville correspond la photo de soirée de l'école, juste à côté ?"</string>
     <string name="coktail_two_message_indice">"C'est la ville de notre école Télécom, précisée sur notre site internet"</string>
-    <string name="coktail_three_message">"Essayerait-il de cacher son élixir sous forme de coktail ?
+    <string name="coktail_three_message">"Essayerait-il de cacher son élixir sous forme de cocktail ?
 
 Quelle couleur est typique de Saint Étienne ? C'est peut-être un indice"</string>
     <string name="coktail_four_message">"Je suis sûre que son Elixir sera vert ! Vois-tu du vert dans cette pièce ?
@@ -209,4 +209,16 @@ Et justement, il a réussi à en voler un à un invité, mais lequel ?"</string>
     <string name="resultat_score">Ton score :</string>
     <string name="resultat_message">Va demander ta récompense aux mariés et prendre une photo de Winner au Photomaton</string>
     <string name="resultat_bouton">"Revenir à l'accueil"</string>
+    <string name="countdown_0">"Ganon s'en ai déja pris aux poissons, regarde dans quel état ils sont !"</string>
+    <string name="countdown_1">"Ganon s'attaque à la faune autour du bateau, les pauvres oiseaux !"</string>
+    <string name="countdown_2">"Ganon a transformé l'ancre, le bateau va dériver si ça continue !"</string>
+    <string name="countdown_3">"Ganon vient de transformer les toilettes, comment va-t-on faire ?"</string>
+    <string name="countdown_4">"Le salon est devenu minuscule à cause de Ganon, vite dépèche toi !"</string>
+    <string name="countdown_5">"Ganon commence à transformer les invités, il faut faire vite !"</string>
+    <string name="countdown_6">"Ganon s'en ai pris au serveur du bateau, il n'y a pas une minute à perdre !"</string>
+    <string name="countdown_7">"Ganon vient de transformer nos repas ! Il faut trouver la solution pour l'arrêter"</string>
+    <string name="countdown_8">"Ganon a transformé le cuisiner, il faut vite l'arrêter"</string>
+    <string name="countdown_9">"Le gouvernail a été transformé lui aussi, que va-t-on devenir ?"</string>
+    <string name="countdown_10">"La casquette du capitaine, c'est très mauvais signe tout ça, vite vite !"</string>
+    <string name="countdown_11">"Ganon a aussi transformé le capitaine, tu es notre dernier espoir !"</string>
 </resources>
