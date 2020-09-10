@@ -12,9 +12,9 @@
     <string name="sept">7</string>
     <string name="huit">8</string>
     <string name="neuf">9</string>
-    <string name="commencer">commencer</string>
+    <string name="commencer">Commencer</string>
     <string name="nvlle_partie">Nouvelle Partie</string>
-    <string name="continuer">continuer</string>
+    <string name="continuer">Continuer</string>
     <string name="attention">Attention</string>
     <string name="valider">Valider</string>
     <string name="renvoyer">Renvoyer un message</string>
@@ -29,7 +29,7 @@
     <string name="bonne_reponse">Bravo %s, tu as trouvé !</string>
     <string name="indice">Besoin d’un indice </string>
     <string name="indice_explication">Au cours de ton aventure, un indice appraîtra parfois sous cette forme (attention, en cliquant dessus, cela impactera ton score final) :</string>
-    <string name="popup_new_game">Si tu continue, tu perdras ton avancée dans le jeu, souhaites-tu recommencer ?</string>
+    <string name="popup_new_game">Si tu continues, tu perdras ton avancée dans le jeu, souhaites-tu recommencer ?</string>
     <string name="password_titre">Attention</string>
     <string name="password_message">"Ce jeu est réservé exclusivement aux invités du mariage.
 
@@ -37,7 +37,7 @@ Pour continuer, donnez le lieu où se déroule la cérémonie :"</string>
     <string name="introduction_titre">Point sur la situation</string>
     <string name="introduction_top">Le maléfique Ganondorf, jaloux de la fête sur le bateau souhaite se venger de ne pas avoir été invité.
         Il cherche à créer un Elixir réduisant toute vie humaine à l’état de Playmobil …</string>
-    <string name="introduction_versaille">Regardez, il a déja utilisé un Elixir prototype sur le chateau de Versaille :</string>
+    <string name="introduction_versaille">Regardez, il a déja utilisé un Elixir prototype sur le Château de Versailles :</string>
     <string name="introduction_Bottom">S’il vous plait, aidez nous à arrêter Ganondorf avant qu’il ne soit trop tard …</string>
     <string name="add_player_titre">Décline ton identité</string>
     <string name="add_player_gender">Choisis ton personnage :</string>
@@ -56,10 +56,10 @@ Pour continuer, donnez le lieu où se déroule la cérémonie :"</string>
     <string name="embarquement_one_hint">Inscris tes chiffres ici</string>
     <string name="embarquement_two_message_1">Il est donc bien entré … et en plus il utilise notre année de naissance. Il en sait déjà trop sur nous … Il n’y a pas une minute à perdre !</string>
     <string name="embarquement_two_notification_titre">Mouaahaha</string>
-    <string name="embarquement_two_notification_message">J’ai infiltré ton telephone …  signé Ganon</string>
+    <string name="embarquement_two_notification_message">J’ai infiltré ton téléphone …  signé Ganon</string>
     <string name="embarquement_two_notification_message_retry_1">"As-tu vu la notification ?
 Essaye de cliquer dessus pour voir !"</string>
-    <string name="embarquement_two_notification_message_retry_2">Si tu ne l’as pas reçu re-clique sur le bouton ci dessous.</string>
+    <string name="embarquement_two_notification_message_retry_2">Si tu ne l’as pas reçue re-clique sur le bouton ci dessous.</string>
     <string name="embarquement_two_notification_message_retry_3">Si tu ne reçois vraiment rien, clique ici</string>
     <string name="embarquement_three_enigme">FK NKXC VK CKVVO NO MYMUDKSVC</string>
     <string name="embarquement_three_message_1">Ganon a hacké nos téléphones :</string>
@@ -81,13 +81,13 @@ Essaye de cliquer dessus pour voir !"</string>
     <string name="faire_part_kanji_signification">"Signification :"</string>
     <string name="faire_part_kanji_symbole">"Symbole :"</string>
     <string name="faire_part_kanji_prononciation_p">"Rin ou Suzu"</string>
-    <string name="faire_part_kanji_signification_p">"clochette"</string>
-    <string name="faire_part_kanji_symbole_p">"La prononciation se rapproche phonetiquement de Pau’Line’. Ce kanji signifie une petite cloche ou clochette, ce qui rappelle la signification de Klein (petit en Allemand). De plus, la première partie du kanji est le métal, qui correspond à l'élement de l'année de naissance de Pauline. Enfin, si on se réfère au personnage Clochette, il rappelle la passion des Disneys de l'interessée"</string>
+    <string name="faire_part_kanji_signification_p">"Clochette"</string>
+    <string name="faire_part_kanji_symbole_p">"La prononciation se rapproche phonétiquement de Pau’Line’. Ce kanji signifie une petite cloche ou clochette, ce qui rappelle la signification de Klein (petit en Allemand). De plus, la première partie du kanji est le métal, qui correspond à l'élement de l'année de naissance de Pauline. Enfin, si on se réfère au personnage Clochette, il rappelle la passion des Disneys de l'interessée"</string>
     <string name="faire_part_kanji_prononciation_a">"Bu (de Bushido)"</string>
     <string name="faire_part_kanji_signification_a">"Guerrier"</string>
     <string name="faire_part_kanji_symbole_a">"Le prénom rappelle celui d'un empereur Romain. C'est aussi le saint protecteur des soldats. Avec une passion comme le karaté, ce kanji était fait pour lui !"</string>
     <string name="coktail_one_titre">"Salle des Cocktails"</string>
-    <string name="coktail_one_message">"Il doit bien avoir un indice quelque part dans cette pièce ? Cherche de nouveau son empreinte et inscrit le nombre vu dessus :"</string>
+    <string name="coktail_one_message">"Il doit bien y avoir un indice quelque part dans cette pièce ? Cherche de nouveau son empreinte et inscris le nombre vu dessus :"</string>
     <string name="coktail_two_message">"2010, c'est notre année de rencontre à Télécom !
 
 A quelle ville correspond la photo de soirée de l'école, juste à côté ?"</string>
@@ -102,19 +102,19 @@ Peut-être qu'on trouvera un des ingrédients à noter ici :"</string>
     <string name="coktail_six_message">"Dans ce désert, le peuple Gerudo a du lui donner un contenant pour transporter son jus de cactus.
 
 Quel est-il ? Indice : c'est un anagramme de Gerudo"</string>
-    <string name="coktail_seven_message_1">"Une Gourde, en voilà une ! On dirait qu'une recette est écrite dessus, mais incomplète :"</string>
+    <string name="coktail_seven_message_1">"Une Gourde, en voilà une ! On dirait qu'une recette est écrite dessus, mais elle est incomplète :"</string>
     <string name="coktail_seven_message_2">"Il manque encore 3 ingrédients, Où les trouver ?"</string>
     <string name="coktail_seven_message_3">"Cette énigme nous indiquera peut-être la prochaine salle à fouiller ?"</string>
-    <string name="diner_one_titre">"Salle de Diner"</string>
+    <string name="diner_one_titre">"Salle de Dîner"</string>
     <string name="diner_one_message_1">"Rends-toi dans la salle de Diner pour chercher de nouveaux indices"</string>
-    <string name="diner_one_message_2">"Allons voir le tableau de placement de table si on peut trouver une trace de Ganon"</string>
+    <string name="diner_one_message_2">"Allons voir le tableau de placement de table pour savoir si on peut y trouver une trace de Ganon"</string>
     <string name="diner_two_message">"2012, c'est l'année où nous sommes partis étudier à l'étranger.
 
 Pour connaître le pays, cherche où se sont déroulés les JO en 2010 :"</string>
     <string name="diner_canada_one_message">"Quel arbre, symbole de ce pays est représenté sur notre faire-part ?"</string>
-    <string name="diner_canada_two_message">"Ganon doit certainement vouloir le sirop d'érable comme ingrédient !
+    <string name="diner_canada_two_message">"Ganon doit certainement vouloir du sirop d'érable comme ingrédient !
 
-Tout d'abord, il a du collecter la sève. Mais de quel arbre ?
+Tout d'abord, il a dû collecter la sève. Mais de quel arbre ?
 Donne la couleur de ses feuilles :"</string>
     <string name="diner_canada_three_message">"Ensuite il a fait chauffer cette sève à une certaine température pour obtenir du sirop.
 
@@ -123,7 +123,7 @@ Mais laquelle ?"</string>
 
 Mais combien de litres de sève nous faudra t'il pour faire un litre de sirop ?"</string>
     <string name="diner_canada_four_indice">"Rappelle-toi, une banane vaut 10, et une pomme 4. Alors une demi pomme ?"</string>
-    <string name="diner_canada_five_message">"Ok donc 32L de sève pour 1L de sirop d'erable.
+    <string name="diner_canada_five_message">"Ok donc 32L de sève pour 1L de sirop d'érable.
 
 D'apres la gourde, il a besoin de 120L de sirop, combien faudra t'il de sève ?"</string>
     <string name="diner_canada_six_message_1">"Après avoir amassé tout ce sucre, Ganon est parti en quête du prochain ingrédient.
@@ -133,31 +133,31 @@ Il a laissé tomber un papier dans la cabane à sucre en partant :"</string>
 
 C'etait pour nos 25 ans ?"</string>
     <string name="diner_japon_one_help">"L'année se trouve à l'arrière d'une photo du Japon sur le plan de table !"</string>
-    <string name="diner_japon_two_question">"On y était pour le Tokyo Game Show : 270000 visiteurs, 11 halls, 4 fois plus grand que la japan expo !
+    <string name="diner_japon_two_question">"On y était pour le Tokyo Game Show : 270000 visiteurs, 11 halls, 4 fois plus grand que la Japan Expo !
 
 A quel jeu fait référence notre photo sur place ?"</string>
     <string name="diner_japon_two_help">"C'est un jeu mobile en ligne, développé par le studio finlandais Supercell. En bref se sont des clans qui se clashent"</string>
     <string name="diner_japon_three_question">"Si seulement on pouvait utiliser le cochon pour courir à travers la foule et aller plus vite ! Tout ça donne soif, allons voir si on trouve un stand à boire.
 
 A partir de quel Hall peut-on rejoindre la buvette ?"</string>
-    <string name="diner_japon_four_message_1">" Enfin arrivés, et il y a des empreintes de Ganon. Il a du passer par là !
+    <string name="diner_japon_four_message_1">" Enfin arrivés, et il y a des empreintes de Ganon. Il a dû passer par là !
 
 Qu'a-t-il pris ?"</string>
     <string name="diner_japon_four_enigme">"−··· ··− −··· −··· ·−·· ·  − · ·−"</string>
-    <string name="diner_japon_four_message_2">"Pour ne pas se faire repérer, il a du envoyer un signal en morse !"</string>
+    <string name="diner_japon_four_message_2">"Pour ne pas se faire repérer, il a dû envoyer un signal en morse !"</string>
     <string name="diner_japon_five_question">"Il y a sûrement un ingrédient dans le bubble tea !
 
-C'est quoi ce rebus sur le verre ?"</string>
+C'est quoi ce rébus sur le verre ?"</string>
     <string name="diner_japon_six_message_1">"Des boules de tapioca !
 Voilà notre nouvel ingrédient !!"</string>
     <string name="diner_japon_six_message_2">"Regarde sur le ticket de caisse, encore un message bizarre de Ganon :"</string>
     <string name="diner_japon_six_message_3">"Et toujours cet étrange alphabet :"</string>
     <string name="diner_cambodge_one_message_1">"Bienvenue à Angkor, plus qu'un ingrédient à trouver !"</string>
     <string name="diner_cambodge_one_message_2">"Trouve la photo du Cambodge sur le plan de table, et cherche l'année où nous y sommes allés. C'était 2 ans après le Japon, ou 30 ans après une chanson de Calogero."</string>
-    <string name="diner_cambodge_one_message_3">"Inscris vite la date"</string>
+    <string name="diner_cambodge_one_message_3">"Inscris vite la date !"</string>
     <string name="diner_cambodge_two_question">"Nous voilà au fin fond de la forêt d'Angkor pour s'entraîner. Mais quel sport est pratiqué ?"</string>
     <string name="diner_cambodge_three_message_1">"Adrien s'est même entrainé avec l'équipe nationale de Karaté du Cambodge !! Tous les matins, rendez-vous 6h au dojo pour travailler !"</string>
-    <string name="diner_cambodge_three_message_2">"Ganon a du se glisser ici pour copier leurs enchaînements de mouvements, pour devenir plus fort ! Quel Kata représenté en japonais et en Khmer ci dessous a été copié ?"</string>
+    <string name="diner_cambodge_three_message_2">"Ganon a dû se glisser ici pour copier leurs enchaînements de mouvements, pour devenir plus fort ! Quel Kata représenté en japonais et en Khmer ci dessous a été copié ?"</string>
     <string name="diner_cambodge_three_reponse_1">"KanKuSho"</string>
     <string name="diner_cambodge_three_reponse_2">"TaEuCho"</string>
     <string name="diner_cambodge_three_reponse_3">"MetsTonPoncho"</string>
@@ -171,8 +171,8 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="photobooth_one_titre">"Photomaton"</string>
     <string name="photobooth_one_titre2">"Dernière salle"</string>
     <string name="photobooth_one_enigme">"Cherche la dernière salle, vite !"</string>
-    <string name="photobooth_two_message_1">"Vite, il ne reste plus beaucoup de temps. le Coffre avec l'Elixir est juste là. Il faut trouver le code"</string>
-    <string name="photobooth_two_message_2">"Cherche une empreinte de Ganon dans la pièce, dépèche toi"</string>
+    <string name="photobooth_two_message_1">"Vite, il ne reste plus beaucoup de temps ! Le Coffre avec l'Elixir est juste là. Il faut trouver le code : "</string>
+    <string name="photobooth_two_message_2">"Cherche une empreinte de Ganon dans la pièce, dépèche toi !"</string>
     <string name="combatFinal_titre">"Combat Final"</string>
     <string name="combatFinal_one_message">"Tu as peut-être récupéré mon Elixir, mais je peux encore me battre ! Affronte moi si tu l'oses !"</string>
     <string name="combatFinal_one_notification_titre">Nooooooooooooooooooon</string>
@@ -180,7 +180,7 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="combatFinal_two_message_1">Utilise ce que tu as appris en stage au Cambodge pour vaincre Ganon.</string>
     <string name="combatFinal_two_message_2">Parmis les coups proposés, trouve celui qui atteindra Ganon :</string>
     <string name="combatFinal_sucess">"C'est fini Ganondorf !"</string>
-    <string name="combatFinal_sucess_titre">"Bravo"</string>
+    <string name="combatFinal_sucess_titre">"Bravo !"</string>
     <string name="combatFinal_three_message_1">"Tu as réussi à battre Ganondorf !"</string>
     <string name="combatFinal_three_message_2">"Qu'il boive son Elixir et ne nous nuise plus jamais !"</string>
     <string name="combatFinal_three_validation">"Voir les résultats"</string>
@@ -189,15 +189,15 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="combatFinal_coup_3">C) Yoko Geri</string>
     <string name="combatFinal_coup_4">D) Yama Zuki</string>
     <string name="combatFinal_coup_5">E) Gyaku Zuki</string>
-    <string name="diner_titre_canada">Diner au Canada</string>
-    <string name="diner_titre_japon">Diner au Japon</string>
-    <string name="diner_titre_cambodge">Diner au Cambodge</string>
+    <string name="diner_titre_canada">Dîner au Canada</string>
+    <string name="diner_titre_japon">Dîner au Japon</string>
+    <string name="diner_titre_cambodge">Dîner au Cambodge</string>
     <string name="diner_titre_localisation">Localiser le Bateau !</string>
     <string name="localisation_one_question">"Comment Ganon a-t-il eu vent de l'organisation de ce mariage ? Qui a bien pu lui dévoiler l'information ?
 
 Résous cette énigme pour le savoir"</string>
     <string name="localisation_one_indice">Ariel en est une !</string>
-    <string name="localisation_two_question">"Le peuple de l'eau, les Zora a été obligé de donner le nom de la compagnie fluviale.
+    <string name="localisation_two_question">"Le peuple de l'eau, les Zora, a été obligé de donner le nom de la compagnie fluviale.
 
 Mais pour entraver Ganon, il l'a caché sous forme de dessins, sauras-tu le retrouver aussi ?"</string>
     <string name="localisation_three_question">"Maintenant que Ganon sait où se trouve le bateau, il ne lui reste plus qu'un faire part à trouver pour monter à bord !
@@ -209,15 +209,15 @@ Et justement, il a réussi à en voler un à un invité, mais lequel ?"</string>
     <string name="resultat_score">Ton score :</string>
     <string name="resultat_message">Va demander ta récompense aux mariés et prendre une photo de Winner au Photomaton</string>
     <string name="resultat_bouton">"Revenir à l'accueil"</string>
-    <string name="countdown_0">"Ganon s'en ai déja pris aux poissons, regarde dans quel état ils sont !"</string>
+    <string name="countdown_0">"Ganon s'en est déja pris aux poissons, regarde dans quel état ils sont !"</string>
     <string name="countdown_1">"Ganon s'attaque à la faune autour du bateau, les pauvres oiseaux !"</string>
     <string name="countdown_2">"Ganon a transformé l'ancre, le bateau va dériver si ça continue !"</string>
     <string name="countdown_3">"Ganon vient de transformer les toilettes, comment va-t-on faire ?"</string>
-    <string name="countdown_4">"Le salon est devenu minuscule à cause de Ganon, vite dépèche toi !"</string>
+    <string name="countdown_4">"Le salon est devenu minuscule à cause de Ganon, vite dépêche toi !"</string>
     <string name="countdown_5">"Ganon commence à transformer les invités, il faut faire vite !"</string>
-    <string name="countdown_6">"Ganon s'en ai pris au serveur du bateau, il n'y a pas une minute à perdre !"</string>
-    <string name="countdown_7">"Ganon vient de transformer nos repas ! Il faut trouver la solution pour l'arrêter"</string>
-    <string name="countdown_8">"Ganon a transformé le cuisiner, il faut vite l'arrêter"</string>
+    <string name="countdown_6">"Ganon s'en est pris au serveur du bateau, il n'y a pas une minute à perdre !"</string>
+    <string name="countdown_7">"Ganon vient de transformer nos repas ! Il faut trouver la solution pour l'arrêter !"</string>
+    <string name="countdown_8">"Ganon a transformé le cuisiner, il faut vite l'arrêter !"</string>
     <string name="countdown_9">"Le gouvernail a été transformé lui aussi, que va-t-on devenir ?"</string>
     <string name="countdown_10">"La casquette du capitaine, c'est très mauvais signe tout ça, vite vite !"</string>
     <string name="countdown_11">"Ganon a aussi transformé le capitaine, tu es notre dernier espoir !"</string>
