@@ -3,6 +3,7 @@ package com.pklein.mariage.presentation.combatFinal
 import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.R
+import com.pklein.mariage.data.PLAYER_GENDER
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
@@ -19,6 +20,7 @@ class CombatFinalTwoActivity : BaseActivity() {
         setContentView(R.layout.activity_combat_final_two)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_2)
 
+        setMazeImage()
         button_combatFinal_reponse?.setOnClickListener {
             val kanjiId = radio_group_coups.checkedRadioButtonId
             if (kanjiId == R.id.radioReponse2) {
@@ -32,6 +34,13 @@ class CombatFinalTwoActivity : BaseActivity() {
                 Alerts.showError(this)
             }
         }
+    }
+
+    private fun setMazeImage() {
+        if (PlayerViewModel.getGender() == PLAYER_GENDER.FEMALE.name)
+            iv_combatFinal_maze?.setImageResource(R.drawable.image_maze_final_zelda)
+        else
+            iv_combatFinal_maze?.setImageResource(R.drawable.image_maze_final_link)
     }
 
     private fun launchNext() {

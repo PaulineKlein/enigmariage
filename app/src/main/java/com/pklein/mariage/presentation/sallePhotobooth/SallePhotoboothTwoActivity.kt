@@ -37,7 +37,7 @@ class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "2020") {
+        if (response.formatAnswer() == "2021") {
             Alerts.showSuccess(this, ::launchNext, PopinType.UNLOCK_SUCCESS)
         } else {
             Alerts.showError(this)
