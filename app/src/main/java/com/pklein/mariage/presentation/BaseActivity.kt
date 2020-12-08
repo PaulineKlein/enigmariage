@@ -35,4 +35,8 @@ abstract class BaseActivity : AppCompatActivity() {
             CountDown.start()
         }
     }
+
+    protected fun stopCountDown() {
+        CountDown.cancel()
+    }
 }

@@ -19,6 +19,7 @@ class ResultsActivity : BaseActivity() {
         binding = ActivityResultsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.RESULT)
+        stopCountDown()
 
         binding.tvResultatTempsReponse.text =
             resultsViewModel.calculateTime() ?: getString(R.string.erreurs)

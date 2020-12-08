@@ -45,6 +45,7 @@ class CombatFinalThreeActivity : BaseActivity() {
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_3)
 
+        stopCountDown()
         binding.animationKoLottie.addAnimatorListener(animationListener)
         binding.buttonCombatFinalThree.setOnClickListener {
             startActivity(Intent(this, ResultsActivity::class.java))
