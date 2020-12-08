@@ -13,6 +13,7 @@ import com.pklein.mariage.presentation.salleDiner.SalleDinerOneActivity
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
+import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
 
 class SalleCoktailsSevenActivity : BaseActivity(), SalleCoktailsSevenLayoutListener {
@@ -27,6 +28,7 @@ class SalleCoktailsSevenActivity : BaseActivity(), SalleCoktailsSevenLayoutListe
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_7)
 
         binding.viewpagerSalleCoktailsSeven.adapter = SalleCoktailsSevenViewPagerAdapter(this, this)
+        binding.viewpagerSalleCoktailsSeven.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSalleCoktailsSeven.addOnPageChangeListener(
             ViewPagerDotsUtils(
                 dotPagerList,

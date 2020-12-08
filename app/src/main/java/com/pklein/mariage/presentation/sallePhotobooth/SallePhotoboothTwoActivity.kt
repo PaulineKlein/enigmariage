@@ -15,6 +15,7 @@ import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.PopinType
+import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
 
 class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener {
@@ -29,6 +30,7 @@ class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener {
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_PHOTOBOOTH_2)
 
         binding.viewpagerSallePhotoboothTwo.adapter = SallePhotoboothTwoAdapter(this)
+        binding.viewpagerSallePhotoboothTwo.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSallePhotoboothTwo.addOnPageChangeListener(
             ViewPagerDotsUtils(
                 dotPagerList,

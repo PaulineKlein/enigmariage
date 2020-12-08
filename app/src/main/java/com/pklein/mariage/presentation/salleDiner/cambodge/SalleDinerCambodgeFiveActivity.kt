@@ -11,6 +11,7 @@ import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothOneActivity
 import com.pklein.mariage.utils.ViewPagerDotsUtils
+import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
 class SalleDinerCambodgeFiveActivity : BaseActivity(), SalleDinerCambodgeFiveLayoutListener {
 
@@ -24,6 +25,7 @@ class SalleDinerCambodgeFiveActivity : BaseActivity(), SalleDinerCambodgeFiveLay
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_5)
 
         binding.viewpagerSalleCambodgeFive.adapter = SalleDinerCambodgeFiveAdapter(this, this)
+        binding.viewpagerSalleCambodgeFive.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSalleCambodgeFive.addOnPageChangeListener(
             ViewPagerDotsUtils(
                 dotPagerList,

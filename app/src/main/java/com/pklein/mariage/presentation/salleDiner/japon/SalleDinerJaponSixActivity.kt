@@ -13,6 +13,7 @@ import com.pklein.mariage.presentation.salleDiner.cambodge.SalleDinerCambodgeOne
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
+import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
 class SalleDinerJaponSixActivity : BaseActivity(), SalleDinerJaponSixLayoutListener {
     private lateinit var binding: ActivitySalleDinerJaponSixBinding
@@ -25,6 +26,7 @@ class SalleDinerJaponSixActivity : BaseActivity(), SalleDinerJaponSixLayoutListe
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_6)
 
         binding.viewpagerSalleJaponSix.adapter = SalleDinerJaponSixViewPagerAdapter(this, this)
+        binding.viewpagerSalleJaponSix.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSalleJaponSix.addOnPageChangeListener(ViewPagerDotsUtils(dotPagerList, 1))
         setupDots()
     }

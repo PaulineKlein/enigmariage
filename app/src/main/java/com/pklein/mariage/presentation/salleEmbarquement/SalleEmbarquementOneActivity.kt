@@ -14,6 +14,7 @@ import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.PopinType
+import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
 class SalleEmbarquementOneActivity : BaseActivity(), CadenaLayoutListener {
 
@@ -27,6 +28,7 @@ class SalleEmbarquementOneActivity : BaseActivity(), CadenaLayoutListener {
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_EMBARQUEMENT_1)
 
         binding.viewpagerSalleEmbarquementOne.adapter = SalleEmbarquementOneViewPagerAdapter(this)
+        binding.viewpagerSalleEmbarquementOne.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSalleEmbarquementOne.addOnPageChangeListener(
             ViewPagerDotsUtils(
                 dotPagerList,

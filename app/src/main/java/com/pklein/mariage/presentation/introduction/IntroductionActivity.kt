@@ -13,6 +13,7 @@ import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.SharedPreferenceStored
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.currentTimeToString
+import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
 class IntroductionActivity : BaseActivity(), IntroLayoutListener {
 
@@ -31,6 +32,7 @@ class IntroductionActivity : BaseActivity(), IntroLayoutListener {
 
         binding.viewpagerIntroduction.adapter = IntroductionViewPagerAdapter(this, this)
         binding.viewpagerIntroduction.addOnPageChangeListener(ViewPagerDotsUtils(dotPagerList, 2))
+        binding.viewpagerIntroduction.setPageTransformer(true, ZoomOutPageTransformer())
         setupDots()
         launchCountDown()
     }
