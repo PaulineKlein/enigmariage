@@ -29,7 +29,7 @@ class LocalisationBateauThreeActivity : QuestionActivity() {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "temoin" || response.formatAnswer() == "temoins") {
+        if (response.formatAnswer().contains("temoin")) {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)

@@ -28,7 +28,7 @@ class LocalisationBateauOneActivity : QuestionActivity() {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "sirene" || response.formatAnswer() == "sirenes") {
+        if (response.formatAnswer().contains("sirene")) {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)
