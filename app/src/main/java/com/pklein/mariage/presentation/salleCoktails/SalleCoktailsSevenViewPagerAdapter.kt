@@ -4,11 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.viewpager.widget.PagerAdapter
 import com.pklein.mariage.R
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
-import kotlinx.android.synthetic.main.fragment_salle_coktails_seven_2.view.*
 
 enum class SalleCoktailsSevenLayout(val layoutResId: Int) {
     COCKTAILS1(R.layout.fragment_salle_coktails_seven_1),
@@ -32,9 +33,10 @@ class SalleCoktailsSevenViewPagerAdapter(
         layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
 
         if (modelObject == SalleCoktailsSevenLayout.COCKTAILS2) {
-            layout.et_question_answer?.addTextChangedListener(CheckEmptyTextWatcher(this))
-            layout.button_cocktail_seven?.setOnClickListener {
-                listener.onClickButton(layout.et_question_answer?.text.toString())
+            val answer = layout.findViewById<AppCompatEditText>(R.id.et_question_answer)
+            answer?.addTextChangedListener(CheckEmptyTextWatcher(this))
+            layout.findViewById<AppCompatButton>(R.id.button_cocktail_seven)?.setOnClickListener {
+                listener.onClickButton(answer?.text.toString())
             }
         }
         collection.addView(layout)
@@ -54,10 +56,10 @@ class SalleCoktailsSevenViewPagerAdapter(
     }
 
     override fun onTextEmpty() {
-        layout.button_cocktail_seven?.isEnabled = false
+        layout.findViewById<AppCompatButton>(R.id.button_cocktail_seven)?.isEnabled = false
     }
 
     override fun onTextNotEmpty() {
-        layout.button_cocktail_seven?.isEnabled = true
+        layout.findViewById<AppCompatButton>(R.id.button_cocktail_seven)?.isEnabled = true
     }
 }

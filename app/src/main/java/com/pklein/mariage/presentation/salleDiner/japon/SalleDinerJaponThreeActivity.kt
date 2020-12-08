@@ -9,18 +9,17 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_question.*
 
 class SalleDinerJaponThreeActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_3)
-        tv_question_titre?.text = getString(R.string.diner_titre_japon)
-        tv_question_message?.text = getString(R.string.diner_japon_three_question)
+        binding.tvQuestionTitre.text = getString(R.string.diner_titre_japon)
+        binding.tvQuestionMessage.text = getString(R.string.diner_japon_three_question)
 
-        animationQuestion_lottie?.visibility = View.GONE
-        animationQuestion_image?.visibility = View.VISIBLE
-        animationQuestion_image?.setImageResource(R.drawable.image_maze_japan)
+        binding.animationQuestionLottie.visibility = View.GONE
+        binding.animationQuestionImage.visibility = View.VISIBLE
+        binding.animationQuestionImage.setImageResource(R.drawable.image_maze_japan)
     }
 
     override fun onValidateCLicked(response: String) {

@@ -4,19 +4,24 @@ import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.databinding.ActivityCombatFinalTwoBinding
+import com.pklein.mariage.databinding.ActivityFairePartBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_faire_part.*
 
 class FairePartActivity : BaseActivity() {
+
+    private lateinit var binding: ActivityFairePartBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_faire_part)
+        binding = ActivityFairePartBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.FAIRE_PART)
 
-        button_kanji?.setOnClickListener {
-            val kanjiId = radio_group_kanji.checkedRadioButtonId
+        binding.buttonKanji.setOnClickListener {
+            val kanjiId = binding.radioGroupKanji.checkedRadioButtonId
             if (kanjiId == R.id.radioReponse1) {
                 Alerts.showSuccess(this, ::launchNext)
             } else {

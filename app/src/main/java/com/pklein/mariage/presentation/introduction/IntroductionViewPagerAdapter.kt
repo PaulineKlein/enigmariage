@@ -4,9 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
 import androidx.viewpager.widget.PagerAdapter
 import com.pklein.mariage.R
-import kotlinx.android.synthetic.main.fragment_introduction_3.view.*
+import com.pklein.mariage.databinding.ActivityIntroductionBinding
 
 enum class IntroLayout(val layoutResId: Int) {
     INTRO1(R.layout.fragment_introduction_1),
@@ -24,7 +25,7 @@ class IntroductionViewPagerAdapter(private val mContext: Context, private val li
         val inflater = LayoutInflater.from(mContext)
         val layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
         if(modelObject == IntroLayout.INTRO3 ) {
-            layout.button_introduction.setOnClickListener {
+            layout.findViewById<AppCompatButton>(R.id.button_introduction)?.setOnClickListener {
                 listener.onClickButton()
             }
         }

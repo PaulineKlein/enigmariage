@@ -2,21 +2,25 @@ package com.pklein.mariage.presentation.salleEmbarquement
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.databinding.DataBindingUtil
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.databinding.ActivitySalleEmbarquementTwoBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.Notification
-import kotlinx.android.synthetic.main.activity_salle_emarquement_two.*
 
 class SalleEmbarquementTwoActivity : BaseActivity() {
 
+    private lateinit var binding: ActivitySalleEmbarquementTwoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_salle_emarquement_two)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_salle_embarquement_two)
+        setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_EMBARQUEMENT_2)
 
-        button_embarquement_two.setOnClickListener {
+        binding.buttonEmbarquementTwo.setOnClickListener {
             launchNotification()
         }
     }

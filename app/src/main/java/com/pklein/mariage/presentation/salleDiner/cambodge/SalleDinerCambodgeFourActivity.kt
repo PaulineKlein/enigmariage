@@ -9,21 +9,20 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_question.*
 
 class SalleDinerCambodgeFourActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_4)
-        tv_question_titre?.text = getString(R.string.diner_titre_cambodge)
-        tv_question_message?.text = getString(R.string.diner_cambodge_four_question)
+        binding.tvQuestionTitre.text = getString(R.string.diner_titre_cambodge)
+        binding.tvQuestionMessage.text = getString(R.string.diner_cambodge_four_question)
 
-        animationQuestion_lottie?.visibility = View.GONE
-        animationQuestion_image?.visibility = View.VISIBLE
-        animationQuestion_image?.setImageResource(R.drawable.image_parchemin_mangue)
+        binding.animationQuestionLottie.visibility = View.GONE
+        binding.animationQuestionImage.visibility = View.VISIBLE
+        binding.animationQuestionImage.setImageResource(R.drawable.image_parchemin_mangue)
 
-        layout_indice?.visibility = View.VISIBLE
-        layout_indice?.setOnClickListener {
+        binding.layoutIndice.root.visibility = View.VISIBLE
+        binding.layoutIndice.root.setOnClickListener {
             Alerts.showClue(this, getString(R.string.diner_cambodge_four_indice))
         }
     }

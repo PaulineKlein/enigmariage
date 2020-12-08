@@ -10,7 +10,6 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_question.*
 
 class SalleDinerCanadaThreeActivity : QuestionActivity() {
 
@@ -18,12 +17,12 @@ class SalleDinerCanadaThreeActivity : QuestionActivity() {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_3)
 
-        tv_question_titre?.text = getString(R.string.diner_titre_canada)
-        tv_question_message?.text = getString(R.string.diner_canada_three_message)
-        animationQuestion_lottie?.visibility = View.GONE
-        animationQuestion_image?.visibility = View.VISIBLE
-        animationQuestion_image?.setImageResource(R.drawable.image_calcul_1)
-        et_question_answer?.inputType = EditorInfo.TYPE_CLASS_NUMBER
+        binding.tvQuestionTitre.text = getString(R.string.diner_titre_canada)
+        binding.tvQuestionMessage.text = getString(R.string.diner_canada_three_message)
+        binding.animationQuestionLottie.visibility = View.GONE
+        binding.animationQuestionImage.visibility = View.VISIBLE
+        binding.animationQuestionImage.setImageResource(R.drawable.image_calcul_1)
+        binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER
     }
 
     override fun onValidateCLicked(response: String) {

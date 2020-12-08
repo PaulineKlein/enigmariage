@@ -2,12 +2,11 @@ package com.pklein.mariage.presentation.salleCoktails
 
 import android.content.Intent
 import android.os.Bundle
-import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.databinding.ActivitySalleCoktailsFiveBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_salle_coktails_five.*
 
 enum class CITY {
     GERUDO,
@@ -16,16 +15,19 @@ enum class CITY {
 
 class SalleCoktailsFiveActivity : BaseActivity() {
 
+    private lateinit var binding: ActivitySalleCoktailsFiveBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_salle_coktails_five)
+        binding = ActivitySalleCoktailsFiveBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_5)
 
-        radio_group_map?.setOnCheckedChangeListener { _, _ ->
-            button_coktail_five?.isEnabled = true
+        binding.radioGroupMap.setOnCheckedChangeListener { _, _ ->
+            binding.buttonCoktailFive.isEnabled = true
         }
 
-        button_coktail_five?.setOnClickListener {
+        binding.buttonCoktailFive.setOnClickListener {
             onValidateCLicked(checkValueFromRadioButton())
         }
     }
@@ -39,9 +41,8 @@ class SalleCoktailsFiveActivity : BaseActivity() {
     }
 
     private fun checkValueFromRadioButton(): CITY {
-        val mapId = radio_group_map.checkedRadioButtonId
-        return if (resources.getResourceEntryName(mapId) == "radioDesert")
-        {
+        val mapId = binding.radioGroupMap.checkedRadioButtonId
+        return if (resources.getResourceEntryName(mapId) == "radioDesert") {
             CITY.GERUDO
         } else {
             CITY.COCORICO

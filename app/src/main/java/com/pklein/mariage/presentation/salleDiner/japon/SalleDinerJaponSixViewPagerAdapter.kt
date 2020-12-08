@@ -4,11 +4,12 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
+import androidx.appcompat.widget.AppCompatEditText
 import androidx.viewpager.widget.PagerAdapter
 import com.pklein.mariage.R
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
-import kotlinx.android.synthetic.main.fragment_salle_diner_japon_six_2.view.*
 
 enum class SalleDinerJaponSixLayout(val layoutResId: Int) {
     DINER1(R.layout.fragment_salle_diner_japon_six_1),
@@ -32,9 +33,10 @@ class SalleDinerJaponSixViewPagerAdapter(
         layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
 
         if (modelObject == SalleDinerJaponSixLayout.DINER2) {
-            layout.et_diner_japon_six_answer?.addTextChangedListener(CheckEmptyTextWatcher(this))
-            layout.button_diner_japon_six?.setOnClickListener {
-                listener.onClickButton(layout.et_diner_japon_six_answer?.text.toString())
+            val answer = layout.findViewById<AppCompatEditText>(R.id.et_diner_japon_six_answer)
+            answer?.addTextChangedListener(CheckEmptyTextWatcher(this))
+            layout.findViewById<AppCompatButton>(R.id.button_diner_japon_six)?.setOnClickListener {
+                listener.onClickButton(answer?.text.toString())
             }
         }
         collection.addView(layout)
@@ -54,10 +56,10 @@ class SalleDinerJaponSixViewPagerAdapter(
     }
 
     override fun onTextEmpty() {
-        layout.button_diner_japon_six?.isEnabled = false
+        layout.findViewById<AppCompatButton>(R.id.button_diner_japon_six)?.isEnabled = false
     }
 
     override fun onTextNotEmpty() {
-        layout.button_diner_japon_six?.isEnabled = true
+        layout.findViewById<AppCompatButton>(R.id.button_diner_japon_six)?.isEnabled = true
     }
 }

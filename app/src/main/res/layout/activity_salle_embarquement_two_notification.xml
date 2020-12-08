@@ -1,80 +1,82 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_24">
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/tv_embarquement_two_titre"
-        style="@style/Titre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/embarquement_one_titre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
-    <TextView
-        android:id="@+id/tv_embarquement_two_notification_retry_1"
-        style="@style/SousTitre"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/embarquement_two_notification_message_retry_1"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:layout_constraintBottom_toTopOf="@+id/animationPaws"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_embarquement_two_titre" />
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/margin_24">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationPaws"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_two_notification_retry_1"
-        app:layout_constraintBottom_toTopOf="@+id/tv_embarquement_two_notification_retry_2"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="animation_paws.json"
-        app:lottie_loop="false" />
+        <TextView
+            android:id="@+id/tv_embarquement_two_titre"
+            style="@style/Titre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/embarquement_one_titre"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_embarquement_two_notification_retry_2"
-        style="@style/Body"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/embarquement_two_notification_message_retry_2"
-        app:layout_constraintVertical_chainStyle="spread"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/animationPaws"
-        app:layout_constraintBottom_toTopOf="@+id/button_embarquement_two_resend"/>
+        <TextView
+            android:id="@+id/tv_embarquement_two_notification_retry_1"
+            style="@style/SousTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/embarquement_two_notification_message_retry_1"
+            app:layout_constraintBottom_toTopOf="@+id/animationPaws"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_embarquement_two_titre"
+            app:layout_constraintVertical_chainStyle="packed" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/button_embarquement_two_resend"
-        style="@style/button"
-        android:layout_width="@dimen/button_width"
-        android:layout_height="wrap_content"
-        android:text="@string/renvoyer"
-        android:layout_marginTop="@dimen/margin_24"
-        app:layout_constraintBottom_toTopOf="@+id/tv_embarquement_two_notification_retry_3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_two_notification_retry_2" />
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animationPaws"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@+id/tv_embarquement_two_notification_retry_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_two_notification_retry_1"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="animation_paws.json"
+            app:lottie_loop="false" />
 
-    <TextView
-        android:id="@+id/tv_embarquement_two_notification_retry_3"
-        style="@style/Body_link"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/embarquement_two_notification_message_retry_3"
-        android:layout_marginTop="@dimen/margin_16"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_embarquement_two_resend"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/tv_embarquement_two_notification_retry_2"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/embarquement_two_notification_message_retry_2"
+            app:layout_constraintBottom_toTopOf="@+id/button_embarquement_two_resend"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/animationPaws"
+            app:layout_constraintVertical_chainStyle="spread" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_embarquement_two_resend"
+            style="@style/button"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/renvoyer"
+            app:layout_constraintBottom_toTopOf="@+id/tv_embarquement_two_notification_retry_3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_two_notification_retry_2" />
+
+        <TextView
+            android:id="@+id/tv_embarquement_two_notification_retry_3"
+            style="@style/Body_link"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:text="@string/embarquement_two_notification_message_retry_3"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_embarquement_two_resend" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

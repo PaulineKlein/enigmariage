@@ -4,16 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.databinding.ActivitySplashBinding
 import com.pklein.mariage.presentation.introduction.PasswordActivity
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_splash.*
 
 
 class SplashActivity : BaseActivity() {
 
+    lateinit var binding: ActivitySplashBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         initButton()
     }
 
@@ -21,17 +24,17 @@ class SplashActivity : BaseActivity() {
         val page = PlayerViewModel.getPage()
 
         if (page.isNullOrEmpty()) {
-            button_nvlle_partie?.setOnClickListener {
+            binding.buttonNvllePartie.setOnClickListener {
                 val intent = Intent(this, PasswordActivity::class.java)
                 startActivity(intent)
             }
         } else {
-            button_continuer?.isEnabled = true
-            button_continuer?.setOnClickListener {
+            binding.buttonContinuer.isEnabled = true
+            binding.buttonContinuer.setOnClickListener {
                 SplashCoordinator.launchGame(page, this)
                 launchCountDown()
             }
-            button_nvlle_partie?.setOnClickListener {
+            binding.buttonNvllePartie.setOnClickListener {
                 showAlert()
             }
         }

@@ -7,41 +7,41 @@
         android:layout_margin="@dimen/margin_24">
 
         <TextView
-            android:id="@+id/tv_combatFinal_one_titre"
+            android:id="@+id/tv_embarquement_two_titre"
             style="@style/Titre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/combatFinal_titre"
+            android:text="@string/embarquement_one_titre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/tv_combatFinal_one_message"
+            android:id="@+id/tv_embarquement_two_message"
             style="@style/Body_big"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/combatFinal_one_message"
-            app:layout_constraintBottom_toTopOf="@+id/iv_ganon"
+            android:text="@string/embarquement_two_message_1"
+            app:layout_constraintBottom_toTopOf="@+id/iv_embarquement_two_smiley"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_combatFinal_one_titre"
+            app:layout_constraintTop_toBottomOf="@id/tv_embarquement_two_titre"
             app:layout_constraintVertical_chainStyle="spread" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_ganon"
-            android:layout_width="wrap_content"
+            android:id="@+id/iv_embarquement_two_smiley"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
-            android:src="@drawable/image_ganon"
-            app:layout_constraintBottom_toTopOf="@+id/button_combatFinal_one"
+            android:src="@drawable/image_devil_smiley"
+            app:layout_constraintBottom_toTopOf="@+id/button_embarquement_two"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_one_message" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_two_message" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_combatFinal_one"
+            android:id="@+id/button_embarquement_two"
             style="@style/button"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_ganon" />
+            app:layout_constraintTop_toBottomOf="@+id/iv_embarquement_two_smiley" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

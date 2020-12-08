@@ -8,15 +8,15 @@ import com.pklein.mariage.utils.SharedPreferenceStored
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
-import kotlinx.android.synthetic.main.activity_question.*
 
 class PasswordActivity : QuestionActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         SharedPreferenceStored.resetPreference()
 
-        tv_question_titre?.text = getString(R.string.password_titre)
-        tv_question_message?.text = getString(R.string.password_message)
+        binding.tvQuestionTitre.text = getString(R.string.password_titre)
+        binding.tvQuestionMessage.text = getString(R.string.password_message)
     }
 
     override fun onValidateCLicked(response: String) {

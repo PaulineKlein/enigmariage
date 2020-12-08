@@ -11,21 +11,20 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_question.*
 
 class SalleDinerJaponOneActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_1)
-        animationQuestion_lottie?.setAnimation("animation_japan.json")
-        animationQuestion_lottie?.playAnimation()
-        animationQuestion_lottie?.repeatCount = ValueAnimator.INFINITE
-        tv_question_titre?.text = getString(R.string.diner_titre_japon)
-        tv_question_message?.text = getString(R.string.diner_japon_one_question)
-        et_question_answer?.inputType = EditorInfo.TYPE_CLASS_NUMBER
+        binding.animationQuestionLottie.setAnimation("animation_japan.json")
+        binding.animationQuestionLottie.playAnimation()
+        binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
+        binding.tvQuestionTitre.text = getString(R.string.diner_titre_japon)
+        binding.tvQuestionMessage.text = getString(R.string.diner_japon_one_question)
+        binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER
 
-        layout_indice?.visibility = View.VISIBLE
-        layout_indice?.setOnClickListener {
+        binding.layoutIndice.root.visibility = View.VISIBLE
+        binding.layoutIndice.root.setOnClickListener {
             Alerts.showClue(this, getString(R.string.diner_japon_one_help))
         }
     }

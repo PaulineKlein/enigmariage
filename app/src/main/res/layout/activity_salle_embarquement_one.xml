@@ -2,31 +2,18 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_24"
-        tools:context=".presentation.salleCoktails.SalleCoktailsSevenActivity">
-
-        <TextView
-            android:id="@+id/tv_diner_one_titre"
-            style="@style/Titre"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:text="@string/diner_titre_cambodge"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_margin="@dimen/margin_24">
 
         <androidx.viewpager.widget.ViewPager
-            android:id="@+id/viewpagerSalleCambodgeOne"
+            android:id="@+id/viewpagerSalleEmbarquementOne"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginTop="@dimen/margin_4"
             app:layout_constraintBottom_toTopOf="@+id/pager_dots"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_diner_one_titre" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
             android:id="@+id/pager_dots"
@@ -37,7 +24,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/viewpagerSalleCambodgeOne" />
-
+            app:layout_constraintTop_toBottomOf="@+id/viewpagerSalleEmbarquementOne" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

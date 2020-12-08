@@ -10,18 +10,17 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_question.*
 
 class SalleDinerCanadaFiveActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_5)
-        animationQuestion_lottie?.setAnimation("animation_eyes.json")
-        animationQuestion_lottie?.playAnimation()
-        animationQuestion_lottie?.repeatCount = ValueAnimator.INFINITE
-        tv_question_titre?.text = getString(R.string.diner_titre_canada)
-        tv_question_message?.text = getString(R.string.diner_canada_five_message)
-        et_question_answer?.inputType = EditorInfo.TYPE_CLASS_NUMBER
+        binding.animationQuestionLottie.setAnimation("animation_eyes.json")
+        binding.animationQuestionLottie.playAnimation()
+        binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
+        binding.tvQuestionTitre.text = getString(R.string.diner_titre_canada)
+        binding.tvQuestionMessage.text = getString(R.string.diner_canada_five_message)
+        binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER
     }
 
     override fun onValidateCLicked(response: String) {

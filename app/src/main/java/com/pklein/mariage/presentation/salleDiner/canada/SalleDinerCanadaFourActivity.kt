@@ -10,7 +10,6 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_question.*
 
 class SalleDinerCanadaFourActivity : QuestionActivity() {
 
@@ -18,15 +17,15 @@ class SalleDinerCanadaFourActivity : QuestionActivity() {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_4)
 
-        tv_question_titre?.text = getString(R.string.diner_titre_canada)
-        tv_question_message?.text = getString(R.string.diner_canada_four_message)
-        animationQuestion_lottie?.visibility = View.GONE
-        animationQuestion_image?.visibility = View.VISIBLE
-        animationQuestion_image?.setImageResource(R.drawable.image_calcul_2)
-        et_question_answer?.inputType = EditorInfo.TYPE_CLASS_NUMBER
+        binding.tvQuestionTitre.text = getString(R.string.diner_titre_canada)
+        binding.tvQuestionMessage.text = getString(R.string.diner_canada_four_message)
+        binding.animationQuestionLottie.visibility = View.GONE
+        binding.animationQuestionImage.visibility = View.VISIBLE
+        binding.animationQuestionImage.setImageResource(R.drawable.image_calcul_2)
+        binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER
 
-        layout_indice?.visibility = View.VISIBLE
-        layout_indice?.setOnClickListener {
+        binding.layoutIndice.root.visibility = View.VISIBLE
+        binding.layoutIndice.root.setOnClickListener {
             Alerts.showClue(this, getString(R.string.diner_canada_four_indice))
         }
     }

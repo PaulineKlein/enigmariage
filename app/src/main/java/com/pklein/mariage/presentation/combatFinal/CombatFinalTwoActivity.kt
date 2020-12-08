@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PLAYER_GENDER
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.databinding.ActivityCombatFinalTwoBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
@@ -12,17 +13,20 @@ import com.pklein.mariage.utils.SharedPreferenceStored
 import com.pklein.mariage.utils.currentTimeToString
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
-import kotlinx.android.synthetic.main.activity_combat_final_two.*
 
 class CombatFinalTwoActivity : BaseActivity() {
+
+    private lateinit var binding: ActivityCombatFinalTwoBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_combat_final_two)
+        binding = ActivityCombatFinalTwoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_2)
 
         setMazeImage()
-        button_combatFinal_reponse?.setOnClickListener {
-            val kanjiId = radio_group_coups.checkedRadioButtonId
+        binding.buttonCombatFinalReponse.setOnClickListener {
+            val kanjiId = binding.radioGroupCoups.checkedRadioButtonId
             if (kanjiId == R.id.radioReponse2) {
                 Alerts.showPopup(
                     this,
@@ -38,9 +42,9 @@ class CombatFinalTwoActivity : BaseActivity() {
 
     private fun setMazeImage() {
         if (PlayerViewModel.getGender() == PLAYER_GENDER.FEMALE.name)
-            iv_combatFinal_maze?.setImageResource(R.drawable.image_maze_final_zelda)
+            binding.ivCombatFinalMaze.setImageResource(R.drawable.image_maze_final_zelda)
         else
-            iv_combatFinal_maze?.setImageResource(R.drawable.image_maze_final_link)
+            binding.ivCombatFinalMaze.setImageResource(R.drawable.image_maze_final_link)
     }
 
     private fun launchNext() {

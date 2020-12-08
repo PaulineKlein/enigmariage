@@ -4,11 +4,12 @@ import android.graphics.drawable.Drawable
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import com.pklein.mariage.R
+import com.pklein.mariage.databinding.ActivityFairePartKanjiBinding
 import com.pklein.mariage.presentation.BaseActivity
-import kotlinx.android.synthetic.main.activity_faire_part_kanji.*
 
 class FairePartKanjiActivity : BaseActivity() {
 
+    private lateinit var binding: ActivityFairePartKanjiBinding
     private var kanji = ""
     private var name = ""
     private var prononciation = ""
@@ -18,7 +19,8 @@ class FairePartKanjiActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_faire_part_kanji)
+        binding = ActivityFairePartKanjiBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         if (intent.hasExtra(KANJI_EXTRA)) {
             kanji = intent.getStringExtra(KANJI_EXTRA) ?: ""
@@ -39,7 +41,7 @@ class FairePartKanjiActivity : BaseActivity() {
         }
 
         initDescription()
-        iv_back?.setOnClickListener {
+        binding.ivBack.setOnClickListener {
             finish()
             overridePendingTransition(R.anim.neutral, R.anim.slide_out)
         }
@@ -51,10 +53,10 @@ class FairePartKanjiActivity : BaseActivity() {
     }
 
     private fun initDescription() {
-        tv_kanji_title?.text = getString(R.string.faire_part_kanji_title, name)
-        tv_signification_answer?.text = signification
-        tv_prononciation_answer?.text = prononciation
-        tv_symbole_answer?.text = symbole
-        iv_kanji.setImageDrawable(image)
+        binding.tvKanjiTitle.text = getString(R.string.faire_part_kanji_title, name)
+        binding.tvSignificationAnswer.text = signification
+        binding.tvPrononciationAnswer.text = prononciation
+        binding.tvSymboleAnswer.text = symbole
+        binding.ivKanji.setImageDrawable(image)
     }
 }

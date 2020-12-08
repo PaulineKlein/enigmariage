@@ -4,25 +4,25 @@ import android.animation.Animator
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.databinding.ActivityCombatFinalThreeBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.resultat.ResultsActivity
-import kotlinx.android.synthetic.main.activity_combat_final_three.*
 
 class CombatFinalThreeActivity : BaseActivity() {
 
+    private lateinit var binding: ActivityCombatFinalThreeBinding
     private var nbRepeat = 1
     private val animationListener = object : Animator.AnimatorListener {
         override fun onAnimationEnd(animation: Animator?) {
             if (nbRepeat < 2) {
-                animation_ko_lottie?.playAnimation()
+                binding.animationKoLottie.playAnimation()
                 nbRepeat += 1
             } else {
-                animation_ko_lottie?.visibility = View.GONE
-                animation_ko_image?.visibility = View.VISIBLE
-                button_combatFinal_three?.isEnabled = true
+                binding.animationKoLottie.visibility = View.GONE
+                binding.animationKoImage.visibility = View.VISIBLE
+                binding.buttonCombatFinalThree.isEnabled = true
             }
         }
 
@@ -41,11 +41,12 @@ class CombatFinalThreeActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_combat_final_three)
+        binding = ActivityCombatFinalThreeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_3)
 
-        animation_ko_lottie?.addAnimatorListener(animationListener)
-        button_combatFinal_three?.setOnClickListener {
+        binding.animationKoLottie.addAnimatorListener(animationListener)
+        binding.buttonCombatFinalThree.setOnClickListener {
             startActivity(Intent(this, ResultsActivity::class.java))
         }
     }

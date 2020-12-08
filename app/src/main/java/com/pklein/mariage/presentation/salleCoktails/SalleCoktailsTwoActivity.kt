@@ -10,19 +10,18 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import kotlinx.android.synthetic.main.activity_question.*
 
 class SalleCoktailsTwoActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_2)
-        animationQuestion_lottie?.setAnimation("animation_student.json")
-        animationQuestion_lottie?.playAnimation()
-        animationQuestion_lottie?.repeatCount = ValueAnimator.INFINITE
-        tv_question_titre?.text = getString(R.string.coktail_one_titre)
-        tv_question_message?.text = getString(R.string.coktail_two_message)
-        layout_indice?.visibility = View.VISIBLE
-        layout_indice?.setOnClickListener {
+        binding.animationQuestionLottie.setAnimation("animation_student.json")
+        binding.animationQuestionLottie.playAnimation()
+        binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
+        binding.tvQuestionTitre.text = getString(R.string.coktail_one_titre)
+        binding.tvQuestionMessage.text = getString(R.string.coktail_two_message)
+        binding.layoutIndice.root.visibility = View.VISIBLE
+        binding.layoutIndice.root.setOnClickListener {
             Alerts.showClue(this, getString(R.string.coktail_two_message_indice))
         }
     }

@@ -4,25 +4,27 @@ import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.databinding.ActivityResultsBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.SplashActivity
-import kotlinx.android.synthetic.main.activity_results.*
 
 class ResultsActivity : BaseActivity() {
 
+    private lateinit var binding: ActivityResultsBinding
     private val resultsViewModel = ResultsViewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_results)
+        binding = ActivityResultsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.RESULT)
 
-        tv_resultat_temps_reponse.text =
+        binding.tvResultatTempsReponse.text =
             resultsViewModel.calculateTime() ?: getString(R.string.erreurs)
-        tv_resultat_score_reponse.text = resultsViewModel.calculateScore()
+        binding.tvResultatScoreReponse.text = resultsViewModel.calculateScore()
 
-        button_resultat?.setOnClickListener {
+        binding.buttonResultat.setOnClickListener {
             startActivity(Intent(this, SplashActivity::class.java))
         }
     }

@@ -4,9 +4,9 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatButton
 import androidx.viewpager.widget.PagerAdapter
 import com.pklein.mariage.R
-import kotlinx.android.synthetic.main.fragment_salle_diner_cambodge_five_2.view.*
 
 enum class SalleDinerCambodgeFiveLayout(val layoutResId: Int) {
     CAMBODGE1(R.layout.fragment_salle_diner_cambodge_five_1),
@@ -30,7 +30,7 @@ class SalleDinerCambodgeFiveAdapter(
         layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
 
         if (modelObject == SalleDinerCambodgeFiveLayout.CAMBODGE2) {
-            layout.button_cambodge_five?.setOnClickListener {
+            layout.findViewById<AppCompatButton>(R.id.button_cambodge_five)?.setOnClickListener {
                 listener.onClickButton()
             }
         }

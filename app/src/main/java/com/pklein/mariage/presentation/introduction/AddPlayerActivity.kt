@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PLAYER_GENDER
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.databinding.ActivityAddPlayerBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauOneActivity
@@ -12,24 +13,26 @@ import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
 import com.pklein.mariage.utils.uiUtils.PopinType
-import kotlinx.android.synthetic.main.activity_add_player.*
 
 class AddPlayerActivity : BaseActivity(), CheckEmptyTextWatcherListener {
 
+    private lateinit var binding: ActivityAddPlayerBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_player)
+        binding = ActivityAddPlayerBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.ADD_PLAYER)
 
-        et_add_player_name?.addTextChangedListener(CheckEmptyTextWatcher(this))
-        button_player?.setOnClickListener {
+        binding.etAddPlayerName.addTextChangedListener(CheckEmptyTextWatcher(this))
+        binding.buttonPlayer.setOnClickListener {
             storeInformation()
             showPopup()
         }
     }
 
     private fun storeInformation() {
-        val genderId = radio_group_gender.checkedRadioButtonId
+        val genderId = binding.radioGroupGender.checkedRadioButtonId
         val gender =
             if (genderId == R.id.radioMen) {
                 PLAYER_GENDER.MALE
@@ -38,13 +41,13 @@ class AddPlayerActivity : BaseActivity(), CheckEmptyTextWatcherListener {
             }
 
         PlayerViewModel.storeGender(gender)
-        PlayerViewModel.storeName(et_add_player_name?.text.toString())
+        PlayerViewModel.storeName(binding.etAddPlayerName.text.toString())
     }
 
     private fun showPopup() {
         Alerts.showPopup(
             this,
-            getString(R.string.add_player_popup, et_add_player_name?.text.toString()),
+            getString(R.string.add_player_popup, binding.etAddPlayerName.text.toString()),
             ::launchNext,
             PopinType.CLAPPING
         )
@@ -55,10 +58,10 @@ class AddPlayerActivity : BaseActivity(), CheckEmptyTextWatcherListener {
     }
 
     override fun onTextEmpty() {
-        button_player?.isEnabled = false
+        binding.buttonPlayer.isEnabled = false
     }
 
     override fun onTextNotEmpty() {
-        button_player?.isEnabled = true
+        binding.buttonPlayer.isEnabled = true
     }
 }
