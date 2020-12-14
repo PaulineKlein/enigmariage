@@ -87,21 +87,36 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/resultat_message"
-            app:layout_constraintBottom_toTopOf="@+id/button_resultat"
+            app:layout_constraintBottom_toTopOf="@+id/buttons_resultat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/animation_score_lottie" />
 
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:id="@+id/buttons_resultat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_resultat"
             style="@style/button"
-            android:layout_width="@dimen/button_width"
+            android:layout_marginEnd="@dimen/margin_24"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:enabled="true"
-            android:text="@string/resultat_bouton"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:text="@string/resultat_bouton" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_share"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="true"
+                android:text="@string/resultat_share" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

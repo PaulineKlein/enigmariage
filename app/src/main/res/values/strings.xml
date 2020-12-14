@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">EnigMariage</string>
     <string name="notification_channel_id" translatable="false">wedding_channel</string>
-    <string name="splash_titre">Grand jeu privé pour un mariage de folie</string>
+    <string name="splash_titre">"EnigMariage
+Grand Jeu Privé"</string>
     <string name="zero">0</string>
     <string name="un">1</string>
     <string name="deux">2</string>
@@ -209,6 +210,8 @@ Et justement, il a réussi à en voler un à un invité, mais lequel ?"</string>
     <string name="resultat_score">Ton score :</string>
     <string name="resultat_message">Va demander ta récompense aux mariés et prendre une photo de Winner au Photomaton</string>
     <string name="resultat_bouton">"Revenir à l'accueil"</string>
+    <string name="resultat_share">"Partager"</string>
+    <string name="resultat_share_title">"Partager via :"</string>
     <string name="countdown_0">"Ganon s'en est déja pris aux poissons, regarde dans quel état ils sont !"</string>
     <string name="countdown_1">"Ganon s'attaque à la faune autour du bateau, les pauvres oiseaux !"</string>
     <string name="countdown_2">"Ganon a transformé l'ancre, le bateau va dériver si ça continue !"</string>
