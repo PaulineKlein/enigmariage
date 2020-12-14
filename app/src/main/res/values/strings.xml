@@ -27,6 +27,7 @@ Grand Jeu Privé"</string>
     <string name="pauline">Pauline</string>
     <string name="adrien">Adrien</string>
     <string name="erreur">Ce n’est pas la bonne réponse, réessaye</string>
+    <string name="internal_erreur">Une erreur est survenue, merci de réessayer.</string>
     <string name="bonne_reponse">Bravo %s, tu as trouvé !</string>
     <string name="indice">Besoin d’un indice </string>
     <string name="indice_explication">Au cours de ton aventure, un indice appraîtra parfois sous cette forme (attention, en cliquant dessus, cela impactera ton score final) :</string>

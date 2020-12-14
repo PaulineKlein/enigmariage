@@ -9,6 +9,7 @@ import com.pklein.mariage.databinding.ActivityResultsBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.SplashActivity
+import com.pklein.mariage.utils.uiUtils.Alerts
 
 class ResultsActivity : BaseActivity() {
 
@@ -41,7 +42,11 @@ class ResultsActivity : BaseActivity() {
                 val contentUri = resultsViewModel.getImageUriToShare(this, bitmap)
                 if (contentUri != null) {
                     sharePicture(contentUri)
+                } else {
+                    Alerts.showInternalError(this)
                 }
+            } else {
+                Alerts.showInternalError(this)
             }
         }
     }

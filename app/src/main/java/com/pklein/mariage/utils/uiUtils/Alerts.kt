@@ -138,6 +138,15 @@ object Alerts {
         )
     }
 
+    fun showInternalError(context: Context) {
+        showPopup(
+            context,
+            context.getString(R.string.internal_erreur),
+            null,
+            PopinType.ERROR
+        )
+    }
+
     fun showClue(context: Context, message: String) {
         showPopup(
             context,
