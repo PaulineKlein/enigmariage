@@ -77,19 +77,19 @@ class ResultsViewModel : ViewModel() {
             canvas.drawText(
                 nameDisplay,
                 (bounds.left.toFloat() + 225) * scale,
-                (-bounds.top.toFloat() + 10) * scale,
+                (-bounds.top.toFloat() + 5) * scale,
                 paint
             )
             canvas.drawText(
                 timeDisplay,
                 (bounds.left.toFloat() + 225) * scale,
-                (-bounds.top.toFloat() + 50) * scale,
+                (-bounds.top.toFloat() + 45) * scale,
                 paint
             )
             canvas.drawText(
                 scoreDisplay,
                 (bounds.left.toFloat() + 225) * scale,
-                (-bounds.top.toFloat() + 90) * scale,
+                (-bounds.top.toFloat() + 85) * scale,
                 paint
             )
             bitmap
