@@ -9,10 +9,7 @@ import com.pklein.mariage.databinding.ActivityAddPlayerBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauOneActivity
-import com.pklein.mariage.utils.uiUtils.Alerts
-import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
-import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
-import com.pklein.mariage.utils.uiUtils.PopinType
+import com.pklein.mariage.utils.uiUtils.*
 
 class AddPlayerActivity : BaseActivity(), CheckEmptyTextWatcherListener {
 
@@ -25,6 +22,7 @@ class AddPlayerActivity : BaseActivity(), CheckEmptyTextWatcherListener {
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.ADD_PLAYER)
 
         binding.etAddPlayerName.addTextChangedListener(CheckEmptyTextWatcher(this))
+        binding.etAddPlayerName.addTextChangedListener(CheckSizeTextWatcher(10))
         binding.buttonPlayer.setOnClickListener {
             storeInformation()
             showPopup()
