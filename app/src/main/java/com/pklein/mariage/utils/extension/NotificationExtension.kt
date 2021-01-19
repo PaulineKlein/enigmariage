@@ -8,6 +8,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.os.Build
 import androidx.core.app.NotificationCompat
+import androidx.core.content.ContextCompat
 import com.pklein.mariage.R
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -28,7 +29,8 @@ fun NotificationManager.sendNotification(
         context,
         context.getString(R.string.notification_channel_id)
     )
-        .setSmallIcon(R.mipmap.ic_launcher)
+        .setSmallIcon(R.drawable.ic_notification)
+        .setColor(ContextCompat.getColor(context, R.color.colorAccent))
         .setContentTitle(title)
         .setContentText(message)
         .setAutoCancel(true)
