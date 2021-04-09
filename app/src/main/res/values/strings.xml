@@ -61,7 +61,7 @@ Pour continuer, donnez le lieu où se déroule la cérémonie :"</string>
     <string name="embarquement_two_notification_message">J’ai infiltré ton téléphone …  signé Ganon</string>
     <string name="embarquement_two_notification_message_retry_1">"As-tu vu la notification ?
 Essaye de cliquer dessus pour voir !"</string>
-    <string name="embarquement_two_notification_message_retry_2">Si tu ne l’as pas reçue re-clique sur le bouton ci dessous.</string>
+    <string name="embarquement_two_notification_message_retry_2">Si tu ne l’as pas reçue re-clique sur le bouton ci-dessous.</string>
     <string name="embarquement_two_notification_message_retry_3">Si tu ne reçois vraiment rien, clique ici</string>
     <string name="embarquement_three_enigme">FK NKXC VK CKVVO NO MYMUDKSVC</string>
     <string name="embarquement_three_message_1">Ganon a hacké nos téléphones :</string>
@@ -101,7 +101,7 @@ Quelle couleur est typique de Saint Étienne ? C'est peut-être un indice"</stri
 
 Peut-être qu'on trouvera un des ingrédients à noter ici :"</string>
     <string name="coktail_five_message">"Où peut-il bien trouver du jus de cactus ? Rappelons-nous qu'il vient du monde d'Hyrule. Il a du en ramener d'une de ces régions, à ton avis laquelle ?"</string>
-    <string name="coktail_six_message">"Dans ce désert, le peuple Gerudo a du lui donner un contenant pour transporter son jus de cactus.
+    <string name="coktail_six_message">"Dans ce désert, le peuple Gerudo a dû lui donner un contenant pour transporter son jus de cactus.
 
 Quel est-il ? Indice : c'est un anagramme de Gerudo"</string>
     <string name="coktail_seven_message_1">"Une Gourde, en voilà une ! On dirait qu'une recette est écrite dessus, mais elle est incomplète :"</string>
@@ -131,11 +131,11 @@ D'apres la gourde, il a besoin de 120L de sirop, combien faudra t'il de sève ?"
     <string name="diner_canada_six_message_1">"Après avoir amassé tout ce sucre, Ganon est parti en quête du prochain ingrédient.
 Il a laissé tomber un papier dans la cabane à sucre en partant :"</string>
     <string name="diner_canada_six_message_2">"A côté il y avait cet étrange alphabet :"</string>
-    <string name="diner_japon_one_question">"Ah le Japon ! En quelle année y sommes nous allés ?
+    <string name="diner_japon_one_question">"Ah le Japon ! En quelle année y sommes-nous allés ?
 
-C'etait pour nos 25 ans ?"</string>
+C'était pour nos 25 ans ?"</string>
     <string name="diner_japon_one_help">"L'année se trouve à l'arrière d'une photo du Japon sur le plan de table !"</string>
-    <string name="diner_japon_two_question">"On y était pour le Tokyo Game Show : 270000 visiteurs, 11 halls, 4 fois plus grand que la Japan Expo !
+    <string name="diner_japon_two_question">"On y était pour le Tokyo Game Show : 270 000 visiteurs, 11 halls, 4 fois plus grand que la Japan Expo !
 
 A quel jeu fait référence notre photo sur place ?"</string>
     <string name="diner_japon_two_help">"C'est un jeu mobile en ligne, développé par le studio finlandais Supercell. En bref se sont des clans qui se clashent"</string>
@@ -157,9 +157,9 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="diner_cambodge_one_message_1">"Bienvenue à Angkor, plus qu'un ingrédient à trouver !"</string>
     <string name="diner_cambodge_one_message_2">"Trouve la photo du Cambodge sur le plan de table, et cherche l'année où nous y sommes allés. C'était 2 ans après le Japon, ou 30 ans après une chanson de Calogero."</string>
     <string name="diner_cambodge_one_message_3">"Inscris vite la date !"</string>
-    <string name="diner_cambodge_two_question">"Nous voilà au fin fond de la forêt d'Angkor pour s'entraîner. Mais quel sport est pratiqué ?"</string>
-    <string name="diner_cambodge_three_message_1">"Adrien s'est même entrainé avec l'équipe nationale de Karaté du Cambodge !! Tous les matins, rendez-vous 6h au dojo pour travailler !"</string>
-    <string name="diner_cambodge_three_message_2">"Ganon a dû se glisser ici pour copier leurs enchaînements de mouvements, pour devenir plus fort ! Quel Kata représenté en japonais et en Khmer ci dessous a été copié ?"</string>
+    <string name="diner_cambodge_two_question">"Nous voilà au fin fond de la forêt d'Angkor pour s'entraîner. Mais de quel sport s’agit-il ?"</string>
+    <string name="diner_cambodge_three_message_1">"Adrien s'est même entrainé avec l'équipe nationale de Karaté du Cambodge !! Rendez-vous à 6h au dojo tous les matins pour travailler !"</string>
+    <string name="diner_cambodge_three_message_2">"Ganon a dû se glisser ici pour copier leurs enchaînements de mouvements, pour devenir plus fort ! Quel Kata représenté en japonais et en Khmer ci-dessous a été copié ?"</string>
     <string name="diner_cambodge_three_reponse_1">"KanKuSho"</string>
     <string name="diner_cambodge_three_reponse_2">"TaEuCho"</string>
     <string name="diner_cambodge_three_reponse_3">"MetsTonPoncho"</string>
