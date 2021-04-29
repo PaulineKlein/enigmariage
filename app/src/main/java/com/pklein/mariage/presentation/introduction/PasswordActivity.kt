@@ -16,7 +16,7 @@ class PasswordActivity : QuestionActivity() {
         SharedPreferenceStored.resetPreference()
 
         binding.tvQuestionTitre.text = getString(R.string.password_titre)
-        binding.tvQuestionMessage.text = getString(R.string.password_message)
+        binding.tvQuestionMessage.text = getText(R.string.password_message)
     }
 
     override fun onValidateCLicked(response: String) {

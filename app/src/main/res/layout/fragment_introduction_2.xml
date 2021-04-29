@@ -6,11 +6,12 @@
 
     <TextView
         android:id="@+id/tv_introduction_versaille"
-        style="@style/Body_big"
+        style="@style/Body"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/introduction_versaille"
-        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,10 +23,23 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
+        android:layout_marginTop="@dimen/margin_32"
         android:src="@drawable/image_versaille"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/button_introduction_invisible"
         app:layout_constraintTop_toBottomOf="@+id/tv_introduction_versaille" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_introduction_invisible"
+        style="@style/button"
+        android:visibility="invisible"
+        android:layout_marginTop="@dimen/margin_32"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_introduction_versaille" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

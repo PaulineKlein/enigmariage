@@ -6,11 +6,12 @@
 
     <TextView
         android:id="@+id/tv_introduction_Bottom"
-        style="@style/Body_big"
+        style="@style/Body"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/introduction_Bottom"
-        app:layout_constraintVertical_chainStyle="spread"
+        app:layout_constraintVertical_chainStyle="packed"
         app:layout_constraintBottom_toTopOf="@+id/iv_introduction_couple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
+        android:layout_marginTop="@dimen/margin_32"
         android:src="@drawable/image_couple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,6 +33,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_introduction"
         style="@style/button"
+        android:layout_marginTop="@dimen/margin_32"
         android:layout_width="@dimen/button_width"
         android:layout_height="wrap_content"
         android:text="@string/commencer"

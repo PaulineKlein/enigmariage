@@ -23,6 +23,8 @@
         <TextView
             android:id="@+id/tv_combatFinal_two_message_1"
             style="@style/Body"
+            android:textStyle="bold"
+            android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_24"
@@ -34,6 +36,7 @@
         <TextView
             android:id="@+id/tv_combatFinal_three_message"
             style="@style/Body"
+            android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8"

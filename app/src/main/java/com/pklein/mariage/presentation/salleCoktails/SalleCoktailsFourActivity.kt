@@ -18,7 +18,7 @@ class SalleCoktailsFourActivity : QuestionActivity() {
         binding.animationQuestionLottie.playAnimation()
         binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
         binding.tvQuestionTitre.text = getString(R.string.coktail_one_titre)
-        binding.tvQuestionMessage.text = getString(R.string.coktail_four_message)
+        binding.tvQuestionMessage.text = getText(R.string.coktail_four_message)
     }
 
     override fun onValidateCLicked(response: String) {

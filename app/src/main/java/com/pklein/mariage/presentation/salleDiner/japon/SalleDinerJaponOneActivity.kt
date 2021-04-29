@@ -20,7 +20,7 @@ class SalleDinerJaponOneActivity : QuestionActivity() {
         binding.animationQuestionLottie.playAnimation()
         binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_japon)
-        binding.tvQuestionMessage.text = getString(R.string.diner_japon_one_question)
+        binding.tvQuestionMessage.text = getText(R.string.diner_japon_one_question)
         binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER
 
         binding.layoutIndice.root.visibility = View.VISIBLE

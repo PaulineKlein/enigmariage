@@ -7,10 +7,12 @@
     <color name="colorPrimaryDark">#3c6465</color>
     <color name="colorAccent">#eb835e</color>
     <color name="background">#a4c8c9</color>
+    <color name="background_input">#a4c8c9</color>
     <color name="bleuFonce">#002e3e</color>
     <color name="orangeFonce">#74290d</color>
     <color name="erreur">#b0171f</color>
     <color name="grey">#CCCCCC</color>
+    <color name="dark_grey">#8c8c8c</color>
     <color name="text">#454545</color>
     <color name="parchemin">#e9d5b5</color>
     <color name="parchemin_text">#a17430</color>

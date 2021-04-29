@@ -7,7 +7,8 @@
     <TextView
         android:id="@+id/tv_introduction_titre"
         style="@style/Titre"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/introduction_titre"
         app:layout_constraintBottom_toTopOf="@+id/tv_introduction_top"
@@ -19,7 +20,8 @@
     <TextView
         android:id="@+id/tv_introduction_top"
         style="@style/Body"
-        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/introduction_top"
         app:layout_constraintBottom_toTopOf="@+id/iv_introduction_bateau"

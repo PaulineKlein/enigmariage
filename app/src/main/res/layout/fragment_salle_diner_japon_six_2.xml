@@ -44,6 +44,7 @@
         <TextView
             android:id="@+id/tv_diner_japon_six_message_3"
             style="@style/Body"
+            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_24"
@@ -69,6 +70,8 @@
         <TextView
             android:id="@+id/tv_diner_japon_six_question"
             style="@style/Body"
+            android:gravity="center"
+            android:textStyle="bold"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_24"
@@ -84,9 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_24"
             android:hint="@string/embarquement_three_reponse_hint"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:textColor="@color/text"
+            style="@style/CustomInput"
             app:layout_constraintBottom_toTopOf="@+id/button_diner_japon_six"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -15,7 +15,7 @@ class SalleCoktailsSixActivity : QuestionActivity() {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_6)
         binding.tvQuestionTitre.text = getString(R.string.coktail_one_titre)
-        binding.tvQuestionMessage.text = getString(R.string.coktail_six_message)
+        binding.tvQuestionMessage.text = getText(R.string.coktail_six_message)
 
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE

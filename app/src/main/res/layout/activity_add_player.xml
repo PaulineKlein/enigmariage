@@ -25,9 +25,9 @@
         <TextView
             android:id="@+id/tv_add_player_name"
             style="@style/SousTitre"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_16"
+            android:layout_marginTop="@dimen/margin_8"
             android:text="@string/add_player_name"
             app:layout_constraintBottom_toTopOf="@+id/et_add_player_name"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,13 +36,12 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_add_player_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
             android:hint="@string/add_player_name_hint"
-            android:imeOptions="actionDone"
-            android:inputType="text"
+            style="@style/CustomInput"
             android:maxLines="1"
-            android:textColor="@color/text"
             app:layout_constraintBottom_toTopOf="@+id/tv_add_player_gender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +50,7 @@
         <TextView
             android:id="@+id/tv_add_player_gender"
             style="@style/SousTitre"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_24"
             android:text="@string/add_player_gender"
@@ -66,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_4"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/tv_add_player_clue_title"
+            app:layout_constraintBottom_toTopOf="@+id/cv_add_player_clue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender">
@@ -78,7 +77,6 @@
                 android:layout_height="wrap_content"
                 android:checked="true"
                 android:drawableTop="@drawable/image_link"
-                android:text="@string/add_player_homme"
                 android:textAlignment="center" />
 
             <RadioButton
@@ -87,21 +85,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableTop="@drawable/image_zelda"
-                android:text="@string/add_player_femme"
                 android:textAlignment="center" />
         </RadioGroup>
-
-        <TextView
-            android:id="@+id/tv_add_player_clue_title"
-            style="@style/SousTitre"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_24"
-            android:text="@string/add_player_clue"
-            app:layout_constraintBottom_toTopOf="@+id/cv_add_player_clue"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_add_player_clue"
@@ -110,11 +95,11 @@
             app:cardBackgroundColor="@color/help"
             app:cardCornerRadius="@dimen/button_cadena_radius"
             app:cardElevation="@dimen/button_elevation"
-            app:contentPadding="@dimen/margin_24"
+            app:contentPadding="@dimen/margin_16"
             app:layout_constraintBottom_toTopOf="@+id/button_player"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_clue_title">
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
@@ -122,11 +107,20 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_add_player_clue_title"
+                    style="@style/SousTitre"
+                    android:textSize="20sp"
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add_player_clue" />
+
+                <TextView
                     android:id="@+id/tv_add_player_clue"
                     style="@style/Body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:gravity="center"
+                    android:layout_marginStart="@dimen/margin_16"
                     android:text="@string/indice_explication" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -155,7 +149,7 @@
             style="@style/button"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_24"
+            android:layout_marginTop="@dimen/margin_16"
             android:enabled="false"
             android:text="@string/continuer"
             app:layout_constraintBottom_toBottomOf="parent"

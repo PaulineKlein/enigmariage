@@ -19,7 +19,7 @@ class SalleCoktailsTwoActivity : QuestionActivity() {
         binding.animationQuestionLottie.playAnimation()
         binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
         binding.tvQuestionTitre.text = getString(R.string.coktail_one_titre)
-        binding.tvQuestionMessage.text = getString(R.string.coktail_two_message)
+        binding.tvQuestionMessage.text = getText(R.string.coktail_two_message)
         binding.layoutIndice.root.visibility = View.VISIBLE
         binding.layoutIndice.root.setOnClickListener {
             Alerts.showClue(this, getString(R.string.coktail_two_message_indice))

@@ -18,7 +18,7 @@ class SalleDinerCanadaOneActivity : QuestionActivity() {
         binding.animationQuestionLottie.playAnimation()
         binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_canada)
-        binding.tvQuestionMessage.text = getString(R.string.diner_canada_one_message)
+        binding.tvQuestionMessage.text = getText(R.string.diner_canada_one_message)
     }
 
     override fun onValidateCLicked(response: String) {

@@ -8,7 +8,7 @@
 
     <TextView
         android:id="@+id/tv_splash_titre"
-        style="@style/Titre"
+        style="@style/TitreSplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/splash_titre"

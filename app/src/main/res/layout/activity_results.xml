@@ -103,6 +103,7 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_resultat"
             style="@style/button"
+            android:textSize="12sp"
             android:layout_marginEnd="@dimen/margin_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -112,6 +113,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_share"
                 style="@style/button"
+                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="true"

@@ -18,7 +18,7 @@ class SalleDinerCanadaFourActivity : QuestionActivity() {
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_4)
 
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_canada)
-        binding.tvQuestionMessage.text = getString(R.string.diner_canada_four_message)
+        binding.tvQuestionMessage.text = getText(R.string.diner_canada_four_message)
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE
         binding.animationQuestionImage.setImageResource(R.drawable.image_calcul_2)

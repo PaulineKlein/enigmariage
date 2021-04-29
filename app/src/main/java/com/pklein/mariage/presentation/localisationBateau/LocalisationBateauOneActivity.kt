@@ -15,7 +15,7 @@ class LocalisationBateauOneActivity : QuestionActivity() {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.LOCALISATION_BATEAU_1)
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_localisation)
-        binding.tvQuestionMessage.text = getString(R.string.localisation_one_question)
+        binding.tvQuestionMessage.text = getText(R.string.localisation_one_question)
 
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE

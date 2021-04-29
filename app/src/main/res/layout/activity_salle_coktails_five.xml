@@ -23,6 +23,7 @@
         <TextView
             android:id="@+id/tv_coktail_five_message"
             style="@style/Body"
+            android:textAlignment="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
@@ -46,6 +47,7 @@
             <RadioButton
                 android:id="@+id/radioDesert"
                 style="@style/Body"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:drawableBottom="@drawable/image_hyrule_desert"
@@ -55,6 +57,7 @@
             <RadioButton
                 android:id="@+id/radioVillage"
                 style="@style/Body"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_16"

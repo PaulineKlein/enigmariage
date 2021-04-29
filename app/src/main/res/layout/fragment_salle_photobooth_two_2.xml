@@ -7,6 +7,7 @@
     <TextView
         android:id="@+id/tv_photobooth_two_message_3"
         style="@style/Body_big"
+        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/embarquement_one_message_3"

@@ -19,7 +19,7 @@ class SalleDinerCanadaFiveActivity : QuestionActivity() {
         binding.animationQuestionLottie.playAnimation()
         binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_canada)
-        binding.tvQuestionMessage.text = getString(R.string.diner_canada_five_message)
+        binding.tvQuestionMessage.text = getText(R.string.diner_canada_five_message)
         binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER
     }
 

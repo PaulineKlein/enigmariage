@@ -16,7 +16,7 @@ class SalleDinerTwoActivity : QuestionActivity() {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_2)
         binding.tvQuestionTitre.text = getString(R.string.diner_one_titre)
-        binding.tvQuestionMessage.text = getString(R.string.diner_two_message)
+        binding.tvQuestionMessage.text = getText(R.string.diner_two_message)
 
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE
