@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.viewpager.widget.PagerAdapter
 import com.pklein.mariage.R
 
@@ -12,14 +13,26 @@ enum class SalleEmbarquementOneLayout(val layoutResId: Int) {
     EMBARQUEMENT2(R.layout.fragment_salle_emarquement_one_2),
 }
 
+interface SalleEmbarquementOneLayoutListener {
+    fun onClickButtonHome()
+}
+
 class SalleEmbarquementOneViewPagerAdapter(
-    private val mContext: Context
+    private val mContext: Context,
+    private val listener: SalleEmbarquementOneLayoutListener
 ) : PagerAdapter() {
 
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
         val modelObject = SalleEmbarquementOneLayout.values()[position]
         val inflater = LayoutInflater.from(mContext)
         val layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
+
+        if (modelObject == SalleEmbarquementOneLayout.EMBARQUEMENT1) {
+            layout.findViewById<AppCompatImageView>(R.id.iv_home).setOnClickListener {
+                listener.onClickButtonHome()
+            }
+        }
+
         collection.addView(layout)
         return layout
     }

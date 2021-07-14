@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.View
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
+import com.pklein.mariage.presentation.CarnetBord2Activity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 
@@ -14,6 +17,13 @@ class SalleDinerCambodgeFourActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_4)
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_2_CAMBODGE,
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_4
+        )
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBord2Activity::class.java))
+        }
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_cambodge)
         binding.tvQuestionMessage.text = getText(R.string.diner_cambodge_four_question)
 

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_40">
+
+    <TextView
+        android:id="@+id/tv_carnet_titre"
+        style="@style/Titre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/carnet_bord_titre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_univers1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:cardElevation="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/cv_univers2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_carnet_titre"
+        app:layout_constraintVertical_chainStyle="spread">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_univers1"
+            android:layout_width="wrap_content"
+            android:layout_height="125dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/image_univers1_encours"
+            android:cropToPadding="false"
+            android:padding="@dimen/margin_24" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_univers2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:cardElevation="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/cv_univers3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_univers1">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_univers2"
+            android:layout_width="wrap_content"
+            android:layout_height="125dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/image_univers2_wait"
+            android:cropToPadding="false"
+            android:padding="@dimen/margin_24" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cv_univers3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:cardElevation="7dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cv_univers2">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_univers3"
+            android:layout_width="wrap_content"
+            android:layout_height="125dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/image_univers3_finish"
+            android:cropToPadding="false"
+            android:padding="@dimen/margin_24" />
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

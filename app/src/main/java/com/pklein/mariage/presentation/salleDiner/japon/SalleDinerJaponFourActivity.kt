@@ -3,9 +3,12 @@ package com.pklein.mariage.presentation.salleDiner.japon
 import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivitySalleDinerJaponFourBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBord2Activity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
@@ -20,6 +23,13 @@ class SalleDinerJaponFourActivity : BaseActivity(), CheckEmptyTextWatcherListene
         binding = ActivitySalleDinerJaponFourBinding.inflate(layoutInflater)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_4)
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_2_JAPON,
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_4
+        )
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBord2Activity::class.java))
+        }
 
         binding.etDinerJaponFourAnswer.addTextChangedListener(CheckEmptyTextWatcher(this))
         binding.buttonDinerJaponFour.setOnClickListener {

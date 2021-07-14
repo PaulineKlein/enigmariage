@@ -17,6 +17,7 @@ class PasswordActivity : QuestionActivity() {
 
         binding.tvQuestionTitre.text = getString(R.string.password_titre)
         binding.tvQuestionMessage.text = getText(R.string.password_message)
+        hideHomeButton()
     }
 
     override fun onValidateCLicked(response: String) {

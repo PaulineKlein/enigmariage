@@ -6,10 +6,13 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivitySalleCoktailsSevenBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.salleDiner.SalleDinerOneActivity
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -26,7 +29,13 @@ class SalleCoktailsSevenActivity : BaseActivity(), SalleCoktailsSevenLayoutListe
         binding = DataBindingUtil.setContentView(this, R.layout.activity_salle_coktails_seven)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_7)
-
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_2_COCKTAILS,
+            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_7
+        )
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBordActivity::class.java))
+        }
         binding.viewpagerSalleCoktailsSeven.adapter = SalleCoktailsSevenViewPagerAdapter(this, this)
         binding.viewpagerSalleCoktailsSeven.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSalleCoktailsSeven.addOnPageChangeListener(

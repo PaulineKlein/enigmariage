@@ -50,7 +50,8 @@ Il cherche à créer un <b>Elixir</b> réduisant toute vie humaine à l’état 
     <string name="add_player_homme">Link</string>
     <string name="hyrule_desert">Désert Gerudo</string>
     <string name="hyrule_village">Village Cocorico</string>
-    <string name="add_player_popup">Merci %s</string>
+    <string name="add_player_popup">"Merci %s !
+Ouvrons le Carnet de Bord et cherchons le Bateau"</string>
     <string name="embarquement_one_titre">"(Salle d’embarquement)"</string>
     <string name="embarquement_one_message_1">"Certaines personnes l’auraient vu se faufiler entre les invités pour embarquer. Peux-tu trouver des traces de son passage dans cette salle ?"</string>
     <string name="embarquement_one_message_2">"Ses empreintes ressemblent à ça :"</string>
@@ -73,6 +74,7 @@ Essaye de cliquer dessus pour voir !"</string>
 \"A vaut K\", donc le début du message \"FK\" vaut \"VA\""</string>
     <string name="embarquement_three_question">Peux-tu traduire le message et inscrire la réponse ci-dessous ?</string>
     <string name="embarquement_three_reponse_hint">Traduction du message</string>
+    <string name="embarquement_three_reponse_bravo">Bravo, tu peux maintenant monter à Bord !</string>
     <string name="faire_part_titre">"(Vol de Faire Part)"</string>
     <string name="faire_part_message_1">"Ganondorf a utilisé le faire part falsifié pour entrer."</string>
     <string name="faire_part_message_2">"Parmis ces <b>4 Kanjis</b>, lesquels étaient présents sur l’invitation que Ganondorf aurait recopié ?"</string>
@@ -114,6 +116,7 @@ Peut-être qu’on trouvera un des <b>ingrédients</b> à noter ici :"</string>
     <string name="diner_two_message">"2012, c’est l’année où nous sommes partis étudier à l’étranger.
 
 Pour connaître le pays, cherche où se sont déroulés <b>les JO en 2010</b> :"</string>
+    <string name="diner_two_bravo">"Bravo, tu peux te rendre dans cette destination fraiche ou en choisir une autre sur la carte qui va s'afficher"</string>
     <string name="diner_canada_one_message">"Quel <b>arbre</b>, symbole de ce pays est représenté sur notre faire-part ?"</string>
     <string name="diner_canada_two_message">"Ganon doit certainement vouloir du sirop d’érable comme ingrédient !
 
@@ -133,6 +136,7 @@ D’apres la gourde, il a besoin de 120L de sirop, <b>combien faudra t’il de s
 
 Il a laissé tomber un <b>papier</b> dans la cabane à sucre en partant :"</string>
     <string name="diner_canada_six_message_2">"A côté, il y avait cet alphabet :"</string>
+    <string name="diner_canada_six_bravo">"Bravo, tu peux te rendre dans cette destination zen ou en choisir une autre sur la carte"</string>
     <string name="diner_japon_one_question">"Ah le Japon ! En quelle année y sommes-nous allés ?
 
 C’était pour nos <b>25 ans</b> ?"</string>
@@ -154,9 +158,11 @@ C’était pour nos <b>25 ans</b> ?"</string>
 <b>C’est quoi ce rébus sur le verre ?</b>"</string>
     <string name="diner_japon_six_message_1">"Des boules de tapioca !
 Voilà notre nouvel ingrédient !!"</string>
-    <string name="diner_japon_six_message_2">"Regarde sur le ticket de caisse, encore un message bizarre de Ganon :"</string>
-    <string name="diner_japon_six_message_3">"Et toujours cet étrange alphabet :"</string>
-    <string name="diner_cambodge_one_message_1">"Bienvenue à Angkor, plus qu’un ingrédient à trouver !"</string>
+    <string name="diner_japon_six_message_2">"Regarde sur le ticket de caisse, un message bizarre de Ganon :"</string>
+    <string name="diner_japon_six_message_3">"Et cet étrange alphabet :"</string>
+    <string name="diner_japon_six_bravo">"Bravo, tu peux te rendre dans cette destination exotique ou en choisir une autre sur la carte"</string>
+
+    <string name="diner_cambodge_one_message_1">"Bienvenue à Angkor, un ingrédient se cache quelque part !"</string>
     <string name="diner_cambodge_one_message_2">"Trouve la photo du Cambodge sur le <b>plan de table</b>, et cherche l’<b>année</b> où nous y sommes allés. C’était 2 ans après le Japon, ou 30 ans après une chanson de Calogero."</string>
     <string name="diner_cambodge_one_message_3">"Inscris vite la date !"</string>
     <string name="diner_cambodge_two_question">"Nous voilà au fin fond de la forêt d’Angkor pour s’entraîner.
@@ -171,7 +177,7 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="diner_cambodge_three_reponse_5">"FaisLeManchot"</string>
     <string name="diner_cambodge_four_question">"Tout ce sport donne soif, quel <b>fruit</b> a été très consommé pendant le stage ?"</string>
     <string name="diner_cambodge_four_indice">"\"a vécu\" peut aussi se lire \"avec (la lettre) U\""</string>
-    <string name="diner_cambodge_five_message_1">"Le voilà notre dernier ingrédient ! Du jus de mangue !"</string>
+    <string name="diner_cambodge_five_message_1">"Le voilà notre ingrédient ! Du jus de mangue ! Allons chercher les autres !"</string>
     <string name="diner_cambodge_five_message_2">"Savais-tu qu’Adrien était surnommé MangoKiller pendant son stage ?"</string>
     <string name="diner_cambodge_five_message_3">"C’est bon, notre recette est complète ! Vite trouvons l’emplacement où Ganon va réaliser son plan machiavélique, avant qu’il ne soit trop tard"</string>
     <string name="photobooth_one_titre">"(Photomaton)"</string>
@@ -219,6 +225,14 @@ Et justement, il a réussi à en voler un à un invité, mais lequel ?"</string>
     <string name="resultat_bouton">"Revenir à l’accueil"</string>
     <string name="resultat_share">"Partager"</string>
     <string name="resultat_share_title">"Partager via :"</string>
+    <string name="carnet_bord_titre">(Carnet de Bord)</string>
+    <string name="carnet_bord2_titre">(Mappemonde)</string>
+    <string name="carnet_bord2_button_cambodge">Destination Exotique</string>
+    <string name="carnet_bord2_button_canada">Destination Fraiche</string>
+    <string name="carnet_bord2_button_japon">Destination Zen</string>
+    <string name="carnet_bord2_button_home">Retour au Carnet de Bord</string>
+    <string name="carnet_bord2_message">Choisis ta prochaine étape :</string>
+    <string name="carnet_bord2_bravo">"Bravo tu as tout trouvé ! Retournons au <u>Carnet de Bord</u> !"</string>
     <string name="countdown_0">"Ganon s’en est déja pris aux poissons, regarde dans quel état ils sont !"</string>
     <string name="countdown_1">"Ganon s’attaque à la faune autour du bateau, les pauvres oiseaux !"</string>
     <string name="countdown_2">"Ganon a transformé l’ancre, le bateau va dériver si ça continue !"</string>

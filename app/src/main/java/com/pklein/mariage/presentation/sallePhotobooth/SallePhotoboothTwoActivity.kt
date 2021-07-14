@@ -6,10 +6,13 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivitySallePhotoboothTwoBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.combatFinal.CombatFinalOneActivity
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -28,7 +31,13 @@ class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_salle_photobooth_two)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_PHOTOBOOTH_2)
-
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_3,
+            LAST_ACTIVITY_LAUNCH.SALLE_PHOTOBOOTH_2
+        )
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBordActivity::class.java))
+        }
         binding.viewpagerSallePhotoboothTwo.adapter = SallePhotoboothTwoAdapter(this)
         binding.viewpagerSallePhotoboothTwo.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSallePhotoboothTwo.addOnPageChangeListener(

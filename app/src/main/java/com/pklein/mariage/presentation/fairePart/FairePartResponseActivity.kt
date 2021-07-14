@@ -6,10 +6,13 @@ import android.os.Bundle
 import android.os.Handler
 import android.view.MotionEvent
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivityFairePartResponseBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementOneActivity
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 
 const val KANJI_EXTRA = "kanji"
 
@@ -28,6 +31,13 @@ class FairePartResponseActivity : BaseActivity() {
         binding = ActivityFairePartResponseBinding.inflate(layoutInflater)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.FAIRE_PART_RESPONSE)
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_1,
+            LAST_ACTIVITY_LAUNCH.FAIRE_PART_RESPONSE
+        )
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBordActivity::class.java))
+        }
 
         binding.ivKanjiPauline.setOnTouchListener { view, event ->
             if (event.action == MotionEvent.ACTION_UP) {

@@ -76,7 +76,7 @@ object Alerts {
             }
             PopinType.CLAPPING -> {
                 dialog.setContentView(R.layout.popup_clapping)
-                3000
+                6000
             }
             PopinType.ERROR -> {
                 dialog.setContentView(R.layout.popup_failure)

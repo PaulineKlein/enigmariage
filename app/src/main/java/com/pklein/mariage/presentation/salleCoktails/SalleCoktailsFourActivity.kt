@@ -5,8 +5,10 @@ import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 
@@ -14,6 +16,10 @@ class SalleCoktailsFourActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_4)
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_2_COCKTAILS,
+            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_4
+        )
         binding.animationQuestionLottie.setAnimation("animation_green.json")
         binding.animationQuestionLottie.playAnimation()
         binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE

@@ -6,9 +6,12 @@ import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivitySalleDinerCambodgeOneBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBord2Activity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -26,6 +29,13 @@ class SalleDinerCambodgeOneActivity : BaseActivity(), CadenaLayoutListener {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_salle_diner_cambodge_one)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_1)
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_2_CAMBODGE,
+            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_1
+        )
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBord2Activity::class.java))
+        }
 
         binding.viewpagerSalleCambodgeOne.adapter = SalleDinerCambodgeOneAdapter(this)
         binding.viewpagerSalleCambodgeOne.setPageTransformer(true, ZoomOutPageTransformer())

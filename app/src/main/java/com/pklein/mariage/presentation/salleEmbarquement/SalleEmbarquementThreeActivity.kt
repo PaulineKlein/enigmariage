@@ -4,14 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivitySalleEmbarquementThreeBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
-import com.pklein.mariage.presentation.salleCoktails.SalleCoktailsOneActivity
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
+import com.pklein.mariage.utils.uiUtils.PopinType
 
 class SalleEmbarquementThreeActivity : BaseActivity(), CheckEmptyTextWatcherListener {
 
@@ -22,7 +25,14 @@ class SalleEmbarquementThreeActivity : BaseActivity(), CheckEmptyTextWatcherList
         binding = ActivitySalleEmbarquementThreeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_EMBARQUEMENT_3)
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_1,
+            LAST_ACTIVITY_LAUNCH.SALLE_EMBARQUEMENT_3
+        )
 
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBordActivity::class.java))
+        }
         binding.etEmbarquementThreeAnswer.addTextChangedListener(CheckEmptyTextWatcher(this))
         binding.buttonEmbarquementThree.setOnClickListener {
             onValidateCLicked(binding.etEmbarquementThreeAnswer.text.toString())
@@ -35,8 +45,12 @@ class SalleEmbarquementThreeActivity : BaseActivity(), CheckEmptyTextWatcherList
 
     private fun onValidateCLicked(response: String) {
         if (response.formatAnswer() == "va dans la salle de cocktails") {
-            // todo enlever la reponse à 1
-            Alerts.showSuccess(this, ::launchNext)
+            Alerts.showPopup(
+                this,
+                getString(R.string.embarquement_three_reponse_bravo),
+                ::launchNext,
+                PopinType.CLAPPING
+            )
         } else {
             Alerts.showError(this)
         }
@@ -51,6 +65,7 @@ class SalleEmbarquementThreeActivity : BaseActivity(), CheckEmptyTextWatcherList
     }
 
     private fun launchNext() {
-        startActivity(Intent(this, SalleCoktailsOneActivity::class.java))
+        UniversViewModel.finishUnivers(SHARED_PREFERENCE_KEY.UNIVERS_1)
+        startActivity(Intent(this, CarnetBordActivity::class.java))
     }
 }

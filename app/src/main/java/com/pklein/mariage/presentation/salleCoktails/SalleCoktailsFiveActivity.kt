@@ -3,9 +3,12 @@ package com.pklein.mariage.presentation.salleCoktails
 import android.content.Intent
 import android.os.Bundle
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivitySalleCoktailsFiveBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.uiUtils.Alerts
 
 enum class CITY {
@@ -22,7 +25,13 @@ class SalleCoktailsFiveActivity : BaseActivity() {
         binding = ActivitySalleCoktailsFiveBinding.inflate(layoutInflater)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_5)
-
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_2_COCKTAILS,
+            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_5
+        )
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBordActivity::class.java))
+        }
         binding.radioGroupMap.setOnCheckedChangeListener { _, _ ->
             binding.buttonCoktailFive.isEnabled = true
         }

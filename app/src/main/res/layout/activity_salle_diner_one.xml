@@ -8,6 +8,15 @@
         android:layout_margin="@dimen/margin_24"
         tools:context=".presentation.salleCoktails.SalleCoktailsSevenActivity">
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_diner_one_titre"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_diner_one_titre"/>
+
         <TextView
             android:id="@+id/tv_diner_one_titre"
             style="@style/Titre"
@@ -15,7 +24,7 @@
             android:layout_height="wrap_content"
             android:text="@string/diner_one_titre"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/iv_home"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.viewpager.widget.ViewPager

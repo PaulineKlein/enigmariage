@@ -11,7 +11,13 @@ enum class SHARED_PREFERENCE_KEY {
     PLAYER_END_TIME,
     PLAYER_CLUES,
     PLAYER_ERRORS,
-    COUNT_DOWN
+    COUNT_DOWN,
+    UNIVERS_1,
+    UNIVERS_2_COCKTAILS,
+    UNIVERS_2_CANADA,
+    UNIVERS_2_JAPON,
+    UNIVERS_2_CAMBODGE,
+    UNIVERS_3
 }
 
 object SharedPreferenceStored {
@@ -60,6 +66,7 @@ object SharedPreferenceStored {
         storeValue(SHARED_PREFERENCE_KEY.COUNT_DOWN, newNbOfCountDown.toString())
     }
 
+
     fun resetPreference() {
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_NAME, null)
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_GENDER, null)
@@ -69,5 +76,11 @@ object SharedPreferenceStored {
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_CLUES, null)
         storeValue(SHARED_PREFERENCE_KEY.PLAYER_ERRORS, null)
         storeValue(SHARED_PREFERENCE_KEY.COUNT_DOWN, null)
+        storeValue(SHARED_PREFERENCE_KEY.UNIVERS_1, null)
+        storeValue(SHARED_PREFERENCE_KEY.UNIVERS_2_COCKTAILS, null)
+        storeValue(SHARED_PREFERENCE_KEY.UNIVERS_2_CANADA, null)
+        storeValue(SHARED_PREFERENCE_KEY.UNIVERS_2_JAPON, null)
+        storeValue(SHARED_PREFERENCE_KEY.UNIVERS_2_CAMBODGE, null)
+        storeValue(SHARED_PREFERENCE_KEY.UNIVERS_3, null)
     }
 }

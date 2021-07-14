@@ -7,6 +7,7 @@ import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.databinding.ActivityResultsBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.SplashActivity
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -30,7 +31,9 @@ class ResultsActivity : BaseActivity() {
         binding.buttonResultat.setOnClickListener {
             startActivity(Intent(this, SplashActivity::class.java))
         }
-
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBordActivity::class.java))
+        }
         binding.buttonShare.setOnClickListener {
 
             val bitmap = resultsViewModel.drawTextToBitmap(

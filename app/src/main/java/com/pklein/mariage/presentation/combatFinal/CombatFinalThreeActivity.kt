@@ -5,10 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivityCombatFinalThreeBinding
 import com.pklein.mariage.presentation.BaseActivity
+import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.resultat.ResultsActivity
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 
 class CombatFinalThreeActivity : BaseActivity() {
 
@@ -44,10 +47,18 @@ class CombatFinalThreeActivity : BaseActivity() {
         binding = ActivityCombatFinalThreeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_3)
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_3,
+            LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_3
+        )
+        binding.ivHome.setOnClickListener {
+            startActivity(Intent(this, CarnetBordActivity::class.java))
+        }
 
         stopCountDown()
         binding.animationKoLottie.addAnimatorListener(animationListener)
         binding.buttonCombatFinalThree.setOnClickListener {
+            UniversViewModel.finishUnivers(SHARED_PREFERENCE_KEY.UNIVERS_3)
             startActivity(Intent(this, ResultsActivity::class.java))
         }
     }

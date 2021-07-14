@@ -16,8 +16,8 @@
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.pklein.mariage.fileprovider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
@@ -149,6 +149,9 @@
             android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeFiveActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".presentation.sallePhotobooth.SallePhotoboothZeroActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".presentation.sallePhotobooth.SallePhotoboothOneActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -165,6 +168,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.resultat.ResultsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.CarnetBordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".presentation.CarnetBord2Activity"
             android:screenOrientation="portrait" />
     </application>
 

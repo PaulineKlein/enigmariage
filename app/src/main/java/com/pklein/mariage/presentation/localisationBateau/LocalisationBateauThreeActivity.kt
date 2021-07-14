@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.View
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
+import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.presentation.fairePart.FairePartActivity
+import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 
@@ -15,6 +17,10 @@ class LocalisationBateauThreeActivity : QuestionActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.LOCALISATION_BATEAU_3)
+        UniversViewModel.storeUniversPage(
+            SHARED_PREFERENCE_KEY.UNIVERS_1,
+            LAST_ACTIVITY_LAUNCH.LOCALISATION_BATEAU_3
+        )
         binding.tvQuestionTitre.text = getString(R.string.faire_part_titre)
         binding.tvQuestionMessage.text = getString(R.string.localisation_three_question)
 
