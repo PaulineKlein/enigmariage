@@ -40,7 +40,7 @@ Pour continuer, donnez <b>le lieu</b> où se déroule la cérémonie :"</string>
 
 Il cherche à créer un <b>Elixir</b> réduisant toute vie humaine à l’état de Playmobil …"</string>
     <string name="introduction_versaille">"Regardez, il a déja utilisé un Elixir prototype sur le <b>Château de Versailles</b> :"</string>
-    <string name="introduction_Bottom">S’il vous plait, aidez nous à arrêter Ganon avant qu’il ne soit trop tard …</string>
+    <string name="introduction_Bottom">S’il vous plait, aidez-nous à arrêter Ganon avant qu’il ne soit trop tard …</string>
     <string name="add_player_titre">(Décline ton identité)</string>
     <string name="add_player_gender">Ton avatar :</string>
     <string name="add_player_clue">Besoin d’aide ?</string>

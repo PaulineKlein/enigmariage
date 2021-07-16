@@ -33,7 +33,7 @@ class SalleDinerCanadaTwoActivity : QuestionActivity() {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "rouge") {
+        if (response.formatAnswer().contains("rouge")) {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)

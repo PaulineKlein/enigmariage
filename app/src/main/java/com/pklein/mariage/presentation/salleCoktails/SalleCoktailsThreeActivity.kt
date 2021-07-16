@@ -28,7 +28,7 @@ class SalleCoktailsThreeActivity : QuestionActivity() {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "vert") {
+        if (response.formatAnswer().contains("vert")) {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)
