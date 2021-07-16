@@ -36,11 +36,11 @@
 
 Pour continuer, donnez <b>le lieu</b> où se déroule la cérémonie :"</string>
     <string name="introduction_titre">(Point sur la situation)</string>
-    <string name="introduction_top">"Le maléfique Ganondorf, jaloux de la fête sur le bateau souhaite se venger de ne pas avoir été invité.
+    <string name="introduction_top">"Le maléfique Ganon, jaloux de la fête sur le bateau souhaite se venger de ne pas avoir été invité.
 
 Il cherche à créer un <b>Elixir</b> réduisant toute vie humaine à l’état de Playmobil …"</string>
     <string name="introduction_versaille">"Regardez, il a déja utilisé un Elixir prototype sur le <b>Château de Versailles</b> :"</string>
-    <string name="introduction_Bottom">S’il vous plait, aidez nous à arrêter Ganondorf avant qu’il ne soit trop tard …</string>
+    <string name="introduction_Bottom">S’il vous plait, aidez nous à arrêter Ganon avant qu’il ne soit trop tard …</string>
     <string name="add_player_titre">(Décline ton identité)</string>
     <string name="add_player_gender">Ton avatar :</string>
     <string name="add_player_clue">Besoin d’aide ?</string>
@@ -76,8 +76,8 @@ Essaye de cliquer dessus pour voir !"</string>
     <string name="embarquement_three_reponse_hint">Traduction du message</string>
     <string name="embarquement_three_reponse_bravo">Bravo, tu peux maintenant monter à Bord !</string>
     <string name="faire_part_titre">"(Vol de Faire Part)"</string>
-    <string name="faire_part_message_1">"Ganondorf a utilisé le faire part falsifié pour entrer."</string>
-    <string name="faire_part_message_2">"Parmis ces <b>4 Kanjis</b>, lesquels étaient présents sur l’invitation que Ganondorf aurait recopié ?"</string>
+    <string name="faire_part_message_1">"Ganon a utilisé le faire part falsifié pour entrer."</string>
+    <string name="faire_part_message_2">"Parmis ces <b>4 Kanjis</b>, lesquels étaient présents sur l’invitation que Ganon aurait recopié ?"</string>
     <string name="faire_part_response_message_1">"Bravo, tu as bien trouvé. Je te dois quelques explications maintenant."</string>
     <string name="faire_part_response_message_2">"Si tu souhaites <b>en savoir plus</b> sur l’origine des kanjis choisis, <b>clique</b> sur chacune des images :"</string>
     <string name="faire_part_response_message_3">"Sinon, continue ton investigation à l’aide du bouton ci-dessous"</string>
@@ -192,9 +192,9 @@ Voilà notre nouvel ingrédient !!"</string>
     <string name="combatFinal_one_notification_message">Mon Elixir est perduuuuuuuuuuu à cause de TOI !!</string>
     <string name="combatFinal_two_message_1">Utilise ce que tu as appris en stage au Cambodge pour vaincre Ganon.</string>
     <string name="combatFinal_two_message_2">"<b>Parmis les coups proposés, trouve celui qui atteindra Ganon :</b>"</string>
-    <string name="combatFinal_sucess">"C’est fini Ganondorf !"</string>
+    <string name="combatFinal_sucess">"C’est fini Ganon !"</string>
     <string name="combatFinal_sucess_titre">"(Bravo)"</string>
-    <string name="combatFinal_three_message_1">"Tu as réussi à battre Ganondorf !"</string>
+    <string name="combatFinal_three_message_1">"Tu as réussi à battre Ganon !"</string>
     <string name="combatFinal_three_message_2">"Qu’il boive son Elixir et ne nous nuise plus jamais !"</string>
     <string name="combatFinal_three_validation">"Voir les résultats"</string>
     <string name="combatFinal_coup_1">A) Empi Uchi</string>

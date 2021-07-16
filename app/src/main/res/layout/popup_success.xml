@@ -28,7 +28,7 @@
         android:cropToPadding="false"
         android:layout_marginTop="@dimen/margin_4"
         android:layout_marginBottom="@dimen/margin_16"
-        android:src="@drawable/image_zelda_rond"
+        android:src="@drawable/image_perso_woman_rond"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/animationCheck"
         app:layout_constraintStart_toStartOf="parent"

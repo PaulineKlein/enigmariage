@@ -93,10 +93,10 @@ object Alerts {
         gender?.let {
             if (it == PLAYER_GENDER.FEMALE)
                 dialog.findViewById<AppCompatImageView>(R.id.iv_user)
-                    ?.setImageResource(R.drawable.image_zelda_rond)
+                    ?.setImageResource(R.drawable.image_perso_woman_rond)
             else
                 dialog.findViewById<AppCompatImageView>(R.id.iv_user)
-                    ?.setImageResource(R.drawable.image_link_rond)
+                    ?.setImageResource(R.drawable.image_perso_man_rond)
         }
         dialog.setOnDismissListener {
             onDismiss?.invoke()
@@ -165,7 +165,7 @@ object Alerts {
             val countdownStr =
                 context.resources.getIdentifier("countdown_$step", "string", context.packageName)
             val countdownIv =
-                context.resources.getIdentifier("playmobil_$step", "drawable", context.packageName)
+                context.resources.getIdentifier("plmobil_$step", "drawable", context.packageName)
 
             dialog.findViewById<TextView>(R.id.tv_popup_title).text =
                 context.getString(countdownStr)

@@ -24,7 +24,7 @@ class SalleCoktailsSixActivity : QuestionActivity() {
         binding.tvQuestionMessage.text = getText(R.string.coktail_six_message)
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE
-        binding.animationQuestionImage.setImageResource(R.drawable.image_hyrule_desert)
+        binding.animationQuestionImage.setImageResource(R.drawable.image_village_desert)
     }
 
     override fun onValidateCLicked(response: String) {

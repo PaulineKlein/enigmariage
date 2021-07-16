@@ -51,9 +51,9 @@ class CombatFinalTwoActivity : BaseActivity() {
 
     private fun setMazeImage() {
         if (PlayerViewModel.getGender() == PLAYER_GENDER.FEMALE.name)
-            binding.ivCombatFinalMaze.setImageResource(R.drawable.image_maze_final_zelda)
+            binding.ivCombatFinalMaze.setImageResource(R.drawable.image_maze_final_perso_woman)
         else
-            binding.ivCombatFinalMaze.setImageResource(R.drawable.image_maze_final_link)
+            binding.ivCombatFinalMaze.setImageResource(R.drawable.image_maze_final_perso_man)
     }
 
     private fun launchNext() {

@@ -60,7 +60,7 @@
             android:layout_marginTop="@dimen/margin_32"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
-            android:src="@drawable/image_maze_final_link"
+            android:src="@drawable/image_maze_final_perso_man"
             app:layout_constraintBottom_toTopOf="@+id/radio_group_coups"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

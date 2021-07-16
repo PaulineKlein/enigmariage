@@ -51,9 +51,9 @@ class ResultsViewModel : ViewModel() {
             val scale: Float = resources.displayMetrics.density
 
             val resourceId = if (PlayerViewModel.getGender() == PLAYER_GENDER.FEMALE.name) {
-                R.drawable.image_zelda_result
+                R.drawable.image_perso_woman_result
             } else {
-                R.drawable.image_link_result
+                R.drawable.image_perso_man_result
             }
             val nameDisplay = PlayerViewModel.getName().toString()
 

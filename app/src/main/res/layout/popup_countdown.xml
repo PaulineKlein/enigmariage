@@ -27,7 +27,7 @@
         android:layout_marginTop="@dimen/margin_16"
         android:layout_marginBottom="@dimen/margin_16"
         android:scaleType="fitCenter"
-        android:src="@drawable/playmobil_1"
+        android:src="@drawable/plmobil_1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

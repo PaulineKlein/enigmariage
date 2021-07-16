@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:cropToPadding="false"
-                android:src="@drawable/image_ganondorf_lego"
+                android:src="@drawable/image_ganon_finish"
                 android:visibility="gone" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

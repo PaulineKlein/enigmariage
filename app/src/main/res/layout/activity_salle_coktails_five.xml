@@ -59,7 +59,7 @@
                 android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableBottom="@drawable/image_hyrule_desert"
+                android:drawableBottom="@drawable/image_village_desert"
                 android:text="@string/hyrule_desert"
                 android:textAlignment="center" />
 
@@ -70,7 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_16"
-                android:drawableBottom="@drawable/image_hyrule_village"
+                android:drawableBottom="@drawable/image_village_village"
                 android:text="@string/hyrule_village"
                 android:textAlignment="center" />
         </RadioGroup>

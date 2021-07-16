@@ -36,7 +36,7 @@
         android:layout_marginTop="@dimen/margin_24"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
-        android:src="@drawable/image_bateau_playmobile"
+        android:src="@drawable/image_bateau_plmobile"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

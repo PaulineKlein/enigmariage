@@ -76,7 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:drawableTop="@drawable/image_link"
+                android:drawableTop="@drawable/image_perso_man"
                 android:textAlignment="center" />
 
             <RadioButton
@@ -84,7 +84,7 @@
                 style="@style/Body"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/image_zelda"
+                android:drawableTop="@drawable/image_perso_woman"
                 android:textAlignment="center" />
         </RadioGroup>
 
