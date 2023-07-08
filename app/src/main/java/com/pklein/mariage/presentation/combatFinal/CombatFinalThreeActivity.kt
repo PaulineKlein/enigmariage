@@ -18,7 +18,7 @@ class CombatFinalThreeActivity : BaseActivity() {
     private lateinit var binding: ActivityCombatFinalThreeBinding
     private var nbRepeat = 1
     private val animationListener = object : Animator.AnimatorListener {
-        override fun onAnimationEnd(animation: Animator?) {
+        override fun onAnimationEnd(animation: Animator) {
             if (nbRepeat < 2) {
                 binding.animationKoLottie.playAnimation()
                 nbRepeat += 1
@@ -29,15 +29,15 @@ class CombatFinalThreeActivity : BaseActivity() {
             }
         }
 
-        override fun onAnimationStart(animation: Animator?) {
+        override fun onAnimationStart(animation: Animator) {
             // No need to implement onAnimationStart
         }
 
-        override fun onAnimationRepeat(animation: Animator?) {
+        override fun onAnimationRepeat(animation: Animator) {
             // No need to implement onAnimationRepeat
         }
 
-        override fun onAnimationCancel(animation: Animator?) {
+        override fun onAnimationCancel(animation: Animator) {
             // No need to implement onAnimationCancel
         }
     }
