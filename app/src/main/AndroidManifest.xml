@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="LockedOrientationActivity">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:name=".MariageApplication"
         android:allowBackup="false"
