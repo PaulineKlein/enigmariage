@@ -7,12 +7,12 @@ if (project.rootProject.file('local.properties').canRead()) {
 }
 
 android {
-    compileSdkVersion 33
+    compileSdk 34
     namespace "com.pklein.mariage"
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     signingConfigs {
@@ -27,7 +27,7 @@ android {
     defaultConfig {
         applicationId "com.pklein.enigmariage"
         minSdkVersion 21
-        targetSdkVersion 33
+        targetSdkVersion 34
         versionCode 4
         versionName "1.2"
 
@@ -43,16 +43,18 @@ android {
         debug {
             debuggable true
             minifyEnabled false
-            testCoverageEnabled true
             applicationIdSuffix ".ci"
             signingConfig signingConfigs.release
+            enableUnitTestCoverage true
+            enableAndroidTestCoverage true
         }
         release {
             debuggable false
             minifyEnabled true
-            testCoverageEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
+            enableUnitTestCoverage false
+            enableAndroidTestCoverage false
         }
     }
 
@@ -60,17 +62,17 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
     testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
 
     //composants graphiques :
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'com.airbnb.android:lottie:3.0.0'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'com.airbnb.android:lottie:6.3.0'
     implementation 'org.apache.commons:commons-lang3:3.8'
 }

@@ -14,6 +14,8 @@ import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.SharedPreferenceStored
 import com.pklein.mariage.utils.uiUtils.Alerts
 
+const val COUNTDOWN_MAX_VALUE = 11
+
 abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +30,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        super.onBackPressed()
         finish()
         overridePendingTransition(R.anim.neutral, R.anim.slide_out)
     }
@@ -36,7 +39,10 @@ abstract class BaseActivity : AppCompatActivity() {
         val actualNbOfCountDown =
             SharedPreferenceStored.getValue(SHARED_PREFERENCE_KEY.COUNT_DOWN)
 
-        if (actualNbOfCountDown.isNullOrEmpty() || (!actualNbOfCountDown.isNullOrEmpty() && actualNbOfCountDown.toInt() < 11)) {
+        if (
+            actualNbOfCountDown.isNullOrEmpty() ||
+            (actualNbOfCountDown.isNotEmpty() && actualNbOfCountDown.toInt() < COUNTDOWN_MAX_VALUE)
+        ) {
             CountDown.start()
         }
     }
