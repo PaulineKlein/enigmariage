@@ -40,7 +40,7 @@ class SalleDinerJaponOneActivity : QuestionActivity() {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "2015") {
+        if (response.formatAnswer() == "2021") {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)

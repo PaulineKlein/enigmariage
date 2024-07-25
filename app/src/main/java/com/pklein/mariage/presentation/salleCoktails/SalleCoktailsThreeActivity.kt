@@ -20,7 +20,7 @@ class SalleCoktailsThreeActivity : QuestionActivity() {
             SHARED_PREFERENCE_KEY.UNIVERS_2_COCKTAILS,
             LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_3
         )
-        binding.animationQuestionLottie.setAnimation("animation_foot.json")
+        binding.animationQuestionLottie.setAnimation("animation_colors.json")
         binding.animationQuestionLottie.playAnimation()
         binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
         binding.tvQuestionTitre.text = getString(R.string.coktail_one_titre)

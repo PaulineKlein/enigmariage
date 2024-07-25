@@ -4,26 +4,26 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_diner_cambodge_one_message_1"
         style="@style/Body_big"
-        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/diner_cambodge_one_message_1"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/tv_diner_cambodge_one_message_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_diner_cambodge_one_message_2"
-        style="@style/Body_big"
-        android:textAlignment="center"
+        style="@style/Body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/diner_cambodge_one_message_2"
+        android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/iv_angkor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
-        android:src="@drawable/image_angkor"
+        android:src="@drawable/image_angkor_couple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

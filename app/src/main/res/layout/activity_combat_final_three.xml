@@ -9,16 +9,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_24">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_combatFinal_titre"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_combatFinal_titre"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_combatFinal_titre"/>
+            app:layout_constraintTop_toTopOf="@+id/tv_combatFinal_titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_combatFinal_titre"
             style="@style/Titre"
             android:layout_width="0dp"
@@ -28,27 +29,27 @@
             app:layout_constraintStart_toEndOf="@+id/iv_home"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_combatFinal_two_message_1"
             style="@style/Body"
-            android:textStyle="bold"
-            android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_24"
             android:text="@string/combatFinal_three_message_1"
+            android:textAlignment="center"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_combatFinal_three_message"
             style="@style/Body"
-            android:textAlignment="center"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8"
             android:text="@string/combatFinal_three_message_2"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_two_message_1" />
@@ -78,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:cropToPadding="false"
-                android:src="@drawable/image_ganon_finish"
+                android:src="@drawable/image_nox_finish"
                 android:visibility="gone" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 

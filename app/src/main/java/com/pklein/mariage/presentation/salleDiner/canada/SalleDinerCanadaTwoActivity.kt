@@ -29,7 +29,7 @@ class SalleDinerCanadaTwoActivity : QuestionActivity() {
         binding.tvQuestionMessage.text = getText(R.string.diner_canada_two_message)
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE
-        binding.animationQuestionImage.setImageResource(R.drawable.image_labyrinthe_canada)
+        binding.animationQuestionImage.setImageResource(R.drawable.image_maze_canada)
     }
 
     override fun onValidateCLicked(response: String) {

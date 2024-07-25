@@ -8,7 +8,7 @@ import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
-import com.pklein.mariage.presentation.fairePart.FairePartActivity
+import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementOneActivity
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -43,6 +43,6 @@ class LocalisationBateauThreeActivity : QuestionActivity() {
     }
 
     override fun launchNext() {
-        startActivity(Intent(this, FairePartActivity::class.java))
+        startActivity(Intent(this, SalleEmbarquementOneActivity::class.java))
     }
 }

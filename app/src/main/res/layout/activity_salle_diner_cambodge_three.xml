@@ -8,16 +8,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_24">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_diner_one_titre"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_diner_one_titre"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_diner_one_titre"/>
+            app:layout_constraintTop_toTopOf="@+id/tv_diner_one_titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diner_one_titre"
             style="@style/Titre"
             android:layout_width="0dp"
@@ -27,26 +28,25 @@
             app:layout_constraintStart_toEndOf="@+id/iv_home"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diner_cambodge_three_message_1"
             style="@style/Body"
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_24"
+            android:gravity="center"
             android:text="@string/diner_cambodge_three_message_1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_diner_one_titre" />
 
-
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diner_cambodge_three_message_2"
             style="@style/Body"
-            android:gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8"
+            android:gravity="center"
             android:text="@string/diner_cambodge_three_message_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -63,7 +63,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_diner_cambodge_three_message_2" />
-
 
         <RadioGroup
             android:id="@+id/radio_group_kanji"

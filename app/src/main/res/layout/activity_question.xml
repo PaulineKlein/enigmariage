@@ -16,11 +16,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_question_titre"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_question_titre"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_question_titre"/>
+            app:layout_constraintTop_toTopOf="@+id/tv_question_titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_question_titre"
             style="@style/Titre"
             android:layout_width="0dp"
@@ -30,13 +30,13 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Mon titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_question_message"
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginTop="@dimen/margin_8"
+            android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/animationQuestion"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,12 +75,12 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_question_answer"
+            style="@style/CustomInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_8"
             android:layout_marginBottom="@dimen/margin_16"
             android:hint="@string/reponse"
-            style="@style/CustomInput"
             app:layout_constraintBottom_toTopOf="@+id/button_question"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

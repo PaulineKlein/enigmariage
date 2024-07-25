@@ -15,6 +15,7 @@ enum class SalleEmbarquementOneLayout(val layoutResId: Int) {
 
 interface SalleEmbarquementOneLayoutListener {
     fun onClickButtonHome()
+    fun onClickImage(drawable: Int)
 }
 
 class SalleEmbarquementOneViewPagerAdapter(
@@ -23,13 +24,16 @@ class SalleEmbarquementOneViewPagerAdapter(
 ) : PagerAdapter() {
 
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
-        val modelObject = SalleEmbarquementOneLayout.values()[position]
+        val modelObject = SalleEmbarquementOneLayout.entries[position]
         val inflater = LayoutInflater.from(mContext)
         val layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
 
         if (modelObject == SalleEmbarquementOneLayout.EMBARQUEMENT1) {
             layout.findViewById<AppCompatImageView>(R.id.iv_home).setOnClickListener {
                 listener.onClickButtonHome()
+            }
+            layout.findViewById<AppCompatImageView>(R.id.iv_embarquement).setOnClickListener {
+                listener.onClickImage(R.drawable.image_number_one)
             }
         }
 
@@ -42,7 +46,7 @@ class SalleEmbarquementOneViewPagerAdapter(
     }
 
     override fun getCount(): Int {
-        return SalleEmbarquementOneLayout.values().size
+        return SalleEmbarquementOneLayout.entries.size
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {

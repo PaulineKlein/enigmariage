@@ -42,6 +42,6 @@ class LocalisationBateauOneActivity : QuestionActivity() {
     }
 
     override fun launchNext() {
-        startActivity(Intent(this, LocalisationBateauTwoActivity::class.java))
+        startActivity(Intent(this, LocalisationBateauThreeActivity::class.java))
     }
 }

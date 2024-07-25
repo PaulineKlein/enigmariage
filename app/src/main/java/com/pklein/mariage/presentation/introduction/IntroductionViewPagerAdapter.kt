@@ -21,7 +21,7 @@ interface IntroLayoutListener {
 
 class IntroductionViewPagerAdapter(private val mContext: Context, private val listener: IntroLayoutListener) : PagerAdapter() {
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
-        val modelObject = IntroLayout.values()[position]
+        val modelObject = IntroLayout.entries[position]
         val inflater = LayoutInflater.from(mContext)
         val layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
         if(modelObject == IntroLayout.INTRO3 ) {
@@ -38,7 +38,7 @@ class IntroductionViewPagerAdapter(private val mContext: Context, private val li
     }
 
     override fun getCount(): Int {
-        return IntroLayout.values().size
+        return IntroLayout.entries.size
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {

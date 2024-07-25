@@ -36,6 +36,15 @@ class SalleCoktailsFiveActivity : BaseActivity() {
             binding.buttonCoktailFive.isEnabled = true
         }
 
+        binding.ivDesert.setOnClickListener {
+            binding.radioDesert.isChecked = true
+            binding.radioVillage.isChecked = false
+        }
+        binding.ivVillage.setOnClickListener {
+            binding.radioDesert.isChecked = false
+            binding.radioVillage.isChecked = true
+        }
+
         binding.buttonCoktailFive.setOnClickListener {
             onValidateCLicked(checkValueFromRadioButton())
         }

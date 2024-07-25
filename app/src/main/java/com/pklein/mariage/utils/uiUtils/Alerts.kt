@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Handler
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatImageView
@@ -66,22 +65,27 @@ object Alerts {
                 dialog.setContentView(R.layout.popup_success)
                 2500
             }
+
             PopinType.UNLOCK_SUCCESS -> {
                 dialog.setContentView(R.layout.popup_unlock_success)
                 2500
             }
+
             PopinType.FINAL_SUCCESS -> {
                 dialog.setContentView(R.layout.popup_final_success)
                 6000
             }
+
             PopinType.CLAPPING -> {
                 dialog.setContentView(R.layout.popup_clapping)
-                6000
+                4000
             }
+
             PopinType.ERROR -> {
                 dialog.setContentView(R.layout.popup_failure)
                 2500
             }
+
             PopinType.CLUE -> {
                 dialog.setContentView(R.layout.popup_clue)
                 20000
@@ -93,10 +97,10 @@ object Alerts {
         gender?.let {
             if (it == PLAYER_GENDER.FEMALE)
                 dialog.findViewById<AppCompatImageView>(R.id.iv_user)
-                    ?.setImageResource(R.drawable.image_perso_woman_rond)
+                    ?.setImageResource(R.drawable.image_perso_woman)
             else
                 dialog.findViewById<AppCompatImageView>(R.id.iv_user)
-                    ?.setImageResource(R.drawable.image_perso_man_rond)
+                    ?.setImageResource(R.drawable.image_perso_man)
         }
         dialog.setOnDismissListener {
             onDismiss?.invoke()
@@ -162,14 +166,12 @@ object Alerts {
             dialog.setContentView(R.layout.popup_countdown)
             dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
 
-            val countdownStr =
-                context.resources.getIdentifier("countdown_$step", "string", context.packageName)
-            val countdownIv =
-                context.resources.getIdentifier("plmobil_$step", "drawable", context.packageName)
+            val countdownStr = context
+                .resources
+                .getIdentifier("countdown_$step", "string", context.packageName)
 
             dialog.findViewById<TextView>(R.id.tv_popup_title).text =
                 context.getString(countdownStr)
-            dialog.findViewById<ImageView>(R.id.iv_popup).setImageResource(countdownIv)
 
             dialog.setOnDismissListener {
                 if (step < 11) {

@@ -28,7 +28,7 @@ class SalleDinerJaponSixViewPagerAdapter(
     lateinit var layout: ViewGroup
 
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
-        val modelObject = SalleDinerJaponSixLayout.values()[position]
+        val modelObject = SalleDinerJaponSixLayout.entries[position]
         val inflater = LayoutInflater.from(mContext)
         layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
 
@@ -48,7 +48,7 @@ class SalleDinerJaponSixViewPagerAdapter(
     }
 
     override fun getCount(): Int {
-        return SalleDinerJaponSixLayout.values().size
+        return SalleDinerJaponSixLayout.entries.size
     }
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean {

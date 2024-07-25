@@ -10,16 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_24">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_titre"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_resultat_titre"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_titre"/>
+            app:layout_constraintTop_toTopOf="@+id/tv_resultat_titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_resultat_titre"
             style="@style/Titre"
             android:layout_width="0dp"
@@ -29,22 +30,23 @@
             app:layout_constraintStart_toEndOf="@+id/iv_home"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_resultat_temps_titre"
             style="@style/SousTitre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_24"
+            android:layout_marginTop="@dimen/margin_40"
             android:text="@string/resultat_temps"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_resultat_titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_resultat_temps_reponse"
             style="@style/Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_resultat_temps_titre"
             app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_temps_titre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
@@ -52,7 +54,7 @@
             app:layout_constraintTop_toTopOf="@+id/tv_resultat_temps_titre"
             tool:text="@string/un" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_resultat_score_titre"
             style="@style/SousTitre"
             android:layout_width="wrap_content"
@@ -62,43 +64,57 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_resultat_temps_titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_resultat_score_reponse"
             style="@style/Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_16"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tv_resultat_score_titre"
             app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_score_titre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toEndOf="@+id/tv_resultat_score_titre"
+            app:layout_constraintStart_toEndOf="@+id/tv_resultat_temps_titre"
             app:layout_constraintTop_toTopOf="@+id/tv_resultat_score_titre"
             tool:text="@string/un" />
 
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animation_score_lottie"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toTopOf="@+id/tv_resultat_message"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_merci"
+            android:layout_width="wrap_content"
+            android:layout_height="350dp"
+            android:layout_marginTop="@dimen/margin_8"
+            android:src="@drawable/image_merci"
+            app:layout_constraintBottom_toTopOf="@+id/animation_score_lottie"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_resultat_score_titre"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resultat_score_reponse" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_score_lottie"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_message"
+            app:layout_constraintEnd_toStartOf="@id/tv_resultat_message"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_resultat_message"
             app:lottie_autoPlay="true"
             app:lottie_fileName="animation_cup.json"
             app:lottie_loop="true" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_resultat_message"
-            style="@style/Body_big"
-            android:layout_width="wrap_content"
+            style="@style/Body"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8"
             android:gravity="center"
             android:text="@string/resultat_message"
             app:layout_constraintBottom_toTopOf="@+id/buttons_resultat"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/animation_score_lottie" />
+            app:layout_constraintStart_toEndOf="@id/animation_score_lottie"
+            app:layout_constraintTop_toBottomOf="@+id/iv_merci" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/buttons_resultat"
@@ -108,24 +124,25 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_resultat"
-            style="@style/button"
-            android:textSize="12sp"
-            android:layout_marginEnd="@dimen/margin_24"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:enabled="true"
-            android:text="@string/resultat_bouton" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_resultat"
+                style="@style/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/margin_24"
+                android:enabled="true"
+                android:text="@string/resultat_bouton"
+                android:textSize="12sp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_share"
                 style="@style/button"
-                android:textSize="12sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:enabled="true"
-                android:text="@string/resultat_share" />
+                android:text="@string/resultat_share"
+                android:textSize="12sp" />
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

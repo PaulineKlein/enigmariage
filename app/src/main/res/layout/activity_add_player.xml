@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_24">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_add_player_titre"
             style="@style/Titre"
             android:layout_width="0dp"
@@ -22,71 +22,86 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_add_player_name"
             style="@style/SousTitre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_24"
             android:text="@string/add_player_name"
-            app:layout_constraintBottom_toTopOf="@+id/et_add_player_name"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_add_player_titre" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_add_player_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
-            android:hint="@string/add_player_name_hint"
             style="@style/CustomInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:hint="@string/add_player_name_hint"
             android:maxLines="1"
-            app:layout_constraintBottom_toTopOf="@+id/tv_add_player_gender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_add_player_name" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_add_player_gender"
             style="@style/SousTitre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_24"
             android:text="@string/add_player_gender"
-            app:layout_constraintBottom_toTopOf="@+id/radio_group_gender"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_add_player_name" />
 
         <RadioGroup
             android:id="@+id/radio_group_gender"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_4"
+            android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toTopOf="@+id/cv_add_player_clue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender">
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioMen"
-                style="@style/Body"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:drawableTop="@drawable/image_perso_man"
-                android:textAlignment="center" />
+                android:layout_weight="1"
+                android:checked="true" />
 
-            <RadioButton
+            <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioWomen"
-                style="@style/Body"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:drawableTop="@drawable/image_perso_woman"
-                android:textAlignment="center" />
+                android:layout_weight="1" />
         </RadioGroup>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_man"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/image_perso_man"
+            app:layout_constraintBottom_toTopOf="@+id/cv_add_player_clue"
+            app:layout_constraintEnd_toStartOf="@id/iv_woman"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_woman"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="@dimen/margin_32"
+            android:src="@drawable/image_perso_woman"
+            app:layout_constraintBottom_toTopOf="@+id/cv_add_player_clue"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_man"
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_add_player_clue"
@@ -99,23 +114,23 @@
             app:layout_constraintBottom_toTopOf="@+id/button_player"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender">
+            app:layout_constraintTop_toBottomOf="@+id/iv_man">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_add_player_clue_title"
                     style="@style/SousTitre"
-                    android:textSize="20sp"
-                    android:layout_marginStart="@dimen/margin_16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/add_player_clue" />
+                    android:layout_marginStart="@dimen/margin_16"
+                    android:text="@string/add_player_clue"
+                    android:textSize="20sp" />
 
-                <TextView
+                <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tv_add_player_clue"
                     style="@style/Body"
                     android:layout_width="wrap_content"
@@ -129,7 +144,7 @@
                     android:gravity="center"
                     android:orientation="horizontal">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         style="@style/Body_link"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

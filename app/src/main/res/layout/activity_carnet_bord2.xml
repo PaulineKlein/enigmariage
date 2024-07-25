@@ -5,167 +5,167 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/margin_24">
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tv_carnet_titre"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_carnet_titre"/>
-
-    <TextView
-        android:id="@+id/tv_carnet_titre"
-        style="@style/Titre"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/carnet_bord2_titre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/iv_home"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/cv_mapmonde"/>
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cv_mapmonde"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        app:cardElevation="7dp"
-        android:layout_marginTop="@dimen/margin_40"
-        app:layout_constraintBottom_toTopOf="@+id/tv_carnet_message"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_carnet_titre">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/margin_24">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_mapmonde"
+            android:id="@+id/iv_home"
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/image_mapmonde"
-            android:cropToPadding="false"
-            android:padding="@dimen/margin_24"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_carnet_titre"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_carnet_titre" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_carnet_titre"
+            style="@style/Titre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/carnet_bord2_titre"
+            app:layout_constraintBottom_toTopOf="@+id/cv_mapmonde"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/iv_home"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_mapmonde_cambodge"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cv_mapmonde"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_40"
+            app:cardElevation="7dp"
+            app:layout_constraintBottom_toTopOf="@+id/tv_carnet_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carnet_titre">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/image_mapmonde_cambodge"
-                android:cropToPadding="false"
-                android:padding="@dimen/margin_24"
-                android:visibility="invisible"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:layout_height="wrap_content">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_mapmonde_canada"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/image_mapmonde_canada"
-                android:cropToPadding="false"
-                android:padding="@dimen/margin_24"
-                android:visibility="invisible"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_mapmonde"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/image_mapmonde"
+                    android:cropToPadding="false"
+                    android:padding="@dimen/margin_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/iv_mapmonde_japon"
-                android:layout_width="wrap_content"
-                android:layout_height="200dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/image_mapmonde_japon"
-                android:cropToPadding="false"
-                android:padding="@dimen/margin_24"
-                android:visibility="invisible"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_mapmonde_cambodge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/image_mapmonde_cambodge"
+                    android:cropToPadding="false"
+                    android:padding="@dimen/margin_24"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_mapmonde_canada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/image_mapmonde_canada"
+                    android:cropToPadding="false"
+                    android:padding="@dimen/margin_24"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_carnet_message"
-        style="@style/Body"
-        android:textAlignment="center"
-        android:layout_marginTop="@dimen/margin_24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/carnet_bord2_message"
-        app:layout_constraintBottom_toTopOf="@+id/button_question_canada"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cv_mapmonde"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/iv_mapmonde_japon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/image_mapmonde_japon"
+                    android:cropToPadding="false"
+                    android:padding="@dimen/margin_24"
+                    android:visibility="invisible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/button_question_canada"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/image_bouton_canada_encours"
-        android:cropToPadding="false"
-        android:layout_marginTop="@dimen/margin_16"
-        app:layout_constraintBottom_toTopOf="@+id/button_question_japon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_carnet_message" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/button_question_japon"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/image_bouton_japon_encours"
-        android:cropToPadding="false"
-        android:layout_marginTop="@dimen/margin_16"
-        app:layout_constraintBottom_toTopOf="@+id/button_question_cambodge"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_question_canada" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_carnet_message"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/carnet_bord2_message"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/button_question_canada"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cv_mapmonde" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/button_question_cambodge"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:adjustViewBounds="true"
-        android:background="@drawable/image_bouton_cambodge_encours"
-        android:cropToPadding="false"
-        android:layout_marginTop="@dimen/margin_16"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_question_japon" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/button_question_canada"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_16"
+            android:adjustViewBounds="true"
+            android:background="@drawable/image_bouton_canada_encours"
+            android:cropToPadding="false"
+            app:layout_constraintBottom_toTopOf="@+id/button_question_japon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_carnet_message" />
 
-    <TextView
-        android:id="@+id/tv_carnet_bravo"
-        style="@style/Body_link"
-        android:visibility="visible"
-        android:textAlignment="center"
-        android:layout_marginTop="@dimen/margin_24"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/carnet_bord2_bravo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_question_cambodge"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/button_question_japon"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_16"
+            android:adjustViewBounds="true"
+            android:background="@drawable/image_bouton_japon_encours"
+            android:cropToPadding="false"
+            app:layout_constraintBottom_toTopOf="@+id/button_question_cambodge"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_question_canada" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/button_question_cambodge"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/margin_16"
+            android:adjustViewBounds="true"
+            android:background="@drawable/image_bouton_cambodge_encours"
+            android:cropToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_question_japon" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_carnet_bravo"
+            style="@style/Body_link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_32"
+            android:text="@string/carnet_bord2_bravo"
+            android:textAlignment="center"
+            android:visibility="visible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/button_question_cambodge" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

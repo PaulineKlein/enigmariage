@@ -4,12 +4,12 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_introduction_titre"
         style="@style/Titre"
-        android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/introduction_titre"
         app:layout_constraintBottom_toTopOf="@+id/tv_introduction_top"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,12 +17,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_introduction_top"
         style="@style/Body"
-        android:gravity="center"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/introduction_top"
         app:layout_constraintBottom_toTopOf="@+id/iv_introduction_bateau"
         app:layout_constraintEnd_toEndOf="parent"
@@ -32,11 +32,10 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_introduction_bateau"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_marginTop="@dimen/margin_24"
-        android:adjustViewBounds="true"
         android:cropToPadding="false"
-        android:src="@drawable/image_bateau_plmobile"
+        android:src="@drawable/image_nox"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

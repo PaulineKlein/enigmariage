@@ -55,7 +55,7 @@ class SalleCoktailsSevenActivity : BaseActivity(), SalleCoktailsSevenLayoutListe
     }
 
     override fun onClickButton(response: String) {
-        if (response.formatAnswer() == "dinera") {
+        if (response.formatAnswer() == "nappe") {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)

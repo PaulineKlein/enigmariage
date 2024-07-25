@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:padding="@dimen/margin_40">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_carnet_titre"
         style="@style/Titre"
         android:layout_width="0dp"

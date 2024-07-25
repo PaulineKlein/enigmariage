@@ -14,12 +14,13 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
+import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.PopinType
 import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
-class SalleDinerOneActivity : BaseActivity(), CadenaLayoutListener {
+class SalleDinerOneActivity : BaseActivity(), CadenaLayoutListener, SalleDinerOneListener {
 
     private lateinit var binding: ActivitySalleDinerOneBinding
     private var dotPagerList: MutableList<ImageView> = mutableListOf()
@@ -36,7 +37,7 @@ class SalleDinerOneActivity : BaseActivity(), CadenaLayoutListener {
         binding.ivHome.setOnClickListener {
             startActivity(Intent(this, CarnetBordActivity::class.java))
         }
-        binding.viewpagerSalleDinerOne.adapter = SalleDinerOneViewPagerAdapter(this)
+        binding.viewpagerSalleDinerOne.adapter = SalleDinerOneViewPagerAdapter(this, this)
         binding.viewpagerSalleDinerOne.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSalleDinerOne.addOnPageChangeListener(ViewPagerDotsUtils(dotPagerList, 1))
         setupDots()
@@ -50,7 +51,7 @@ class SalleDinerOneActivity : BaseActivity(), CadenaLayoutListener {
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "2012") {
+        if (response.formatAnswer() == "2010") {
             Alerts.showSuccess(this, ::launchNext, PopinType.UNLOCK_SUCCESS)
         } else {
             Alerts.showError(this)
@@ -59,5 +60,9 @@ class SalleDinerOneActivity : BaseActivity(), CadenaLayoutListener {
 
     private fun launchNext() {
         startActivity(Intent(this, SalleDinerTwoActivity::class.java))
+    }
+
+    override fun onClickImage(drawable: Int) {
+        showImageWithStfalconViewer(this, drawable)
     }
 }

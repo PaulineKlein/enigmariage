@@ -30,7 +30,7 @@ class SalleDinerTwoActivity : QuestionActivity() {
         }
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE
-        binding.animationQuestionImage.setImageResource(R.drawable.image_jo_flag)
+        binding.animationQuestionImage.setImageResource(R.drawable.image_jo_canada)
     }
 
     override fun onValidateCLicked(response: String) {

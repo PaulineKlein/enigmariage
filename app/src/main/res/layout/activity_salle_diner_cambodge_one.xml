@@ -7,16 +7,17 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/margin_24"
         tools:context=".presentation.salleCoktails.SalleCoktailsSevenActivity">
+
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_diner_one_titre"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_diner_one_titre"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_diner_one_titre"/>
+            app:layout_constraintTop_toTopOf="@+id/tv_diner_one_titre" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_diner_one_titre"
             style="@style/Titre"
             android:layout_width="0dp"

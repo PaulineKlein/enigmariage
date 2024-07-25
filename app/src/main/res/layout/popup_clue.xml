@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="260dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/background_popup"
-    android:layout_margin="@dimen/margin_16">
+    android:layout_margin="@dimen/margin_16"
+    android:background="@drawable/background_popup">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_popup_title"
         style="@style/Body_parchemin"
-        android:textColor="@color/help_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/margin_16"
         android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginTop="@dimen/margin_16"
         android:layout_marginEnd="@dimen/margin_16"
+        android:gravity="center"
+        android:textColor="@color/help_text"
         app:layout_constraintBottom_toTopOf="@+id/animationCheck"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

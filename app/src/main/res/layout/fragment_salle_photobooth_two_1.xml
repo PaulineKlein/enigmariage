@@ -4,43 +4,41 @@
     android:layout_width="wrap_content"
     android:layout_height="match_parent">
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_photobooth_two_message_1"
         style="@style/Body_big"
-        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/photobooth_two_message_1"
-        app:layout_constraintBottom_toTopOf="@+id/tv_photobooth_two_message_2"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/tv_photobooth_two_message_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_photobooth_two_message_2"
         style="@style/Body_big"
-        android:textAlignment="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/photobooth_two_message_2"
-        app:layout_constraintBottom_toTopOf="@+id/lock_lottie"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/iv_photographe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_photobooth_two_message_1"
+        app:layout_constraintTop_toBottomOf="@id/tv_photobooth_two_message_1"
         app:layout_constraintVertical_chainStyle="spread" />
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lock_lottie"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_photographe"
+        android:layout_width="0dp"
+        android:layout_height="350dp"
         android:scaleType="fitCenter"
+        android:src="@drawable/image_photographe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_photobooth_two_message_2"
-        app:lottie_autoPlay="true"
-        app:lottie_fileName="animation_locker_security.json"
-        app:lottie_loop="true" />
+        app:layout_constraintTop_toBottomOf="@id/tv_photobooth_two_message_2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

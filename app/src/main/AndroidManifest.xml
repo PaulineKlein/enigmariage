@@ -33,9 +33,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.introduction.PasswordActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.introduction.IntroductionActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -45,19 +42,7 @@
             android:name=".presentation.localisationBateau.LocalisationBateauOneActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".presentation.localisationBateau.LocalisationBateauTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".presentation.localisationBateau.LocalisationBateauThreeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.fairePart.FairePartActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.fairePart.FairePartResponseActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.fairePart.FairePartKanjiActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.salleEmbarquement.SalleEmbarquementOneActivity"
@@ -73,9 +58,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.salleCoktails.SalleCoktailsOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleCoktails.SalleCoktailsTwoActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".presentation.salleCoktails.SalleCoktailsThreeActivity"

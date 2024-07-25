@@ -2,6 +2,7 @@ package com.pklein.mariage.presentation.salleCoktails
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import androidx.databinding.DataBindingUtil
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
@@ -11,14 +12,19 @@ import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
+import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.PopinType
+import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
-class SalleCoktailsOneActivity : BaseActivity(), CadenaLayoutListener {
+class SalleCoktailsOneActivity : BaseActivity(), CadenaLayoutListener,
+    SalleCoktailsOneLayoutListener {
 
     private lateinit var binding: ActivitySalleCoktailsOneBinding
+    private var dotPagerList: MutableList<ImageView> = mutableListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,13 +35,33 @@ class SalleCoktailsOneActivity : BaseActivity(), CadenaLayoutListener {
             SHARED_PREFERENCE_KEY.UNIVERS_2_COCKTAILS,
             LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_1
         )
-        binding.ivHome.setOnClickListener {
-            startActivity(Intent(this, CarnetBordActivity::class.java))
+
+        binding.viewpagerSalleCoktailsOne.adapter =
+            SalleCoktailsOneViewPagerAdapter(this, this)
+        binding.viewpagerSalleCoktailsOne.setPageTransformer(true, ZoomOutPageTransformer())
+        binding.viewpagerSalleCoktailsOne.addOnPageChangeListener(
+            ViewPagerDotsUtils(dotPagerList, 1)
+        )
+        setupDots()
+    }
+
+    private fun setupDots() {
+        dotPagerList = ViewPagerDotsUtils(dotPagerList, 1).setupDots(this)
+        dotPagerList.forEach {
+            binding.pagerDots.addView(it)
         }
     }
 
+    override fun onClickButtonHome() {
+        startActivity(Intent(this, CarnetBordActivity::class.java))
+    }
+
+    override fun onClickImage(drawable: Int) {
+        showImageWithStfalconViewer(this, drawable)
+    }
+
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "2010") {
+        if (response.formatAnswer() == "124") {
             Alerts.showSuccess(this, ::launchNext, PopinType.UNLOCK_SUCCESS)
         } else {
             Alerts.showError(this)
@@ -43,6 +69,6 @@ class SalleCoktailsOneActivity : BaseActivity(), CadenaLayoutListener {
     }
 
     private fun launchNext() {
-        startActivity(Intent(this, SalleCoktailsTwoActivity::class.java))
+        startActivity(Intent(this, SalleCoktailsThreeActivity::class.java))
     }
 }

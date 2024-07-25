@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.databinding.ActivitySplashBinding
-import com.pklein.mariage.presentation.introduction.PasswordActivity
+import com.pklein.mariage.presentation.introduction.IntroductionActivity
 import com.pklein.mariage.utils.uiUtils.Alerts
 
 
@@ -25,7 +25,7 @@ class SplashActivity : BaseActivity() {
 
         if (page.isNullOrEmpty()) {
             binding.buttonNvllePartie.setOnClickListener {
-                val intent = Intent(this, PasswordActivity::class.java)
+                val intent = Intent(this, IntroductionActivity::class.java)
                 startActivity(intent)
             }
         } else {
@@ -53,7 +53,7 @@ class SplashActivity : BaseActivity() {
 
     private fun launchNewGame() {
         PlayerViewModel.resetStorage()
-        val intent = Intent(this, PasswordActivity::class.java)
+        val intent = Intent(this, IntroductionActivity::class.java)
         startActivity(intent)
     }
 }

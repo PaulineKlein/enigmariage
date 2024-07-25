@@ -15,13 +15,15 @@ import com.pklein.mariage.presentation.combatFinal.CombatFinalOneActivity
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.ViewPagerDotsUtils
 import com.pklein.mariage.utils.extension.formatAnswer
+import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.PopinType
 import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 
 
-class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener {
+class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener,
+    SallePhotoboothTwoListener {
 
     private lateinit var binding: ActivitySallePhotoboothTwoBinding
     private var dotPagerList: MutableList<ImageView> = mutableListOf()
@@ -38,7 +40,7 @@ class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener {
         binding.ivHome.setOnClickListener {
             startActivity(Intent(this, CarnetBordActivity::class.java))
         }
-        binding.viewpagerSallePhotoboothTwo.adapter = SallePhotoboothTwoAdapter(this)
+        binding.viewpagerSallePhotoboothTwo.adapter = SallePhotoboothTwoAdapter(this, this)
         binding.viewpagerSallePhotoboothTwo.setPageTransformer(true, ZoomOutPageTransformer())
         binding.viewpagerSallePhotoboothTwo.addOnPageChangeListener(
             ViewPagerDotsUtils(
@@ -56,8 +58,12 @@ class SallePhotoboothTwoActivity : BaseActivity(), CadenaLayoutListener {
         }
     }
 
+    override fun onClickImage(drawable: Int) {
+        showImageWithStfalconViewer(this, drawable)
+    }
+
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "2021") {
+        if (response.formatAnswer() == "50") {
             Alerts.showSuccess(this, ::launchNext, PopinType.UNLOCK_SUCCESS)
         } else {
             Alerts.showError(this)

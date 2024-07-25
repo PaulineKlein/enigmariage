@@ -57,7 +57,8 @@ class ResultsActivity : BaseActivity() {
     private fun sharePicture(contentUri: Uri) {
         val shareIntent = Intent()
         shareIntent.action = Intent.ACTION_SEND
-        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION) // temp permission for receiving app to read this file
+        // temp permission for receiving app to read this file
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         shareIntent.setDataAndType(contentUri, contentResolver.getType(contentUri))
         shareIntent.putExtra(Intent.EXTRA_STREAM, contentUri)
         startActivity(

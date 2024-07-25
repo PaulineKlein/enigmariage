@@ -29,16 +29,11 @@ class SalleDinerJaponTwoActivity : QuestionActivity() {
 
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE
-        binding.animationQuestionImage.setImageResource(R.drawable.image_clash_clans)
-
-        binding.layoutIndice.root.visibility = View.VISIBLE
-        binding.layoutIndice.root.setOnClickListener {
-            Alerts.showClue(this, getString(R.string.diner_japon_two_help))
-        }
+        binding.animationQuestionImage.setImageResource(R.drawable.image_video_games)
     }
 
     override fun onValidateCLicked(response: String) {
-        if (response.formatAnswer() == "clash of clans") {
+        if (response.formatAnswer() == "chiba") {
             Alerts.showSuccess(this, ::launchNext)
         } else {
             Alerts.showError(this)
