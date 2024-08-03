@@ -63,12 +63,12 @@ object Alerts {
         val delay = when (popinType) {
             PopinType.SUCCESS -> {
                 dialog.setContentView(R.layout.popup_success)
-                2500
+                3000
             }
 
             PopinType.UNLOCK_SUCCESS -> {
                 dialog.setContentView(R.layout.popup_unlock_success)
-                2500
+                3000
             }
 
             PopinType.FINAL_SUCCESS -> {
@@ -78,12 +78,12 @@ object Alerts {
 
             PopinType.CLAPPING -> {
                 dialog.setContentView(R.layout.popup_clapping)
-                4000
+                6000
             }
 
             PopinType.ERROR -> {
                 dialog.setContentView(R.layout.popup_failure)
-                2500
+                3000
             }
 
             PopinType.CLUE -> {

@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/margin_40">
+    android:padding="@dimen/margin_32">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_carnet_titre"
@@ -33,8 +33,7 @@
             android:layout_height="125dp"
             android:adjustViewBounds="true"
             android:background="@drawable/image_univers1_encours"
-            android:cropToPadding="false"
-            android:padding="@dimen/margin_24" />
+            android:cropToPadding="false" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -54,8 +53,7 @@
             android:layout_height="125dp"
             android:adjustViewBounds="true"
             android:background="@drawable/image_univers2_wait"
-            android:cropToPadding="false"
-            android:padding="@dimen/margin_24" />
+            android:cropToPadding="false" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -75,7 +73,6 @@
             android:layout_height="125dp"
             android:adjustViewBounds="true"
             android:background="@drawable/image_univers3_finish"
-            android:cropToPadding="false"
-            android:padding="@dimen/margin_24" />
+            android:cropToPadding="false" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

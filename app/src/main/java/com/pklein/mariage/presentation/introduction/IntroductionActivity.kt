@@ -22,6 +22,7 @@ class IntroductionActivity : BaseActivity(), IntroLayoutListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        SharedPreferenceStored.resetPreference()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_introduction)
         setContentView(binding.root)
         PlayerViewModel.storePage(LAST_ACTIVITY_LAUNCH.INTRODUCTION)

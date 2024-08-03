@@ -25,7 +25,7 @@
             android:padding="@dimen/margin_8"
             android:textAlignment="center"
             android:textColor="@color/text"
-            android:textSize="24sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toTopOf="@+id/table_keys"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -123,12 +123,12 @@
                 android:padding="@dimen/margin_8">
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/button_check"
+                    android:id="@+id/button_back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/image_check_disabled" />
+                    android:src="@drawable/image_back" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_zero"
@@ -139,12 +139,12 @@
                     android:text="@string/zero" />
 
                 <androidx.appcompat.widget.AppCompatImageButton
-                    android:id="@+id/button_back"
+                    android:id="@+id/button_check"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/image_back" />
+                    android:src="@drawable/image_check_disabled" />
             </TableRow>
         </TableLayout>
 

@@ -26,9 +26,12 @@ class SalleDinerJaponOneActivity : QuestionActivity() {
         binding.ivHome.setOnClickListener {
             startActivity(Intent(this, CarnetBord2Activity::class.java))
         }
-        binding.animationQuestionLottie.setAnimation("animation_japan.json")
-        binding.animationQuestionLottie.playAnimation()
-        binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
+        binding.animationQuestionLottie.apply {
+            visibility = View.VISIBLE
+            setAnimation("animation_japan.json")
+            playAnimation()
+            repeatCount = ValueAnimator.INFINITE
+        }
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_japon)
         binding.tvQuestionMessage.text = getText(R.string.diner_japon_one_question)
         binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER

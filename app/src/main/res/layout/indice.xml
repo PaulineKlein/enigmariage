@@ -9,8 +9,7 @@
         style="@style/Body_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_4"
-        android:layout_marginTop="@dimen/margin_24"
+        android:paddingVertical="@dimen/margin_4"
         android:text="@string/indice" />
 
     <androidx.appcompat.widget.AppCompatImageView

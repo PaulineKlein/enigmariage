@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/margin_24">
+        android:padding="@dimen/margin_16">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_home"
@@ -52,8 +52,6 @@
                     android:layout_height="200dp"
                     android:adjustViewBounds="true"
                     android:background="@drawable/image_mapmonde"
-                    android:cropToPadding="false"
-                    android:padding="@dimen/margin_24"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -66,7 +64,6 @@
                     android:adjustViewBounds="true"
                     android:background="@drawable/image_mapmonde_cambodge"
                     android:cropToPadding="false"
-                    android:padding="@dimen/margin_24"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +77,6 @@
                     android:adjustViewBounds="true"
                     android:background="@drawable/image_mapmonde_canada"
                     android:cropToPadding="false"
-                    android:padding="@dimen/margin_24"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +90,6 @@
                     android:adjustViewBounds="true"
                     android:background="@drawable/image_mapmonde_japon"
                     android:cropToPadding="false"
-                    android:padding="@dimen/margin_24"
                     android:visibility="invisible"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"

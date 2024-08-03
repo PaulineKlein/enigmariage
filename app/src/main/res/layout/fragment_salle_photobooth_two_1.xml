@@ -1,33 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_photobooth_two_message_1"
         style="@style/Body_big"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/photobooth_two_message_1"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@id/tv_photobooth_two_message_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_photobooth_two_message_2"
-        style="@style/Body_big"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/photobooth_two_message_2"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@id/iv_photographe"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_photobooth_two_message_1"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -36,9 +23,19 @@
         android:layout_height="350dp"
         android:scaleType="fitCenter"
         android:src="@drawable/image_photographe"
+        app:layout_constraintBottom_toTopOf="@id/layout_zoom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_photobooth_two_message_1" />
+
+    <include
+        android:id="@+id/layout_zoom"
+        layout="@layout/zoom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_photobooth_two_message_2" />
+        app:layout_constraintTop_toBottomOf="@id/iv_photographe" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

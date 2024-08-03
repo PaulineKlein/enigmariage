@@ -3,6 +3,7 @@ package com.pklein.mariage.presentation.salleCoktails
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.data.UniversViewModel
@@ -20,9 +21,12 @@ class SalleCoktailsFourActivity : QuestionActivity() {
             SHARED_PREFERENCE_KEY.UNIVERS_2_COCKTAILS,
             LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_4
         )
-        binding.animationQuestionLottie.setAnimation("animation_green.json")
-        binding.animationQuestionLottie.playAnimation()
-        binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
+        binding.animationQuestionLottie.apply {
+            visibility = View.VISIBLE
+            setAnimation("animation_green.json")
+            playAnimation()
+            repeatCount = ValueAnimator.INFINITE
+        }
         binding.tvQuestionTitre.text = getString(R.string.coktail_one_titre)
         binding.tvQuestionMessage.text = getText(R.string.coktail_four_message)
     }

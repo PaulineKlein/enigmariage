@@ -34,7 +34,7 @@
     </style>
 
     <style name="Body">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/text</item>
     </style>
 
@@ -46,26 +46,32 @@
     </style>
 
     <style name="Body_big">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/text</item>
     </style>
 
     <style name="Body_parchemin">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/parchemin_text</item>
         <item name="android:textAlignment">center</item>
     </style>
 
     <style name="Success">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/bleuFonce</item>
         <item name="android:fontFamily">@font/balsamiq_sans_bold</item>
     </style>
 
     <style name="Erreur">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/erreur</item>
         <item name="android:fontFamily">@font/balsamiq_sans_bold</item>
+    </style>
+
+    <style name="CountDown">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/bleuFonce</item>
+        <item name="android:fontFamily">@font/balsamiq_sans_regular</item>
     </style>
 
     <style name="button" parent="Widget.AppCompat.Button">
@@ -96,5 +102,11 @@
         <item name="android:padding">@dimen/editText_padding</item>
         <item name="android:imeOptions">actionDone</item>
         <item name="android:inputType">text</item>
+    </style>
+
+    <style name="Scrollbar">
+        <item name="android:scrollbarFadeDuration">0</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:fadeScrollbars">false</item>
     </style>
 </resources>

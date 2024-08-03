@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tool="http://schemas.android.com/tools"
+    style="@style/Scrollbar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_24">
+        android:layout_height="wrap_content"
+        android:padding="@dimen/margin_16">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_home"
@@ -81,14 +82,12 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_merci"
             android:layout_width="wrap_content"
-            android:layout_height="350dp"
-            android:layout_marginTop="@dimen/margin_8"
+            android:layout_height="300dp"
             android:src="@drawable/image_merci"
             app:layout_constraintBottom_toTopOf="@+id/animation_score_lottie"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_resultat_score_reponse" />
-
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_score_lottie"
@@ -108,7 +107,8 @@
             style="@style/Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginVertical="@dimen/margin_8"
+            android:layout_marginStart="@dimen/margin_4"
             android:gravity="center"
             android:text="@string/resultat_message"
             app:layout_constraintBottom_toTopOf="@+id/buttons_resultat"
@@ -146,4 +146,4 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

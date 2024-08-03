@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Scrollbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_24">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_16">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_home"
@@ -50,7 +52,10 @@
             app:cardBackgroundColor="@color/parchemin"
             app:cardCornerRadius="@dimen/button_cadena_radius"
             app:cardElevation="@dimen/button_elevation"
-            app:contentPadding="@dimen/margin_24"
+            app:contentPaddingBottom="@dimen/margin_8"
+            app:contentPaddingLeft="@dimen/margin_16"
+            app:contentPaddingRight="@dimen/margin_16"
+            app:contentPaddingTop="@dimen/margin_8"
             app:layout_constraintBottom_toTopOf="@+id/tv_diner_japon_four_message_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -60,8 +65,9 @@
                 style="@style/Body_parchemin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/batikworldwide"
                 android:text="@string/diner_japon_four_enigme"
-                android:textSize="34sp" />
+                android:textSize="36sp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -121,13 +127,12 @@
             style="@style/button"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_32"
+            android:layout_marginVertical="@dimen/margin_24"
             android:enabled="false"
             android:text="@string/valider"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_diner_japon_four_answer" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+</ScrollView>

@@ -12,8 +12,9 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_coktail_seven_message_1"
             style="@style/Body"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8"
             android:text="@string/coktail_seven_message_3"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/tv_coktail_seven_enigme"
@@ -24,8 +25,9 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/tv_coktail_seven_enigme"
-            android:layout_width="250dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginVertical="@dimen/margin_8"
             android:adjustViewBounds="true"
             android:cropToPadding="false"
             android:src="@drawable/image_parchemin_nappe"
@@ -37,10 +39,8 @@
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_question_answer"
             style="@style/CustomInput"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_32"
-            android:layout_marginEnd="@dimen/margin_32"
             android:hint="@string/reponse"
             app:layout_constraintBottom_toTopOf="@+id/button_cocktail_seven"
             app:layout_constraintEnd_toEndOf="parent"
@@ -52,7 +52,7 @@
             style="@style/button"
             android:layout_width="@dimen/button_width"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginVertical="@dimen/margin_16"
             android:enabled="false"
             android:text="@string/valider"
             app:layout_constraintBottom_toBottomOf="parent"

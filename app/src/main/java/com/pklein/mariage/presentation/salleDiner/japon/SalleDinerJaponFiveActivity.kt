@@ -11,6 +11,7 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.extension.formatAnswer
+import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
 
 class SalleDinerJaponFiveActivity : QuestionActivity() {
@@ -28,8 +29,16 @@ class SalleDinerJaponFiveActivity : QuestionActivity() {
         binding.tvQuestionMessage.text = getText(R.string.diner_japon_five_question)
 
         binding.animationQuestionLottie.visibility = View.GONE
-        binding.animationQuestionImage.visibility = View.VISIBLE
-        binding.animationQuestionImage?.setImageResource(R.drawable.image_rebus_tapioca)
+        binding.animationQuestionImage.apply {
+            visibility = View.VISIBLE
+            setImageResource(R.drawable.image_rebus_tapioca)
+            setOnClickListener {
+                showImageWithStfalconViewer(
+                    this@SalleDinerJaponFiveActivity,
+                    R.drawable.image_rebus_tapioca
+                )
+            }
+        }
     }
 
     override fun onValidateCLicked(response: String) {

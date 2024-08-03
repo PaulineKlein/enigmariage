@@ -32,6 +32,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_popup_title"
         app:lottie_autoPlay="true"
         app:lottie_fileName="animation_sailing_boat.json"
-        app:lottie_loop="false" />
+        app:lottie_loop="true" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

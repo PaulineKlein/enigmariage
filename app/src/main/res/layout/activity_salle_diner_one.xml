@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="@dimen/margin_24"
+        android:layout_margin="@dimen/margin_16"
         tools:context=".presentation.salleCoktails.SalleCoktailsSevenActivity">
 
         <androidx.appcompat.widget.AppCompatImageView

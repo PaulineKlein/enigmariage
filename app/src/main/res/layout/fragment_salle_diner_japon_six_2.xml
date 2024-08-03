@@ -62,24 +62,10 @@
             android:adjustViewBounds="true"
             android:cropToPadding="false"
             android:src="@drawable/image_code_templier"
-            app:layout_constraintBottom_toTopOf="@+id/tv_diner_japon_six_question"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_six_message_3" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_diner_japon_six_question"
-            style="@style/Body"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_24"
-            android:gravity="center"
-            android:text="@string/embarquement_three_question"
-            android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/et_diner_japon_six_answer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_six_enigme_help" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_six_message_3" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/et_diner_japon_six_answer"
@@ -91,7 +77,7 @@
             app:layout_constraintBottom_toTopOf="@+id/button_diner_japon_six"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_six_question" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_diner_japon_six_enigme_help" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_diner_japon_six"

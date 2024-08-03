@@ -3,6 +3,7 @@ package com.pklein.mariage.presentation.salleDiner.canada
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.view.inputmethod.EditorInfo
 import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
@@ -25,9 +26,12 @@ class SalleDinerCanadaFiveActivity : QuestionActivity() {
         binding.ivHome.setOnClickListener {
             startActivity(Intent(this, CarnetBord2Activity::class.java))
         }
-        binding.animationQuestionLottie.setAnimation("animation_eyes.json")
-        binding.animationQuestionLottie.playAnimation()
-        binding.animationQuestionLottie.repeatCount = ValueAnimator.INFINITE
+        binding.animationQuestionLottie.apply {
+            visibility = View.VISIBLE
+            setAnimation("animation_eyes.json")
+            playAnimation()
+            repeatCount = ValueAnimator.INFINITE
+        }
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_canada)
         binding.tvQuestionMessage.text = getText(R.string.diner_canada_five_message)
         binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER

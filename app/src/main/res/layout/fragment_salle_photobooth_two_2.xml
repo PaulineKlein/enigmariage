@@ -9,7 +9,7 @@
         style="@style/Body_big"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/embarquement_one_message_3"
+        android:text="@string/photobooth_two_message_3"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/cadena"
         app:layout_constraintEnd_toEndOf="parent"
