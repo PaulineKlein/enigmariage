@@ -6,6 +6,7 @@ import com.pklein.mariage.R
 import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.databinding.ActivitySplashBinding
 import com.pklein.mariage.presentation.introduction.IntroductionActivity
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.Alerts
 
 
@@ -38,6 +39,7 @@ class SplashActivity : BaseActivity() {
                 showAlert()
             }
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun showAlert() {

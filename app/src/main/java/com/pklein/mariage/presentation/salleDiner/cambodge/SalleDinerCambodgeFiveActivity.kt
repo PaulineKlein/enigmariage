@@ -9,6 +9,7 @@ import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.CarnetBord2Activity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 
 class SalleDinerCambodgeFiveActivity : BaseActivity() {
 
@@ -30,5 +31,6 @@ class SalleDinerCambodgeFiveActivity : BaseActivity() {
             UniversViewModel.finishUnivers(SHARED_PREFERENCE_KEY.UNIVERS_2_CAMBODGE)
             startActivity(Intent(this, CarnetBord2Activity::class.java))
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 }

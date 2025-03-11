@@ -9,6 +9,7 @@ import com.pklein.mariage.databinding.ActivityAddPlayerBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.*
 
 class AddPlayerActivity : BaseActivity(), CheckEmptyTextWatcherListener {
@@ -27,6 +28,7 @@ class AddPlayerActivity : BaseActivity(), CheckEmptyTextWatcherListener {
             storeInformation()
             showPopup()
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun storeInformation() {

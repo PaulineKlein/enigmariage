@@ -10,6 +10,7 @@ import com.pklein.mariage.data.UNIVERS_STATUS
 import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivityCarnetBord2Binding
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.extension.defineButton
 
 class CarnetBord2Activity : BaseActivity() {
@@ -58,6 +59,7 @@ class CarnetBord2Activity : BaseActivity() {
         } else {
             binding.tvCarnetBravo.visibility = View.INVISIBLE
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun showButton(

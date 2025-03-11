@@ -7,6 +7,7 @@ import com.pklein.mariage.data.UNIVERS_STATUS
 import com.pklein.mariage.data.UniversViewModel
 import com.pklein.mariage.databinding.ActivityCarnetBordBinding
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.extension.defineButton
 
 class CarnetBordActivity : BaseActivity() {
@@ -24,6 +25,7 @@ class CarnetBordActivity : BaseActivity() {
         showUnivers1()
         showUnivers2()
         showUnivers3()
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun showUnivers1() {

@@ -10,6 +10,7 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementOneActivity
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 
@@ -32,6 +33,7 @@ class LocalisationBateauThreeActivity : QuestionActivity() {
         binding.layoutIndice.root.setOnClickListener {
             Alerts.showClue(this, getString(R.string.localisation_three_indice))
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     override fun onValidateCLicked(response: String) {

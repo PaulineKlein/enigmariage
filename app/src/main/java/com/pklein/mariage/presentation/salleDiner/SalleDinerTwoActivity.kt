@@ -11,6 +11,7 @@ import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.QuestionActivity
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
@@ -31,6 +32,7 @@ class SalleDinerTwoActivity : QuestionActivity() {
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE
         binding.animationQuestionImage.setImageResource(R.drawable.image_jo_canada)
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     override fun onValidateCLicked(response: String) {

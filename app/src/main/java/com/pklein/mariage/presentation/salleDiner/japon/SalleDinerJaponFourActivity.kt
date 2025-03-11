@@ -9,6 +9,7 @@ import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.CarnetBord2Activity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
@@ -35,6 +36,7 @@ class SalleDinerJaponFourActivity : BaseActivity(), CheckEmptyTextWatcherListene
         binding.buttonDinerJaponFour.setOnClickListener {
             onValidateCLicked(binding.etDinerJaponFourAnswer.text.toString())
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun onValidateCLicked(response: String) {

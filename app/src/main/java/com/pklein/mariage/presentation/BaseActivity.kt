@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MotionEvent
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.pklein.mariage.R
@@ -19,6 +20,7 @@ const val COUNTDOWN_MAX_VALUE = 11
 abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
         overridePendingTransition(R.anim.slide_in, R.anim.neutral)
 
         CountDown.updateNbOfCountDown.observe(this, Observer {

@@ -9,6 +9,7 @@ import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 
 class SallePhotoboothZeroActivity : BaseActivity() {
 
@@ -30,5 +31,6 @@ class SallePhotoboothZeroActivity : BaseActivity() {
         binding.buttonPhotoboothZero.setOnClickListener {
             startActivity(Intent(this, SallePhotoboothOneActivity::class.java))
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 }

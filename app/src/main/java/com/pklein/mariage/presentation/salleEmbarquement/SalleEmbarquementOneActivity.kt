@@ -13,6 +13,7 @@ import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.ViewPagerDotsUtils
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -49,6 +50,7 @@ class SalleEmbarquementOneActivity : BaseActivity(), CadenaLayoutListener,
             )
         )
         setupDots()
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun setupDots() {

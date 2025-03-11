@@ -10,6 +10,7 @@ import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.CarnetBord2Activity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.Alerts
 
 class SalleDinerCambodgeThreeActivity : BaseActivity() {
@@ -37,6 +38,7 @@ class SalleDinerCambodgeThreeActivity : BaseActivity() {
                 Alerts.showError(this)
             }
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun launchNext() {

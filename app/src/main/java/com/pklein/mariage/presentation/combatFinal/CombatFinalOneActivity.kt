@@ -12,6 +12,7 @@ import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.Notification
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 
 class CombatFinalOneActivity : BaseActivity() {
 
@@ -34,6 +35,7 @@ class CombatFinalOneActivity : BaseActivity() {
         binding.buttonCombatFinalOne.setOnClickListener {
             startActivity(Intent(this, CombatFinalTwoActivity::class.java))
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun launchNotification() {

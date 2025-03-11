@@ -13,6 +13,7 @@ import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.Notification
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 
 class SalleEmbarquementTwoNotificationActivity : AppCompatActivity() {
 
@@ -48,6 +49,7 @@ class SalleEmbarquementTwoNotificationActivity : AppCompatActivity() {
                 binding.tvEmbarquementTwoNotificationRetry3.visibility = View.INVISIBLE
             }
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun launchNotification() {

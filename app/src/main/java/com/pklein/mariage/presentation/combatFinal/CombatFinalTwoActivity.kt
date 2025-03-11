@@ -13,6 +13,7 @@ import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
 import com.pklein.mariage.utils.SharedPreferenceStored
 import com.pklein.mariage.utils.currentTimeToString
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
 
@@ -47,6 +48,7 @@ class CombatFinalTwoActivity : BaseActivity() {
                 Alerts.showError(this)
             }
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun setMazeImage() {

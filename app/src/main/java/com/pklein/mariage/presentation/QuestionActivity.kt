@@ -2,8 +2,8 @@ package com.pklein.mariage.presentation
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import com.pklein.mariage.databinding.ActivityQuestionBinding
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
 import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
 
@@ -22,14 +22,11 @@ abstract class QuestionActivity : BaseActivity(), CheckEmptyTextWatcherListener 
         binding.ivHome.setOnClickListener {
             startActivity(Intent(this, CarnetBordActivity::class.java))
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     abstract fun onValidateCLicked(response: String)
     abstract fun launchNext()
-
-    fun hideHomeButton() {
-        binding.ivHome.visibility = View.GONE
-    }
 
     override fun onTextEmpty() {
         binding.buttonQuestion.isEnabled = false

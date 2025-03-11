@@ -10,6 +10,7 @@ import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.SplashActivity
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.Alerts
 
 class ResultsActivity : BaseActivity() {
@@ -52,6 +53,7 @@ class ResultsActivity : BaseActivity() {
                 Alerts.showInternalError(this)
             }
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun sharePicture(contentUri: Uri) {

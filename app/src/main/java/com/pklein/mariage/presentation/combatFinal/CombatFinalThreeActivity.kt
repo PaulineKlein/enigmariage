@@ -12,6 +12,7 @@ import com.pklein.mariage.presentation.CarnetBordActivity
 import com.pklein.mariage.presentation.LAST_ACTIVITY_LAUNCH
 import com.pklein.mariage.presentation.resultat.ResultsActivity
 import com.pklein.mariage.utils.SHARED_PREFERENCE_KEY
+import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 
 class CombatFinalThreeActivity : BaseActivity() {
 
@@ -61,5 +62,6 @@ class CombatFinalThreeActivity : BaseActivity() {
             UniversViewModel.finishUnivers(SHARED_PREFERENCE_KEY.UNIVERS_3)
             startActivity(Intent(this, ResultsActivity::class.java))
         }
+        binding.root.addSystemWindowInsetToMargin()
     }
 }
