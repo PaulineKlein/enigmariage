@@ -31,12 +31,6 @@ abstract class BaseActivity : AppCompatActivity() {
         })
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        finish()
-        overridePendingTransition(R.anim.neutral, R.anim.slide_out)
-    }
-
     protected fun launchCountDown() {
         val actualNbOfCountDown =
             SharedPreferenceStored.getValue(SHARED_PREFERENCE_KEY.COUNT_DOWN)

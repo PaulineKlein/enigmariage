@@ -1,5 +1,7 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
 
 Properties properties = new Properties()
 if (project.rootProject.file('local.properties').canRead()) {
@@ -7,7 +9,7 @@ if (project.rootProject.file('local.properties').canRead()) {
 }
 
 android {
-    compileSdk 35
+    compileSdk 36
     namespace "com.pklein.mariage"
 
     compileOptions {
@@ -26,10 +28,10 @@ android {
 
     defaultConfig {
         applicationId "com.pklein.enigmariage"
-        minSdkVersion 21
-        targetSdkVersion 35
-        versionCode 6
-        versionName "3.0"
+        minSdkVersion 23
+        targetSdkVersion 36
+        versionCode 7
+        versionName "3.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -62,20 +64,21 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.7.0'
-    implementation 'androidx.core:core-ktx:1.15.0'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    implementation libs.kotlin.reflect
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.core.ktx
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.test.junit
+    androidTestImplementation libs.androidx.test.espresso
 
     //composants graphiques :
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
-    implementation 'com.google.android.material:material:1.12.0'
-    implementation 'com.airbnb.android:lottie:6.6.2'
-    implementation 'org.apache.commons:commons-lang3:3.8'
+    implementation libs.androidx.cardview
+    implementation libs.androidx.constraintlayout
+    implementation libs.google.material
+    implementation libs.airbnb.lottie
+    implementation libs.apache.commons.lang3
+    implementation(libs.activity.ktx)
 
     // image zoom :
-    implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
+    implementation libs.stfalcon.imageviewer
 }
