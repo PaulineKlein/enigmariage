@@ -4,30 +4,32 @@
     android:id="@+id/scroll_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_24">
+    android:padding="@dimen/margin_24">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_splash_titre"
         style="@style/TitreSplash"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/splash_titre"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/iv_splash_bateau"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linear_buttons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="spread" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_splash_bateau"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_8"
+        android:layout_width="250dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_4"
         android:adjustViewBounds="true"
         android:cropToPadding="false"
+        android:scaleType="fitCenter"
         android:src="@drawable/image_bateau_mariage"
-        app:layout_constraintBottom_toTopOf="@+id/linear_buttons"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/linear_buttons"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_splash_titre" />
 
@@ -35,12 +37,11 @@
         android:id="@+id/linear_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_16"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_splash_bateau">
+        app:layout_constraintStart_toEndOf="@+id/iv_splash_bateau"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_nvlle_partie"
@@ -59,4 +60,5 @@
             android:enabled="false"
             android:text="@string/continuer" />
     </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

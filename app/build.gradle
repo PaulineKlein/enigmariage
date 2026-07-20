@@ -1,6 +1,5 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.application)
 }
 
 Properties properties = new Properties()
@@ -9,7 +8,7 @@ if (project.rootProject.file('local.properties').canRead()) {
 }
 
 android {
-    compileSdk 36
+    compileSdk 37
     namespace "com.pklein.mariage"
 
     compileOptions {
@@ -29,9 +28,9 @@ android {
     defaultConfig {
         applicationId "com.pklein.enigmariage"
         minSdkVersion 23
-        targetSdkVersion 36
-        versionCode 7
-        versionName "3.1"
+        targetSdkVersion 37
+        versionCode 8
+        versionName "3.2"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

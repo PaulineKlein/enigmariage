@@ -25,12 +25,13 @@ class SalleDinerJaponSixViewPagerAdapter(
     private val listener: SalleDinerJaponSixLayoutListener
 ) : PagerAdapter(), CheckEmptyTextWatcherListener {
 
-    lateinit var layout: ViewGroup
+    private val pages = mutableMapOf<Int, ViewGroup>()
 
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
         val modelObject = SalleDinerJaponSixLayout.entries[position]
         val inflater = LayoutInflater.from(mContext)
-        layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
+        val layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
+        pages[position] = layout
 
         if (modelObject == SalleDinerJaponSixLayout.DINER2) {
             val answer = layout.findViewById<AppCompatEditText>(R.id.et_diner_japon_six_answer)
@@ -44,6 +45,7 @@ class SalleDinerJaponSixViewPagerAdapter(
     }
 
     override fun destroyItem(collection: ViewGroup, position: Int, view: Any) {
+        pages.remove(position)
         collection.removeView(view as View)
     }
 
@@ -56,10 +58,12 @@ class SalleDinerJaponSixViewPagerAdapter(
     }
 
     override fun onTextEmpty() {
-        layout.findViewById<AppCompatButton>(R.id.button_diner_japon_six)?.isEnabled = false
+        pages[SalleDinerJaponSixLayout.DINER2.ordinal]
+            ?.findViewById<AppCompatButton>(R.id.button_diner_japon_six)?.isEnabled = false
     }
 
     override fun onTextNotEmpty() {
-        layout.findViewById<AppCompatButton>(R.id.button_diner_japon_six)?.isEnabled = true
+        pages[SalleDinerJaponSixLayout.DINER2.ordinal]
+            ?.findViewById<AppCompatButton>(R.id.button_diner_japon_six)?.isEnabled = true
     }
 }

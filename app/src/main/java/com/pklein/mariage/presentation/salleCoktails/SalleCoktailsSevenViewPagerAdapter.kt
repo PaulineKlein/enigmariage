@@ -25,12 +25,13 @@ class SalleCoktailsSevenViewPagerAdapter(
     private val listener: SalleCoktailsSevenLayoutListener
 ) : PagerAdapter(), CheckEmptyTextWatcherListener {
 
-    lateinit var layout: ViewGroup
+    private val pages = mutableMapOf<Int, ViewGroup>()
 
     override fun instantiateItem(collection: ViewGroup, position: Int): Any {
         val modelObject = SalleCoktailsSevenLayout.entries[position]
         val inflater = LayoutInflater.from(mContext)
-        layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
+        val layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
+        pages[position] = layout
 
         if (modelObject == SalleCoktailsSevenLayout.COCKTAILS2) {
             val answer = layout.findViewById<AppCompatEditText>(R.id.et_question_answer)
@@ -44,6 +45,7 @@ class SalleCoktailsSevenViewPagerAdapter(
     }
 
     override fun destroyItem(collection: ViewGroup, position: Int, view: Any) {
+        pages.remove(position)
         collection.removeView(view as View)
     }
 
@@ -56,10 +58,12 @@ class SalleCoktailsSevenViewPagerAdapter(
     }
 
     override fun onTextEmpty() {
-        layout.findViewById<AppCompatButton>(R.id.button_cocktail_seven)?.isEnabled = false
+        pages[SalleCoktailsSevenLayout.COCKTAILS2.ordinal]
+            ?.findViewById<AppCompatButton>(R.id.button_cocktail_seven)?.isEnabled = false
     }
 
     override fun onTextNotEmpty() {
-        layout.findViewById<AppCompatButton>(R.id.button_cocktail_seven)?.isEnabled = true
+        pages[SalleCoktailsSevenLayout.COCKTAILS2.ordinal]
+            ?.findViewById<AppCompatButton>(R.id.button_cocktail_seven)?.isEnabled = true
     }
 }
