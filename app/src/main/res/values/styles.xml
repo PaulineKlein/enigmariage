@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -9,12 +9,13 @@
         <item name="colorControlActivated">@color/colorPrimary</item>
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
-        <item name="android:colorBackground">@color/background</item>
+        <item name="android:colorBackground">@color/cadenaBackground</item>
+        <item name="android:windowBackground">@drawable/background</item>
         <item name="android:fontFamily">@font/balsamiq_sans_regular</item>
     </style>
 
     <style name="TitreSplash">
-        <item name="android:textSize">40sp</item>
+        <item name="android:textSize">48sp</item>
         <item name="android:fontFamily">@font/batikworldwide</item>
         <item name="android:textColor">@color/bleuFonce</item>
         <item name="android:textAlignment">center</item>
@@ -35,43 +36,46 @@
 
     <style name="Body">
         <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/balsamiq_sans_regular</item>
         <item name="android:textColor">@color/text</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
     <style name="Body_link">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/bleuFonce</item>
-        <item name="android:fontFamily">@font/balsamiq_sans_italic</item>
+        <item name="android:fontFamily">@font/balsamiq_sans_regular</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
     <style name="Body_big">
         <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/balsamiq_sans_regular</item>
         <item name="android:textColor">@color/text</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
     <style name="Body_parchemin">
         <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/balsamiq_sans_regular</item>
         <item name="android:textColor">@color/parchemin_text</item>
         <item name="android:textAlignment">center</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
     <style name="Success">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/bleuFonce</item>
         <item name="android:fontFamily">@font/balsamiq_sans_bold</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
     <style name="Erreur">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/erreur</item>
         <item name="android:fontFamily">@font/balsamiq_sans_bold</item>
-    </style>
-
-    <style name="CountDown">
-        <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/bleuFonce</item>
-        <item name="android:fontFamily">@font/balsamiq_sans_regular</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
     <style name="button" parent="Widget.AppCompat.Button">
@@ -79,11 +83,12 @@
         <item name="android:textColor">@color/button_text</item>
         <item name="android:padding">@dimen/button_padding</item>
         <item name="android:elevation">@dimen/button_elevation</item>
+        <item name="android:stateListAnimator">@null</item>
     </style>
 
     <style name="button_cadena" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/background_button_cadena</item>
-        <item name="android:textColor">@color/background</item>
+        <item name="android:textColor">@color/cadenaBackground</item>
         <item name="android:textSize">24sp</item>
         <item name="android:elevation">@dimen/button_elevation</item>
     </style>
@@ -93,8 +98,13 @@
         <item name="android:windowExitAnimation">@anim/fade_out</item>
     </style>
 
+    <style name="NotificationAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_from_top</item>
+        <item name="android:windowExitAnimation">@anim/slide_to_top</item>
+    </style>
+
     <style name="CustomInput">
-        <item name="android:textColorHint">@color/dark_grey</item>
+        <item name="android:textColorHint">@color/hint</item>
         <item name="android:textColor">@color/text</item>
         <item name="android:drawableStart">@drawable/custom_input_icon</item>
         <item name="android:drawablePadding">@dimen/editText_padding</item>

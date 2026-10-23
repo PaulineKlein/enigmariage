@@ -1,15 +1,14 @@
 package com.pklein.mariage.presentation.introduction
 
-import android.content.Context
+import android.view.HapticFeedbackConstants
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatButton
-import androidx.viewpager.widget.PagerAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.pklein.mariage.R
-import com.pklein.mariage.databinding.ActivityIntroductionBinding
 
-enum class IntroLayout(val layoutResId: Int) {
+private enum class IntroLayout(val layoutResId: Int) {
     INTRO1(R.layout.fragment_introduction_1),
     INTRO2(R.layout.fragment_introduction_2),
     INTRO3(R.layout.fragment_introduction_3)
@@ -17,31 +16,45 @@ enum class IntroLayout(val layoutResId: Int) {
 
 interface IntroLayoutListener {
     fun onClickButton()
+    fun onNoxTapped()
 }
 
-class IntroductionViewPagerAdapter(private val mContext: Context, private val listener: IntroLayoutListener) : PagerAdapter() {
-    override fun instantiateItem(collection: ViewGroup, position: Int): Any {
-        val modelObject = IntroLayout.entries[position]
-        val inflater = LayoutInflater.from(mContext)
-        val layout = inflater.inflate(modelObject.layoutResId, collection, false) as ViewGroup
-        if(modelObject == IntroLayout.INTRO3 ) {
-            layout.findViewById<AppCompatButton>(R.id.button_introduction)?.setOnClickListener {
-                listener.onClickButton()
+private const val NOX_MAX_COUNT = 5
+
+class IntroductionViewPagerAdapter(
+    private val listener: IntroLayoutListener
+) : RecyclerView.Adapter<IntroductionViewPagerAdapter.IntroViewHolder>() {
+    class IntroViewHolder(view: View) : RecyclerView.ViewHolder(view)
+
+    private var noxTapCount = 0
+
+    override fun getItemViewType(position: Int) = position
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IntroViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(IntroLayout.entries[viewType].layoutResId, parent, false)
+        return IntroViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: IntroViewHolder, position: Int) {
+        when (IntroLayout.entries[position]) {
+            IntroLayout.INTRO1 -> {
+                holder.itemView.findViewById<View>(R.id.iv_introduction_nox)
+                    ?.setOnClickListener {
+                        it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+                        noxTapCount++
+                        if (noxTapCount == NOX_MAX_COUNT) listener.onNoxTapped()
+                    }
             }
+
+            IntroLayout.INTRO3 -> {
+                holder.itemView.findViewById<AppCompatButton>(R.id.button_introduction)
+                    ?.setOnClickListener { listener.onClickButton() }
+            }
+
+            else -> Unit
         }
-        collection.addView(layout)
-        return layout
     }
 
-    override fun destroyItem(collection: ViewGroup, position: Int, view: Any) {
-        collection.removeView(view as View)
-    }
-
-    override fun getCount(): Int {
-        return IntroLayout.entries.size
-    }
-
-    override fun isViewFromObject(view: View, `object`: Any): Boolean {
-        return view === `object`
-    }
+    override fun getItemCount() = IntroLayout.entries.size
 }

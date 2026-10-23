@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_salle_diner_cambodge"
+    app:startDestination="@id/salleDinerCambodgeOneFragment">
+
+    <fragment
+        android:id="@+id/salleDinerCambodgeOneFragment"
+        android:name="com.pklein.mariage.presentation.destinations.cambodge.SalleDinerCambodgeOneFragment"
+        android:label="SalleDinerCambodgeOne">
+        <action
+            android:id="@+id/action_cambodge_one_to_two"
+            app:destination="@id/salleDinerCambodgeTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCambodgeTwoFragment"
+        android:name="com.pklein.mariage.presentation.destinations.cambodge.SalleDinerCambodgeTwoFragment"
+        android:label="SalleDinerCambodgeTwo">
+        <action
+            android:id="@+id/action_cambodge_two_to_three"
+            app:destination="@id/salleDinerCambodgeThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCambodgeThreeFragment"
+        android:name="com.pklein.mariage.presentation.destinations.cambodge.SalleDinerCambodgeThreeFragment"
+        android:label="SalleDinerCambodgeThree">
+        <action
+            android:id="@+id/action_cambodge_three_to_four"
+            app:destination="@id/salleDinerCambodgeFourFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCambodgeFourFragment"
+        android:name="com.pklein.mariage.presentation.destinations.cambodge.SalleDinerCambodgeFourFragment"
+        android:label="SalleDinerCambodgeFour">
+        <action
+            android:id="@+id/action_cambodge_four_to_five"
+            app:destination="@id/salleDinerCambodgeFiveFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCambodgeFiveFragment"
+        android:name="com.pklein.mariage.presentation.destinations.cambodge.SalleDinerCambodgeFiveFragment"
+        android:label="SalleDinerCambodgeFive" />
+
+</navigation>

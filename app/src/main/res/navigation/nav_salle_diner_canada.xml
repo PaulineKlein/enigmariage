@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_salle_diner_canada"
+    app:startDestination="@id/salleDinerCanadaOneFragment">
+
+    <fragment
+        android:id="@+id/salleDinerCanadaOneFragment"
+        android:name="com.pklein.mariage.presentation.destinations.canada.SalleDinerCanadaOneFragment"
+        android:label="SalleDinerCanadaOne">
+        <action
+            android:id="@+id/action_canada_one_to_two"
+            app:destination="@id/salleDinerCanadaTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCanadaTwoFragment"
+        android:name="com.pklein.mariage.presentation.destinations.canada.SalleDinerCanadaTwoFragment"
+        android:label="SalleDinerCanadaTwo">
+        <action
+            android:id="@+id/action_canada_two_to_three"
+            app:destination="@id/salleDinerCanadaThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCanadaThreeFragment"
+        android:name="com.pklein.mariage.presentation.destinations.canada.SalleDinerCanadaThreeFragment"
+        android:label="SalleDinerCanadaThree">
+        <action
+            android:id="@+id/action_canada_three_to_four"
+            app:destination="@id/salleDinerCanadaFourFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCanadaFourFragment"
+        android:name="com.pklein.mariage.presentation.destinations.canada.SalleDinerCanadaFourFragment"
+        android:label="SalleDinerCanadaFour">
+        <action
+            android:id="@+id/action_canada_four_to_five"
+            app:destination="@id/salleDinerCanadaFiveFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCanadaFiveFragment"
+        android:name="com.pklein.mariage.presentation.destinations.canada.SalleDinerCanadaFiveFragment"
+        android:label="SalleDinerCanadaFive">
+        <action
+            android:id="@+id/action_canada_five_to_six"
+            app:destination="@id/salleDinerCanadaSixFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCanadaSixFragment"
+        android:name="com.pklein.mariage.presentation.destinations.canada.SalleDinerCanadaSixFragment"
+        android:label="SalleDinerCanadaSix" />
+
+</navigation>

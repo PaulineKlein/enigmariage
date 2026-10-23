@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_salle_diner_japon"
+    app:startDestination="@id/salleDinerJaponOneFragment">
+
+    <fragment
+        android:id="@+id/salleDinerJaponOneFragment"
+        android:name="com.pklein.mariage.presentation.destinations.japon.SalleDinerJaponOneFragment"
+        android:label="SalleDinerJaponOne">
+        <action
+            android:id="@+id/action_japon_one_to_two"
+            app:destination="@id/salleDinerJaponTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerJaponTwoFragment"
+        android:name="com.pklein.mariage.presentation.destinations.japon.SalleDinerJaponTwoFragment"
+        android:label="SalleDinerJaponTwo">
+        <action
+            android:id="@+id/action_japon_two_to_three"
+            app:destination="@id/salleDinerJaponThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerJaponThreeFragment"
+        android:name="com.pklein.mariage.presentation.destinations.japon.SalleDinerJaponThreeFragment"
+        android:label="SalleDinerJaponThree">
+        <action
+            android:id="@+id/action_japon_three_to_four"
+            app:destination="@id/salleDinerJaponFourFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerJaponFourFragment"
+        android:name="com.pklein.mariage.presentation.destinations.japon.SalleDinerJaponFourFragment"
+        android:label="SalleDinerJaponFour">
+        <action
+            android:id="@+id/action_japon_four_to_five"
+            app:destination="@id/salleDinerJaponFiveFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerJaponFiveFragment"
+        android:name="com.pklein.mariage.presentation.destinations.japon.SalleDinerJaponFiveFragment"
+        android:label="SalleDinerJaponFive">
+        <action
+            android:id="@+id/action_japon_five_to_six"
+            app:destination="@id/salleDinerJaponSixFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerJaponSixFragment"
+        android:name="com.pklein.mariage.presentation.destinations.japon.SalleDinerJaponSixFragment"
+        android:label="SalleDinerJaponSix" />
+
+</navigation>

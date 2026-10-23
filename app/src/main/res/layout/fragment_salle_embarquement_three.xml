@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/margin_16"
+    android:paddingTop="@dimen/margin_16"
+    android:paddingRight="@dimen/margin_16">
+
+    <ScrollView
+        style="@style/Scrollbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/button_embarquement_three"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/home_accessibility"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_embarquement_three_titre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_embarquement_three_titre"
+                app:srcCompat="@drawable/ic_home" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_embarquement_three_titre"
+                style="@style/Titre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/embarquement_one_titre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_home"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_embarquement_three_message_1"
+                style="@style/Body_big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/embarquement_three_message_1"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/tv_embarquement_three_enigme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_embarquement_three_titre"
+                app:layout_constraintVertical_chainStyle="spread" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tv_embarquement_three_enigme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:cardBackgroundColor="@color/parchemin"
+                app:cardCornerRadius="@dimen/button_cadena_radius"
+                app:contentPadding="@dimen/margin_24"
+                app:layout_constraintBottom_toTopOf="@+id/tv_embarquement_three_message_2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_three_message_1">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_enigme"
+                    style="@style/Body_parchemin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/embarquement_three_enigme_rabbit" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_embarquement_three_message_2"
+                style="@style/Body_big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/embarquement_three_message_2"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/tv_embarquement_three_enigme_help"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_three_enigme" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/tv_embarquement_three_enigme_help"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                app:cardBackgroundColor="@color/help"
+                app:cardCornerRadius="@dimen/button_cadena_radius"
+                app:cardElevation="@dimen/button_elevation"
+                app:contentPadding="@dimen/margin_24"
+                app:layout_constraintBottom_toTopOf="@+id/tv_embarquement_three_question"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_three_message_2">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tv_description"
+                    style="@style/Body_parchemin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/embarquement_three_help_rabbit"
+                    android:textColor="@color/help_text" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_embarquement_three_question"
+                style="@style/Body_big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:text="@string/embarquement_three_question"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/et_embarquement_three_answer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_three_enigme_help" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_embarquement_three_answer"
+                style="@style/CustomInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:hint="@string/embarquement_three_reponse_hint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_embarquement_three_question" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_embarquement_three"
+        style="@style/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:enabled="false"
+        android:text="@string/valider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/layout_indice"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.50" />
+
+    <include
+        android:id="@+id/layout_indice"
+        layout="@layout/indice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginBottom="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_embarquement_three" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

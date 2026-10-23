@@ -22,12 +22,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/image_enigme_accessibility"
         android:cropToPadding="false"
-        android:src="@drawable/image_diner"
         app:layout_constraintBottom_toTopOf="@id/layout_zoom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_diner_one_message_1" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_diner_one_message_1"
+        app:srcCompat="@drawable/image_diner" />
 
     <include
         android:id="@+id/layout_zoom"

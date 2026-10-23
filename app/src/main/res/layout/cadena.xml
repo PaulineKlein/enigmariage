@@ -128,7 +128,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/image_back" />
+                    android:contentDescription="@string/cadena_delete_accessibility"
+                    app:srcCompat="@drawable/image_back" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/button_zero"
@@ -144,7 +145,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/image_check_disabled" />
+                    android:contentDescription="@string/cadena_validate_accessibility"
+                    app:srcCompat="@drawable/image_check_disabled" />
             </TableRow>
         </TableLayout>
 

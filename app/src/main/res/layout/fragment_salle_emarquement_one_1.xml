@@ -1,62 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_home"
-        app:layout_constraintBottom_toBottomOf="@id/tv_embarquement_one_titre"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/tv_embarquement_one_titre" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_embarquement_one_titre"
-        style="@style/Titre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/embarquement_one_titre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/iv_home"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tv_embarquement_one_message_1"
-        style="@style/Body_big"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="@dimen/margin_8"
-        android:text="@string/embarquement_one_message_1"
-        app:layout_constraintBottom_toTopOf="@id/iv_embarquement"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_embarquement_one_titre" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/home_accessibility"
+                app:layout_constraintBottom_toBottomOf="@id/tv_embarquement_one_titre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_embarquement_one_titre"
+                app:srcCompat="@drawable/ic_home" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/iv_embarquement"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_16"
-        android:adjustViewBounds="true"
-        android:src="@drawable/image_number_one"
-        app:layout_constraintBottom_toTopOf="@id/layout_zoom"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_embarquement_one_message_1" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_embarquement_one_titre"
+                style="@style/Titre"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/embarquement_one_titre"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_home"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-        android:id="@+id/layout_zoom"
-        layout="@layout/zoom"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_embarquement" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_embarquement_one_message_1"
+                style="@style/Body_big"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:gravity="center"
+                android:text="@string/embarquement_one_message_1_rabbit"
+                app:layout_constraintBottom_toTopOf="@id/iv_embarquement"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_embarquement_one_titre" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_embarquement"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_16"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/image_enigme_accessibility"
+                app:layout_constraintBottom_toTopOf="@id/layout_zoom"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_embarquement_one_message_1"
+                app:srcCompat="@drawable/image_number_one_rabbit" />
+
+            <include
+                android:id="@+id/layout_zoom"
+                layout="@layout/zoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_embarquement" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,13 +6,16 @@
     <application
         android:name=".MariageApplication"
         android:allowBackup="false"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:enableOnBackInvokedCallback="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="${crashlyticsCollectionEnabled}" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.pklein.mariage.fileprovider"
@@ -22,6 +25,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
         </provider>
+
         <activity
             android:name=".presentation.SplashActivity"
             android:exported="true">
@@ -33,46 +37,28 @@
         </activity>
         <activity android:name=".presentation.introduction.IntroductionActivity" />
         <activity android:name=".presentation.introduction.AddPlayerActivity" />
-        <activity android:name=".presentation.localisationBateau.LocalisationBateauOneActivity" />
-        <activity android:name=".presentation.localisationBateau.LocalisationBateauThreeActivity" />
-        <activity android:name=".presentation.salleEmbarquement.SalleEmbarquementOneActivity" />
-        <activity android:name=".presentation.salleEmbarquement.SalleEmbarquementTwoActivity" />
-        <activity android:name=".presentation.salleEmbarquement.SalleEmbarquementTwoNotificationActivity" />
-        <activity android:name=".presentation.salleEmbarquement.SalleEmbarquementThreeActivity" />
-        <activity android:name=".presentation.salleCoktails.SalleCoktailsOneActivity" />
-        <activity android:name=".presentation.salleCoktails.SalleCoktailsThreeActivity" />
-        <activity android:name=".presentation.salleCoktails.SalleCoktailsFourActivity" />
-        <activity android:name=".presentation.salleCoktails.SalleCoktailsFiveActivity" />
-        <activity android:name=".presentation.salleCoktails.SalleCoktailsSixActivity" />
-        <activity android:name=".presentation.salleCoktails.SalleCoktailsSevenActivity" />
-        <activity android:name=".presentation.salleDiner.SalleDinerOneActivity" />
-        <activity android:name=".presentation.salleDiner.SalleDinerTwoActivity" />
-        <activity android:name=".presentation.salleDiner.canada.SalleDinerCanadaOneActivity" />
-        <activity android:name=".presentation.salleDiner.canada.SalleDinerCanadaTwoActivity" />
-        <activity android:name=".presentation.salleDiner.canada.SalleDinerCanadaThreeActivity" />
-        <activity android:name=".presentation.salleDiner.canada.SalleDinerCanadaFourActivity" />
-        <activity android:name=".presentation.salleDiner.canada.SalleDinerCanadaFiveActivity" />
-        <activity android:name=".presentation.salleDiner.canada.SalleDinerCanadaSixActivity" />
-        <activity android:name=".presentation.salleDiner.japon.SalleDinerJaponOneActivity" />
-        <activity android:name=".presentation.salleDiner.japon.SalleDinerJaponTwoActivity" />
-        <activity android:name=".presentation.salleDiner.japon.SalleDinerJaponThreeActivity" />
-        <activity android:name=".presentation.salleDiner.japon.SalleDinerJaponFourActivity" />
-        <activity android:name=".presentation.salleDiner.japon.SalleDinerJaponFiveActivity" />
-        <activity android:name=".presentation.salleDiner.japon.SalleDinerJaponSixActivity" />
-        <activity android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeOneActivity" />
-        <activity android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeTwoActivity" />
-        <activity android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeThreeActivity" />
-        <activity android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeFourActivity" />
-        <activity android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeFiveActivity" />
-        <activity android:name=".presentation.sallePhotobooth.SallePhotoboothZeroActivity" />
-        <activity android:name=".presentation.sallePhotobooth.SallePhotoboothOneActivity" />
-        <activity android:name=".presentation.sallePhotobooth.SallePhotoboothTwoActivity" />
-        <activity android:name=".presentation.combatFinal.CombatFinalOneActivity" />
-        <activity android:name=".presentation.combatFinal.CombatFinalTwoActivity" />
-        <activity android:name=".presentation.combatFinal.CombatFinalThreeActivity" />
-        <activity android:name=".presentation.resultat.ResultsActivity" />
-        <activity android:name=".presentation.CarnetBordActivity" />
-        <activity android:name=".presentation.CarnetBord2Activity" />
+        <activity android:name=".presentation.localisationBateau.LocalisationBateauActivity" />
+        <activity android:name=".presentation.salleCocktails.SalleCocktailsActivity" />
+        <activity
+            android:name=".presentation.salleReception.ReceptionActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.destinations.caraibes.SalleDinerCaraibesActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.destinations.tanzanie.SalleDinerTanzanieActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.destinations.italie.SalleDinerItalieActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".presentation.destinations.canada.SalleDinerCanadaActivity" />
+        <activity android:name=".presentation.destinations.japon.SalleDinerJaponActivity" />
+        <activity android:name=".presentation.destinations.cambodge.SalleDinerCambodgeActivity" />
+        <activity android:name=".presentation.sallePhotobooth.SallePhotoboothActivity" />
+        <activity android:name=".presentation.combatFinal.CombatFinalActivity" />
+        <activity android:name=".presentation.carnetBord.CarnetBordActivity" />
+        <activity android:name=".presentation.carnetBord.CarnetBordUniversActivity" />
+        <activity android:name=".presentation.trophies.TrophyActivity" />
     </application>
 
 </manifest>

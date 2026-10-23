@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="@dimen/margin_16"
+    android:paddingTop="@dimen/margin_16"
+    android:paddingEnd="@dimen/margin_16">
+
+    <ScrollView
+        style="@style/Scrollbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@+id/button_question"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/iv_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/home_accessibility"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_question_titre"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_question_titre"
+                app:srcCompat="@drawable/ic_home" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_question_titre"
+                style="@style/Titre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/iv_home"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Mon titre" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv_question_message"
+                style="@style/Body"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_32"
+                android:gravity="center"
+                android:textColor="@color/bleuFonce"
+                app:layout_constraintBottom_toTopOf="@+id/animationQuestion"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_question_titre"
+                app:layout_constraintVertical_bias="0.4"
+                app:layout_constraintVertical_chainStyle="packed"
+                tools:text="Mon message qui peut etre très court ou très long" />
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:id="@+id/animationQuestion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_24"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="@+id/et_question_answer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_question_message">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/animationQuestion_lottie"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:contentDescription="@null"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="animation_question_mark.json"
+                    app:lottie_loop="false" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/animationQuestion_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@null"
+                    android:visibility="gone"
+                    tools:src="@drawable/image_parchemin_sirene"
+                    tools:visibility="visible" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_question_answer"
+                style="@style/CustomInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="@dimen/margin_24"
+                android:hint="@string/reponse"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/animationQuestion" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/button_question"
+        style="@style/button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginBottom="@dimen/margin_16"
+        android:enabled="false"
+        android:text="@string/valider"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/layout_indice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.50" />
+
+    <include
+        android:id="@+id/layout_indice"
+        layout="@layout/indice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/button_question"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/button_question"
+        app:layout_constraintTop_toTopOf="@id/button_question"
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

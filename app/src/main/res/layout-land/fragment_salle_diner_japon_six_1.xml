@@ -10,9 +10,9 @@
         style="@style/Body_big"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:padding="@dimen/margin_16"
         android:text="@string/diner_japon_six_message_1"
         android:textAlignment="center"
-        android:padding="@dimen/margin_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/iv_tapioca"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,12 +23,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@null"
         android:scaleType="fitCenter"
-        android:src="@drawable/image_tapioca"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_diner_japon_six_message_1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintWidth_percent="0.5"
+        app:srcCompat="@drawable/image_tapioca" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,18 +6,20 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.pklein.mariage.R
-import com.pklein.mariage.data.PlayerViewModel
 import com.pklein.mariage.databinding.ActivitySplashBinding
 import com.pklein.mariage.presentation.introduction.IntroductionActivity
+import com.pklein.mariage.presentation.trophies.TrophyActivity
 import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.Alerts
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class SplashActivity : BaseActivity() {
-
     lateinit var binding: ActivitySplashBinding
+    private val gameProgress: GameProgressViewModel by viewModels()
 
     private val requestNotificationPermission = registerForActivityResult(
         ActivityResultContracts.RequestPermission()
@@ -29,6 +31,26 @@ class SplashActivity : BaseActivity() {
         setContentView(binding.root)
         requestNotificationPermissionIfNeeded()
         initButton()
+        animateEntrance()
+    }
+    private fun animateEntrance() {
+        val offset = 60f
+        listOf(
+            binding.tvSplashTitre,
+            binding.tvSplashTagline,
+            binding.ivSplashBateau,
+            binding.linearButtons
+        ).forEachIndexed { i, view ->
+            view.let {
+                it.translationY = offset
+                it.animate()
+                    .alpha(1f)
+                    .translationY(0f)
+                    .setStartDelay(120L * i)
+                    .setDuration(500)
+                    .start()
+            }
+        }
     }
 
     private fun requestNotificationPermissionIfNeeded() {
@@ -41,7 +63,7 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun initButton() {
-        val page = PlayerViewModel.getPage()
+        val page = gameProgress.page
 
         if (page.isNullOrEmpty()) {
             binding.buttonNvllePartie.setOnClickListener {
@@ -58,6 +80,9 @@ class SplashActivity : BaseActivity() {
                 showAlert()
             }
         }
+        binding.buttonTrophees.setOnClickListener {
+            startActivity(Intent(this, TrophyActivity::class.java))
+        }
         binding.scrollRoot.addSystemWindowInsetToMargin()
     }
 
@@ -73,7 +98,7 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun launchNewGame() {
-        PlayerViewModel.resetStorage()
+        gameProgress.resetStorage()
         val intent = Intent(this, IntroductionActivity::class.java)
         startActivity(intent)
     }

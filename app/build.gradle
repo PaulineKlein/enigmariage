@@ -1,5 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
+    alias(libs.plugins.firebase.crashlytics)
+    alias(libs.plugins.kotlin.compose)
 }
 
 Properties properties = new Properties()
@@ -12,8 +17,8 @@ android {
     namespace "com.pklein.mariage"
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility JavaVersion.VERSION_25
+        targetCompatibility JavaVersion.VERSION_25
     }
 
     signingConfigs {
@@ -27,7 +32,7 @@ android {
 
     defaultConfig {
         applicationId "com.pklein.enigmariage"
-        minSdkVersion 23
+        minSdkVersion 24
         targetSdkVersion 37
         versionCode 8
         versionName "3.2"
@@ -37,7 +42,7 @@ android {
 
     buildFeatures {
         viewBinding true
-        dataBinding true
+        compose true
     }
 
     buildTypes {
@@ -48,6 +53,7 @@ android {
             signingConfig signingConfigs.release
             enableUnitTestCoverage true
             enableAndroidTestCoverage true
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "false"]
         }
         release {
             debuggable false
@@ -56,13 +62,20 @@ android {
             signingConfig signingConfigs.release
             enableUnitTestCoverage false
             enableAndroidTestCoverage false
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
         }
     }
+}
 
+afterEvaluate {
+    tasks.named('processDebugGoogleServices').configure { enabled = false }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libs.androidx.navigation.fragment.ktx
+    implementation libs.androidx.navigation.ui.ktx
+    implementation libs.androidx.viewpager2
     implementation libs.kotlin.reflect
     implementation libs.androidx.appcompat
     implementation libs.androidx.core.ktx
@@ -75,9 +88,26 @@ dependencies {
     implementation libs.androidx.constraintlayout
     implementation libs.google.material
     implementation libs.airbnb.lottie
+    implementation libs.airbnb.lottie.compose
     implementation libs.apache.commons.lang3
     implementation(libs.activity.ktx)
 
     // image zoom :
     implementation libs.stfalcon.imageviewer
+
+    // dependency injection :
+    implementation libs.hilt.android
+    ksp libs.hilt.compiler
+
+    // firebase :
+    implementation platform(libs.firebase.bom)
+    implementation libs.firebase.crashlytics
+
+    // compose :
+    implementation platform(libs.androidx.compose.bom)
+    implementation libs.androidx.compose.ui
+    implementation libs.androidx.compose.ui.tooling.preview
+    implementation libs.androidx.compose.material3
+    debugImplementation libs.androidx.compose.ui.tooling
+
 }

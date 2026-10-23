@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_salle_cocktails"
+    app:startDestination="@id/salleCocktailsOneFragment">
+
+    <fragment
+        android:id="@+id/salleCocktailsOneFragment"
+        android:name="com.pklein.mariage.presentation.salleCocktails.SalleCocktailsOneFragment"
+        android:label="SalleCocktailsOne">
+        <action
+            android:id="@+id/action_one_to_two"
+            app:destination="@id/salleCocktailsTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleCocktailsTwoFragment"
+        android:name="com.pklein.mariage.presentation.salleCocktails.SalleCocktailsTwoFragment"
+        android:label="SalleCocktailsTwo">
+        <action
+            android:id="@+id/action_two_to_three"
+            app:destination="@id/salleCocktailsThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleCocktailsThreeFragment"
+        android:name="com.pklein.mariage.presentation.salleCocktails.SalleCocktailsThreeFragment"
+        android:label="SalleCocktailsThree">
+        <action
+            android:id="@+id/action_three_to_four"
+            app:destination="@id/salleCocktailsFourFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleCocktailsFourFragment"
+        android:name="com.pklein.mariage.presentation.salleCocktails.SalleCocktailsFourFragment"
+        android:label="SalleCocktailsFour">
+        <action
+            android:id="@+id/action_four_to_five"
+            app:destination="@id/salleCocktailsFiveFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleCocktailsFiveFragment"
+        android:name="com.pklein.mariage.presentation.salleCocktails.SalleCocktailsFiveFragment"
+        android:label="SalleCocktailsFive">
+        <action
+            android:id="@+id/action_five_to_six"
+            app:destination="@id/salleCocktailsSixFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleCocktailsSixFragment"
+        android:name="com.pklein.mariage.presentation.salleCocktails.SalleCocktailsSixFragment"
+        android:label="SalleCocktailsSix">
+
+        <action
+            android:id="@+id/action_six_to_salle_diner_one"
+            app:destination="@id/salleDinerOneFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerOneFragment"
+        android:name="com.pklein.mariage.presentation.salleCocktails.salleDiner.SalleDinerOneFragment"
+        android:label="SalleDinerOne">
+        <action
+            android:id="@+id/action_diner_one_to_two"
+            app:destination="@id/salleDinerTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerTwoFragment"
+        android:name="com.pklein.mariage.presentation.salleCocktails.salleDiner.SalleDinerTwoFragment"
+        android:label="SalleDinerTwo" />
+
+</navigation>

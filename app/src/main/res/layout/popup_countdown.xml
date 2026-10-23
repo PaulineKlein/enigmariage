@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.AppCompatTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/tv_popup_title"
-    style="@style/CountDown"
-    android:layout_width="300dp"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/background_popup"
     android:gravity="center"
-    android:padding="@dimen/margin_16"
-    tools:text="Popup de countdown" />
+    android:orientation="horizontal"
+    android:padding="@dimen/margin_8">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:contentDescription="@null"
+        android:tint="@color/erreur"
+        app:srcCompat="@drawable/ic_clock" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_popup_title"
+        style="@style/Erreur"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:gravity="center"
+        tools:text="Popup de countdown" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

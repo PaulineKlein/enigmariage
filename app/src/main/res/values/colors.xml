@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#dbffd5</color>
-    <color name="colorPrimaryPlus">#a4ff95</color>
-    <color name="colorPrimaryLight">#ffafbd</color>
-    <color name="colorPrimaryLightPlus">#ff879b</color>
+    <color name="colorPrimary">#69B4B7</color>
     <color name="colorPrimaryDark">#3c6465</color>
     <color name="colorAccent">#eb835e</color>
-    <color name="background">#a4c8c9</color>
-    <color name="background_input">#a4c8c9</color>
+    <color name="cadenaBackground">#a4c8c9</color>
     <color name="bleuFonce">#002e3e</color>
-    <color name="orangeFonce">#74290d</color>
+    <color name="bleuLightFonce">#005E85</color>
     <color name="erreur">#b0171f</color>
     <color name="grey">#CCCCCC</color>
-    <color name="dark_grey">#8c8c8c</color>
     <color name="text">#454545</color>
+    <color name="hint">#4A7E80</color>
+    <color name="colorDotUnselected">#ff879b</color>
     <color name="parchemin">#e9d5b5</color>
     <color name="parchemin_text">#a17430</color>
-    <color name="help">#a3d5b5</color>
-    <color name="help_text">#3d8657</color>
+    <color name="help">#c1deb8</color>
+    <color name="helpFonce">#A3C1A2</color>
+    <color name="help_text">#3a6b2a</color>
+    <color name="gradient_startColor">#ffd6e0</color>
+    <color name="gradient_centerColor">#ffe8f0</color>
+    <color name="gradient_endColor">#c8e6e7</color>
+    <color name="gradient_endColorFonce">#8A9FA3</color>
 </resources>

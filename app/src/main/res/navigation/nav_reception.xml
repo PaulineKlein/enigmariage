@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_reception"
+    app:startDestination="@id/receptionOneFragment">
+
+    <fragment
+        android:id="@+id/receptionOneFragment"
+        android:name="com.pklein.mariage.presentation.salleReception.ReceptionOneFragment"
+        android:label="ReceptionOne">
+        <action
+            android:id="@+id/action_reception_one_to_two"
+            app:destination="@id/receptionTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/receptionTwoFragment"
+        android:name="com.pklein.mariage.presentation.salleReception.ReceptionTwoFragment"
+        android:label="ReceptionTwo">
+        <action
+            android:id="@+id/action_reception_two_to_three"
+            app:destination="@id/receptionThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/receptionThreeFragment"
+        android:name="com.pklein.mariage.presentation.salleReception.ReceptionThreeFragment"
+        android:label="ReceptionThree">
+        <action
+            android:id="@+id/action_reception_three_to_four"
+            app:destination="@id/receptionFourFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/receptionFourFragment"
+        android:name="com.pklein.mariage.presentation.salleReception.ReceptionFourFragment"
+        android:label="ReceptionFour">
+        <action
+            android:id="@+id/action_reception_four_to_five"
+            app:destination="@id/receptionFiveFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/receptionFiveFragment"
+        android:name="com.pklein.mariage.presentation.salleReception.ReceptionFiveFragment"
+        android:label="ReceptionFive">
+        <action
+            android:id="@+id/action_reception_five_to_six"
+            app:destination="@id/receptionSixFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/receptionSixFragment"
+        android:name="com.pklein.mariage.presentation.salleReception.ReceptionSixFragment"
+        android:label="ReceptionSix">
+        <action
+            android:id="@+id/action_reception_six_to_cuisine_one"
+            app:destination="@id/CuisineOneFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/CuisineOneFragment"
+        android:name="com.pklein.mariage.presentation.salleReception.salleCuisine.CuisineOneFragment"
+        android:label="CuisineOneFragment">
+        <action
+            android:id="@+id/action_cuisine_one_to_two"
+            app:destination="@id/CuisineTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/CuisineTwoFragment"
+        android:name="com.pklein.mariage.presentation.salleReception.salleCuisine.CuisineTwoFragment"
+        android:label="CuisineTwoFragment" />
+
+</navigation>

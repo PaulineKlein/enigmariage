@@ -10,9 +10,9 @@
         style="@style/Body_big"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:padding="@dimen/margin_16"
         android:text="@string/diner_cambodge_one_message_1"
         android:textAlignment="center"
-        android:padding="@dimen/margin_16"
         app:layout_constraintBottom_toTopOf="@+id/tv_diner_cambodge_one_message_2"
         app:layout_constraintEnd_toStartOf="@+id/iv_angkor"
         app:layout_constraintStart_toStartOf="parent"
@@ -24,9 +24,9 @@
         style="@style/Body"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:padding="@dimen/margin_16"
         android:text="@string/diner_cambodge_one_message_2"
         android:textAlignment="center"
-        android:padding="@dimen/margin_16"
         app:layout_constraintBottom_toTopOf="@+id/layout_zoom"
         app:layout_constraintEnd_toStartOf="@+id/iv_angkor"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,12 +47,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/image_enigme_accessibility"
         android:scaleType="fitCenter"
-        android:src="@drawable/image_angkor_couple"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tv_diner_cambodge_one_message_1"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.5" />
+        app:layout_constraintWidth_percent="0.5"
+        app:srcCompat="@drawable/image_angkor_couple" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

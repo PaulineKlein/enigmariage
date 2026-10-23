@@ -32,8 +32,7 @@ fun AppCompatImageView.defineButton(
  * limitations under the License.
  */
 fun showImageWithStfalconViewer(context: Context, drawable: Int) {
-    val imageId = drawable
-    val images = listOf(imageId)
+    val images = listOf(drawable)
 
     val builder = StfalconImageViewer.Builder(context, images) { view, image ->
         // Load the image directly into the ImageView
@@ -41,7 +40,7 @@ fun showImageWithStfalconViewer(context: Context, drawable: Int) {
     }
 
     builder
-        .withBackgroundColor(ContextCompat.getColor(context, R.color.background))
+        .withBackgroundColor(ContextCompat.getColor(context, R.color.gradient_endColor))
         .allowZooming(true)
         .allowSwipeToDismiss(true)
         .show()

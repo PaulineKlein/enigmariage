@@ -4,19 +4,32 @@
     android:id="@+id/scroll_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/margin_24">
+    android:padding="@dimen/margin_16">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_splash_titre"
         style="@style/TitreSplash"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:alpha="0"
         android:text="@string/splash_titre"
-        app:layout_constraintBottom_toTopOf="@+id/iv_splash_bateau"
+        app:layout_constraintBottom_toTopOf="@+id/tv_splash_tagline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_splash_tagline"
+        style="@style/Body_link"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:alpha="0"
+        android:text="@string/splash_tagline"
+        app:layout_constraintBottom_toTopOf="@+id/iv_splash_bateau"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_splash_titre" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_splash_bateau"
@@ -24,28 +37,32 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_8"
         android:adjustViewBounds="true"
+        android:alpha="0"
+        android:contentDescription="@null"
         android:cropToPadding="false"
-        android:src="@drawable/image_bateau_mariage"
         app:layout_constraintBottom_toTopOf="@+id/linear_buttons"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_splash_titre" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_splash_tagline"
+        app:srcCompat="@drawable/image_bateau_mariage" />
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/linear_buttons"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/margin_16"
+        android:alpha="0"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_splash_bateau">
+        app:layout_constraintTop_toBottomOf="@+id/iv_splash_bateau"
+        app:layout_constraintWidth_percent="0.70">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_nvlle_partie"
             style="@style/button"
-            android:layout_width="@dimen/button_width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:enabled="true"
             android:text="@string/nvlle_partie" />
@@ -53,10 +70,18 @@
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_continuer"
             style="@style/button"
-            android:layout_width="@dimen/button_width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
             android:enabled="false"
             android:text="@string/continuer" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_trophees"
+            style="@style/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:text="@string/trophees_button" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 </androidx.constraintlayout.widget.ConstraintLayout>

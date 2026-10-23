@@ -1,12 +1,8 @@
 *.iml
+.kotlin
 .gradle
 /local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+.idea
 .DS_Store
 /build
 /captures
@@ -15,3 +11,7 @@
 key_pklein.jks
 gradle.properties
 app/release/
+google-services.json
+.claude/*
+CLAUDE.md
+.wolf/*

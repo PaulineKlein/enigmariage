@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    tools:context=".presentation.introduction.AddPlayerActivity">
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -56,65 +54,106 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/et_add_player_name" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_add_player_gender_message"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4"
+            android:text="@string/add_player_gender_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender" />
+
         <RadioGroup
             android:id="@+id/radio_group_gender"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_4"
+            android:layout_marginTop="@dimen/margin_8"
             android:gravity="center"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toTopOf="@+id/cv_add_player_clue"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender">
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender_message">
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radioMen"
+                android:id="@+id/radioDog"
+                style="@style/Body"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:checked="true" />
+                android:checked="true"
+                android:text="@string/add_player_gender_dog" />
 
             <androidx.appcompat.widget.AppCompatRadioButton
-                android:id="@+id/radioWomen"
+                android:id="@+id/radioRabbit"
+                style="@style/Body"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="@string/add_player_gender_rabbit" />
         </RadioGroup>
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_man"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@drawable/image_perso_man"
-            app:layout_constraintBottom_toTopOf="@+id/cv_add_player_clue"
-            app:layout_constraintEnd_toStartOf="@id/iv_woman"
+            android:id="@+id/iv_dog"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="@dimen/margin_8"
+            android:contentDescription="@string/inspecteur_chien_accessibility"
+            app:layout_constraintEnd_toStartOf="@id/iv_rabbit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender" />
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender"
+            app:srcCompat="@drawable/image_perso_dog" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_woman"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+            android:id="@+id/iv_rabbit"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
             android:layout_marginStart="@dimen/margin_32"
-            android:src="@drawable/image_perso_woman"
-            app:layout_constraintBottom_toTopOf="@+id/cv_add_player_clue"
+            android:layout_marginTop="@dimen/margin_8"
+            android:contentDescription="@string/inspecteur_lapin_accessibility"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/iv_man"
-            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_gender" />
+            app:layout_constraintStart_toEndOf="@id/iv_dog"
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_gender"
+            app:srcCompat="@drawable/image_perso_rabbit" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_add_player_save"
+            style="@style/SousTitre"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_24"
+            android:text="@string/add_player_save_auto_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_dog" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_add_player_save_message"
+            style="@style/Body"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_4"
+            android:text="@string/add_player_save_auto_message"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_save" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_add_player_clue"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
             app:cardBackgroundColor="@color/help"
             app:cardCornerRadius="@dimen/button_cadena_radius"
             app:cardElevation="@dimen/button_elevation"
-            app:contentPadding="@dimen/margin_16"
+            app:contentPaddingLeft="@dimen/margin_16"
+            app:contentPaddingRight="@dimen/margin_16"
+            app:contentPaddingTop="@dimen/margin_16"
             app:layout_constraintBottom_toTopOf="@+id/button_player"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_man">
+            app:layout_constraintTop_toBottomOf="@+id/tv_add_player_save_message">
 
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="wrap_content"
@@ -126,8 +165,8 @@
                     style="@style/SousTitre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_8"
                     android:text="@string/add_player_clue"
+                    android:textColor="@color/help_text"
                     android:textSize="20sp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -135,35 +174,23 @@
                     style="@style/Body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_8"
+                    android:layout_marginTop="@dimen/margin_4"
                     android:text="@string/indice_explication" />
 
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/margin_4"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                <include
+                    android:id="@+id/layout_indice"
+                    layout="@layout/indice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        style="@style/Body_link"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/indice" />
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/image_loupe_vert" />
-
-                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_player"
             style="@style/button"
-            android:layout_width="@dimen/button_width"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_16"
             android:enabled="false"
@@ -171,7 +198,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cv_add_player_clue" />
+            app:layout_constraintTop_toBottomOf="@+id/cv_add_player_clue"
+            app:layout_constraintWidth_percent="0.70" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

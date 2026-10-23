@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_localisation_bateau"
+    app:startDestination="@id/localisationBateauOneFragment">
+
+    <fragment
+        android:id="@+id/localisationBateauOneFragment"
+        android:name="com.pklein.mariage.presentation.localisationBateau.LocalisationBateauOneFragment"
+        android:label="LocalisationBateauOne">
+        <action
+            android:id="@+id/action_localisation_one_to_two"
+            app:destination="@id/localisationBateauTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/localisationBateauTwoFragment"
+        android:name="com.pklein.mariage.presentation.localisationBateau.LocalisationBateauTwoFragment"
+        android:label="LocalisationBateauTwo">
+        <action
+            android:id="@+id/action_localisation_two_to_embarquement_one"
+            app:destination="@id/salleEmbarquementOneFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleEmbarquementOneFragment"
+        android:name="com.pklein.mariage.presentation.localisationBateau.salleEmbarquement.SalleEmbarquementOneFragment"
+        android:label="SalleEmbarquementOne">
+        <action
+            android:id="@+id/action_one_to_two"
+            app:destination="@id/salleEmbarquementTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleEmbarquementTwoFragment"
+        android:name="com.pklein.mariage.presentation.localisationBateau.salleEmbarquement.SalleEmbarquementTwoFragment"
+        android:label="SalleEmbarquementTwo">
+        <action
+            android:id="@+id/action_two_to_notification"
+            app:destination="@id/salleEmbarquementTwoNotificationFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleEmbarquementTwoNotificationFragment"
+        android:name="com.pklein.mariage.presentation.localisationBateau.salleEmbarquement.SalleEmbarquementTwoNotificationFragment"
+        android:label="SalleEmbarquementTwoNotification">
+        <action
+            android:id="@+id/action_notification_to_three"
+            app:destination="@id/salleEmbarquementThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleEmbarquementThreeFragment"
+        android:name="com.pklein.mariage.presentation.localisationBateau.salleEmbarquement.SalleEmbarquementThreeFragment"
+        android:label="SalleEmbarquementThree" />
+
+</navigation>

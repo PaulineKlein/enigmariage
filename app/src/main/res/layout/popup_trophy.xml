@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_popup"
+    android:padding="@dimen/margin_8">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_trophy_icon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:contentDescription="@null"
+        app:layout_constraintEnd_toStartOf="@id/tv_popup_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_trophy" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_popup_title"
+        style="@style/SousTitre"
+        android:textSize="18sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_8"
+        android:text="@string/trophy_title_popup"
+        app:layout_constraintBottom_toBottomOf="@id/iv_trophy_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/iv_trophy_icon"
+        app:layout_constraintTop_toTopOf="@id/iv_trophy_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_trophy_message"
+        style="@style/Body"
+        android:textSize="14sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/tv_popup_title"
+        app:layout_constraintTop_toBottomOf="@id/iv_trophy_icon"
+        tools:text="Mon Message" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

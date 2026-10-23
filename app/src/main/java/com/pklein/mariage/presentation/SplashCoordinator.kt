@@ -2,263 +2,236 @@ package com.pklein.mariage.presentation
 
 import android.content.Context
 import android.content.Intent
-import androidx.core.content.ContextCompat.startActivity
-import com.pklein.mariage.presentation.combatFinal.CombatFinalOneActivity
-import com.pklein.mariage.presentation.combatFinal.CombatFinalThreeActivity
-import com.pklein.mariage.presentation.combatFinal.CombatFinalTwoActivity
+import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
+import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
+import com.pklein.mariage.presentation.combatFinal.CombatFinalActivity
+import com.pklein.mariage.presentation.destinations.cambodge.SalleDinerCambodgeActivity
+import com.pklein.mariage.presentation.destinations.canada.SalleDinerCanadaActivity
+import com.pklein.mariage.presentation.destinations.caraibes.SalleDinerCaraibesActivity
+import com.pklein.mariage.presentation.destinations.italie.SalleDinerItalieActivity
+import com.pklein.mariage.presentation.destinations.japon.SalleDinerJaponActivity
+import com.pklein.mariage.presentation.destinations.tanzanie.SalleDinerTanzanieActivity
 import com.pklein.mariage.presentation.introduction.AddPlayerActivity
 import com.pklein.mariage.presentation.introduction.IntroductionActivity
-import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauOneActivity
-import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauThreeActivity
-import com.pklein.mariage.presentation.resultat.ResultsActivity
-import com.pklein.mariage.presentation.salleCoktails.SalleCoktailsFiveActivity
-import com.pklein.mariage.presentation.salleCoktails.SalleCoktailsFourActivity
-import com.pklein.mariage.presentation.salleCoktails.SalleCoktailsOneActivity
-import com.pklein.mariage.presentation.salleCoktails.SalleCoktailsSevenActivity
-import com.pklein.mariage.presentation.salleCoktails.SalleCoktailsSixActivity
-import com.pklein.mariage.presentation.salleCoktails.SalleCoktailsThreeActivity
-import com.pklein.mariage.presentation.salleDiner.SalleDinerOneActivity
-import com.pklein.mariage.presentation.salleDiner.SalleDinerTwoActivity
-import com.pklein.mariage.presentation.salleDiner.cambodge.SalleDinerCambodgeFiveActivity
-import com.pklein.mariage.presentation.salleDiner.cambodge.SalleDinerCambodgeFourActivity
-import com.pklein.mariage.presentation.salleDiner.cambodge.SalleDinerCambodgeOneActivity
-import com.pklein.mariage.presentation.salleDiner.cambodge.SalleDinerCambodgeThreeActivity
-import com.pklein.mariage.presentation.salleDiner.cambodge.SalleDinerCambodgeTwoActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaFiveActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaFourActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaOneActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaSixActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaThreeActivity
-import com.pklein.mariage.presentation.salleDiner.canada.SalleDinerCanadaTwoActivity
-import com.pklein.mariage.presentation.salleDiner.japon.SalleDinerJaponFiveActivity
-import com.pklein.mariage.presentation.salleDiner.japon.SalleDinerJaponFourActivity
-import com.pklein.mariage.presentation.salleDiner.japon.SalleDinerJaponOneActivity
-import com.pklein.mariage.presentation.salleDiner.japon.SalleDinerJaponSixActivity
-import com.pklein.mariage.presentation.salleDiner.japon.SalleDinerJaponThreeActivity
-import com.pklein.mariage.presentation.salleDiner.japon.SalleDinerJaponTwoActivity
-import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementOneActivity
-import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementThreeActivity
-import com.pklein.mariage.presentation.salleEmbarquement.SalleEmbarquementTwoActivity
-import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothOneActivity
-import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothTwoActivity
-import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothZeroActivity
+import com.pklein.mariage.presentation.localisationBateau.LocalisationBateauActivity
+import com.pklein.mariage.presentation.salleCocktails.SalleCocktailsActivity
+import com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothActivity
+import com.pklein.mariage.presentation.salleReception.ReceptionActivity
 
-enum class LAST_ACTIVITY_LAUNCH {
-    INTRODUCTION,
-    ADD_PLAYER,
-    LOCALISATION_BATEAU_1,
-    LOCALISATION_BATEAU_3,
-    SALLE_EMBARQUEMENT_1,
-    SALLE_EMBARQUEMENT_2,
-    SALLE_EMBARQUEMENT_3,
-    SALLE_COKTAIL_1,
-    SALLE_COKTAIL_3,
-    SALLE_COKTAIL_4,
-    SALLE_COKTAIL_5,
-    SALLE_COKTAIL_6,
-    SALLE_COKTAIL_7,
-    SALLE_DINER_1,
-    SALLE_DINER_2,
-    SALLE_DINER_CANADA_1,
-    SALLE_DINER_CANADA_2,
-    SALLE_DINER_CANADA_3,
-    SALLE_DINER_CANADA_4,
-    SALLE_DINER_CANADA_5,
-    SALLE_DINER_CANADA_6,
-    SALLE_DINER_JAPON_1,
-    SALLE_DINER_JAPON_2,
-    SALLE_DINER_JAPON_3,
-    SALLE_DINER_JAPON_4,
-    SALLE_DINER_JAPON_5,
-    SALLE_DINER_JAPON_6,
-    SALLE_DINER_CAMBODGE_1,
-    SALLE_DINER_CAMBODGE_2,
-    SALLE_DINER_CAMBODGE_3,
-    SALLE_DINER_CAMBODGE_4,
-    SALLE_DINER_CAMBODGE_5,
-    SALLE_PHOTOBOOTH_0,
-    SALLE_PHOTOBOOTH_1,
-    SALLE_PHOTOBOOTH_2,
-    COMBAT_FINAL_1,
-    COMBAT_FINAL_2,
-    COMBAT_FINAL_3,
-    RESULT,
-    CARNET_BORD,
-    CARNET_BORD2
+sealed class GameStep(
+    val activityClass: Class<*>,
+    val key: String,
+) {
+    // Keeps backward compat: existing .name usages in activities still return the right SharedPreferences string
+    val name: String get() = key
+
+    object Introduction : GameStep(IntroductionActivity::class.java, "INTRODUCTION")
+
+    object AddPlayer : GameStep(AddPlayerActivity::class.java, "ADD_PLAYER")
+
+    object LocalisationBateau1 :
+        GameStep(LocalisationBateauActivity::class.java, "LOCALISATION_BATEAU_1")
+
+    object LocalisationBateau2 :
+        GameStep(LocalisationBateauActivity::class.java, "LOCALISATION_BATEAU_3")
+
+    object SalleEmbarquement1 :
+        GameStep(LocalisationBateauActivity::class.java, "SALLE_EMBARQUEMENT_1")
+
+    object SalleEmbarquement2 :
+        GameStep(LocalisationBateauActivity::class.java, "SALLE_EMBARQUEMENT_2")
+
+    object SalleEmbarquement3 :
+        GameStep(LocalisationBateauActivity::class.java, "SALLE_EMBARQUEMENT_3")
+
+    object SalleCocktail1 : GameStep(SalleCocktailsActivity::class.java, "SALLE_COCKTAIL_1")
+
+    object SalleCocktail2 : GameStep(SalleCocktailsActivity::class.java, "SALLE_COCKTAIL_2")
+
+    object SalleCocktail3 : GameStep(SalleCocktailsActivity::class.java, "SALLE_COCKTAIL_3")
+
+    object SalleCocktail4 : GameStep(SalleCocktailsActivity::class.java, "SALLE_COCKTAIL_4")
+
+    object SalleCocktail5 : GameStep(SalleCocktailsActivity::class.java, "SALLE_COCKTAIL_5")
+
+    object SalleCocktail6 : GameStep(SalleCocktailsActivity::class.java, "SALLE_COCKTAIL_6")
+
+    object SalleDiner1 : GameStep(SalleCocktailsActivity::class.java, "SALLE_DINER_1")
+
+    object SalleDiner2 : GameStep(SalleCocktailsActivity::class.java, "SALLE_DINER_2")
+
+    object Reception1 : GameStep(ReceptionActivity::class.java, "RECEPTION_1")
+
+    object Reception2 : GameStep(ReceptionActivity::class.java, "RECEPTION_2")
+
+    object Reception3 : GameStep(ReceptionActivity::class.java, "RECEPTION_3")
+
+    object Reception4 : GameStep(ReceptionActivity::class.java, "RECEPTION_4")
+
+    object Reception5 : GameStep(ReceptionActivity::class.java, "RECEPTION_5")
+
+    object Reception6 : GameStep(ReceptionActivity::class.java, "RECEPTION_6")
+
+    object Reception7 : GameStep(ReceptionActivity::class.java, "RECEPTION_7")
+
+    object Reception8 : GameStep(ReceptionActivity::class.java, "RECEPTION_8")
+
+    object SalleDinerCanada1 :
+        GameStep(SalleDinerCanadaActivity::class.java, "SALLE_DINER_CANADA_1")
+
+    object SalleDinerCanada2 :
+        GameStep(SalleDinerCanadaActivity::class.java, "SALLE_DINER_CANADA_2")
+
+    object SalleDinerCanada3 :
+        GameStep(SalleDinerCanadaActivity::class.java, "SALLE_DINER_CANADA_3")
+
+    object SalleDinerCanada4 :
+        GameStep(SalleDinerCanadaActivity::class.java, "SALLE_DINER_CANADA_4")
+
+    object SalleDinerCanada5 :
+        GameStep(SalleDinerCanadaActivity::class.java, "SALLE_DINER_CANADA_5")
+
+    object SalleDinerCanada6 :
+        GameStep(SalleDinerCanadaActivity::class.java, "SALLE_DINER_CANADA_6")
+
+    object SalleDinerJapon1 :
+        GameStep(SalleDinerJaponActivity::class.java, "SALLE_DINER_JAPON_1")
+
+    object SalleDinerJapon2 :
+        GameStep(SalleDinerJaponActivity::class.java, "SALLE_DINER_JAPON_2")
+
+    object SalleDinerJapon3 :
+        GameStep(SalleDinerJaponActivity::class.java, "SALLE_DINER_JAPON_3")
+
+    object SalleDinerJapon4 :
+        GameStep(SalleDinerJaponActivity::class.java, "SALLE_DINER_JAPON_4")
+
+    object SalleDinerJapon5 :
+        GameStep(SalleDinerJaponActivity::class.java, "SALLE_DINER_JAPON_5")
+
+    object SalleDinerJapon6 :
+        GameStep(SalleDinerJaponActivity::class.java, "SALLE_DINER_JAPON_6")
+
+    object SalleDinerCambodge1 :
+        GameStep(SalleDinerCambodgeActivity::class.java, "SALLE_DINER_CAMBODGE_1")
+
+    object SalleDinerCambodge2 :
+        GameStep(SalleDinerCambodgeActivity::class.java, "SALLE_DINER_CAMBODGE_2")
+
+    object SalleDinerCambodge3 :
+        GameStep(SalleDinerCambodgeActivity::class.java, "SALLE_DINER_CAMBODGE_3")
+
+    object SalleDinerCambodge4 :
+        GameStep(SalleDinerCambodgeActivity::class.java, "SALLE_DINER_CAMBODGE_4")
+
+    object SalleDinerCambodge5 :
+        GameStep(SalleDinerCambodgeActivity::class.java, "SALLE_DINER_CAMBODGE_5")
+
+    object SalleDinerCaraibes1 :
+        GameStep(SalleDinerCaraibesActivity::class.java, "SALLE_DINER_CARAIBES_1")
+
+    object SalleDinerCaraibes2 :
+        GameStep(SalleDinerCaraibesActivity::class.java, "SALLE_DINER_CARAIBES_2")
+
+    object SalleDinerCaraibes3 :
+        GameStep(SalleDinerCaraibesActivity::class.java, "SALLE_DINER_CARAIBES_3")
+
+    object SalleDinerCaraibes4 :
+        GameStep(SalleDinerCaraibesActivity::class.java, "SALLE_DINER_CARAIBES_4")
+
+    object SalleDinerCaraibes5 :
+        GameStep(SalleDinerCaraibesActivity::class.java, "SALLE_DINER_CARAIBES_5")
+
+    object SalleDinerCaraibes6 :
+        GameStep(SalleDinerCaraibesActivity::class.java, "SALLE_DINER_CARAIBES_6")
+
+    object SalleDinerItalie1 :
+        GameStep(SalleDinerItalieActivity::class.java, "SALLE_DINER_ITALIE_1")
+
+    object SalleDinerItalie2 :
+        GameStep(SalleDinerItalieActivity::class.java, "SALLE_DINER_ITALIE_2")
+
+    object SalleDinerItalie3 :
+        GameStep(SalleDinerItalieActivity::class.java, "SALLE_DINER_ITALIE_3")
+
+    object SalleDinerItalie4 :
+        GameStep(SalleDinerItalieActivity::class.java, "SALLE_DINER_ITALIE_4")
+
+    object SalleDinerItalie5 :
+        GameStep(SalleDinerItalieActivity::class.java, "SALLE_DINER_ITALIE_5")
+
+    object SalleDinerItalie6 :
+        GameStep(SalleDinerItalieActivity::class.java, "SALLE_DINER_ITALIE_6")
+
+    object SalleDinerItalie7 :
+        GameStep(SalleDinerItalieActivity::class.java, "SALLE_DINER_ITALIE_7")
+
+    object SalleDinerTanzanie1 :
+        GameStep(SalleDinerTanzanieActivity::class.java, "SALLE_DINER_TANZANIE_1")
+
+    object SalleDinerTanzanie2 :
+        GameStep(SalleDinerTanzanieActivity::class.java, "SALLE_DINER_TANZANIE_2")
+
+    object SalleDinerTanzanie3 :
+        GameStep(SalleDinerTanzanieActivity::class.java, "SALLE_DINER_TANZANIE_3")
+
+    object SalleDinerTanzanie4 :
+        GameStep(SalleDinerTanzanieActivity::class.java, "SALLE_DINER_TANZANIE_4")
+
+    object SalleDinerTanzanie5 :
+        GameStep(SalleDinerTanzanieActivity::class.java, "SALLE_DINER_TANZANIE_5")
+
+    object SalleDinerTanzanie6 :
+        GameStep(SalleDinerTanzanieActivity::class.java, "SALLE_DINER_TANZANIE_6")
+
+    object SalleDinerTanzanie7 :
+        GameStep(SalleDinerTanzanieActivity::class.java, "SALLE_DINER_TANZANIE_7")
+
+    object SallePhotobooth1 :
+        GameStep(SallePhotoboothActivity::class.java, "SALLE_PHOTOBOOTH_1")
+
+    object SallePhotobooth2 : GameStep(SallePhotoboothActivity::class.java, "SALLE_PHOTOBOOTH_2")
+
+    object SallePhotobooth3 : GameStep(SallePhotoboothActivity::class.java, "SALLE_PHOTOBOOTH_3")
+
+    object CombatFinal1 : GameStep(CombatFinalActivity::class.java, "COMBAT_FINAL_1")
+
+    object CombatFinal2Rabbit : GameStep(CombatFinalActivity::class.java, "COMBAT_FINAL_2_RABBIT")
+
+    object CombatFinal2Dog : GameStep(CombatFinalActivity::class.java, "COMBAT_FINAL_2_DOG")
+
+    object CombatFinal3 : GameStep(CombatFinalActivity::class.java, "COMBAT_FINAL_3")
+
+    object Result : GameStep(CombatFinalActivity::class.java, "RESULT")
+
+    object CarnetBord : GameStep(CarnetBordActivity::class.java, "CARNET_BORD")
+
+    object CarnetBord2 : GameStep(CarnetBordUniversActivity::class.java, "CARNET_BORD2")
+
+    companion object {
+        private val byKey: Map<String, GameStep> by lazy {
+            GameStep::class
+                .sealedSubclasses
+                .mapNotNull { it.objectInstance }
+                .associateBy { it.key }
+        }
+
+        fun fromKey(key: String): GameStep = byKey[key] ?: Introduction
+    }
 }
 
 object SplashCoordinator {
+    const val EXTRA_STEP = "extra_step"
 
-    fun launchGame(step: String, context: Context) {
-        val activityToLaunch = when (step) {
-            LAST_ACTIVITY_LAUNCH.INTRODUCTION.name -> {
-                Intent(context, IntroductionActivity::class.java)
+    fun launchGame(
+        step: String,
+        context: Context,
+    ) {
+        val gameStep = GameStep.fromKey(step)
+        val intent =
+            Intent(context, gameStep.activityClass).apply {
+                putExtra(EXTRA_STEP, step)
             }
-
-            LAST_ACTIVITY_LAUNCH.ADD_PLAYER.name -> {
-                Intent(context, AddPlayerActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.LOCALISATION_BATEAU_1.name -> {
-                Intent(context, LocalisationBateauOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.LOCALISATION_BATEAU_3.name -> {
-                Intent(context, LocalisationBateauThreeActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_EMBARQUEMENT_1.name -> {
-                Intent(context, SalleEmbarquementOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_EMBARQUEMENT_2.name -> {
-                Intent(context, SalleEmbarquementTwoActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_EMBARQUEMENT_3.name -> {
-                Intent(context, SalleEmbarquementThreeActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_1.name -> {
-                Intent(context, SalleCoktailsOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_3.name -> {
-                Intent(context, SalleCoktailsThreeActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_4.name -> {
-                Intent(context, SalleCoktailsFourActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_5.name -> {
-                Intent(context, SalleCoktailsFiveActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_6.name -> {
-                Intent(context, SalleCoktailsSixActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_COKTAIL_7.name -> {
-                Intent(context, SalleCoktailsSevenActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_1.name -> {
-                Intent(context, SalleDinerOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_2.name -> {
-                Intent(context, SalleDinerTwoActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_1.name -> {
-                Intent(context, SalleDinerCanadaOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_2.name -> {
-                Intent(context, SalleDinerCanadaTwoActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_3.name -> {
-                Intent(context, SalleDinerCanadaThreeActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_4.name -> {
-                Intent(context, SalleDinerCanadaFourActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_5.name -> {
-                Intent(context, SalleDinerCanadaFiveActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CANADA_6.name -> {
-                Intent(context, SalleDinerCanadaSixActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_1.name -> {
-                Intent(context, SalleDinerJaponOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_2.name -> {
-                Intent(context, SalleDinerJaponTwoActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_3.name -> {
-                Intent(context, SalleDinerJaponThreeActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_4.name -> {
-                Intent(context, SalleDinerJaponFourActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_5.name -> {
-                Intent(context, SalleDinerJaponFiveActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_JAPON_6.name -> {
-                Intent(context, SalleDinerJaponSixActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_1.name -> {
-                Intent(context, SalleDinerCambodgeOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_2.name -> {
-                Intent(context, SalleDinerCambodgeTwoActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_3.name -> {
-                Intent(context, SalleDinerCambodgeThreeActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_4.name -> {
-                Intent(context, SalleDinerCambodgeFourActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_DINER_CAMBODGE_5.name -> {
-                Intent(context, SalleDinerCambodgeFiveActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_PHOTOBOOTH_0.name -> {
-                Intent(context, SallePhotoboothZeroActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_PHOTOBOOTH_1.name -> {
-                Intent(context, SallePhotoboothOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.SALLE_PHOTOBOOTH_2.name -> {
-                Intent(context, SallePhotoboothTwoActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_1.name -> {
-                Intent(context, CombatFinalOneActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_2.name -> {
-                Intent(context, CombatFinalTwoActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.COMBAT_FINAL_3.name -> {
-                Intent(context, CombatFinalThreeActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.RESULT.name -> {
-                Intent(context, ResultsActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.CARNET_BORD.name -> {
-                Intent(context, CarnetBordActivity::class.java)
-            }
-
-            LAST_ACTIVITY_LAUNCH.CARNET_BORD2.name -> {
-                Intent(context, CarnetBord2Activity::class.java)
-            }
-
-            else -> {
-                Intent(context, IntroductionActivity::class.java)
-            }
-        }
-        startActivity(context, activityToLaunch, null)
+        context.startActivity(intent, null)
     }
 }

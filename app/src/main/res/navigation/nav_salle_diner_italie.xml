@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_salle_diner_italie"
+    app:startDestination="@id/salleDinerItalieOne">
+
+    <fragment
+        android:id="@+id/salleDinerItalieOne"
+        android:name="com.pklein.mariage.presentation.destinations.italie.SalleDinerItalieOneFragment"
+        android:label="salleDinerItalieOne">
+        <action
+            android:id="@+id/action_italie_one_to_two"
+            app:destination="@id/salleDinerItalieTwo"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerItalieTwo"
+        android:name="com.pklein.mariage.presentation.destinations.italie.SalleDinerItalieTwoFragment"
+        android:label="salleDinerItalieTwo">
+        <action
+            android:id="@+id/action_italie_two_to_three"
+            app:destination="@id/salleDinerItalieThree"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerItalieThree"
+        android:name="com.pklein.mariage.presentation.destinations.italie.SalleDinerItalieThreeFragment"
+        android:label="salleDinerItalieThree">
+        <action
+            android:id="@+id/action_italie_three_to_four"
+            app:destination="@id/salleDinerItalieFour"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerItalieFour"
+        android:name="com.pklein.mariage.presentation.destinations.italie.SalleDinerItalieFourFragment"
+        android:label="salleDinerItalieFour">
+        <action
+            android:id="@+id/action_italie_four_to_five"
+            app:destination="@id/salleDinerItalieFive"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerItalieFive"
+        android:name="com.pklein.mariage.presentation.destinations.italie.SalleDinerItalieFiveFragment"
+        android:label="salleDinerItalieFive">
+        <action
+            android:id="@+id/action_italie_five_to_six"
+            app:destination="@id/salleDinerItalieSix"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerItalieSix"
+        android:name="com.pklein.mariage.presentation.destinations.italie.SalleDinerItalieSixFragment"
+        android:label="salleDinerItalieSix">
+        <action
+            android:id="@+id/action_italie_six_to_seven"
+            app:destination="@id/salleDinerItalieSeven"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerItalieSeven"
+        android:name="com.pklein.mariage.presentation.destinations.italie.SalleDinerItalieSevenFragment"
+        android:label="salleDinerItalieSeven" />
+</navigation>

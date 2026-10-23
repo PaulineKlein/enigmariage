@@ -3,6 +3,6 @@
     android:innerRadius="@dimen/button_radius"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="@color/colorPrimaryDark"/>
-    <stroke android:color="@color/background" android:width="3dp"/>
+    <stroke android:color="@color/cadenaBackground" android:width="3dp"/>
     <corners android:radius="@dimen/button_cadena_radius"/>
 </shape>
