@@ -42,7 +42,11 @@ class ReceptionTwoFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.reception_titre,
-                    message = annotatedStringResource(id = R.string.reception_two_message),
+                    message =
+                        annotatedStringResource(
+                            id = R.string.reception_two_message,
+                            gameProgress.playerName,
+                        ),
                     enigmeImage = R.drawable.image_clefs,
                     onHomeClick = {
                         startActivity(Intent(requireContext(), CarnetBordActivity::class.java))

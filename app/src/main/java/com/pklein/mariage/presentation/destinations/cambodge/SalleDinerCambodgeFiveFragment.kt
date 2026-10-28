@@ -20,38 +20,41 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SalleDinerCambodgeFiveFragment : Fragment() {
     private val gameProgress: GameProgressViewModel by activityViewModels()
+    private val gameStep = GameStep.SalleDinerCambodge5
+    private val universStep = SharedPreferenceKey.UNIVERS_2_CAMBODGE
     private var binding: FragmentSalleDinerCambodgeFiveBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return FragmentSalleDinerCambodgeFiveBinding.inflate(inflater, container, false)
-            .also { binding = it }.root
-    }
+        savedInstanceState: Bundle?,
+    ): View =
+        FragmentSalleDinerCambodgeFiveBinding
+            .inflate(inflater, container, false)
+            .also { binding = it }
+            .root
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         val binding = binding ?: return
-        gameProgress.storePage(GameStep.SalleDinerCambodge5)
+        gameProgress.storePage(gameStep)
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_RABBIT_MANGUE)) {
             gameProgress.saveTrophy(Trophies.TROPHY_RABBIT_MANGUE)
             context?.let {
                 Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_RABBIT_MANGUE.message))
             }
         }
-        gameProgress.storeUniversPage(
-            SharedPreferenceKey.UNIVERS_2_CAMBODGE,
-            GameStep.SalleDinerCambodge5
-        )
+        gameProgress.storeUniversPage(universStep, gameStep)
 
         binding.ivHome.setOnClickListener {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordUniversActivity::class.java
-                )
+                    CarnetBordUniversActivity::class.java,
+                ),
             )
         }
         binding.buttonCambodgeFive.setOnClickListener {
@@ -59,9 +62,10 @@ class SalleDinerCambodgeFiveFragment : Fragment() {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordUniversActivity::class.java
-                )
+                    CarnetBordUniversActivity::class.java,
+                ),
             )
+            activity?.finish()
         }
         binding.root.addSystemWindowInsetToMargin()
     }

@@ -25,8 +25,8 @@ class SalleDinerCambodgeTwoFragment : QuestionFragment() {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordUniversActivity::class.java
-                )
+                    CarnetBordUniversActivity::class.java,
+                ),
             )
         }
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_cambodge)

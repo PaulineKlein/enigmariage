@@ -43,7 +43,11 @@ class CuisineOneFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.cuisine_titre,
-                    message = annotatedStringResource(id = R.string.cuisine_one_message),
+                    message =
+                        annotatedStringResource(
+                            id = R.string.cuisine_one_message,
+                            gameProgress.playerName,
+                        ),
                     enigmeContent = {
                         ParcheminCard(text = stringResource(id = R.string.cuisine_one_recette))
                     },
@@ -59,7 +63,10 @@ class CuisineOneFragment : Fragment() {
 
     private fun onClueClicked() {
         context?.let {
-            Alerts.showClue(it, getString(R.string.cuisine_one_clue)) {
+            Alerts.showClue(
+                context = it,
+                message = getString(R.string.cuisine_one_clue, gameProgress.playerName),
+            ) {
                 updateClue()
             }
         }

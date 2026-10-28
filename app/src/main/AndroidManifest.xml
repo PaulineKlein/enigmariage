@@ -28,7 +28,8 @@
 
         <activity
             android:name=".presentation.SplashActivity"
-            android:exported="true">
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -55,10 +56,18 @@
         <activity android:name=".presentation.destinations.japon.SalleDinerJaponActivity" />
         <activity android:name=".presentation.destinations.cambodge.SalleDinerCambodgeActivity" />
         <activity android:name=".presentation.sallePhotobooth.SallePhotoboothActivity" />
-        <activity android:name=".presentation.combatFinal.CombatFinalActivity" />
-        <activity android:name=".presentation.carnetBord.CarnetBordActivity" />
-        <activity android:name=".presentation.carnetBord.CarnetBordUniversActivity" />
-        <activity android:name=".presentation.trophies.TrophyActivity" />
+        <activity
+            android:name=".presentation.combatFinal.CombatFinalActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".presentation.carnetBord.CarnetBordActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".presentation.carnetBord.CarnetBordUniversActivity"
+            android:launchMode="singleTask" />
+        <activity
+            android:name=".presentation.trophies.TrophyActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

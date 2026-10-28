@@ -27,7 +27,7 @@ class SalleCocktailsThreeFragment : QuestionFragment() {
             repeatCount = ValueAnimator.INFINITE
         }
         binding.tvQuestionTitre.text = getString(R.string.cocktail_one_titre)
-        binding.tvQuestionMessage.text = resources.getText(R.string.cocktail_four_message)
+        binding.tvQuestionMessage.text = resources.getText(R.string.cocktail_three_message)
     }
 
     override fun onValidateCLicked(response: String) {

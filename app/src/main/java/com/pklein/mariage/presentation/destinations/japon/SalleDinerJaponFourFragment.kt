@@ -25,34 +25,39 @@ private const val RESPONSE_1 = "bubble tea"
 private const val RESPONSE_2 = "bubbletea"
 
 @AndroidEntryPoint
-class SalleDinerJaponFourFragment : Fragment(), CheckEmptyTextWatcherListener {
+class SalleDinerJaponFourFragment :
+    Fragment(),
+    CheckEmptyTextWatcherListener {
     private val gameProgress: GameProgressViewModel by activityViewModels()
+    private val gameStep = GameStep.SalleDinerJapon4
+    private val universStep = SharedPreferenceKey.UNIVERS_2_JAPON
     private var binding: FragmentSalleDinerJaponFourBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return FragmentSalleDinerJaponFourBinding.inflate(inflater, container, false)
-            .also { binding = it }.root
-    }
+        savedInstanceState: Bundle?,
+    ): View =
+        FragmentSalleDinerJaponFourBinding
+            .inflate(inflater, container, false)
+            .also { binding = it }
+            .root
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         val binding = binding ?: return
-        gameProgress.storePage(GameStep.SalleDinerJapon4)
-        gameProgress.storeUniversPage(
-            SharedPreferenceKey.UNIVERS_2_JAPON,
-            GameStep.SalleDinerJapon4
-        )
+        gameProgress.storePage(gameStep)
+        gameProgress.storeUniversPage(universStep, gameStep)
 
         binding.ivHome.setOnClickListener {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordUniversActivity::class.java
-                )
+                    CarnetBordUniversActivity::class.java,
+                ),
             )
         }
         binding.etDinerJaponFourAnswer.addTextChangedListener(CheckEmptyTextWatcher(this))

@@ -30,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_combatFinal_two_message_1"
+            android:id="@+id/tv_combatFinal_three_message_1"
             style="@style/Body"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_two_message_1" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_three_message_1" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_combatFinal_maze"
@@ -65,7 +65,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_combatFinal_two_message_2"
-            app:srcCompat="@drawable/image_maze_final_perso_man" />
+            app:srcCompat="@drawable/image_maze_final_rabbit" />
 
         <RadioGroup
             android:id="@+id/radio_group_coups"
@@ -138,11 +138,11 @@
             android:layout_marginTop="@dimen/margin_24"
             android:enabled="true"
             android:text="@string/valider"
-            app:layout_constraintWidth_percent="0.70"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/radio_group_coups" />
+            app:layout_constraintTop_toBottomOf="@+id/radio_group_coups"
+            app:layout_constraintWidth_percent="0.70" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

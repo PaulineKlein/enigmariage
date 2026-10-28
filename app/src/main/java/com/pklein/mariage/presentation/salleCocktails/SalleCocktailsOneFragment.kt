@@ -57,7 +57,7 @@ class SalleCocktailsOneFragment :
             GameStep.SalleCocktail1,
         )
 
-        val adapter = SalleCocktailsOneViewPagerAdapter(this, this)
+        val adapter = SalleCocktailsOneViewPagerAdapter(gameProgress.playerName, this, this)
         context?.let {
             val dotsUtils = ViewPager2DotsUtils(adapter.itemCount).setupDots(it)
             dotsUtils.addDotsTo(binding.pagerDots)

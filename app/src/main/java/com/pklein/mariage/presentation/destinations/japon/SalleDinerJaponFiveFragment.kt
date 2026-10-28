@@ -5,6 +5,7 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
+import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.databinding.FragmentQuestionBinding
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.QuestionFragment
@@ -26,8 +27,8 @@ class SalleDinerJaponFiveFragment : QuestionFragment() {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordUniversActivity::class.java
-                )
+                    CarnetBordUniversActivity::class.java,
+                ),
             )
         }
         binding.tvQuestionTitre.text = getString(R.string.diner_titre_japon)
@@ -41,8 +42,12 @@ class SalleDinerJaponFiveFragment : QuestionFragment() {
                 context?.let { ctx ->
                     showImageWithStfalconViewer(
                         ctx,
-                        R.drawable.image_rebus_tapioca
+                        R.drawable.image_rebus_tapioca,
                     )
+                    if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_LENS)) {
+                        gameProgress.saveTrophy(Trophies.TROPHY_LENS)
+                        Alerts.showTrophyUnlocked(ctx, getString(Trophies.TROPHY_LENS.message))
+                    }
                 }
             }
         }

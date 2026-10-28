@@ -21,32 +21,35 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class SalleDinerCambodgeThreeFragment : Fragment() {
     private val gameProgress: GameProgressViewModel by activityViewModels()
+    private val gameStep = GameStep.SalleDinerCambodge3
+    private val universStep = SharedPreferenceKey.UNIVERS_2_CAMBODGE
     private var binding: FragmentSalleDinerCambodgeThreeBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return FragmentSalleDinerCambodgeThreeBinding.inflate(inflater, container, false)
-            .also { binding = it }.root
-    }
+        savedInstanceState: Bundle?,
+    ): View =
+        FragmentSalleDinerCambodgeThreeBinding
+            .inflate(inflater, container, false)
+            .also { binding = it }
+            .root
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         val binding = binding ?: return
-        gameProgress.storePage(GameStep.SalleDinerCambodge3)
-        gameProgress.storeUniversPage(
-            SharedPreferenceKey.UNIVERS_2_CAMBODGE,
-            GameStep.SalleDinerCambodge3
-        )
+        gameProgress.storePage(gameStep)
+        gameProgress.storeUniversPage(universStep, gameStep)
 
         binding.ivHome.setOnClickListener {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordUniversActivity::class.java
-                )
+                    CarnetBordUniversActivity::class.java,
+                ),
             )
         }
         binding.buttonDinerCambodgeThree.setOnClickListener {
@@ -57,7 +60,7 @@ class SalleDinerCambodgeThreeFragment : Fragment() {
                         it,
                         gameProgress.playerName,
                         gameProgress.gender,
-                        ::launchNext
+                        ::launchNext,
                     )
                 } else {
                     Alerts.showError(it) {

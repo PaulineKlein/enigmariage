@@ -26,8 +26,8 @@ class SalleDinerCanadaOneFragment : QuestionFragment() {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordUniversActivity::class.java
-                )
+                    CarnetBordUniversActivity::class.java,
+                ),
             )
         }
         binding.animationQuestionLottie.apply {

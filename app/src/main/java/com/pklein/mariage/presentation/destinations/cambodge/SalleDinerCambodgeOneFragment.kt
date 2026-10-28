@@ -33,6 +33,8 @@ class SalleDinerCambodgeOneFragment :
     CadenaLayoutListener,
     SalleDinerCambodgeOneListener {
     private val gameProgress: GameProgressViewModel by activityViewModels()
+    private val gameStep = GameStep.SalleDinerCambodge1
+    private val universStep = SharedPreferenceKey.UNIVERS_2_CAMBODGE
     private var binding: FragmentSalleDinerCambodgeOneBinding? = null
 
     override fun onCreateView(
@@ -51,11 +53,8 @@ class SalleDinerCambodgeOneFragment :
     ) {
         super.onViewCreated(view, savedInstanceState)
         val binding = binding ?: return
-        gameProgress.storePage(GameStep.SalleDinerCambodge1)
-        gameProgress.storeUniversPage(
-            SharedPreferenceKey.UNIVERS_2_CAMBODGE,
-            GameStep.SalleDinerCambodge1,
-        )
+        gameProgress.storePage(gameStep)
+        gameProgress.storeUniversPage(universStep, gameStep)
 
         binding.ivHome.setOnClickListener {
             activity?.startActivity(

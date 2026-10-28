@@ -29,6 +29,8 @@ class SalleDinerCanadaSixFragment :
     Fragment(),
     CheckEmptyTextWatcherListener {
     private val gameProgress: GameProgressViewModel by activityViewModels()
+    private val gameStep = GameStep.SalleDinerCanada6
+    private val universStep = SharedPreferenceKey.UNIVERS_2_CANADA
     private var binding: FragmentSalleDinerCanadaSixBinding? = null
 
     override fun onCreateView(
@@ -47,7 +49,7 @@ class SalleDinerCanadaSixFragment :
     ) {
         super.onViewCreated(view, savedInstanceState)
         val binding = binding ?: return
-        gameProgress.storePage(GameStep.SalleDinerCanada6)
+        gameProgress.storePage(gameStep)
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_RABBIT_SIROP_ERABLE)) {
             gameProgress.saveTrophy(Trophies.TROPHY_RABBIT_SIROP_ERABLE)
             context?.let {
@@ -57,10 +59,7 @@ class SalleDinerCanadaSixFragment :
                 )
             }
         }
-        gameProgress.storeUniversPage(
-            SharedPreferenceKey.UNIVERS_2_CANADA,
-            GameStep.SalleDinerCanada6,
-        )
+        gameProgress.storeUniversPage(universStep, gameStep)
 
         binding.ivHome.setOnClickListener {
             activity?.startActivity(
@@ -82,7 +81,7 @@ class SalleDinerCanadaSixFragment :
             if (response.formatAnswer() == RESPONSE) {
                 Alerts.showPopup(
                     it,
-                    getString(R.string.diner_canada_six_bravo),
+                    getString(R.string.diner_canada_six_bravo, gameProgress.playerName),
                     ::launchNext,
                     PopinType.CLAPPING,
                 )
@@ -103,8 +102,9 @@ class SalleDinerCanadaSixFragment :
     }
 
     private fun launchNext() {
-        gameProgress.finishUnivers(SharedPreferenceKey.UNIVERS_2_CANADA)
+        gameProgress.finishUnivers(universStep)
         activity?.startActivity(Intent(requireContext(), CarnetBordUniversActivity::class.java))
+        activity?.finish()
     }
 
     override fun onDestroyView() {

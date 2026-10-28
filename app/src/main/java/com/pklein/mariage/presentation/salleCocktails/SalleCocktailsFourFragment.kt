@@ -14,6 +14,7 @@ import com.pklein.mariage.databinding.FragmentSalleCocktailsFourBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
+import com.pklein.mariage.ui.theme.getFormattedText
 import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,31 +32,38 @@ class SalleCocktailsFourFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return FragmentSalleCocktailsFourBinding.inflate(inflater, container, false)
-            .also { binding = it }.root
-    }
+        savedInstanceState: Bundle?,
+    ): View =
+        FragmentSalleCocktailsFourBinding
+            .inflate(inflater, container, false)
+            .also { binding = it }
+            .root
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onViewCreated(
+        view: View,
+        savedInstanceState: Bundle?,
+    ) {
         super.onViewCreated(view, savedInstanceState)
         val binding = binding ?: return
         gameProgress.storePage(GameStep.SalleCocktail4)
         gameProgress.storeUniversPage(
             SharedPreferenceKey.UNIVERS_2_COCKTAILS,
-            GameStep.SalleCocktail4
+            GameStep.SalleCocktail4,
         )
+
+        binding.tvCocktailFourMessage.text =
+            resources.getFormattedText(R.string.cocktail_four_message, gameProgress.playerName)
 
         binding.ivHome.setOnClickListener {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordActivity::class.java
-                )
+                    CarnetBordActivity::class.java,
+                ),
             )
         }
         binding.radioGroupMap.setOnCheckedChangeListener { _, _ ->
-            binding.buttonCocktailFive.isEnabled = true
+            binding.buttonCocktailFour.isEnabled = true
         }
         binding.ivDesert.setOnClickListener {
             binding.radioDesert.isChecked = true
@@ -65,7 +73,7 @@ class SalleCocktailsFourFragment : Fragment() {
             binding.radioDesert.isChecked = false
             binding.radioVillage.isChecked = true
         }
-        binding.buttonCocktailFive.setOnClickListener {
+        binding.buttonCocktailFour.setOnClickListener {
             onValidateClicked(checkValueFromRadioButton())
         }
         binding.root.addSystemWindowInsetToMargin()

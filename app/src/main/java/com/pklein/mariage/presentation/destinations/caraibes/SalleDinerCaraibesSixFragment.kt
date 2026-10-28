@@ -117,5 +117,6 @@ class SalleDinerCaraibesSixFragment : Fragment() {
     private fun launchNext() {
         gameProgress.finishUnivers(SharedPreferenceKey.UNIVERS_2_CARAIBES)
         activity?.startActivity(Intent(requireContext(), CarnetBordUniversActivity::class.java))
+        activity?.finish()
     }
 }

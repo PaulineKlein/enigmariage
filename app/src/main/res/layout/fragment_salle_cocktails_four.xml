@@ -32,12 +32,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_cocktail_five_message"
+            android:id="@+id/tv_cocktail_four_message"
             style="@style/Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_32"
-            android:text="@string/cocktail_five_message"
+            android:text="@string/cocktail_four_message"
             android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
             android:paddingVertical="@dimen/margin_8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_cocktail_five_message">
+            app:layout_constraintTop_toBottomOf="@+id/tv_cocktail_four_message">
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radioDesert"
@@ -98,7 +98,7 @@
             app:srcCompat="@drawable/image_village_village" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_cocktail_five"
+            android:id="@+id/button_cocktail_four"
             style="@style/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -106,12 +106,12 @@
             android:layout_marginBottom="@dimen/margin_16"
             android:enabled="false"
             android:text="@string/valider"
-            app:layout_constraintWidth_percent="0.70"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_village"
-            app:layout_constraintVertical_bias="1" />
+            app:layout_constraintVertical_bias="1"
+            app:layout_constraintWidth_percent="0.70" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

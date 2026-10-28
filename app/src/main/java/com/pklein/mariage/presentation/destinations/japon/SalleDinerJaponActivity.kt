@@ -19,25 +19,32 @@ class SalleDinerJaponActivity : BaseActivity() {
             val navController =
                 (supportFragmentManager.findFragmentById(R.id.nav_host_diner_japon) as NavHostFragment).navController
 
-            val popOne = NavOptions.Builder()
-                .setPopUpTo(R.id.salleDinerJaponOneFragment, true)
-                .build()
+            val popOne =
+                NavOptions
+                    .Builder()
+                    .setPopUpTo(R.id.salleDinerJaponOneFragment, true)
+                    .build()
 
             when (intent.getStringExtra(SplashCoordinator.EXTRA_STEP)) {
-                GameStep.SalleDinerJapon2.key ->
+                GameStep.SalleDinerJapon2.key -> {
                     navController.navigate(R.id.salleDinerJaponTwoFragment, null, popOne)
+                }
 
-                GameStep.SalleDinerJapon3.key ->
+                GameStep.SalleDinerJapon3.key -> {
                     navController.navigate(R.id.salleDinerJaponThreeFragment, null, popOne)
+                }
 
-                GameStep.SalleDinerJapon4.key ->
+                GameStep.SalleDinerJapon4.key -> {
                     navController.navigate(R.id.salleDinerJaponFourFragment, null, popOne)
+                }
 
-                GameStep.SalleDinerJapon5.key ->
+                GameStep.SalleDinerJapon5.key -> {
                     navController.navigate(R.id.salleDinerJaponFiveFragment, null, popOne)
+                }
 
-                GameStep.SalleDinerJapon6.key ->
+                GameStep.SalleDinerJapon6.key -> {
                     navController.navigate(R.id.salleDinerJaponSixFragment, null, popOne)
+                }
             }
         }
     }

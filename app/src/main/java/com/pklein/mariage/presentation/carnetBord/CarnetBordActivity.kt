@@ -38,6 +38,13 @@ class CarnetBordActivity : BaseActivity() {
         binding.root.addSystemWindowInsetToMargin()
     }
 
+    // singleTask reuses the existing instance instead of calling onCreate, so rebuild the screen to show fresh statuses.
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        recreate()
+    }
+
     private fun universAccessibility(
         nameRes: Int,
         stateRes: Int,

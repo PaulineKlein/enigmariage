@@ -27,7 +27,7 @@ private const val RESPONSE = "nappe"
 @AndroidEntryPoint
 class SalleCocktailsSixFragment :
     Fragment(),
-    SalleCocktailsSevenLayoutListener {
+    SalleCocktailsSixLayoutListener {
     private val gameProgress: GameProgressViewModel by activityViewModels()
     private var binding: FragmentSalleCocktailsSixBinding? = null
 
@@ -67,14 +67,14 @@ class SalleCocktailsSixFragment :
                 ),
             )
         }
-        val adapter = SalleCocktailsSevenViewPagerAdapter(this)
+        val adapter = SalleCocktailsSixViewPagerAdapter(gameProgress.playerName, this)
         context?.let {
             val dotsUtils = ViewPager2DotsUtils(adapter.itemCount).setupDots(it)
             dotsUtils.addDotsTo(binding.pagerDots)
         }
 
-        binding.viewpagerSalleCocktailsSeven.adapter = adapter
-        binding.viewpagerSalleCocktailsSeven.setPageTransformer(ZoomOutPageTransformer())
+        binding.viewpagerCocktailsSix.adapter = adapter
+        binding.viewpagerCocktailsSix.setPageTransformer(ZoomOutPageTransformer())
         binding.root.addSystemWindowInsetToMargin()
     }
 

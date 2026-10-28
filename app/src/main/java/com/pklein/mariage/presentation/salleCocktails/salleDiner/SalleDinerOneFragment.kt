@@ -66,7 +66,7 @@ class SalleDinerOneFragment :
             )
         }
 
-        val adapter = SalleDinerOneViewPagerAdapter(this, this)
+        val adapter = SalleDinerOneViewPagerAdapter(gameProgress.playerName, this, this)
         context?.let {
             val dotsUtils = ViewPager2DotsUtils(adapter.itemCount).setupDots(it)
             dotsUtils.addDotsTo(binding.pagerDots)

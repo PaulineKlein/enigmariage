@@ -102,7 +102,7 @@ class SalleEmbarquementThreeFragment :
             if (responseStep != null && response.formatAnswer() == responseStep) {
                 Alerts.showPopup(
                     ctx,
-                    getString(R.string.embarquement_three_reponse_bravo),
+                    getString(R.string.embarquement_three_reponse_bravo, gameProgress.playerName),
                     ::launchNext,
                     PopinType.CLAPPING,
                 )
@@ -125,6 +125,7 @@ class SalleEmbarquementThreeFragment :
     private fun launchNext() {
         gameProgress.finishUnivers(universStep)
         activity?.startActivity(Intent(requireContext(), CarnetBordActivity::class.java))
+        activity?.finish()
     }
 
     override fun onDestroyView() {

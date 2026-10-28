@@ -30,6 +30,8 @@ class SalleDinerJaponSixFragment :
     Fragment(),
     SalleDinerJaponSixLayoutListener {
     private val gameProgress: GameProgressViewModel by activityViewModels()
+    private val gameStep = GameStep.SalleDinerJapon6
+    private val universStep = SharedPreferenceKey.UNIVERS_2_JAPON
     private var binding: FragmentSalleDinerJaponSixBinding? = null
 
     override fun onCreateView(
@@ -48,17 +50,14 @@ class SalleDinerJaponSixFragment :
     ) {
         super.onViewCreated(view, savedInstanceState)
         val binding = binding ?: return
-        gameProgress.storePage(GameStep.SalleDinerJapon6)
+        gameProgress.storePage(gameStep)
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_RABBIT_TAPIOCA)) {
             gameProgress.saveTrophy(Trophies.TROPHY_RABBIT_TAPIOCA)
             context?.let {
                 Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_RABBIT_TAPIOCA.message))
             }
         }
-        gameProgress.storeUniversPage(
-            SharedPreferenceKey.UNIVERS_2_JAPON,
-            GameStep.SalleDinerJapon6,
-        )
+        gameProgress.storeUniversPage(universStep, gameStep)
 
         binding.ivHome.setOnClickListener {
             activity?.startActivity(
@@ -85,7 +84,7 @@ class SalleDinerJaponSixFragment :
             if (response.formatAnswer() == RESPONSE_1 || response.formatAnswer() == RESPONSE_2) {
                 Alerts.showPopup(
                     it,
-                    getString(R.string.diner_japon_six_bravo),
+                    getString(R.string.diner_japon_six_bravo, gameProgress.playerName),
                     ::launchNext,
                     PopinType.CLAPPING,
                 )
@@ -98,8 +97,9 @@ class SalleDinerJaponSixFragment :
     }
 
     private fun launchNext() {
-        gameProgress.finishUnivers(SharedPreferenceKey.UNIVERS_2_JAPON)
+        gameProgress.finishUnivers(universStep)
         activity?.startActivity(Intent(requireContext(), CarnetBordUniversActivity::class.java))
+        activity?.finish()
     }
 
     override fun onDestroyView() {

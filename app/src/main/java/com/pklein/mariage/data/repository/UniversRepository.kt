@@ -64,6 +64,9 @@ class UniversRepository
             univers: SharedPreferenceKey,
             page: GameStep,
         ) {
+            // The destination activity stays in the back stack after finishing; if it gets recreated,
+            // its fragment calls this again and must not turn a finished univers back into "going".
+            if (getUniversStatus(univers) == UniversStatus.IS_FINISHED) return
             preferences.storeValue(univers, page.name)
         }
 

@@ -28,8 +28,8 @@ class SalleDinerJaponOneFragment : QuestionFragment() {
             activity?.startActivity(
                 Intent(
                     requireContext(),
-                    CarnetBordUniversActivity::class.java
-                )
+                    CarnetBordUniversActivity::class.java,
+                ),
             )
         }
         binding.animationQuestionLottie.apply {
@@ -58,7 +58,7 @@ class SalleDinerJaponOneFragment : QuestionFragment() {
             context?.let {
                 Alerts.showTrophyUnlocked(
                     it,
-                    getString(Trophies.TROPHY_CLUE_1.message)
+                    getString(Trophies.TROPHY_CLUE_1.message),
                 )
             }
         }

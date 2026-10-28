@@ -22,7 +22,10 @@ class CarnetBordViewModel
         private val trophyRepository: TrophyRepository,
         private val inspector: IInspector,
     ) : ViewModel() {
-        val universPath: Univers2Path get() = inspector.universPath
+        val universPath: Univers2Path
+            get() = inspector.universPath
+        val playerName: String?
+            get() = playerRepository.name
 
         fun storePage(step: GameStep) {
             playerRepository.storePage(step)

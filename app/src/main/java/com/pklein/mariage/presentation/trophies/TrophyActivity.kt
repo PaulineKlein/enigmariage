@@ -1,5 +1,6 @@
 package com.pklein.mariage.presentation.trophies
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -35,13 +36,21 @@ class TrophyActivity : BaseActivity() {
 
         val trophies = gameProgress.getAllTrophies()
         val missingCount = trophies.count { !it.second }
-        binding.tvTrophySubtitle.text = if (missingCount == 0) {
-            getString(R.string.trophies_complete)
-        } else {
-            resources.getQuantityString(R.plurals.trophies_missing, missingCount, missingCount)
-        }
+        binding.tvTrophySubtitle.text =
+            if (missingCount == 0) {
+                getString(R.string.trophies_complete)
+            } else {
+                resources.getQuantityString(R.plurals.trophies_missing, missingCount, missingCount)
+            }
 
         binding.rvTrophies.layoutManager = LinearLayoutManager(this)
         binding.rvTrophies.adapter = TrophyAdapter(trophies)
+    }
+
+    // singleTask reuses the existing instance instead of calling onCreate, so rebuild the screen to show fresh statuses.
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        recreate()
     }
 }

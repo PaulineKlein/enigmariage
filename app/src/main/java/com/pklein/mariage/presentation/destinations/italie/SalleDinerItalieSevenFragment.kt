@@ -75,5 +75,6 @@ class SalleDinerItalieSevenFragment : Fragment() {
     private fun launchNext() {
         gameProgress.finishUnivers(SharedPreferenceKey.UNIVERS_2_ITALIE)
         activity?.startActivity(Intent(requireContext(), CarnetBordUniversActivity::class.java))
+        activity?.finish()
     }
 }

@@ -69,6 +69,9 @@ class CombatFinalThreeFragment : Fragment() {
         gameProgress.storePage(gameStep)
         gameProgress.storeUniversPage(universStep, gameStep)
 
+        binding.tvCombatFinalThreeMessage1.text =
+            getString(R.string.combatFinal_three_message_1, gameProgress.playerName)
+
         binding.ivHome.setOnClickListener {
             activity?.startActivity(
                 Intent(requireContext(), CarnetBordActivity::class.java),

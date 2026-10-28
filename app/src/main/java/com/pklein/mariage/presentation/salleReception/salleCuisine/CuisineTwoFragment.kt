@@ -50,5 +50,6 @@ class CuisineTwoFragment : Fragment() {
     private fun launchNext() {
         gameProgress.finishUnivers(SharedPreferenceKey.UNIVERS_2_RECEPTION)
         activity?.startActivity(Intent(requireContext(), CarnetBordUniversActivity::class.java))
+        activity?.finish()
     }
 }

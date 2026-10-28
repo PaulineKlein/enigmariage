@@ -10,7 +10,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
-import com.pklein.mariage.data.repository.PlayerGender
 import com.pklein.mariage.databinding.FragmentCombatFinalTwoRabbitBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
@@ -54,7 +53,6 @@ class CombatFinalTwoRabbitFragment : Fragment() {
                 ),
             )
         }
-        setMazeImage(binding)
         binding.buttonCombatFinalReponse.setOnClickListener {
             val kanjiId = binding.radioGroupCoups.checkedRadioButtonId
             if (kanjiId == R.id.radioReponse2) {
@@ -75,14 +73,6 @@ class CombatFinalTwoRabbitFragment : Fragment() {
             }
         }
         binding.root.addSystemWindowInsetToMargin()
-    }
-
-    private fun setMazeImage(binding: FragmentCombatFinalTwoRabbitBinding) {
-        if (gameProgress.gender == PlayerGender.RABBIT) {
-            binding.ivCombatFinalMaze.setImageResource(R.drawable.image_maze_final_perso_woman)
-        } else {
-            binding.ivCombatFinalMaze.setImageResource(R.drawable.image_maze_final_perso_man)
-        }
     }
 
     private fun launchNext() {

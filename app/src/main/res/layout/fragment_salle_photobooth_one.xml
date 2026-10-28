@@ -36,7 +36,7 @@
             style="@style/Body_big"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/diner_cambodge_five_message_3"
+            android:text="@string/photobooth_one_message"
             android:textAlignment="center"
             app:layout_constraintBottom_toTopOf="@+id/iv_gourde"
             app:layout_constraintEnd_toEndOf="parent"

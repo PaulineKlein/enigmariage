@@ -24,8 +24,11 @@ internal object Slot {
     const val C_FIRST = 10
     const val C_SECOND = 11
 
+    // Third stick of the first right-hand number: "V = III + II".
+    const val B_THIRD = 12
+
     // Slots that lead nowhere: they hide which one is the right one while dragging.
-    const val FIRST_DECOY = 12
+    const val FIRST_DECOY = 13
 }
 
 private fun vertical(x: Float) = Segment(Offset(x, TOP), Offset(x, TOP + STICK_LENGTH))
@@ -50,8 +53,8 @@ private val RECEPTION_SLOTS: List<Segment> =
         vertical(252f),
         vertical(302f),
         vertical(318f),
+        vertical(170f),
         horizontal(100f, 160f, MID_Y),
-        vertical(172f),
         vertical(50f),
         horizontal(222f, 282f, TOP),
         horizontal(222f, 282f, TOP + STICK_LENGTH),
@@ -89,21 +92,22 @@ private fun leftNumber(occupied: Set<Int>): Int? {
 
 private fun sticksCount(
     occupied: Set<Int>,
-    first: Int,
-    second: Int,
-): Int? = listOf(first, second).count { it in occupied }.takeIf { it > 0 }
+    vararg slots: Int,
+): Int? = slots.count { it in occupied }.takeIf { it > 0 }
 
+// Covers both IV = II + II and V = III + II: only the stick counts differ.
 private fun isEquationCorrect(occupied: Set<Int>): Boolean {
     if (Slot.EQUALS_TOP !in occupied || Slot.EQUALS_BOTTOM !in occupied) return false
     if (Slot.PLUS_HORIZONTAL !in occupied) return false
     val left = leftNumber(occupied) ?: return false
-    val b = sticksCount(occupied, Slot.B_FIRST, Slot.B_SECOND) ?: return false
+    val b = sticksCount(occupied, Slot.B_FIRST, Slot.B_SECOND, Slot.B_THIRD) ?: return false
     val c = sticksCount(occupied, Slot.C_FIRST, Slot.C_SECOND) ?: return false
     val right = if (Slot.PLUS_VERTICAL in occupied) b + c else b - c
     return left == right
 }
 
 // The "I" on the right of the V (stick 2) goes on its left: IV = II + II
+// Or the "I" on the right of the V (stick 2) goes on the right: V = III + II
 internal val ReceptionFourPuzzle =
     MatchstickPuzzleConfig(
         width = 332f,

@@ -20,7 +20,7 @@ class SalleCocktailsFiveFragment : QuestionFragment() {
 
     override fun onSetupView(binding: FragmentQuestionBinding) {
         binding.tvQuestionTitre.text = getString(R.string.cocktail_one_titre)
-        binding.tvQuestionMessage.text = resources.getText(R.string.cocktail_six_message)
+        binding.tvQuestionMessage.text = resources.getText(R.string.cocktail_five_message)
         binding.animationQuestionLottie.visibility = View.GONE
         binding.animationQuestionImage.visibility = View.VISIBLE
         binding.animationQuestionImage.setImageResource(R.drawable.image_village_desert)

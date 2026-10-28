@@ -21,29 +21,40 @@ class SplashActivity : BaseActivity() {
     lateinit var binding: ActivitySplashBinding
     private val gameProgress: GameProgressViewModel by viewModels()
 
-    private val requestNotificationPermission = registerForActivityResult(
-        ActivityResultContracts.RequestPermission()
-    ) { /* permission granted or denied — nothing to do */ }
+    private val requestNotificationPermission =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+        ) { /* permission granted or denied — nothing to do */ }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.scrollRoot.addSystemWindowInsetToMargin()
         requestNotificationPermissionIfNeeded()
         initButton()
         animateEntrance()
     }
+
+    // singleTask reuses the existing instance instead of calling onCreate, so rebuild the screen to show fresh statuses.
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        initButton()
+    }
+
     private fun animateEntrance() {
         val offset = 60f
         listOf(
             binding.tvSplashTitre,
             binding.tvSplashTagline,
             binding.ivSplashBateau,
-            binding.linearButtons
+            binding.linearButtons,
         ).forEachIndexed { i, view ->
             view.let {
                 it.translationY = offset
-                it.animate()
+                it
+                    .animate()
                     .alpha(1f)
                     .translationY(0f)
                     .setStartDelay(120L * i)
@@ -63,9 +74,7 @@ class SplashActivity : BaseActivity() {
     }
 
     private fun initButton() {
-        val page = gameProgress.page
-
-        if (page.isNullOrEmpty()) {
+        if (gameProgress.page.isNullOrEmpty()) {
             binding.buttonNvllePartie.setOnClickListener {
                 val intent = Intent(this, IntroductionActivity::class.java)
                 startActivity(intent)
@@ -73,8 +82,10 @@ class SplashActivity : BaseActivity() {
         } else {
             binding.buttonContinuer.isEnabled = true
             binding.buttonContinuer.setOnClickListener {
-                SplashCoordinator.launchGame(page, this)
-                launchCountDown()
+                gameProgress.page?.let {
+                    SplashCoordinator.launchGame(it, this)
+                    launchCountDown()
+                }
             }
             binding.buttonNvllePartie.setOnClickListener {
                 showAlert()
@@ -83,7 +94,6 @@ class SplashActivity : BaseActivity() {
         binding.buttonTrophees.setOnClickListener {
             startActivity(Intent(this, TrophyActivity::class.java))
         }
-        binding.scrollRoot.addSystemWindowInsetToMargin()
     }
 
     private fun showAlert() {
@@ -93,7 +103,7 @@ class SplashActivity : BaseActivity() {
             getString(R.string.popup_new_game),
             getString(R.string.oui),
             getString(R.string.non),
-            ::launchNewGame
+            ::launchNewGame,
         )
     }
 

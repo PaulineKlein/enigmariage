@@ -47,7 +47,7 @@
             style="@style/Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginStart="@dimen/margin_24"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_resultat_temps_titre"
             app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_temps_titre"
             app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
             style="@style/Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginStart="@dimen/margin_24"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_resultat_score_titre"
             app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_score_titre"
             app:layout_constraintEnd_toEndOf="parent"
@@ -95,36 +95,23 @@
             style="@style/Body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_16"
+            android:layout_marginStart="@dimen/margin_24"
             app:layout_constraintBaseline_toBaselineOf="@+id/tv_resultat_trophees_titre"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tv_resultat_temps_titre"
-            app:layout_constraintTop_toTopOf="@+id/tv_resultat_trophees_titre" />
+            app:layout_constraintTop_toTopOf="@+id/tv_resultat_trophees_titre"
+            tool:text="@string/un" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/iv_merci"
             android:layout_width="wrap_content"
             android:layout_height="300dp"
             android:contentDescription="@string/fin_mariage_accessibility"
-            app:layout_constraintBottom_toTopOf="@+id/animation_score_lottie"
+            app:layout_constraintBottom_toTopOf="@+id/tv_resultat_message"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_resultat_trophees_titre"
             app:srcCompat="@drawable/image_merci" />
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animation_score_lottie"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:contentDescription="@null"
-            android:scaleType="fitCenter"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_resultat_message"
-            app:layout_constraintEnd_toStartOf="@id/tv_resultat_message"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_resultat_message"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="animation_cup.json"
-            app:lottie_loop="true" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_resultat_message"
@@ -132,13 +119,26 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginVertical="@dimen/margin_8"
-            android:layout_marginStart="@dimen/margin_4"
             android:gravity="center"
             android:text="@string/resultat_message"
+            app:layout_constraintBottom_toTopOf="@+id/animation_score_lottie"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_merci" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animation_score_lottie"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/buttons_resultat"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/animation_score_lottie"
-            app:layout_constraintTop_toBottomOf="@+id/iv_merci" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_resultat_message"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="animation_cup.json"
+            app:lottie_loop="true" />
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/buttons_resultat"

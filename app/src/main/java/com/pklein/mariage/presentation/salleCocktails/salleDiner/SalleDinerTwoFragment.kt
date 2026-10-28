@@ -33,7 +33,7 @@ class SalleDinerTwoFragment : QuestionFragment() {
             if (response.formatAnswer().contains(RESPONSE)) {
                 Alerts.showPopup(
                     it,
-                    getString(R.string.diner_two_bravo),
+                    getString(R.string.diner_two_bravo, gameProgress.playerName),
                     ::launchNext,
                     PopinType.CLAPPING,
                 )
@@ -48,5 +48,6 @@ class SalleDinerTwoFragment : QuestionFragment() {
     override fun launchNext() {
         gameProgress.finishUnivers(SharedPreferenceKey.UNIVERS_2_COCKTAILS)
         activity?.startActivity(Intent(requireContext(), CarnetBordUniversActivity::class.java))
+        activity?.finish()
     }
 }

@@ -14,6 +14,7 @@ import com.pklein.mariage.databinding.ActivityCarnetBordUniversBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.SplashCoordinator
+import com.pklein.mariage.ui.theme.getFormattedText
 import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,9 +53,13 @@ class CarnetBordUniversActivity : BaseActivity() {
             )
         }
         if (isUnivers2Finish()) {
-            binding.tvCarnetBravo.visibility = View.VISIBLE
+            binding.tvCarnetBravo.apply {
+                text = resources.getFormattedText(R.string.carnet_bord2_bravo, viewModel.playerName)
+                visibility = View.VISIBLE
+            }
             binding.tvCarnetBravo.setOnClickListener {
                 startActivity(Intent(this, CarnetBordActivity::class.java))
+                finish()
             }
             val trophy = path.completeTrophy
             if (!viewModel.isTrophyUnlocked(trophy)) {
@@ -65,6 +70,13 @@ class CarnetBordUniversActivity : BaseActivity() {
             binding.tvCarnetBravo.visibility = View.INVISIBLE
         }
         binding.root.addSystemWindowInsetToMargin()
+    }
+
+    // singleTask reuses the existing instance instead of calling onCreate, so rebuild the screen to show fresh statuses.
+    override fun onNewIntent(intent: Intent) {
+        super.onNewIntent(intent)
+        setIntent(intent)
+        recreate()
     }
 
     private fun universAccessibility(
