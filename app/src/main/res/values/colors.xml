@@ -16,6 +16,8 @@
     <color name="help">#c1deb8</color>
     <color name="helpFonce">#A3C1A2</color>
     <color name="help_text">#3a6b2a</color>
+    <color name="success">#7CC66B</color>
+    <color name="success_dark">#4E9F3D</color>
     <color name="gradient_startColor">#ffd6e0</color>
     <color name="gradient_centerColor">#ffe8f0</color>
     <color name="gradient_endColor">#c8e6e7</color>

@@ -39,9 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorBleuFonce
-import com.pklein.mariage.ui.theme.ColorBleuLightFonce
 import com.pklein.mariage.ui.theme.ColorGrey
-import com.pklein.mariage.ui.theme.ColorPrimaryDark
 import com.pklein.mariage.ui.theme.ColorText
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.GradientEndColor
@@ -49,25 +47,11 @@ import com.pklein.mariage.ui.theme.GradientEndColorFonce
 
 private val BUTTON_SHAPE = RoundedCornerShape(12.dp)
 internal val BUTTON_SHADOW_ELEVATION = 3.dp
-private val SECONDARY_BORDER_WIDTH = 1.5.dp
 internal const val TOP_LIGHTEN = 0.45f
 internal const val PRESSED_DARKEN = 0.2f
-private const val PRESSED_TINT_ALPHA = 0.6f
 internal const val PRESSED_SCALE = 0.97f
 internal const val PRESS_ANIMATION_MS = 90
 internal val LETTER_SPACING = 0.4.sp
-
-/** How much visual weight a button carries. */
-enum class AppButtonVariant {
-    /** Filled gradient with shadow: the main action of a screen. */
-    Primary,
-
-    /** Transparent with an outline: an alternative action. */
-    Secondary,
-
-    /** Text only: a discreet action. */
-    Tertiary,
-}
 
 private class ButtonStyle(
     val fill: Brush,
@@ -77,73 +61,50 @@ private class ButtonStyle(
 )
 
 private fun buttonStyle(
-    variant: AppButtonVariant,
     enabled: Boolean,
     pressedFraction: Float,
 ): ButtonStyle =
-    when {
-        // Whatever the variant, a disabled button is a plain grey button: unmistakably unavailable.
-        !enabled -> {
-            ButtonStyle(
-                fill = SolidColor(ColorGrey),
-                border = BorderStroke(1.dp, ColorGrey),
-                textColor = ColorText,
-                hasShadow = false,
-            )
-        }
-
-        variant == AppButtonVariant.Primary -> {
-            // Slightly lighter at the top, the original blue at the bottom; both darken a little while pressed.
-            val darken = pressedFraction * PRESSED_DARKEN
-            ButtonStyle(
-                fill =
+    if (enabled) {
+        // Slightly lighter at the top, the original blue at the bottom; both darken a little while pressed.
+        val darken = pressedFraction * PRESSED_DARKEN
+        ButtonStyle(
+            fill =
+                Brush.verticalGradient(
+                    listOf(
+                        lerp(
+                            lerp(GradientEndColor, Color.White, TOP_LIGHTEN),
+                            GradientEndColorFonce,
+                            darken,
+                        ),
+                        lerp(GradientEndColor, GradientEndColorFonce, darken),
+                    ),
+                ),
+            // A lighter top edge gives a subtle highlight.
+            border =
+                BorderStroke(
+                    1.dp,
                     Brush.verticalGradient(
                         listOf(
                             lerp(
-                                lerp(GradientEndColor, Color.White, TOP_LIGHTEN),
                                 GradientEndColorFonce,
-                                darken,
+                                Color.White,
+                                TOP_LIGHTEN,
                             ),
-                            lerp(GradientEndColor, GradientEndColorFonce, darken),
+                            GradientEndColorFonce,
                         ),
                     ),
-                // A lighter top edge gives a subtle highlight.
-                border =
-                    BorderStroke(
-                        1.dp,
-                        Brush.verticalGradient(
-                            listOf(
-                                lerp(
-                                    GradientEndColorFonce,
-                                    Color.White,
-                                    TOP_LIGHTEN,
-                                ),
-                                GradientEndColorFonce,
-                            ),
-                        ),
-                    ),
-                textColor = ColorBleuFonce,
-                hasShadow = true,
-            )
-        }
-
-        variant == AppButtonVariant.Secondary -> {
-            ButtonStyle(
-                fill = SolidColor(GradientEndColor.copy(alpha = pressedFraction * PRESSED_TINT_ALPHA)),
-                border = BorderStroke(SECONDARY_BORDER_WIDTH, ColorPrimaryDark),
-                textColor = ColorBleuFonce,
-                hasShadow = false,
-            )
-        }
-
-        else -> {
-            ButtonStyle(
-                fill = SolidColor(GradientEndColor.copy(alpha = pressedFraction * PRESSED_TINT_ALPHA)),
-                border = null,
-                textColor = ColorBleuLightFonce,
-                hasShadow = false,
-            )
-        }
+                ),
+            textColor = ColorBleuFonce,
+            hasShadow = true,
+        )
+    } else {
+        // A disabled button is a plain grey button: unmistakably unavailable.
+        ButtonStyle(
+            fill = SolidColor(ColorGrey),
+            border = BorderStroke(1.dp, ColorGrey),
+            textColor = ColorText,
+            hasShadow = false,
+        )
     }
 
 /** Compose equivalent of style="@style/button", with a soft gradient, a tinted shadow and a tactile press. */
@@ -153,7 +114,6 @@ fun AppButton(
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
-    variant: AppButtonVariant = AppButtonVariant.Primary,
     textSize: TextUnit = 14.sp,
     contentPadding: Dp = 13.dp,
 ) {
@@ -169,7 +129,7 @@ fun AppButton(
         animationSpec = tween(durationMillis = PRESS_ANIMATION_MS),
         label = "buttonPressed",
     )
-    val style = buttonStyle(variant, enabled, pressedFraction)
+    val style = buttonStyle(enabled, pressedFraction)
 
     Button(
         onClick = onClick,
@@ -234,36 +194,14 @@ private fun AppButtonPreviewColumn(content: @Composable () -> Unit) {
     }
 }
 
+@Preview(name = "Activé / désactivé", widthDp = 360)
 @Composable
-private fun VariantPreview(variant: AppButtonVariant) {
+private fun AppButtonStatesPreview() {
     AppButtonPreviewColumn {
-        AppButton(
-            text = "Activé",
-            onClick = {},
-            variant = variant,
-            modifier = Modifier.fillMaxWidth(),
-        )
-        AppButton(
-            text = "Désactivé",
-            onClick = {},
-            enabled = false,
-            variant = variant,
-            modifier = Modifier.fillMaxWidth(),
-        )
+        AppButton(text = "Activé", onClick = {}, modifier = Modifier.fillMaxWidth())
+        AppButton(text = "Désactivé", onClick = {}, enabled = false, modifier = Modifier.fillMaxWidth())
     }
 }
-
-@Preview(name = "Primary", widthDp = 360)
-@Composable
-private fun AppButtonPrimaryPreview() = VariantPreview(AppButtonVariant.Primary)
-
-@Preview(name = "Secondary", widthDp = 360)
-@Composable
-private fun AppButtonSecondaryPreview() = VariantPreview(AppButtonVariant.Secondary)
-
-@Preview(name = "Tertiary", widthDp = 360)
-@Composable
-private fun AppButtonTertiaryPreview() = VariantPreview(AppButtonVariant.Tertiary)
 
 @Preview(name = "Tailles (splash)", widthDp = 360)
 @Composable

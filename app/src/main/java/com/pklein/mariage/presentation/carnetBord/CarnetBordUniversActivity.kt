@@ -3,6 +3,7 @@ package com.pklein.mariage.presentation.carnetBord
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.view.animation.OvershootInterpolator
 import androidx.activity.viewModels
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
@@ -36,18 +37,20 @@ class CarnetBordUniversActivity : BaseActivity() {
 
         val path = viewModel.universPath
         path.subUnivers.indices.forEach { i ->
-            val button =
+            val item =
                 layoutInflater.inflate(
                     R.layout.item_univers_button,
                     binding.universButtonsLayout,
                     false,
-                ) as AppCompatButton
+                )
+            val button = item.findViewById<AppCompatButton>(R.id.button_univers)
             button.setText(path.subUniversName[i])
-            binding.universButtonsLayout.addView(button)
+            binding.universButtonsLayout.addView(item)
             showButton(
                 path.subUnivers[i],
                 path.subUniversFirstStep[i],
                 button,
+                item.findViewById(R.id.iv_check),
                 findViewById(path.subUniversIvMapmonde[i]),
                 path.subUniversName[i],
             )
@@ -88,6 +91,7 @@ class CarnetBordUniversActivity : BaseActivity() {
         universKey: SharedPreferenceKey,
         activityLaunch: GameStep,
         universButton: AppCompatButton,
+        checkBadge: View,
         ivMapmonde: AppCompatImageView,
         nameRes: Int,
     ) {
@@ -112,16 +116,7 @@ class CarnetBordUniversActivity : BaseActivity() {
                 universButton.isFocusable = false
                 universButton.setBackgroundResource(R.drawable.background_button_finished)
                 universButton.setTextColor(ContextCompat.getColor(this, R.color.help_text))
-                val checkIcon = ContextCompat.getDrawable(this, R.drawable.ic_check)
-                checkIcon?.setTint(ContextCompat.getColor(this, R.color.help_text))
-                universButton.setCompoundDrawablesRelativeWithIntrinsicBounds(
-                    null,
-                    null,
-                    checkIcon,
-                    null,
-                )
-                universButton.compoundDrawablePadding =
-                    resources.getDimensionPixelSize(R.dimen.margin_8)
+                popIn(checkBadge)
                 universButton.contentDescription =
                     universAccessibility(nameRes, R.string.univers_state_finished)
                 ivMapmonde.visibility = View.VISIBLE
@@ -130,6 +125,18 @@ class CarnetBordUniversActivity : BaseActivity() {
         universButton.setOnClickListener {
             SplashCoordinator.launchGame(activityGoing, this)
         }
+    }
+
+    private fun popIn(badge: View) {
+        badge.visibility = View.VISIBLE
+        badge.scaleX = 0f
+        badge.scaleY = 0f
+        badge
+            .animate()
+            .scaleX(1f)
+            .scaleY(1f)
+            .setInterpolator(OvershootInterpolator())
+            .start()
     }
 
     private fun isUnivers2Finish(): Boolean =

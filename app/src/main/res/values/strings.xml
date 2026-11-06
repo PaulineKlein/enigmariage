@@ -312,9 +312,10 @@
     <string name="carnet_bord2_button_home">Retour au Carnet de Bord</string>
     <string name="carnet_bord2_message">Choisis ta prochaine étape :</string>
     <string name="carnet_bord2_bravo">"Bravo %s, tu as tout trouvé !\nRetournons au <u>Carnet de Bord</u> !"</string>
-    <string name="univers1_name">Où est le bateau</string>
+    <string name="univers1_name">Où est le bateau ?</string>
     <string name="univers2_name">Bienvenue à bord</string>
     <string name="univers3_name">Combat final</string>
+    <string name="univers3_name_locked">Surprise</string>
     <string name="univers_state_not_started">non commencé</string>
     <string name="univers_state_going">en cours</string>
     <string name="univers_state_finished">terminé</string>
