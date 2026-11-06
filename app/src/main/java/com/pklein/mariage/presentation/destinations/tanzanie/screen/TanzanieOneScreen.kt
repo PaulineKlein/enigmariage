@@ -9,7 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.verticalScroll
@@ -55,7 +55,7 @@ fun TanzanieOneScreen(
         modifier =
             Modifier
                 .fillMaxSize()
-                .systemBarsPadding()
+                .safeDrawingPadding()
                 .imePadding()
                 .padding(horizontal = 16.dp, vertical = 16.dp),
     ) {
@@ -105,8 +105,7 @@ fun TanzanieOneScreen(
                                 selected = selected == number,
                                 onClick = { selected = number },
                                 role = Role.RadioButton,
-                            )
-                            .padding(vertical = 8.dp),
+                            ).padding(vertical = 8.dp),
                 ) {
                     RadioButton(
                         selected = selected == number,

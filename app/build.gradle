@@ -58,6 +58,7 @@ android {
         release {
             debuggable false
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
             enableUnitTestCoverage false
@@ -76,7 +77,6 @@ dependencies {
     implementation libs.androidx.navigation.fragment.ktx
     implementation libs.androidx.navigation.ui.ktx
     implementation libs.androidx.viewpager2
-    implementation libs.kotlin.reflect
     implementation libs.androidx.appcompat
     implementation libs.androidx.core.ktx
     testImplementation libs.junit

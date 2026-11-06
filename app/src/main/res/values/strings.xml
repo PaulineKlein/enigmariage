@@ -2,8 +2,10 @@
     <string name="app_name">EnigMariage</string>
     <string name="notification_channel_id" translatable="false">wedding_channel</string>
     <string name="splash_titre">"EnigMariage"</string>
+    <string name="splash_bateau_image">Le bateau où se déroule le mariage</string>
     <string name="splash_tagline">"L'horloge tourne : transforme-toi en héros, ou finis en poupée ✨"</string>
     <string name="trophees_button">Mes Trophées 🏆</string>
+    <string name="trophees_progress_button">Mes Trophées %1$d/%2$d 🏆</string>
     <string name="trophies_titre">(Mes Trophées)</string>
     <plurals name="trophies_missing">
         <item quantity="one">Il te manque encore %d trophée pour compléter ta collection</item>
@@ -21,7 +23,6 @@
     <string name="sept">7</string>
     <string name="huit">8</string>
     <string name="neuf">9</string>
-    <string name="commencer">Commencer</string>
     <string name="new_game">Nouvelle Partie</string>
     <string name="continuer">Continuer</string>
     <string name="attention">Attention</string>
@@ -39,10 +40,18 @@
     <string name="indice_explication">"Des indices peuvent apparaître au cours de l’aventure.\nChaque indice utilisé coûte <b>5 points</b>. En revanche, toute mauvaise réponse fait perdre <b>3 points</b>.\nUtilise tes indices avec stratégie !"</string>
     <string name="zoom_explication">"Appuie sur l’image pour zoomer.\nSwipe vers le bas pour revenir."</string>
     <string name="popup_new_game">Si tu continues, tu perdras ton avancée dans le jeu, souhaites-tu recommencer ?</string>
-    <string name="introduction_titre">(Point sur la situation)</string>
-    <string name="introduction_top">"Alice et Bob célèbrent leur mariage à bord d’un magnifique bateau. C'est alors que <b>Nox</b>, oublié de la liste des invités, pique une énorme colère et décide de gâcher la fête !\n\nDans l’ombre, il prépare un <b>élixir</b> capable de transformer les êtres humains en <b>poupées</b>…"</string>
+    <string name="introduction_titre">Un invité de trop…</string>
+    <string name="introduction_top">"Alice et Bob célèbrent leur mariage à bord d’un magnifique bateau. C'est alors que <b>Nox</b>, oublié de la liste des invités, pique une énorme colère et décide de gâcher la fête !"</string>
+    <string name="introduction_top_2">"Dans l’ombre, il prépare un <b>élixir</b> capable de transformer les êtres humains en <b>poupées</b>…"</string>
+    <string name="introduction_start">Arrêter Nox !</string>
+    <string name="introduction_elixir_hint">Le compte à rebours est lancé</string>
+    <string name="introduction_nox_image">Nox, l’invité oublié qui veut gâcher la fête</string>
+    <string name="introduction_maire_image">Le maire, victime de l’élixir de Nox</string>
+    <string name="introduction_couple_image">Alice et Bob, les mariés</string>
+    <string name="introduction_passer">Passer</string>
+    <string name="introduction_suivant">Page suivante</string>
     <string name="introduction_maire">"Regarde le <b>maire</b> : Nox a déjà testé un prototype de son élixir sur lui. Et il ne compte pas s’arrêter là."</string>
-    <string name="introduction_Bottom">Seras-tu capable de déjouer ses plans et de l’arrêter avant qu’il ne transforme tous les invités ? Le compte à rebours est lancé…</string>
+    <string name="introduction_Bottom">Seras-tu capable de déjouer ses plans et de l’arrêter avant qu’il ne transforme tous les invités ?</string>
     <string name="add_player_titre">(Décline ton identité)</string>
     <string name="add_player_gender">Choisis ton Inspecteur :</string>
     <string name="add_player_gender_message">"Chaque personnage te mène sur sa propre piste : ton choix détermine l’aventure qui t’attend !"</string>

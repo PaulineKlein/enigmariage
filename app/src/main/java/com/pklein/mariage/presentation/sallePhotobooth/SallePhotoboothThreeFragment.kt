@@ -119,6 +119,7 @@ class SallePhotoboothThreeFragment :
 
     private fun launchNext() {
         activity?.startActivity(Intent(requireContext(), CombatFinalActivity::class.java))
+        activity?.finish()
     }
 
     override fun onDestroyView() {

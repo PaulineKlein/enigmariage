@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
@@ -78,12 +78,22 @@
         <item name="android:lineSpacingMultiplier">1.2</item>
     </style>
 
+    <!-- Mirrors ui/atome/AppButton (Primary). -->
     <style name="button" parent="Widget.AppCompat.Button">
         <item name="android:background">@drawable/background_button</item>
         <item name="android:textColor">@color/button_text</item>
+        <item name="android:fontFamily">@font/balsamiq_sans_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:letterSpacing">0.029</item>
         <item name="android:padding">@dimen/button_padding</item>
-        <item name="android:elevation">@dimen/button_elevation</item>
-        <item name="android:stateListAnimator">@null</item>
+        <item name="android:elevation">@dimen/button_shadow_elevation</item>
+        <item name="android:stateListAnimator">@animator/button_state</item>
+        <item name="android:outlineAmbientShadowColor" tools:targetApi="p">
+            @color/gradient_endColorFonce
+        </item>
+        <item name="android:outlineSpotShadowColor" tools:targetApi="p">
+            @color/gradient_endColorFonce
+        </item>
     </style>
 
     <style name="button_cadena" parent="Widget.AppCompat.Button">

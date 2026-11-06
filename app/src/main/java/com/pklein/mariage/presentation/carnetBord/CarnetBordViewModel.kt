@@ -39,6 +39,12 @@ class CarnetBordViewModel
 
         fun getUnivers2FinalStatus(): UniversStatus = universRepository.getUnivers2FinalStatus(inspector)
 
+        val unlockedTrophiesCount: Int
+            get() = trophyRepository.getAllTrophies().count { it.second }
+
+        val totalTrophiesCount: Int
+            get() = Trophies.entries.size
+
         fun isTrophyUnlocked(trophy: Trophies): Boolean = trophyRepository.isTrophyUnlocked(trophy)
 
         fun saveTrophy(trophy: Trophies) = trophyRepository.saveTrophy(trophy)

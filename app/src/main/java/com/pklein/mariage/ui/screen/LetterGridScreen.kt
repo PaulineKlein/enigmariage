@@ -13,7 +13,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -69,7 +69,7 @@ fun LetterGridScreen(
             modifier =
                 Modifier
                     .fillMaxSize()
-                    .systemBarsPadding()
+                    .safeDrawingPadding()
                     .padding(horizontal = 16.dp, vertical = 16.dp),
         ) {
             Column(
@@ -165,7 +165,8 @@ private fun LetterCell(
                 .clip(shape)
                 .drawBehind {
                     drawRect(if (selected) ColorAccent else ColorParchemin)
-                }.clickable(role = Role.Checkbox, onClick = onClick)
+                }
+                .clickable(role = Role.Checkbox, onClick = onClick)
                 .padding(1.dp),
     ) {
         Text(

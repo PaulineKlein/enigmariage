@@ -27,7 +27,7 @@
         </provider>
 
         <activity
-            android:name=".presentation.SplashActivity"
+            android:name=".presentation.introduction.SplashActivity"
             android:exported="true"
             android:launchMode="singleTask">
             <intent-filter>

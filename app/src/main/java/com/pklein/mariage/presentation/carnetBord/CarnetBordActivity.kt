@@ -28,14 +28,28 @@ class CarnetBordActivity : BaseActivity() {
         binding = ActivityCarnetBordBinding.inflate(layoutInflater)
         setContentView(binding.root)
         viewModel.storePage(GameStep.CarnetBord)
-        showUnivers1()
-        showUnivers2()
-        showUnivers3()
         binding.buttonTrophees.setOnClickListener {
             startActivity(Intent(this, TrophyActivity::class.java))
         }
 
         binding.root.addSystemWindowInsetToMargin()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showUnivers1()
+        showUnivers2()
+        showUnivers3()
+        showTrophyProgress()
+    }
+
+    private fun showTrophyProgress() {
+        binding.buttonTrophees.text =
+            getString(
+                R.string.trophees_progress_button,
+                viewModel.unlockedTrophiesCount,
+                viewModel.totalTrophiesCount,
+            )
     }
 
     // singleTask reuses the existing instance instead of calling onCreate, so rebuild the screen to show fresh statuses.

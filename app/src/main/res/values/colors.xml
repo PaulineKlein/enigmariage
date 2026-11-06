@@ -20,4 +20,12 @@
     <color name="gradient_centerColor">#ffe8f0</color>
     <color name="gradient_endColor">#c8e6e7</color>
     <color name="gradient_endColorFonce">#8A9FA3</color>
+    <color name="help_fill_top">#DDEDD8</color>
+    <color name="help_border_top">#CCDDCC</color>
+    <color name="help_fill_top_pressed">#D1E4CD</color>
+    <color name="help_fill_bottom_pressed">#BBD8B4</color>
+    <color name="button_fill_top">#E1F1F2</color>
+    <color name="button_border_top">#BFCACC</color>
+    <color name="button_fill_top_pressed">#D0DEE2</color>
+    <color name="button_fill_bottom_pressed">#BCD8D9</color>
 </resources>

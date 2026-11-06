@@ -1,9 +1,9 @@
 [versions]
-gradle = "9.4.1"
+gradle = "9.5.0"
 kotlin = "2.4.21"
 hilt = "2.60.1"
 ksp = "2.3.9"
-androidGradlePlugin = "9.4.1"
+androidGradlePlugin = "9.5.0"
 googleServices = "4.5.0"
 firebaseCrashlyticsGradle = "3.0.8"
 firebaseBom = "35.1.0"
@@ -26,7 +26,6 @@ espresso = "3.7.0"
 [libraries]
 gradle = { module = "com.android.tools.build:gradle", version.ref = "gradle" }
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 androidx-core-ktx = { module = "androidx.core:core-ktx", version.ref = "coreKtx" }
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }

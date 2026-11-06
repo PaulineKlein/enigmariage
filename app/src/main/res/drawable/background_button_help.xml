@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Mirrors ui/atome/ClueButton: vertical gradient fill and a lighter top edge on the border (same recipe as background_button). -->
 <ripple xmlns:android="http://schemas.android.com/apk/res/android"
     android:color="@color/help_text">
     <item android:id="@android:id/mask">
@@ -15,14 +16,57 @@
                     <corners android:radius="@dimen/button_radius" />
                 </shape>
             </item>
+            <item android:state_pressed="true">
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <gradient
+                                android:angle="270"
+                                android:endColor="@color/helpFonce"
+                                android:startColor="@color/help_border_top" />
+                            <corners android:radius="@dimen/button_radius" />
+                        </shape>
+                    </item>
+                    <item
+                        android:bottom="1dp"
+                        android:left="1dp"
+                        android:right="1dp"
+                        android:top="1dp">
+                        <shape android:shape="rectangle">
+                            <gradient
+                                android:angle="270"
+                                android:endColor="@color/help_fill_bottom_pressed"
+                                android:startColor="@color/help_fill_top_pressed" />
+                            <corners android:radius="@dimen/button_radius_inner" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
             <item>
-                <shape android:shape="rectangle">
-                    <solid android:color="@color/help" />
-                    <corners android:radius="@dimen/button_radius" />
-                    <stroke
-                        android:width="1dp"
-                        android:color="@color/helpFonce" />
-                </shape>
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <gradient
+                                android:angle="270"
+                                android:endColor="@color/helpFonce"
+                                android:startColor="@color/help_border_top" />
+                            <corners android:radius="@dimen/button_radius" />
+                        </shape>
+                    </item>
+                    <item
+                        android:bottom="1dp"
+                        android:left="1dp"
+                        android:right="1dp"
+                        android:top="1dp">
+                        <shape android:shape="rectangle">
+                            <gradient
+                                android:angle="270"
+                                android:endColor="@color/help"
+                                android:startColor="@color/help_fill_top" />
+                            <corners android:radius="@dimen/button_radius_inner" />
+                        </shape>
+                    </item>
+                </layer-list>
             </item>
         </selector>
     </item>

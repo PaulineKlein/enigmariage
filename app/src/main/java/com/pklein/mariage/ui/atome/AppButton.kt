@@ -1,7 +1,16 @@
 package com.pklein.mariage.ui.atome
 
+import android.view.HapticFeedbackConstants
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -9,72 +18,281 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.SolidColor
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.graphics.lerp
+import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pklein.mariage.ui.theme.AppTheme
+import com.pklein.mariage.ui.theme.ColorBleuFonce
+import com.pklein.mariage.ui.theme.ColorBleuLightFonce
 import com.pklein.mariage.ui.theme.ColorGrey
+import com.pklein.mariage.ui.theme.ColorPrimaryDark
 import com.pklein.mariage.ui.theme.ColorText
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.GradientEndColor
 import com.pklein.mariage.ui.theme.GradientEndColorFonce
 
-/** Compose equivalent of style="@style/button". */
+private val BUTTON_SHAPE = RoundedCornerShape(12.dp)
+internal val BUTTON_SHADOW_ELEVATION = 3.dp
+private val SECONDARY_BORDER_WIDTH = 1.5.dp
+internal const val TOP_LIGHTEN = 0.45f
+internal const val PRESSED_DARKEN = 0.2f
+private const val PRESSED_TINT_ALPHA = 0.6f
+internal const val PRESSED_SCALE = 0.97f
+internal const val PRESS_ANIMATION_MS = 90
+internal val LETTER_SPACING = 0.4.sp
+
+/** How much visual weight a button carries. */
+enum class AppButtonVariant {
+    /** Filled gradient with shadow: the main action of a screen. */
+    Primary,
+
+    /** Transparent with an outline: an alternative action. */
+    Secondary,
+
+    /** Text only: a discreet action. */
+    Tertiary,
+}
+
+private class ButtonStyle(
+    val fill: Brush,
+    val border: BorderStroke?,
+    val textColor: Color,
+    val hasShadow: Boolean,
+)
+
+private fun buttonStyle(
+    variant: AppButtonVariant,
+    enabled: Boolean,
+    pressedFraction: Float,
+): ButtonStyle =
+    when {
+        // Whatever the variant, a disabled button is a plain grey button: unmistakably unavailable.
+        !enabled -> {
+            ButtonStyle(
+                fill = SolidColor(ColorGrey),
+                border = BorderStroke(1.dp, ColorGrey),
+                textColor = ColorText,
+                hasShadow = false,
+            )
+        }
+
+        variant == AppButtonVariant.Primary -> {
+            // Slightly lighter at the top, the original blue at the bottom; both darken a little while pressed.
+            val darken = pressedFraction * PRESSED_DARKEN
+            ButtonStyle(
+                fill =
+                    Brush.verticalGradient(
+                        listOf(
+                            lerp(
+                                lerp(GradientEndColor, Color.White, TOP_LIGHTEN),
+                                GradientEndColorFonce,
+                                darken,
+                            ),
+                            lerp(GradientEndColor, GradientEndColorFonce, darken),
+                        ),
+                    ),
+                // A lighter top edge gives a subtle highlight.
+                border =
+                    BorderStroke(
+                        1.dp,
+                        Brush.verticalGradient(
+                            listOf(
+                                lerp(
+                                    GradientEndColorFonce,
+                                    Color.White,
+                                    TOP_LIGHTEN,
+                                ),
+                                GradientEndColorFonce,
+                            ),
+                        ),
+                    ),
+                textColor = ColorBleuFonce,
+                hasShadow = true,
+            )
+        }
+
+        variant == AppButtonVariant.Secondary -> {
+            ButtonStyle(
+                fill = SolidColor(GradientEndColor.copy(alpha = pressedFraction * PRESSED_TINT_ALPHA)),
+                border = BorderStroke(SECONDARY_BORDER_WIDTH, ColorPrimaryDark),
+                textColor = ColorBleuFonce,
+                hasShadow = false,
+            )
+        }
+
+        else -> {
+            ButtonStyle(
+                fill = SolidColor(GradientEndColor.copy(alpha = pressedFraction * PRESSED_TINT_ALPHA)),
+                border = null,
+                textColor = ColorBleuLightFonce,
+                hasShadow = false,
+            )
+        }
+    }
+
+/** Compose equivalent of style="@style/button", with a soft gradient, a tinted shadow and a tactile press. */
 @Composable
 fun AppButton(
     text: String,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    variant: AppButtonVariant = AppButtonVariant.Primary,
+    textSize: TextUnit = 14.sp,
+    contentPadding: Dp = 13.dp,
 ) {
+    val interactionSource = remember { MutableInteractionSource() }
+    val pressed by interactionSource.collectIsPressedAsState()
+    val view = LocalView.current
+    LaunchedEffect(pressed) {
+        if (pressed) view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+    }
+
+    val pressedFraction by animateFloatAsState(
+        targetValue = if (pressed) 1f else 0f,
+        animationSpec = tween(durationMillis = PRESS_ANIMATION_MS),
+        label = "buttonPressed",
+    )
+    val style = buttonStyle(variant, enabled, pressedFraction)
+
     Button(
         onClick = onClick,
         enabled = enabled,
-        modifier = modifier.heightIn(min = 48.dp),
-        shape = RoundedCornerShape(12.dp),
+        interactionSource = interactionSource,
+        modifier =
+            modifier
+                .heightIn(min = 48.dp)
+                .graphicsLayer {
+                    val scale = 1f - (1f - PRESSED_SCALE) * pressedFraction
+                    scaleX = scale
+                    scaleY = scale
+                }
+                .then(
+                    if (style.hasShadow) {
+                        Modifier.shadow(
+                            elevation = BUTTON_SHADOW_ELEVATION,
+                            shape = BUTTON_SHAPE,
+                            ambientColor = GradientEndColorFonce,
+                            spotColor = GradientEndColorFonce,
+                        )
+                    } else {
+                        Modifier
+                    },
+                )
+                .background(style.fill, BUTTON_SHAPE),
+        shape = BUTTON_SHAPE,
         colors =
             ButtonDefaults.buttonColors(
-                containerColor = GradientEndColor,
-                contentColor = ColorText,
-                disabledContainerColor = ColorGrey,
-                disabledContentColor = ColorText,
+                containerColor = Color.Transparent,
+                contentColor = style.textColor,
+                disabledContainerColor = Color.Transparent,
+                disabledContentColor = style.textColor,
             ),
-        border = BorderStroke(1.dp, if (enabled) GradientEndColorFonce else ColorGrey),
+        border = style.border,
         elevation = ButtonDefaults.buttonElevation(0.dp, 0.dp, 0.dp, 0.dp, 0.dp),
-        contentPadding = PaddingValues(13.dp),
+        contentPadding = PaddingValues(contentPadding),
     ) {
         Text(
             text = text.uppercase(Locale.current.platformLocale),
-            style = DefaultTextStyles.body.copy(fontSize = 14.sp),
+            style =
+                DefaultTextStyles.body.copy(
+                    fontSize = textSize,
+                    fontWeight = FontWeight.Normal,
+                    letterSpacing = LETTER_SPACING,
+                    color = style.textColor,
+                ),
             textAlign = TextAlign.Center,
         )
     }
 }
 
-@Preview(name = "Activé")
 @Composable
-private fun AppButtonEnabledPreview() {
+private fun AppButtonPreviewColumn(content: @Composable () -> Unit) {
     AppTheme {
-        AppButton(
-            text = "Valider",
-            onClick = {},
+        Column(
             modifier = Modifier.padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp),
+        ) {
+            content()
+        }
+    }
+}
+
+@Composable
+private fun VariantPreview(variant: AppButtonVariant) {
+    AppButtonPreviewColumn {
+        AppButton(
+            text = "Activé",
+            onClick = {},
+            variant = variant,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        AppButton(
+            text = "Désactivé",
+            onClick = {},
+            enabled = false,
+            variant = variant,
+            modifier = Modifier.fillMaxWidth(),
         )
     }
 }
 
-@Preview(name = "Désactivé")
+@Preview(name = "Primary", widthDp = 360)
 @Composable
-private fun AppButtonDisabledPreview() {
-    AppTheme {
+private fun AppButtonPrimaryPreview() = VariantPreview(AppButtonVariant.Primary)
+
+@Preview(name = "Secondary", widthDp = 360)
+@Composable
+private fun AppButtonSecondaryPreview() = VariantPreview(AppButtonVariant.Secondary)
+
+@Preview(name = "Tertiary", widthDp = 360)
+@Composable
+private fun AppButtonTertiaryPreview() = VariantPreview(AppButtonVariant.Tertiary)
+
+@Preview(name = "Tailles (splash)", widthDp = 360)
+@Composable
+private fun AppButtonSizesPreview() {
+    AppButtonPreviewColumn {
         AppButton(
-            text = "Valider",
+            text = "Continuer",
             onClick = {},
-            enabled = false,
-            modifier = Modifier.padding(16.dp),
+            textSize = 18.sp,
+            contentPadding = 18.dp,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        AppButton(text = "Nouvelle partie", onClick = {}, modifier = Modifier.fillMaxWidth())
+        AppButton(
+            text = "Mes Trophées 3/40 \uD83C\uDFC6",
+            onClick = {},
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+@Preview(name = "Texte long", widthDp = 240)
+@Composable
+private fun AppButtonLongTextPreview() {
+    AppButtonPreviewColumn {
+        AppButton(
+            text = "Un libellé vraiment très long",
+            onClick = {},
+            modifier = Modifier.fillMaxWidth(),
         )
     }
 }

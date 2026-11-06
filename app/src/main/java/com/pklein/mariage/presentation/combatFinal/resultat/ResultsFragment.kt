@@ -17,7 +17,7 @@ import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.databinding.FragmentResultsBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
-import com.pklein.mariage.presentation.SplashActivity
+import com.pklein.mariage.presentation.introduction.SplashActivity
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.presentation.combatFinal.CombatFinalActivity
 import com.pklein.mariage.presentation.combatFinal.CombatFinalActivity.Companion.EXTRA_USELESS_TROPHY
