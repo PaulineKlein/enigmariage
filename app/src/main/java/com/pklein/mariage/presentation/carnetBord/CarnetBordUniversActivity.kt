@@ -116,7 +116,7 @@ class CarnetBordUniversActivity : BaseActivity() {
                 universButton.isFocusable = false
                 universButton.setBackgroundResource(R.drawable.background_button_finished)
                 universButton.setTextColor(ContextCompat.getColor(this, R.color.help_text))
-                popIn(checkBadge)
+                showCheck(checkBadge, universKey.name)
                 universButton.contentDescription =
                     universAccessibility(nameRes, R.string.univers_state_finished)
                 ivMapmonde.visibility = View.VISIBLE
@@ -127,8 +127,14 @@ class CarnetBordUniversActivity : BaseActivity() {
         }
     }
 
-    private fun popIn(badge: View) {
+    // The badge only pops in the first time the universe is seen as finished, not each time the screen is rebuilt.
+    private fun showCheck(
+        badge: View,
+        id: String,
+    ) {
         badge.visibility = View.VISIBLE
+        if (viewModel.isCheckShown(id)) return
+        viewModel.markCheckShown(id)
         badge.scaleX = 0f
         badge.scaleY = 0f
         badge

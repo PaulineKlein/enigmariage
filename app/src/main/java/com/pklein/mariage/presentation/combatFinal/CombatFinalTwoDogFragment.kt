@@ -15,6 +15,7 @@ import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
+import com.pklein.mariage.presentation.combatFinal.data.CombatFinalDogPuzzle
 import com.pklein.mariage.ui.atome.LogigrammeState
 import com.pklein.mariage.ui.screen.LogigrammeScreen
 import com.pklein.mariage.ui.theme.annotatedStringResource

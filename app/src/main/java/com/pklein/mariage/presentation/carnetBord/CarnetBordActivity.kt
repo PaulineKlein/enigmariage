@@ -27,7 +27,6 @@ class CarnetBordActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.storePage(GameStep.CarnetBord)
         setContentView(
             ComposeView(this).apply {
                 setContent {
@@ -41,6 +40,7 @@ class CarnetBordActivity : BaseActivity() {
                                 this@CarnetBordActivity,
                             )
                         },
+                        onCheckShown = viewModel::markCheckShown,
                         onTrophiesClick = {
                             startActivity(
                                 Intent(
@@ -55,16 +55,11 @@ class CarnetBordActivity : BaseActivity() {
         )
     }
 
+    // singleTask reuses this instance instead of calling onCreate, so everything is refreshed here.
     override fun onResume() {
         super.onResume()
+        viewModel.storePage(GameStep.CarnetBord)
         refreshState()
-    }
-
-    // singleTask reuses the existing instance instead of calling onCreate, so rebuild the screen to show fresh statuses.
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        setIntent(intent)
-        recreate()
     }
 
     private fun refreshState() {
@@ -87,6 +82,8 @@ class CarnetBordActivity : BaseActivity() {
             status = if (status == UniversStatus.IS_FINISHED) UniversStatus.IS_FINISHED else UniversStatus.GOING,
             clickable = status != UniversStatus.IS_FINISHED,
             step = step,
+            id = "carnet_1",
+            animateCheck = status == UniversStatus.IS_FINISHED && !viewModel.isCheckShown("carnet_1"),
         )
     }
 
@@ -101,6 +98,8 @@ class CarnetBordActivity : BaseActivity() {
             status = displayed,
             clickable = displayed != UniversStatus.NOT_STARTED,
             step = if (displayed == UniversStatus.IS_FINISHED) GameStep.CarnetBord2.name else viewModel.getUnivers2Page(),
+            id = "carnet_2",
+            animateCheck = displayed == UniversStatus.IS_FINISHED && !viewModel.isCheckShown("carnet_2"),
         )
     }
 
@@ -119,6 +118,8 @@ class CarnetBordActivity : BaseActivity() {
             status = displayed,
             clickable = displayed != UniversStatus.NOT_STARTED,
             step = if (displayed == UniversStatus.IS_FINISHED) GameStep.Result.name else step,
+            id = "carnet_3",
+            animateCheck = displayed == UniversStatus.IS_FINISHED && !viewModel.isCheckShown("carnet_3"),
         )
     }
 

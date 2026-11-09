@@ -33,6 +33,11 @@ class CarnetBordViewModel
 
         fun getUniversStatus(universKey: SharedPreferenceKey): UniversStatus = universRepository.getUniversStatus(universKey)
 
+        // The check badge of a finished universe only pops in the first time it is seen.
+        fun isCheckShown(id: String): Boolean = universRepository.isCheckShown(id)
+
+        fun markCheckShown(id: String) = universRepository.markCheckShown(id)
+
         fun getUniversPage(key: SharedPreferenceKey): String? = universRepository.getUniversPage(key)
 
         fun getUnivers2Page(): String = universRepository.getUnivers2Page(inspector)

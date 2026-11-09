@@ -1,4 +1,4 @@
-package com.pklein.mariage.presentation.combatFinal
+package com.pklein.mariage.presentation.combatFinal.data
 
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.LogigrammeCategory

@@ -97,6 +97,8 @@ data class UniversCardState(
     val status: UniversStatus,
     val clickable: Boolean,
     val step: String,
+    val id: String,
+    val animateCheck: Boolean = false,
 )
 
 /** How the button looks for one status; a null [shadowColor] means no shadow. */
@@ -166,6 +168,7 @@ fun UniversButton(
     state: UniversCardState,
     onClick: () -> Unit,
     horizontal: Boolean,
+    onCheckShown: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
@@ -269,6 +272,8 @@ fun UniversButton(
         }
         if (state.status == UniversStatus.IS_FINISHED) {
             CheckBadge(
+                animate = state.animateCheck,
+                onShown = onCheckShown,
                 modifier =
                     Modifier
                         .align(Alignment.TopEnd)
@@ -296,12 +301,20 @@ private fun UniversImage(
     )
 }
 
-/** Green disc with a white check that pops in when the universe shows up as finished. */
+/** Green disc with a white check, popping in when [animate] (the first time the universe shows up as finished). */
 @Composable
-private fun CheckBadge(modifier: Modifier = Modifier) {
-    val scale = remember { Animatable(0f) }
+private fun CheckBadge(
+    animate: Boolean,
+    onShown: () -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    val scale = remember { Animatable(if (animate) 0f else 1f) }
+    // Reported once the pop-in is over: if the screen is torn down mid-animation, the next one plays it again.
     LaunchedEffect(Unit) {
-        scale.animateTo(1f, spring(dampingRatio = Spring.DampingRatioMediumBouncy))
+        if (animate) {
+            scale.animateTo(1f, spring(dampingRatio = Spring.DampingRatioMediumBouncy))
+            onShown()
+        }
     }
 
     Box(
@@ -342,6 +355,7 @@ private fun UniversButtonHorizontalPreview() {
                     it,
                     onClick = {},
                     horizontal = true,
+                    onCheckShown = {},
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
@@ -362,6 +376,7 @@ private fun UniversButtonVerticalPreview() {
                     it,
                     onClick = {},
                     horizontal = false,
+                    onCheckShown = {},
                     modifier = Modifier.weight(1f),
                 )
             }
@@ -377,6 +392,7 @@ internal val previewCards =
             UniversStatus.IS_FINISHED,
             false,
             "",
+            "1",
         ),
         UniversCardState(
             R.drawable.image_carnet_bord2,
@@ -384,6 +400,7 @@ internal val previewCards =
             UniversStatus.GOING,
             true,
             "",
+            "2",
         ),
         UniversCardState(
             R.drawable.image_carnet_bord3,
@@ -391,5 +408,6 @@ internal val previewCards =
             UniversStatus.NOT_STARTED,
             false,
             "",
+            "3",
         ),
     )

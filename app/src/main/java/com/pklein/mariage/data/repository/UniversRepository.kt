@@ -60,6 +60,10 @@ class UniversRepository
             }
         }
 
+        fun isCheckShown(id: String): Boolean = preferences.isCheckShown(id)
+
+        fun markCheckShown(id: String) = preferences.markCheckShown(id)
+
         fun storeUniversPage(
             univers: SharedPreferenceKey,
             page: GameStep,

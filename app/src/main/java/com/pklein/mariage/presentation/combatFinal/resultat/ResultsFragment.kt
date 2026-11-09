@@ -1,6 +1,7 @@
 package com.pklein.mariage.presentation.combatFinal.resultat
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
@@ -8,29 +9,28 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
-import com.pklein.mariage.databinding.FragmentResultsBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
-import com.pklein.mariage.presentation.introduction.SplashActivity
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.presentation.combatFinal.CombatFinalActivity
 import com.pklein.mariage.presentation.combatFinal.CombatFinalActivity.Companion.EXTRA_USELESS_TROPHY
-import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
+import com.pklein.mariage.presentation.combatFinal.resultat.screen.ResultsScreen
+import com.pklein.mariage.presentation.introduction.SplashActivity
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ResultsFragment : Fragment() {
-    private var binding: FragmentResultsBinding? = null
     private val resultsViewModel: ResultsViewModel by viewModels()
     private val gameProgress: GameProgressViewModel by activityViewModels()
-
     private val gameStep = GameStep.Result
     private val universStep = SharedPreferenceKey.UNIVERS_3
     private val trophyHandler = Handler(Looper.getMainLooper())
@@ -39,18 +39,7 @@ class ResultsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View =
-        FragmentResultsBinding
-            .inflate(inflater, container, false)
-            .also { binding = it }
-            .root
-
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?,
-    ) {
-        super.onViewCreated(view, savedInstanceState)
-        val binding = binding ?: return
+    ): View {
         gameProgress.storePage(gameStep)
         gameProgress.storeUniversPage(universStep, gameStep)
         gameProgress.finishUnivers(universStep)
@@ -121,45 +110,57 @@ class ResultsFragment : Fragment() {
         showTrophiesSequentially(newTrophies)
         val unlockedTrophiesCount = gameProgress.unlockedTrophiesCount
 
-        binding.tvResultatTempsReponse.text =
-            resultsViewModel.calculateTime() ?: getString(R.string.erreurs)
-        binding.tvResultatScoreReponse.text = getString(R.string.resultat_score_value, score)
-        binding.tvResultatTropheesReponse.text =
+        val timeText = resultsViewModel.calculateTime() ?: getString(R.string.erreurs)
+        val scoreText = getString(R.string.resultat_score_value, score)
+        val trophiesText =
             getString(R.string.trophy_total_count, unlockedTrophiesCount, totalTrophiesCount)
 
-        binding.buttonResultat.setOnClickListener {
-            activity?.startActivity(Intent(requireContext(), SplashActivity::class.java))
+        // Shown as a preview and shared as is.
+        val shareBitmap =
+            resultsViewModel.drawTextToBitmap(requireContext(), timeText, scoreText, trophiesText)
+
+        return ComposeView(requireContext()).apply {
+            setContent {
+                ResultsScreen(
+                    score = score,
+                    time = timeText,
+                    trophies = trophiesText,
+                    shareCard = shareBitmap?.asImageBitmap(),
+                    onHomeClick = {
+                        activity?.startActivity(
+                            Intent(
+                                requireContext(),
+                                CarnetBordActivity::class.java,
+                            ),
+                        )
+                    },
+                    onRestartClick = {
+                        activity?.startActivity(
+                            Intent(
+                                requireContext(),
+                                SplashActivity::class.java,
+                            ),
+                        )
+                    },
+                    onShareClick = { share(shareBitmap) },
+                )
+            }
         }
-        binding.ivHome.setOnClickListener {
-            activity?.startActivity(
-                Intent(
-                    requireContext(),
-                    CarnetBordActivity::class.java,
-                ),
-            )
-        }
-        binding.buttonShare.setOnClickListener {
-            context?.let { ctx ->
-                val bitmap =
-                    resultsViewModel.drawTextToBitmap(
-                        ctx,
-                        binding.tvResultatTempsReponse.text.toString(),
-                        binding.tvResultatScoreReponse.text.toString(),
-                        binding.tvResultatTropheesReponse.text.toString(),
-                    )
-                if (bitmap != null) {
-                    val contentUri = resultsViewModel.getImageUriToShare(ctx, bitmap)
-                    if (contentUri != null) {
-                        sharePicture(contentUri)
-                    } else {
-                        Alerts.showInternalError(ctx)
-                    }
+    }
+
+    private fun share(bitmap: Bitmap?) {
+        context?.let { ctx ->
+            if (bitmap != null) {
+                val contentUri = resultsViewModel.getImageUriToShare(ctx, bitmap)
+                if (contentUri != null) {
+                    sharePicture(contentUri)
                 } else {
                     Alerts.showInternalError(ctx)
                 }
+            } else {
+                Alerts.showInternalError(ctx)
             }
         }
-        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun showTrophiesSequentially(trophies: List<Trophies>) {
@@ -184,6 +185,5 @@ class ResultsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         trophyHandler.removeCallbacksAndMessages(null)
-        binding = null
     }
 }

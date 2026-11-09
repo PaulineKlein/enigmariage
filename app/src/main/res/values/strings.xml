@@ -260,6 +260,7 @@
     <string name="combatFinal_one_notification_message">Mon élixir est perdu à cause de TOI !!</string>
     <string name="combatFinal_two_message_1">Utilise ce que tu as vu au Cambodge pour vaincre Nox.</string>
     <string name="combatFinal_two_message_2">"<b>Parmi les coups proposés, trouve celui qui atteindra Nox :</b>"</string>
+    <string name="combatFinal_two_attack">Attaque !</string>
     <string name="combatFinal_sucess">"C’est fini Nox !"</string>
     <string name="combatFinal_sucess_titre">"(Bravo)"</string>
     <string name="combatFinal_three_message_1">"Bravo %s, tu as vaincu Nox ! 🏆"</string>
@@ -296,8 +297,15 @@
     <string name="resultat_temps">Ton temps :</string>
     <string name="resultat_score">Ton score :</string>
     <string name="resultat_score_value">%d / 100</string>
+    <string name="resultat_score_max">/ 100</string>
+    <string name="resultat_rank_legend">Détective légendaire</string>
+    <string name="resultat_rank_excellent">Excellent enquêteur</string>
+    <string name="resultat_rank_good">Bon enquêteur</string>
+    <string name="resultat_rank_rookie">Apprenti détective</string>
+    <string name="resultat_share_card_accessibility">Aperçu de l\'image à partager</string>
     <string name="resultat_trophees">Tes succès :</string>
-    <string name="resultat_message"><b>Mission accomplie !</b>\n Grâce à toi, le mariage d’Alice et Bob est sauvé ! 💍\nPartage ton score avec tes amis et mets-les au défi de faire aussi bien ! 🏆</string>
+    <string name="resultat_message_titre">Mission accomplie !</string>
+    <string name="resultat_message">Grâce à toi, le mariage d’Alice et Bob est sauvé !\nPartage ton score avec tes amis et mets-les au défi de faire aussi bien ! 🏆</string>
     <string name="resultat_bouton">"Revenir à l’accueil"</string>
     <string name="resultat_share">"Partager"</string>
     <string name="resultat_share_title">"Partager via :"</string>

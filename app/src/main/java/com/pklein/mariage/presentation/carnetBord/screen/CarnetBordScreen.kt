@@ -39,6 +39,7 @@ fun CarnetBordScreen(
     totalTrophies: Int,
     onUniversClick: (step: String) -> Unit,
     onTrophiesClick: () -> Unit,
+    onCheckShown: (id: String) -> Unit,
 ) {
     val landscape = isLandscape()
 
@@ -80,6 +81,7 @@ fun CarnetBordScreen(
                                     state = card,
                                     onClick = { onUniversClick(card.step) },
                                     horizontal = false,
+                                    onCheckShown = { onCheckShown(card.id) },
                                     modifier = Modifier.weight(1f),
                                 )
                             }
@@ -90,6 +92,7 @@ fun CarnetBordScreen(
                                 state = card,
                                 onClick = { onUniversClick(card.step) },
                                 horizontal = true,
+                                onCheckShown = { onCheckShown(card.id) },
                                 modifier = Modifier.fillMaxWidth(),
                             )
                         }
@@ -123,6 +126,7 @@ private fun CarnetBordScreenPreview() {
         totalTrophies = 12,
         onUniversClick = {},
         onTrophiesClick = {},
+        onCheckShown = {},
     )
 }
 
@@ -135,5 +139,6 @@ private fun CarnetBordScreenLandscapePreview() {
         totalTrophies = 12,
         onUniversClick = {},
         onTrophiesClick = {},
+        onCheckShown = {},
     )
 }

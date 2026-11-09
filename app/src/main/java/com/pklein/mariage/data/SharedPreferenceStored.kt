@@ -9,6 +9,7 @@ import com.pklein.mariage.data.model.Trophies
 
 object SharedPreferenceStored {
     private const val SHARED_PREFERENCE_FILE = "mariage-shared-preference"
+    private const val CHECK_SHOWN_PREFIX = "check_shown_"
     private val preferences: SharedPreferences by lazy {
         MariageApplication
             .getAppContext()
@@ -30,7 +31,16 @@ object SharedPreferenceStored {
 
     fun saveTrophy(key: Trophies) = preferences.edit { putBoolean(key.name, true) }
 
+    fun isCheckShown(id: String): Boolean = preferences.getBoolean(CHECK_SHOWN_PREFIX + id, false)
+
+    fun markCheckShown(id: String) = preferences.edit { putBoolean(CHECK_SHOWN_PREFIX + id, true) }
+
     fun resetPreference() {
         SharedPreferenceKey.entries.forEach { storeValue(it, null) }
+        preferences.edit {
+            preferences.all.keys
+                .filter { it.startsWith(CHECK_SHOWN_PREFIX) }
+                .forEach { remove(it) }
+        }
     }
 }

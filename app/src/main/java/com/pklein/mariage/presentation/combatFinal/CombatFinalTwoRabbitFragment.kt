@@ -5,23 +5,24 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
-import com.pklein.mariage.databinding.FragmentCombatFinalTwoRabbitBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
-import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
+import com.pklein.mariage.presentation.combatFinal.screen.CombatFinalTwoRabbitScreen
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
 import dagger.hilt.android.AndroidEntryPoint
 
+private const val RESPONSE = 2
+
 @AndroidEntryPoint
 class CombatFinalTwoRabbitFragment : Fragment() {
-    private var binding: FragmentCombatFinalTwoRabbitBinding? = null
     private val gameProgress: GameProgressViewModel by activityViewModels()
     private val gameStep = GameStep.CombatFinal2Rabbit
     private val universStep = SharedPreferenceKey.UNIVERS_3
@@ -30,58 +31,39 @@ class CombatFinalTwoRabbitFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View =
-        FragmentCombatFinalTwoRabbitBinding
-            .inflate(inflater, container, false)
-            .also { binding = it }
-            .root
-
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?,
-    ) {
-        super.onViewCreated(view, savedInstanceState)
-        val binding = binding ?: return
+    ): View {
         gameProgress.storePage(gameStep)
         gameProgress.storeUniversPage(universStep, gameStep)
 
-        binding.ivHome.setOnClickListener {
-            activity?.startActivity(
-                Intent(
-                    requireContext(),
-                    CarnetBordActivity::class.java,
-                ),
-            )
-        }
-        binding.buttonCombatFinalReponse.setOnClickListener {
-            val kanjiId = binding.radioGroupCoups.checkedRadioButtonId
-            if (kanjiId == R.id.radioReponse2) {
-                context?.let {
-                    Alerts.showPopup(
-                        it,
-                        getString(R.string.combatFinal_sucess),
-                        ::launchNext,
-                        PopinType.FINAL_SUCCESS,
-                    )
-                }
-            } else {
-                context?.let {
-                    Alerts.showError(it) {
-                        gameProgress.updateError()
-                    }
-                }
+        return ComposeView(requireContext()).apply {
+            setContent {
+                CombatFinalTwoRabbitScreen(
+                    onHomeClick = {
+                        startActivity(Intent(requireContext(), CarnetBordActivity::class.java))
+                    },
+                    onValidateClick = ::onValidateClicked,
+                )
             }
         }
-        binding.root.addSystemWindowInsetToMargin()
+    }
+
+    private fun onValidateClicked(selected: Int) {
+        context?.let {
+            if (selected == RESPONSE) {
+                Alerts.showPopup(
+                    it,
+                    getString(R.string.combatFinal_sucess),
+                    ::launchNext,
+                    PopinType.FINAL_SUCCESS,
+                )
+            } else {
+                Alerts.showError(it) { gameProgress.updateError() }
+            }
+        }
     }
 
     private fun launchNext() {
         gameProgress.storeEndTime()
         findNavController().navigate(R.id.action_combat_two_rabbit_to_three)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 }
