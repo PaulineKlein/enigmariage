@@ -44,7 +44,7 @@ class SalleDinerCambodgeFiveFragment : Fragment() {
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_RABBIT_MANGUE)) {
             gameProgress.saveTrophy(Trophies.TROPHY_RABBIT_MANGUE)
             context?.let {
-                Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_RABBIT_MANGUE.message))
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_RABBIT_MANGUE)
             }
         }
         gameProgress.storeUniversPage(universStep, gameStep)

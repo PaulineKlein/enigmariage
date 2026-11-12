@@ -29,7 +29,7 @@ import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
-private val RESPONSES = listOf("arbre a cacao", "cacaoyer", "cacaotier")
+private val RESPONSES = listOf("arbre a cacao", "arbre de cacao", "cacaoyer", "cacaotier")
 
 @AndroidEntryPoint
 class SalleDinerTanzanieFourFragment : Fragment() {

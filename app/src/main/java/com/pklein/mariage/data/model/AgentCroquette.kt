@@ -38,11 +38,11 @@ class AgentCroquette : IInspector {
                     GameStep.SalleDinerTanzanie1,
                     GameStep.SalleDinerItalie1,
                 ),
-            subUniversIvMapmonde =
+            subUniversMapmonde =
                 listOf(
-                    R.id.iv_mapmonde_caraibes,
-                    R.id.iv_mapmonde_tanzanie,
-                    R.id.iv_mapmonde_italie,
+                    R.drawable.image_mapmonde_caraibes,
+                    R.drawable.image_mapmonde_tanzanie,
+                    R.drawable.image_mapmonde_italie,
                 ),
             completeTrophy = Trophies.TROPHY_DOG_RECETTE_COMPLETE,
         )

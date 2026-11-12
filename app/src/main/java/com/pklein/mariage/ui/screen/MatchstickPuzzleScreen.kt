@@ -100,7 +100,7 @@ fun MatchstickPuzzleScreen(
                 modifier =
                     Modifier
                         .fillMaxWidth(0.7f)
-                        .padding(top = 24.dp)
+                        .padding(top = 8.dp)
                         .align(Alignment.CenterHorizontally),
             )
         }

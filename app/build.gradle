@@ -80,6 +80,7 @@ dependencies {
     implementation libs.androidx.appcompat
     implementation libs.androidx.core.ktx
     testImplementation libs.junit
+    testImplementation libs.mockk
     androidTestImplementation libs.androidx.test.junit
     androidTestImplementation libs.androidx.test.espresso
 

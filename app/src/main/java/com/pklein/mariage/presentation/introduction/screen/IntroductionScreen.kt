@@ -3,15 +3,11 @@ package com.pklein.mariage.presentation.introduction.screen
 import android.content.res.Configuration
 import android.view.HapticFeedbackConstants
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.spring
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -48,7 +44,6 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableIntState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -75,6 +70,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.AppButton
+import com.pklein.mariage.ui.atome.NoxImage
 import com.pklein.mariage.ui.atome.PagerDots
 import com.pklein.mariage.ui.modifier.pulse
 import com.pklein.mariage.ui.modifier.zoomOutTransform
@@ -85,7 +81,6 @@ import com.pklein.mariage.ui.theme.annotatedStringResource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.milliseconds
-import kotlin.time.Duration.Companion.seconds
 
 private const val PAGE_COUNT = 3
 private const val NOX_MAX_COUNT = 5
@@ -94,22 +89,12 @@ private const val IMAGE_MAX_HEIGHT_RATIO = 0.5f
 private val IMAGE_CORNER_RADIUS = 12.dp
 private val BOTTOM_BAR_HEIGHT = 48.dp
 private const val START_BUTTON_WIDTH_RATIO = 0.7f
-private val TYPEWRITER_CHAR_DELAY = 16.milliseconds
-private const val TYPEWRITER_CHARS_PER_STEP = 2
+private val TYPEWRITER_CHAR_DELAY = 24.milliseconds
+private const val TYPEWRITER_CHARS_PER_STEP = 1
 private val TYPEWRITER_PAUSE = 200.milliseconds
 private const val TYPEWRITER_PAUSE_CHARS = ".!?…"
-private val NOX_HINT_DELAY = 6.seconds
 private val ELIXIR_DOTS_DELAY = 400.milliseconds
 private const val ELIXIR_MAX_DOTS = 3
-private const val NOX_HINT_FADE_MS = 800
-private const val NOX_HINT_PULSE_MS = 1400
-private const val NOX_HINT_MIN_ALPHA = 0.15f
-private const val NOX_HINT_MAX_ALPHA = 0.6f
-private const val NOX_FLOAT_DP = 8f
-private const val NOX_FLOAT_DURATION_MS = 1800
-private const val NOX_BUILD_UP_SCALE = 0.08f
-private const val NOX_WIGGLE_BASE_DEGREES = 3f
-private const val NOX_WIGGLE_STEP_DEGREES = 2f
 private const val ARROW_NUDGE_DP = 8f
 private const val ARROW_NUDGE_DURATION_MS = 700
 
@@ -283,7 +268,7 @@ private fun NoxPage(
                 modifier = Modifier.weight(1f).fillMaxHeight(),
                 contentAlignment = Alignment.Center,
             ) {
-                NoxImage(tapCount = tapCount, onClick = onNoxClick)
+                NoxImage(tapCount = tapCount, maxTapCount = NOX_MAX_COUNT, onClick = onNoxClick)
             }
         }
     } else {
@@ -292,6 +277,7 @@ private fun NoxPage(
             TypewriterText(paragraphs, revealed)
             NoxImage(
                 tapCount = tapCount,
+                maxTapCount = NOX_MAX_COUNT,
                 onClick = onNoxClick,
                 modifier = Modifier.padding(top = 24.dp).height(NOX_HEIGHT),
             )
@@ -537,116 +523,6 @@ private fun IntroText(text: AnnotatedString) {
         style = DefaultTextStyles.body,
         textAlign = TextAlign.Center,
         modifier = Modifier.fillMaxWidth(),
-    )
-}
-
-@Composable
-private fun NoxImage(
-    tapCount: Int,
-    onClick: () -> Unit,
-    modifier: Modifier = Modifier,
-) {
-    val floatTransition = rememberInfiniteTransition(label = "noxFloat")
-    val floatOffset by floatTransition.animateFloat(
-        initialValue = 0f,
-        targetValue = -NOX_FLOAT_DP,
-        animationSpec =
-            infiniteRepeatable(
-                animation =
-                    tween(
-                        durationMillis = NOX_FLOAT_DURATION_MS,
-                        easing = FastOutSlowInEasing,
-                    ),
-                repeatMode = RepeatMode.Reverse,
-            ),
-        label = "noxFloatOffset",
-    )
-
-    // Each tap wiggles Nox harder and makes him swell a bit more, so the player feels something building.
-    val progress = tapCount.coerceAtMost(NOX_MAX_COUNT)
-    val buildUpScale by animateFloatAsState(
-        targetValue = 1f + NOX_BUILD_UP_SCALE * progress / NOX_MAX_COUNT,
-        animationSpec = spring(dampingRatio = Spring.DampingRatioMediumBouncy),
-        label = "noxBuildUpScale",
-    )
-    val wiggle = remember { Animatable(0f) }
-    val initialTapCount = remember { tapCount }
-    LaunchedEffect(tapCount) {
-        if (tapCount > initialTapCount) {
-            val amplitude = NOX_WIGGLE_BASE_DEGREES + NOX_WIGGLE_STEP_DEGREES * progress
-            wiggle.animateTo(amplitude, tween(durationMillis = 60))
-            wiggle.animateTo(-amplitude, tween(durationMillis = 120))
-            wiggle.animateTo(amplitude / 2, tween(durationMillis = 100))
-            wiggle.animateTo(0f, spring(dampingRatio = Spring.DampingRatioMediumBouncy))
-        }
-    }
-
-    // A faint "?" shows up when the player stays idle, nudging them to tap Nox; it goes away on the next tap.
-    var showHint by remember { mutableStateOf(false) }
-    LaunchedEffect(tapCount) {
-        showHint = false
-        if (tapCount < NOX_MAX_COUNT) {
-            delay(NOX_HINT_DELAY)
-            showHint = true
-        }
-    }
-
-    val painter = painterResource(R.drawable.image_nox)
-    val ratio = painter.intrinsicSize.run { width / height }
-
-    Box(
-        modifier =
-            modifier
-                .aspectRatio(ratio)
-                .clickable(
-                    interactionSource = remember { MutableInteractionSource() },
-                    indication = null,
-                    onClick = onClick,
-                ).graphicsLayer {
-                    translationY = floatOffset.dp.toPx()
-                    rotationZ = wiggle.value
-                    scaleX = buildUpScale
-                    scaleY = buildUpScale
-                },
-    ) {
-        Image(
-            painter = painter,
-            contentDescription = stringResource(R.string.introduction_nox_image),
-            contentScale = ContentScale.Fit,
-            modifier = Modifier.fillMaxSize(),
-        )
-        AnimatedVisibility(
-            visible = showHint,
-            enter = fadeIn(animationSpec = tween(durationMillis = NOX_HINT_FADE_MS)),
-            exit = fadeOut(),
-            modifier = Modifier.align(Alignment.TopEnd).padding(end = 8.dp),
-        ) {
-            NoxHint()
-        }
-    }
-}
-
-@Composable
-private fun NoxHint() {
-    val transition = rememberInfiniteTransition(label = "noxHint")
-    val hintAlpha by transition.animateFloat(
-        initialValue = NOX_HINT_MIN_ALPHA,
-        targetValue = NOX_HINT_MAX_ALPHA,
-        animationSpec =
-            infiniteRepeatable(
-                animation = tween(durationMillis = NOX_HINT_PULSE_MS, easing = FastOutSlowInEasing),
-                repeatMode = RepeatMode.Reverse,
-            ),
-        label = "noxHintAlpha",
-    )
-
-    Text(
-        text = "?",
-        style = DefaultTextStyles.titre,
-        modifier =
-            Modifier
-                .graphicsLayer { alpha = hintAlpha }
-                .clearAndSetSemantics {},
     )
 }
 

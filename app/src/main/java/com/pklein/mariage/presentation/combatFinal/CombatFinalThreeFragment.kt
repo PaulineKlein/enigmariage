@@ -91,7 +91,7 @@ class CombatFinalThreeFragment : Fragment() {
                 context?.let {
                     Alerts.showTrophyUnlocked(
                         it,
-                        getString(Trophies.TROPHY_VICTOIRE_1.message),
+                        Trophies.TROPHY_VICTOIRE_1,
                     )
                 }
             } else if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_VICTOIRE_2)) {
@@ -99,7 +99,7 @@ class CombatFinalThreeFragment : Fragment() {
                 context?.let {
                     Alerts.showTrophyUnlocked(
                         it,
-                        getString(Trophies.TROPHY_VICTOIRE_2.message),
+                        Trophies.TROPHY_VICTOIRE_2,
                     )
                 }
             }

@@ -67,7 +67,7 @@ private const val CARD_SELECTED_SCALE = 1.04f
 private const val CARD_IDLE_ALPHA = 0.7f
 private const val COUP_IMAGE_RATIO = 142f / 170f
 private val BADGE_SIZE = 28.dp
-private const val FIRST_COUP = 1
+private const val NO_COUP = 0
 private const val COUPS_PER_ROW = 2
 
 private data class Coup(
@@ -90,7 +90,7 @@ fun CombatFinalTwoRabbitScreen(
     onHomeClick: () -> Unit,
     onValidateClick: (Int) -> Unit,
 ) {
-    var selected by rememberSaveable { mutableIntStateOf(FIRST_COUP) }
+    var selected by rememberSaveable { mutableIntStateOf(NO_COUP) }
 
     Column(
         modifier =
@@ -156,11 +156,12 @@ fun CombatFinalTwoRabbitScreen(
         AppButton(
             text = stringResource(id = R.string.combatFinal_two_attack),
             onClick = { onValidateClick(selected) },
+            enabled = selected != NO_COUP,
             textSize = 18.sp,
             contentPadding = 16.dp,
             modifier =
                 Modifier
-                    .padding(top = 16.dp)
+                    .padding(top = 8.dp)
                     .align(Alignment.CenterHorizontally)
                     .widthIn(max = CONTENT_MAX_WIDTH)
                     .fillMaxWidth(0.8f),
@@ -176,7 +177,9 @@ private fun CoupsGrid(
 ) {
     val view = LocalView.current
     Column(
-        modifier = Modifier.fillMaxWidth().selectableGroup(),
+        modifier = Modifier
+            .fillMaxWidth()
+            .selectableGroup(),
         verticalArrangement = Arrangement.spacedBy(CARD_SPACING),
     ) {
         coups.withIndex().toList().chunked(COUPS_PER_ROW).forEach { rowCoups ->
@@ -245,11 +248,13 @@ private fun CoupCard(
                                 BorderStroke(1.dp, Color.White)
                             },
                         shape = shape,
-                    ).selectable(
+                    )
+                    .selectable(
                         selected = isSelected,
                         onClick = onClick,
                         role = Role.RadioButton,
-                    ).padding(8.dp),
+                    )
+                    .padding(8.dp),
         ) {
             Image(
                 painter = painterResource(coup.image),

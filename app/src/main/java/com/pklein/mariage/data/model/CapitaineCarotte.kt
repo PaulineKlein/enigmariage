@@ -38,11 +38,11 @@ class CapitaineCarotte : IInspector {
                     GameStep.SalleDinerJapon1,
                     GameStep.SalleDinerCambodge1,
                 ),
-            subUniversIvMapmonde =
+            subUniversMapmonde =
                 listOf(
-                    R.id.iv_mapmonde_canada,
-                    R.id.iv_mapmonde_japon,
-                    R.id.iv_mapmonde_cambodge,
+                    R.drawable.image_mapmonde_canada,
+                    R.drawable.image_mapmonde_japon,
+                    R.drawable.image_mapmonde_cambodge,
                 ),
             completeTrophy = Trophies.TROPHY_RABBIT_RECETTE_COMPLETE,
         )

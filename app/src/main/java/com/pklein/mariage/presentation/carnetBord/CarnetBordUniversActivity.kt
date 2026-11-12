@@ -2,77 +2,68 @@ package com.pklein.mariage.presentation.carnetBord
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.view.animation.OvershootInterpolator
 import androidx.activity.viewModels
-import androidx.appcompat.widget.AppCompatButton
-import androidx.appcompat.widget.AppCompatImageView
-import androidx.core.content.ContextCompat
-import com.pklein.mariage.R
-import com.pklein.mariage.data.model.SharedPreferenceKey
+import androidx.compose.ui.platform.ComposeView
 import com.pklein.mariage.data.repository.UniversStatus
-import com.pklein.mariage.databinding.ActivityCarnetBordUniversBinding
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.SplashCoordinator
-import com.pklein.mariage.ui.theme.getFormattedText
-import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
+import com.pklein.mariage.presentation.carnetBord.screen.CarnetBordUniversScreen
+import com.pklein.mariage.presentation.carnetBord.screen.DestinationState
+import com.pklein.mariage.presentation.carnetBord.screen.UniversCardState
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CarnetBordUniversActivity : BaseActivity() {
-    private lateinit var binding: ActivityCarnetBordUniversBinding
     private val viewModel: CarnetBordViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityCarnetBordUniversBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         viewModel.storePage(GameStep.CarnetBord2)
 
-        binding.ivHome.setOnClickListener {
-            startActivity(Intent(this, CarnetBordActivity::class.java))
-        }
+        val allFinished = isUnivers2Finish()
+        val destinations = buildDestinations()
+        setContentView(
+            ComposeView(this).apply {
+                setContent {
+                    CarnetBordUniversScreen(
+                        destinations = destinations,
+                        playerName = viewModel.playerName,
+                        allFinished = allFinished,
+                        onHomeClick = {
+                            startActivity(
+                                Intent(
+                                    this@CarnetBordUniversActivity,
+                                    CarnetBordActivity::class.java,
+                                ),
+                            )
+                        },
+                        onUniversClick = { step ->
+                            SplashCoordinator.launchGame(step, this@CarnetBordUniversActivity)
+                        },
+                        onCheckShown = viewModel::markCheckShown,
+                        onBravoClick = {
+                            startActivity(
+                                Intent(
+                                    this@CarnetBordUniversActivity,
+                                    CarnetBordActivity::class.java,
+                                ),
+                            )
+                            finish()
+                        },
+                    )
+                }
+            },
+        )
 
-        val path = viewModel.universPath
-        path.subUnivers.indices.forEach { i ->
-            val item =
-                layoutInflater.inflate(
-                    R.layout.item_univers_button,
-                    binding.universButtonsLayout,
-                    false,
-                )
-            val button = item.findViewById<AppCompatButton>(R.id.button_univers)
-            button.setText(path.subUniversName[i])
-            binding.universButtonsLayout.addView(item)
-            showButton(
-                path.subUnivers[i],
-                path.subUniversFirstStep[i],
-                button,
-                item.findViewById(R.id.iv_check),
-                findViewById(path.subUniversIvMapmonde[i]),
-                path.subUniversName[i],
-            )
-        }
-        if (isUnivers2Finish()) {
-            binding.tvCarnetBravo.apply {
-                text = resources.getFormattedText(R.string.carnet_bord2_bravo, viewModel.playerName)
-                visibility = View.VISIBLE
-            }
-            binding.tvCarnetBravo.setOnClickListener {
-                startActivity(Intent(this, CarnetBordActivity::class.java))
-                finish()
-            }
-            val trophy = path.completeTrophy
+        if (allFinished) {
+            val trophy = viewModel.universPath.completeTrophy
             if (!viewModel.isTrophyUnlocked(trophy)) {
                 viewModel.saveTrophy(trophy)
-                Alerts.showTrophyUnlocked(this, getString(trophy.message))
+                Alerts.showTrophyUnlocked(this, trophy)
             }
-        } else {
-            binding.tvCarnetBravo.visibility = View.INVISIBLE
         }
-        binding.root.addSystemWindowInsetToMargin()
     }
 
     // singleTask reuses the existing instance instead of calling onCreate, so rebuild the screen to show fresh statuses.
@@ -82,67 +73,31 @@ class CarnetBordUniversActivity : BaseActivity() {
         recreate()
     }
 
-    private fun universAccessibility(
-        nameRes: Int,
-        stateRes: Int,
-    ): String = "${getString(nameRes)}, ${getString(stateRes)}"
-
-    private fun showButton(
-        universKey: SharedPreferenceKey,
-        activityLaunch: GameStep,
-        universButton: AppCompatButton,
-        checkBadge: View,
-        ivMapmonde: AppCompatImageView,
-        nameRes: Int,
-    ) {
-        val step = viewModel.getUniversStatus(universKey)
-        var activityGoing = activityLaunch.name
-        when (step) {
-            UniversStatus.NOT_STARTED -> {
-                universButton.isEnabled = true
-                universButton.contentDescription =
-                    universAccessibility(nameRes, R.string.univers_state_going)
+    private fun buildDestinations(): List<DestinationState> {
+        val path = viewModel.universPath
+        return path.subUnivers.indices.map { i ->
+            val universKey = path.subUnivers[i]
+            val status = viewModel.getUniversStatus(universKey)
+            val finished = status == UniversStatus.IS_FINISHED
+            var step = path.subUniversFirstStep[i].name
+            if (status == UniversStatus.GOING) {
+                viewModel.getUniversPage(universKey)?.let { step = it }
             }
-
-            UniversStatus.GOING -> {
-                universButton.isEnabled = true
-                universButton.contentDescription =
-                    universAccessibility(nameRes, R.string.univers_state_going)
-                viewModel.getUniversPage(universKey)?.let { activityGoing = it }
-            }
-
-            UniversStatus.IS_FINISHED -> {
-                universButton.isEnabled = false
-                universButton.isFocusable = false
-                universButton.setBackgroundResource(R.drawable.background_button_finished)
-                universButton.setTextColor(ContextCompat.getColor(this, R.color.help_text))
-                showCheck(checkBadge, universKey.name)
-                universButton.contentDescription =
-                    universAccessibility(nameRes, R.string.univers_state_finished)
-                ivMapmonde.visibility = View.VISIBLE
-            }
+            DestinationState(
+                card =
+                    UniversCardState(
+                        image = null,
+                        nameRes = path.subUniversName[i],
+                        // Not started and going look the same: an open, blue button.
+                        status = if (finished) UniversStatus.IS_FINISHED else UniversStatus.GOING,
+                        clickable = !finished,
+                        step = step,
+                        id = universKey.name,
+                        animateCheck = finished && !viewModel.isCheckShown(universKey.name),
+                    ),
+                mapOverlay = path.subUniversMapmonde[i],
+            )
         }
-        universButton.setOnClickListener {
-            SplashCoordinator.launchGame(activityGoing, this)
-        }
-    }
-
-    // The badge only pops in the first time the universe is seen as finished, not each time the screen is rebuilt.
-    private fun showCheck(
-        badge: View,
-        id: String,
-    ) {
-        badge.visibility = View.VISIBLE
-        if (viewModel.isCheckShown(id)) return
-        viewModel.markCheckShown(id)
-        badge.scaleX = 0f
-        badge.scaleY = 0f
-        badge
-            .animate()
-            .scaleX(1f)
-            .scaleY(1f)
-            .setInterpolator(OvershootInterpolator())
-            .start()
     }
 
     private fun isUnivers2Finish(): Boolean =

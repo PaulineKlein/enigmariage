@@ -82,7 +82,7 @@ class AddPlayerActivity : BaseActivity(), CheckEmptyTextWatcherListener {
         }
         if (!gameProgress.isTrophyUnlocked(trophy)) {
             gameProgress.saveTrophy(trophy)
-            Alerts.showTrophyUnlocked(this, getString(trophy.message))
+            Alerts.showTrophyUnlocked(this, trophy)
         }
     }
 

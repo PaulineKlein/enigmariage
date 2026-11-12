@@ -51,7 +51,7 @@ class SalleCocktailsSixFragment :
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_RABBIT_CACTUS)) {
             gameProgress.saveTrophy(Trophies.TROPHY_RABBIT_CACTUS)
             context?.let {
-                Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_RABBIT_CACTUS.message))
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_RABBIT_CACTUS)
             }
         }
         gameProgress.storeUniversPage(

@@ -48,7 +48,7 @@ class SalleDinerCaraibesSixFragment : Fragment() {
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_DOG_COCO)) {
             gameProgress.saveTrophy(Trophies.TROPHY_DOG_COCO)
             context?.let {
-                Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_DOG_COCO.message))
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_DOG_COCO)
             }
         }
 
@@ -98,7 +98,7 @@ class SalleDinerCaraibesSixFragment : Fragment() {
             context?.let {
                 Alerts.showTrophyUnlocked(
                     it,
-                    getString(Trophies.TROPHY_CLUE_1.message),
+                    Trophies.TROPHY_CLUE_1,
                 )
             }
         }

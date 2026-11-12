@@ -48,6 +48,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.lerp
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -57,6 +58,8 @@ import androidx.compose.ui.text.intl.Locale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.withResumed
 import com.pklein.mariage.R
 import com.pklein.mariage.data.repository.UniversStatus
 import com.pklein.mariage.ui.atome.BUTTON_SHADOW_ELEVATION
@@ -77,6 +80,7 @@ import com.pklein.mariage.ui.theme.ColorText
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.GradientEndColor
 import com.pklein.mariage.ui.theme.GradientEndColorFonce
+import kotlinx.coroutines.delay
 
 private val BUTTON_SHAPE = RoundedCornerShape(12.dp)
 private val IMAGE_SIZE_HORIZONTAL = 100.dp
@@ -88,11 +92,12 @@ private const val LOCKED_IMAGE_ALPHA = 0.55f
 private val BADGE_SIZE = 36.dp
 private val BADGE_OVERHANG = 8.dp
 private const val BADGE_ICON_RATIO = 0.6f
+private const val CHECK_POP_DELAY_MS = 450L
 private val GRAYSCALE = ColorFilter.colorMatrix(ColorMatrix().apply { setToSaturation(0f) })
 
-/** What a universe card shows and where it leads, [step] being the name of the [com.pklein.mariage.presentation.GameStep] to launch. */
+/** What a universe card shows and where it leads, [step] being the name of the [com.pklein.mariage.presentation.GameStep] to launch. A null [image] makes a text-only button. */
 data class UniversCardState(
-    @DrawableRes val image: Int,
+    @DrawableRes val image: Int?,
     @StringRes val nameRes: Int,
     val status: UniversStatus,
     val clickable: Boolean,
@@ -250,7 +255,7 @@ fun UniversButton(
                     horizontalArrangement = Arrangement.spacedBy(CONTENT_SPACING),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
-                    UniversImage(state, Modifier.size(IMAGE_SIZE_HORIZONTAL))
+                    state.image?.let { UniversImage(it, state.status, Modifier.size(IMAGE_SIZE_HORIZONTAL)) }
                     label(Modifier.weight(1f))
                 }
             } else {
@@ -259,13 +264,16 @@ fun UniversButton(
                     verticalArrangement = Arrangement.spacedBy(BUTTON_CONTENT_PADDING),
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
-                    UniversImage(
-                        state,
-                        Modifier
-                            .widthIn(max = IMAGE_MAX_WIDTH_VERTICAL)
-                            .fillMaxWidth()
-                            .aspectRatio(1f),
-                    )
+                    state.image?.let {
+                        UniversImage(
+                            it,
+                            state.status,
+                            Modifier
+                                .widthIn(max = IMAGE_MAX_WIDTH_VERTICAL)
+                                .fillMaxWidth()
+                                .aspectRatio(1f),
+                        )
+                    }
                     label(Modifier)
                 }
             }
@@ -286,13 +294,14 @@ fun UniversButton(
 /** Decorative: the button around it carries the name and the status. */
 @Composable
 private fun UniversImage(
-    state: UniversCardState,
+    @DrawableRes image: Int,
+    status: UniversStatus,
     modifier: Modifier = Modifier,
 ) {
-    val locked = state.status == UniversStatus.NOT_STARTED
+    val locked = status == UniversStatus.NOT_STARTED
 
     Image(
-        painter = painterResource(state.image),
+        painter = painterResource(image),
         contentDescription = null,
         contentScale = ContentScale.Fit,
         colorFilter = if (locked) GRAYSCALE else null,
@@ -309,9 +318,14 @@ private fun CheckBadge(
     modifier: Modifier = Modifier,
 ) {
     val scale = remember { Animatable(if (animate) 0f else 1f) }
-    // Reported once the pop-in is over: if the screen is torn down mid-animation, the next one plays it again.
+    val lifecycle = (LocalContext.current as? LifecycleOwner)?.lifecycle
+    // Waits for the screen to be in front and its slide-in to be over, otherwise the pop-in is played (and
+    // reported as seen) before anyone can see it. Reported once the pop-in is over: if the screen is torn down
+    // before that, the next one plays it again.
     LaunchedEffect(Unit) {
         if (animate) {
+            lifecycle?.withResumed { }
+            delay(CHECK_POP_DELAY_MS)
             scale.animateTo(1f, spring(dampingRatio = Spring.DampingRatioMediumBouncy))
             onShown()
         }

@@ -1,10 +1,15 @@
 package com.pklein.mariage.presentation.localisationBateau.salleEmbarquement
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -26,6 +31,10 @@ class SalleEmbarquementTwoFragment : Fragment() {
     private val universStep = SharedPreferenceKey.UNIVERS_1
     private var binding: FragmentSalleEmbarquementTwoBinding? = null
     private val gameProgress: GameProgressViewModel by activityViewModels()
+
+    // Granted or denied, the story goes on: without permission the notification is simply not shown.
+    private val requestNotificationPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { goToNotification() }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +58,7 @@ class SalleEmbarquementTwoFragment : Fragment() {
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_EMBARQUEMENT)) {
             gameProgress.saveTrophy(Trophies.TROPHY_EMBARQUEMENT)
             context?.let {
-                Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_EMBARQUEMENT.message))
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_EMBARQUEMENT)
             }
         }
         gameProgress.getDescription(gameStep)?.let {
@@ -65,10 +74,28 @@ class SalleEmbarquementTwoFragment : Fragment() {
             )
         }
         binding.buttonEmbarquementTwo.setOnClickListener {
-            findNavController().navigate(R.id.action_two_to_notification)
-            launchNotification()
+            requestNotificationPermissionIfNeeded()
         }
         binding.root.addSystemWindowInsetToMargin()
+    }
+
+    private fun requestNotificationPermissionIfNeeded() {
+        val needsPermission =
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
+                ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.POST_NOTIFICATIONS,
+                ) != PackageManager.PERMISSION_GRANTED
+        if (needsPermission) {
+            requestNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
+        } else {
+            goToNotification()
+        }
+    }
+
+    private fun goToNotification() {
+        findNavController().navigate(R.id.action_two_to_notification)
+        launchNotification()
     }
 
     private fun launchNotification() {

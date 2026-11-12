@@ -46,7 +46,7 @@ class IntroductionActivity : BaseActivity() {
     private fun onNoxTapped() {
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_DONT_TOUCH)) {
             gameProgress.saveTrophy(Trophies.TROPHY_DONT_TOUCH)
-            Alerts.showTrophyUnlocked(this, getString(Trophies.TROPHY_DONT_TOUCH.message))
+            Alerts.showTrophyUnlocked(this, Trophies.TROPHY_DONT_TOUCH)
         }
     }
 }

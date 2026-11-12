@@ -166,7 +166,7 @@ class ResultsFragment : Fragment() {
     private fun showTrophiesSequentially(trophies: List<Trophies>) {
         trophies.forEachIndexed { index, trophy ->
             trophyHandler.postDelayed({
-                context?.let { Alerts.showTrophyUnlocked(it, getString(trophy.message)) }
+                context?.let { Alerts.showTrophyUnlocked(it, trophy) }
             }, index * 7000L)
         }
     }

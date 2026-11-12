@@ -86,7 +86,7 @@ fun TanzanieSevenScreen(
             enabled = code.isNotBlank(),
             modifier =
                 Modifier
-                    .padding(top = 24.dp)
+                    .padding(top = 8.dp)
                     .align(Alignment.CenterHorizontally)
                     .fillMaxWidth(0.7f),
         )

@@ -9,7 +9,7 @@ import com.stfalcon.imageviewer.StfalconImageViewer
 fun AppCompatImageView.defineButton(
     drawable: Int,
     isEnabled: Boolean,
-    context: Context
+    context: Context,
 ) {
     this.background = ContextCompat.getDrawable(context, drawable)
     this.isEnabled = isEnabled
@@ -31,13 +31,17 @@ fun AppCompatImageView.defineButton(
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-fun showImageWithStfalconViewer(context: Context, drawable: Int) {
+fun showImageWithStfalconViewer(
+    context: Context,
+    drawable: Int,
+) {
     val images = listOf(drawable)
 
-    val builder = StfalconImageViewer.Builder(context, images) { view, image ->
-        // Load the image directly into the ImageView
-        view.setImageResource(image)
-    }
+    val builder =
+        StfalconImageViewer.Builder(context, images) { view, image ->
+            // Load the image directly into the ImageView
+            view.setImageResource(image)
+        }
 
     builder
         .withBackgroundColor(ContextCompat.getColor(context, R.color.gradient_endColor))

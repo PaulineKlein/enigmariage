@@ -1,7 +1,6 @@
 package com.pklein.mariage.presentation.destinations.tanzanie.screen
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,9 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -23,7 +20,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -34,6 +30,8 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.atome.ParcheminCard
+import com.pklein.mariage.ui.atome.RadioCard
+import com.pklein.mariage.ui.atome.RadioCardGroup
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
@@ -88,30 +86,13 @@ fun TanzanieFiveScreen(
 
             Spacer(modifier = Modifier.height(12.dp))
 
-            choices.forEachIndexed { index, choice ->
-                val number = index + 1
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .selectable(
-                                selected = selected == number,
-                                onClick = { selected = number },
-                                role = Role.RadioButton,
-                            ).padding(vertical = 8.dp),
-                ) {
-                    RadioButton(
-                        selected = selected == number,
-                        onClick = null,
-                    )
-                    Text(
-                        text = stringResource(id = choice),
-                        style = DefaultTextStyles.body,
-                        modifier =
-                            Modifier
-                                .weight(1f)
-                                .padding(start = 12.dp),
+            RadioCardGroup {
+                choices.forEachIndexed { index, choice ->
+                    val number = index + 1
+                    RadioCard(
+                        text = annotatedStringResource(id = choice),
+                        isSelected = selected == number,
+                        onClick = { selected = number },
                     )
                 }
             }
@@ -132,7 +113,7 @@ fun TanzanieFiveScreen(
             enabled = selected != null,
             modifier =
                 Modifier
-                    .padding(top = 24.dp)
+                    .padding(top = 8.dp)
                     .align(Alignment.CenterHorizontally)
                     .fillMaxWidth(0.7f),
         )

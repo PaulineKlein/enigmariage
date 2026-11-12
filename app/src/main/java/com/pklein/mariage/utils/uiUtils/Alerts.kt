@@ -9,8 +9,10 @@ import android.view.HapticFeedbackConstants
 import android.widget.TextView
 import androidx.appcompat.widget.AppCompatButton
 import androidx.appcompat.widget.AppCompatImageView
+import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toDrawable
 import com.pklein.mariage.R
+import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.data.repository.PlayerGender
 import com.pklein.mariage.utils.CountDown
 
@@ -179,7 +181,7 @@ object Alerts {
 
     fun showTrophyUnlocked(
         context: Context,
-        message: String,
+        trophy: Trophies,
     ) {
         val dialog = Dialog(context)
         dialog.setContentView(R.layout.popup_trophy)
@@ -192,7 +194,9 @@ object Alerts {
             addFlags(android.view.WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH)
         }
         dialog.setCanceledOnTouchOutside(true)
-        dialog.findViewById<TextView>(R.id.tv_trophy_message).text = message
+        dialog.findViewById<TextView>(R.id.tv_trophy_message).text = context.getString(trophy.message)
+        dialog.findViewById<AppCompatImageView>(R.id.iv_trophy_icon).imageTintList =
+            trophy.state.tintColor?.let { ContextCompat.getColorStateList(context, it) }
         dialog.window?.apply {
             setLayout(
                 android.view.ViewGroup.LayoutParams.MATCH_PARENT,

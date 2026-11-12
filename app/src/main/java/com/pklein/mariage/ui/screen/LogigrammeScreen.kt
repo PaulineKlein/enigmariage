@@ -99,7 +99,7 @@ fun LogigrammeScreen(
                             .align(Alignment.CenterHorizontally),
                 )
 
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(8.dp))
 
                 HelpCard(text = help)
 
@@ -131,7 +131,7 @@ fun LogigrammeScreen(
                 modifier =
                     Modifier
                         .fillMaxWidth(0.7f)
-                        .padding(top = 24.dp)
+                        .padding(top = 8.dp)
                         .align(Alignment.CenterHorizontally),
             )
         }

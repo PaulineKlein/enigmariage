@@ -12,8 +12,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.safeDrawingPadding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -57,7 +57,9 @@ fun QuestionScreen(
     enigmeLottie: String? = null,
     enigmeLottieInfinite: Boolean = false,
     enigmeContent: (@Composable () -> Unit)? = null,
+    onImageClick: ((Int) -> Unit)? = null,
     onClueClick: (() -> Unit)? = null,
+    @StringRes hint: Int = R.string.reponse,
 ) {
     var answer by remember { mutableStateOf("") }
     val context = LocalContext.current
@@ -119,7 +121,10 @@ fun QuestionScreen(
                                 .fillMaxWidth()
                                 .then(
                                     if (enigmeImageZoomable) {
-                                        Modifier.clickable { showImageWithStfalconViewer(context, enigmeImage) }
+                                        Modifier.clickable {
+                                            onImageClick?.invoke(enigmeImage)
+                                                ?: showImageWithStfalconViewer(context, enigmeImage)
+                                        }
                                     } else {
                                         Modifier
                                     },
@@ -145,7 +150,7 @@ fun QuestionScreen(
                 CustomInput(
                     value = answer,
                     onValueChange = { answer = it },
-                    hint = stringResource(id = R.string.reponse),
+                    hint = stringResource(id = hint),
                     modifier = Modifier.fillMaxWidth(),
                 )
             }
@@ -154,7 +159,7 @@ fun QuestionScreen(
                 modifier =
                     Modifier
                         .fillMaxWidth()
-                        .padding(top = 24.dp),
+                        .padding(top = 8.dp),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically,
             ) {

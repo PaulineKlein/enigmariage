@@ -5,75 +5,66 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
-import com.pklein.mariage.databinding.FragmentSalleDinerCanadaSixBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
-import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
+import com.pklein.mariage.presentation.destinations.canada.screen.CanadaSixScreen
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcher
-import com.pklein.mariage.utils.uiUtils.CheckEmptyTextWatcherListener
 import com.pklein.mariage.utils.uiUtils.PopinType
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val RESPONSE = "direction le japon"
 
 @AndroidEntryPoint
-class SalleDinerCanadaSixFragment :
-    Fragment(),
-    CheckEmptyTextWatcherListener {
+class SalleDinerCanadaSixFragment : Fragment() {
     private val gameProgress: GameProgressViewModel by activityViewModels()
     private val gameStep = GameStep.SalleDinerCanada6
     private val universStep = SharedPreferenceKey.UNIVERS_2_CANADA
-    private var binding: FragmentSalleDinerCanadaSixBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View =
-        FragmentSalleDinerCanadaSixBinding
-            .inflate(inflater, container, false)
-            .also { binding = it }
-            .root
+    ): View {
+        gameProgress.storePage(gameStep)
+        gameProgress.storeUniversPage(universStep, gameStep)
+
+        return ComposeView(requireContext()).apply {
+            setContent {
+                CanadaSixScreen(
+                    onHomeClick = {
+                        startActivity(
+                            Intent(
+                                requireContext(),
+                                CarnetBordUniversActivity::class.java,
+                            ),
+                        )
+                    },
+                    onValidateClick = ::onValidateClicked,
+                )
+            }
+        }
+    }
 
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = binding ?: return
-        gameProgress.storePage(gameStep)
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_RABBIT_SIROP_ERABLE)) {
             gameProgress.saveTrophy(Trophies.TROPHY_RABBIT_SIROP_ERABLE)
-            context?.let {
-                Alerts.showTrophyUnlocked(
-                    it,
-                    getString(Trophies.TROPHY_RABBIT_SIROP_ERABLE.message),
-                )
-            }
-        }
-        gameProgress.storeUniversPage(universStep, gameStep)
-
-        binding.ivHome.setOnClickListener {
-            activity?.startActivity(
-                Intent(
-                    requireContext(),
-                    CarnetBordUniversActivity::class.java,
-                ),
+            Alerts.showTrophyUnlocked(
+                requireContext(),
+                Trophies.TROPHY_RABBIT_SIROP_ERABLE,
             )
         }
-        binding.etDinerCanadaSixAnswer.addTextChangedListener(CheckEmptyTextWatcher(this))
-        binding.buttonDinerCanadaSix.setOnClickListener {
-            onValidateClicked(binding.etDinerCanadaSixAnswer.text.toString())
-        }
-        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun onValidateClicked(response: String) {
@@ -86,29 +77,14 @@ class SalleDinerCanadaSixFragment :
                     PopinType.CLAPPING,
                 )
             } else {
-                Alerts.showError(it) {
-                    gameProgress.updateError()
-                }
+                Alerts.showError(it) { gameProgress.updateError() }
             }
         }
-    }
-
-    override fun onTextEmpty() {
-        binding?.buttonDinerCanadaSix?.isEnabled = false
-    }
-
-    override fun onTextNotEmpty() {
-        binding?.buttonDinerCanadaSix?.isEnabled = true
     }
 
     private fun launchNext() {
         gameProgress.finishUnivers(universStep)
         activity?.startActivity(Intent(requireContext(), CarnetBordUniversActivity::class.java))
         activity?.finish()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 }

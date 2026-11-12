@@ -1,5 +1,8 @@
 package com.pklein.mariage.presentation.destinations.caraibes.screen
 
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
@@ -54,6 +57,7 @@ private const val TARGET_FIOLE = 1
 private const val TARGET_AMOUNT = 4
 private val UNIT_HEIGHT = 24.dp
 private val FIOLE_WIDTH = 80.dp
+private const val POUR_DURATION_MS = 700
 
 @Composable
 fun CaraibesFiveScreen(
@@ -175,6 +179,11 @@ private fun Fiole(
     val description =
         stringResource(R.string.diner_caraibes_five_fiole_accessibility, capacity, amount)
     val shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
+    val liquidHeight by animateDpAsState(
+        targetValue = UNIT_HEIGHT * amount,
+        animationSpec = tween(durationMillis = POUR_DURATION_MS, easing = FastOutSlowInEasing),
+        label = "fioleLiquidHeight",
+    )
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier =
@@ -196,18 +205,20 @@ private fun Fiole(
                     ),
             contentAlignment = Alignment.BottomCenter,
         ) {
-            if (amount > 0) {
-                Box(
-                    contentAlignment = Alignment.Center,
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .height(UNIT_HEIGHT * amount)
-                            .background(ColorJusCoco),
-                ) {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .height(liquidHeight)
+                        .background(ColorJusCoco),
+            ) {
+                if (amount > 0) {
                     Text(
                         text = stringResource(R.string.quantite_litres, amount),
                         style = DefaultTextStyles.body,
+                        maxLines = 1,
+                        softWrap = false,
                     )
                 }
             }

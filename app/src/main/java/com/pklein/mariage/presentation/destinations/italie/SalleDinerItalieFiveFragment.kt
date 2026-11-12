@@ -12,12 +12,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
+import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
 import com.pklein.mariage.ui.screen.QuestionScreen
 import com.pklein.mariage.ui.theme.annotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
+import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -45,6 +47,7 @@ class SalleDinerItalieFiveFragment : Fragment() {
                     enigmeImage = R.drawable.image_spartacus,
                     enigmeImageDescription = stringResource(R.string.image_enigme_accessibility),
                     enigmeImageZoomable = true,
+                    onImageClick = ::onImageClicked,
                     onHomeClick = {
                         startActivity(
                             Intent(
@@ -55,6 +58,16 @@ class SalleDinerItalieFiveFragment : Fragment() {
                     },
                     onValidateClick = ::onValidateClicked,
                 )
+            }
+        }
+    }
+
+    private fun onImageClicked(drawable: Int) {
+        context?.let {
+            showImageWithStfalconViewer(it, drawable)
+            if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_LENS)) {
+                gameProgress.saveTrophy(Trophies.TROPHY_LENS)
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_LENS)
             }
         }
     }

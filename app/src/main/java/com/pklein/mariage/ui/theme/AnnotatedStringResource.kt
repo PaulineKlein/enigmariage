@@ -4,6 +4,7 @@ import android.content.res.Resources
 import android.text.SpannableStringBuilder
 import android.text.Spanned
 import android.text.style.StyleSpan
+import android.text.style.UnderlineSpan
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalResources
@@ -12,6 +13,7 @@ import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextDecoration
 
 private val PLACEHOLDER = Regex("%(\\d+\\$)?s")
 
@@ -80,6 +82,13 @@ private fun CharSequence.toAnnotatedString(): AnnotatedString {
                         }
                     }
                 if (style != null) addStyle(style, text.getSpanStart(span), text.getSpanEnd(span))
+            }
+            text.getSpans(0, text.length, UnderlineSpan::class.java).forEach { span ->
+                addStyle(
+                    SpanStyle(textDecoration = TextDecoration.Underline),
+                    text.getSpanStart(span),
+                    text.getSpanEnd(span),
+                )
             }
         }
     }

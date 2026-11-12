@@ -75,7 +75,7 @@ class SalleDinerItalieOneFragment : Fragment() {
             showImageWithStfalconViewer(it, drawable)
             if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_LENS)) {
                 gameProgress.saveTrophy(Trophies.TROPHY_LENS)
-                Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_LENS.message))
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_LENS)
             }
         }
     }

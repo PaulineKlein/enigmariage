@@ -1,17 +1,12 @@
 package com.pklein.mariage.presentation.introduction
 
-import android.Manifest
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ComposeView
-import androidx.core.content.ContextCompat
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.presentation.BaseActivity
@@ -34,11 +29,6 @@ class SplashActivity : BaseActivity() {
         ),
     )
 
-    private val requestNotificationPermission =
-        registerForActivityResult(
-            ActivityResultContracts.RequestPermission(),
-        ) { /* permission granted or denied — nothing to do */ }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         refreshState()
@@ -55,7 +45,6 @@ class SplashActivity : BaseActivity() {
                 }
             },
         )
-        requestNotificationPermissionIfNeeded()
     }
 
     // singleTask reuses this instance instead of recreating it, so refresh on every return to show fresh statuses.
@@ -67,15 +56,6 @@ class SplashActivity : BaseActivity() {
     private fun refreshState() {
         hasSavedGame = !gameProgress.page.isNullOrEmpty()
         trophyProgress = trophyProgress.copy(unlocked = gameProgress.unlockedTrophiesCount)
-    }
-
-    private fun requestNotificationPermissionIfNeeded() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU &&
-            ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
-            != PackageManager.PERMISSION_GRANTED
-        ) {
-            requestNotificationPermission.launch(Manifest.permission.POST_NOTIFICATIONS)
-        }
     }
 
     private fun onNewGameClicked() {

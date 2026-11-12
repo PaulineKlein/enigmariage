@@ -54,7 +54,7 @@ class SalleDinerCambodgeFourFragment : QuestionFragment() {
             context?.let {
                 Alerts.showTrophyUnlocked(
                     it,
-                    getString(Trophies.TROPHY_CLUE_1.message),
+                    Trophies.TROPHY_CLUE_1,
                 )
             }
         }

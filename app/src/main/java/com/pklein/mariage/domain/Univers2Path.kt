@@ -10,6 +10,6 @@ data class Univers2Path(
     val subUnivers: List<SharedPreferenceKey>,
     val subUniversName: List<Int>,
     val subUniversFirstStep: List<GameStep>,
-    val subUniversIvMapmonde: List<Int>,
+    val subUniversMapmonde: List<Int>,
     val completeTrophy: Trophies,
 )

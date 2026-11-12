@@ -18,4 +18,5 @@
     <dimen name="button_shadow_elevation">3dp</dimen>
     <dimen name="button_shadow_elevation_negative">-3dp</dimen>
     <dimen name="popup_corner">8dp</dimen>
+    <dimen name="home_icon_size">32dp</dimen>
 </resources>

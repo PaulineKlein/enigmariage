@@ -93,8 +93,8 @@
     <string name="embarquement_two_notification_message_retry_3">"Si tu ne reçois vraiment rien,\n<b>Appuie ici</b>"</string>
     <string name="embarquement_three_enigme_rabbit">FK NKXC VK CKVVO NO MYMUDKSVC</string>
     <string name="embarquement_three_enigme_dog">EZ Z OZ IVXVKGRLM</string>
-    <string name="embarquement_three_message_1">Nox a hacké nos téléphones :</string>
-    <string name="embarquement_three_message_2">Je viens de recevoir ce mot aussi, c’est peut-être une piste :</string>
+    <string name="embarquement_three_message_1">Nox a hacké nos téléphones et nous a laissé ce message… Saurais-tu le traduire ?</string>
+    <string name="embarquement_three_message_2">J’ai reçu un autre mot, peut-être une piste :</string>
     <string name="embarquement_three_help_rabbit">Même avec l’aide d’un Avocat vous ne m’arrêterez pas.</string>
     <string name="embarquement_three_help_dog">Le début est la fin, et la fin est le début. Inverse le tout pour trouver ton chemin.</string>
     <string name="embarquement_three_clue_rabbit">"\"Avocat\" peut aussi se lire :\n\n \"A vaut K\", donc le début du message \"FK\" vaut \"VA\""</string>
@@ -154,7 +154,7 @@
     <string name="diner_japon_four_message_1">" Enfin arrivés ! Regarde, il y a des empreintes de Nox. Il est passé par là !\n\n <b>Qu’a-t-il commandé à la buvette ?</b>"</string>
     <string name="diner_japon_four_enigme">"−···  ··−  −···  −···  ·−··  ·  −  ·  ·−"</string>
     <string name="diner_japon_four_message_2">"Pour ne pas se faire repérer, il a envoyé un signal en morse !"</string>
-    <string name="diner_japon_five_question">"Ce bubble tea cache un ingrédient mystère ! 🐰\nDéchiffre ce <b>rébus</b> pour découvrir lequel !\n\nBesoin d’y voir plus clair ? Appuie sur l’image pour zoomer."</string>
+    <string name="diner_japon_five_question">"Ce bubble tea cache un ingrédient mystère ! 🐰\nDéchiffre ce <b>rébus</b> pour découvrir lequel !"</string>
     <string name="diner_japon_six_message_1">"Des perles de tapioca ! 🧋 Voilà notre nouvel ingrédient !\n\nNos deux inspecteurs ont l’air de se régaler… Capitaine Carotte en laisserait presque tomber son jus de carotte ! 🐰"</string>
     <string name="diner_japon_six_message_2">"Un ticket de caisse… et un nouvel indice ! Nox y a laissé un message mystérieux. À toi de le déchiffrer ! 🔎"</string>
     <string name="diner_japon_six_message_3">"Aide-toi cet alphabet :"</string>
@@ -198,8 +198,8 @@
     <string name="diner_tanzanie_one_choice_1">"le Ngorongoro"</string>
     <string name="diner_tanzanie_one_choice_2">"le Serengeti"</string>
     <string name="diner_tanzanie_one_choice_3">"le Kilimandjaro"</string>
-    <string name="diner_tanzanie_two_message">"Bingo ! <b>Le Ngorongoro</b> ! Avec ses parois hautes, c’est le refuge parfait pour Nox. Il est coincé dans ce cratère, il ne pourra pas nous échapper !\n\nLe gardien m’a parlé d’un fruit précieux, mais je ne l’ai pas encore trouvé."</string>
-    <string name="diner_tanzanie_two_enigme">"Pour retrouver ma prochaine destination, souviens-toi de ses mots :\n\nSimba, Tembo, Nyani, Mbuni, Okapi…\n\nCinq habitants de la savane. Cinq noms swahilis…\n\nRegarde ces empreintes : touche une empreinte, puis l’animal auquel elle appartient. Valide quand les cinq paires sont reliées."</string>
+    <string name="diner_tanzanie_two_message">"Bingo ! <b>Le Ngorongoro</b> ! Avec ses parois hautes, c’est le refuge parfait pour Nox. Il est coincé dans ce cratère et ne pourra pas nous échapper !\n\nLe gardien m’a parlé d’un fruit précieux, mais je ne l’ai pas encore trouvé."</string>
+    <string name="diner_tanzanie_two_enigme">"Pour trouver ma prochaine destination, souviens-toi de ses mots :\n\nSimba, Tembo, Nyani, Mbuni, Okapi…\n\nCinq habitants de la savane. Cinq noms swahilis…\n\nRegarde ces empreintes : touche une empreinte, puis l’animal auquel elle appartient. Valide quand les cinq paires sont reliées."</string>
     <string name="diner_tanzanie_two_name_swahili_lion">"Simba"</string>
     <string name="diner_tanzanie_two_name_swahili_elephant">"Tembo"</string>
     <string name="diner_tanzanie_two_name_swahili_babouin">"Nyani"</string>
@@ -286,9 +286,9 @@
     <string name="combatFinal_dog_cell_empty">vide</string>
     <string name="combatFinal_dog_cell_true">coché</string>
     <string name="combatFinal_dog_cell_false">croisé</string>
-    <string name="diner_titre_canada">(Dîner au Canada)</string>
-    <string name="diner_titre_japon">(Dîner au Japon)</string>
-    <string name="diner_titre_cambodge">(Dîner au Cambodge)</string>
+    <string name="diner_titre_canada">(Escale au Canada)</string>
+    <string name="diner_titre_japon">(Escale au Japon)</string>
+    <string name="diner_titre_cambodge">(Escale au Cambodge)</string>
     <string name="diner_titre_caraibes">(Escale aux Caraïbes)</string>
     <string name="diner_titre_tanzanie">(Escale en Tanzanie)</string>
     <string name="diner_titre_italie">(Escale en Italie)</string>
@@ -310,7 +310,9 @@
     <string name="resultat_share">"Partager"</string>
     <string name="resultat_share_title">"Partager via :"</string>
     <string name="carnet_bord_titre">(Carnet de Bord)</string>
-    <string name="carnet_bord2_titre">(Mappemonde)</string>
+    <string name="carnet_bord2_titre">(Tour du monde)</string>
+    <string name="carnet_bord2_sous_titre">À chaque escale, un indice te rapproche de l’elixir…</string>
+    <string name="carnet_bord2_sous_titre_termine">Bravo %s, tu as percé le secret de chaque escale</string>
     <string name="carnet_bord2_button_canada">Destination Fraiche</string>
     <string name="carnet_bord2_button_japon">Destination Zen</string>
     <string name="carnet_bord2_button_cambodge">Destination Exotique</string>
@@ -318,8 +320,11 @@
     <string name="carnet_bord2_button_tanzanie">Destination des Terres sauvages</string>
     <string name="carnet_bord2_button_italie">Destination Antique</string>
     <string name="carnet_bord2_button_home">Retour au Carnet de Bord</string>
-    <string name="carnet_bord2_message">Choisis ta prochaine étape :</string>
-    <string name="carnet_bord2_bravo">"Bravo %s, tu as tout trouvé !\nRetournons au <u>Carnet de Bord</u> !"</string>
+    <plurals name="carnet_bord2_map_description">
+        <item quantity="one">Carte du monde, %1$d destination découverte sur %2$d</item>
+        <item quantity="other">Carte du monde, %1$d destinations découvertes sur %2$d</item>
+    </plurals>
+    <string name="carnet_bord2_bravo">Tous les ingrédients sont réunis… L’heure est venue d’affronter Nox ! </string>
     <string name="univers1_name">Où est le bateau ?</string>
     <string name="univers2_name">Bienvenue à bord</string>
     <string name="univers3_name">Combat final</string>
@@ -360,7 +365,7 @@
     <string name="trophy_progression_title_7">À nous deux, Nox !</string>
     <string name="trophy_progression_title_8">Nox, tu es une poupée !</string>
     <string name="trophy_progression_title_9">Nox, tu es encore une poupée !</string>
-    <string name="trophy_progression_title_10">Arrête de me tapper dessus !</string>
+    <string name="trophy_progression_title_10">Arrête de me taper dessus !</string>
     <string name="trophy_progression_title_11">Mais pourquoi ça existe ?</string>
     <string name="trophy_progression_title_12">Miro, regardes-y de plus près</string>
     <string name="trophy_progression_title_13">Premier ingrédient avec Agent Croquette</string>
@@ -368,6 +373,7 @@
     <string name="trophy_progression_title_15">Troisième ingrédient avec Agent Croquette</string>
     <string name="trophy_progression_title_16">Quatrième ingrédient avec Agent Croquette</string>
     <string name="trophy_progression_title_17">La recette d’Agent Croquette est complète</string>
+    <string name="trophy_progression_title_18">Tape encore… si tu l’oses !</string>
     <string name="trophy_progression_message_1">Trouver le lieu du mariage</string>
     <string name="trophy_progression_message_2">Trouver le jus de cactus</string>
     <string name="trophy_progression_message_3">"Trouver le sirop d'érable"</string>
@@ -385,6 +391,7 @@
     <string name="trophy_progression_message_15">Trouver le cacao</string>
     <string name="trophy_progression_message_16">Trouver le jus de citron</string>
     <string name="trophy_progression_message_17">Réunir tous les ingrédients</string>
+    <string name="trophy_progression_message_18">Taper plusieurs fois sur Nox juste avant le combat final</string>
     <string name="trophy_clue_title_1">"Un petit coup de pouce"</string>
     <string name="trophy_clue_title_2">Au secours !</string>
     <string name="trophy_clue_title_3">"Je n'ai besoin de personne"</string>

@@ -1,5 +1,6 @@
 package com.pklein.mariage.data.model
 
+import androidx.annotation.ColorRes
 import com.pklein.mariage.R
 
 enum class Trophies(
@@ -106,6 +107,12 @@ enum class Trophies(
         TrophyState.SILVER,
         false,
     ),
+    TROPHY_NOX_FACE_OFF(
+        R.string.trophy_progression_title_18,
+        R.string.trophy_progression_message_18,
+        TrophyState.SILVER,
+        false,
+    ),
     TROPHY_USELESS(
         R.string.trophy_progression_title_11,
         R.string.trophy_progression_message_11,
@@ -150,9 +157,11 @@ enum class Trophies(
     ),
 }
 
-enum class TrophyState {
-    BRONZE,
-    SILVER,
-    GOLD,
-    PLATINE,
+enum class TrophyState(
+    @ColorRes val tintColor: Int?,
+) {
+    BRONZE(R.color.parchemin_text),
+    SILVER(R.color.grey),
+    GOLD(null),
+    PLATINE(R.color.colorPrimary),
 }

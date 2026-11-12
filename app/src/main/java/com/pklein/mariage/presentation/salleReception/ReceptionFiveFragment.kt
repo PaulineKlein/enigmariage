@@ -63,7 +63,7 @@ class ReceptionFiveFragment : Fragment() {
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_DOG_GLACE_PILEE)) {
             gameProgress.saveTrophy(Trophies.TROPHY_DOG_GLACE_PILEE)
             context?.let {
-                Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_DOG_GLACE_PILEE.message))
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_DOG_GLACE_PILEE)
             }
         }
     }

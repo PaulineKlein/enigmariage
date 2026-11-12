@@ -36,7 +36,7 @@ class SalleDinerTanzanieSevenFragment : Fragment() {
         if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_DOG_CACAO)) {
             gameProgress.saveTrophy(Trophies.TROPHY_DOG_CACAO)
             context?.let {
-                Alerts.showTrophyUnlocked(it, getString(Trophies.TROPHY_DOG_CACAO.message))
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_DOG_CACAO)
             }
         }
 

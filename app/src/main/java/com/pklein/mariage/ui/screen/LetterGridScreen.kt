@@ -135,7 +135,7 @@ fun LetterGridScreen(
                 modifier =
                     Modifier
                         .fillMaxWidth()
-                        .padding(top = 24.dp),
+                        .padding(top = 8.dp),
                 horizontalArrangement = Arrangement.Center,
             ) {
                 AppButton(
@@ -165,8 +165,7 @@ private fun LetterCell(
                 .clip(shape)
                 .drawBehind {
                     drawRect(if (selected) ColorAccent else ColorParchemin)
-                }
-                .clickable(role = Role.Checkbox, onClick = onClick)
+                }.clickable(role = Role.Checkbox, onClick = onClick)
                 .padding(1.dp),
     ) {
         Text(

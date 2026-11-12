@@ -9,6 +9,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -22,6 +23,7 @@ fun ParcheminCard(
     text: String,
     modifier: Modifier = Modifier,
     textAlign: TextAlign = TextAlign.Start,
+    textStyle: TextStyle = DefaultTextStyles.bodyParchemin,
 ) {
     Card(
         modifier = modifier.fillMaxWidth(),
@@ -32,7 +34,7 @@ fun ParcheminCard(
     ) {
         Text(
             text = text,
-            style = DefaultTextStyles.bodyParchemin,
+            style = textStyle,
             textAlign = textAlign,
             modifier = Modifier.padding(horizontal = 20.dp, vertical = 24.dp),
         )
