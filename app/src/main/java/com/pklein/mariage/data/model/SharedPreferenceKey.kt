@@ -1,0 +1,22 @@
+package com.pklein.mariage.data.model
+
+enum class SharedPreferenceKey {
+    PLAYER_NAME,
+    PLAYER_GENDER,
+    PLAYER_PAGE,
+    PLAYER_START_TIME,
+    PLAYER_END_TIME,
+    PLAYER_CLUES,
+    PLAYER_ERRORS,
+    COUNT_DOWN,
+    UNIVERS_1,
+    UNIVERS_2_COCKTAILS,
+    UNIVERS_2_CANADA,
+    UNIVERS_2_JAPON,
+    UNIVERS_2_CAMBODGE,
+    UNIVERS_2_RECEPTION,
+    UNIVERS_2_CARAIBES,
+    UNIVERS_2_TANZANIE,
+    UNIVERS_2_ITALIE,
+    UNIVERS_3
+}

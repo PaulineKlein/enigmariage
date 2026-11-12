@@ -16,38 +16,39 @@ fun NotificationManager.sendNotification(
     title: String,
     message: String,
     context: Context,
-    intentToCall: Intent? = null
+    intentToCall: Intent? = null,
 ) {
-
     createChannel(
         context.getString(R.string.notification_channel_id),
         context.getString(R.string.app_name),
-        context
+        context,
     )
 
-    val builder = NotificationCompat.Builder(
-        context,
-        context.getString(R.string.notification_channel_id)
-    )
-        .setSmallIcon(R.drawable.ic_notification)
-        .setColor(ContextCompat.getColor(context, R.color.colorAccent))
-        .setContentTitle(title)
-        .setContentText(message)
-        .setAutoCancel(true)
-        .setPriority(NotificationCompat.PRIORITY_HIGH)
+    val builder =
+        NotificationCompat
+            .Builder(
+                context,
+                context.getString(R.string.notification_channel_id),
+            ).setSmallIcon(R.drawable.ic_notification)
+            .setColor(ContextCompat.getColor(context, R.color.colorAccent))
+            .setContentTitle(title)
+            .setContentText(message)
+            .setAutoCancel(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
 
     val id = NotificationID.id
     if (intentToCall != null) {
-        val contentPendingIntent = PendingIntent.getActivity(
-            context,
-            id,
-            intentToCall,
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
-            } else {
-                PendingIntent.FLAG_UPDATE_CURRENT
-            }
-        )
+        val contentPendingIntent =
+            PendingIntent.getActivity(
+                context,
+                id,
+                intentToCall,
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+                } else {
+                    PendingIntent.FLAG_UPDATE_CURRENT
+                },
+            )
 
         builder.setContentIntent(contentPendingIntent)
     }
@@ -55,14 +56,18 @@ fun NotificationManager.sendNotification(
     notify(id, builder.build())
 }
 
-private fun createChannel(channelId: String, channelName: String, context: Context) {
+private fun createChannel(
+    channelId: String,
+    channelName: String,
+    context: Context,
+) {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val notificationChannel = NotificationChannel(
-            channelId,
-            channelName,
-            NotificationManager.IMPORTANCE_HIGH
-        )
-            .apply {
+        val notificationChannel =
+            NotificationChannel(
+                channelId,
+                channelName,
+                NotificationManager.IMPORTANCE_HIGH,
+            ).apply {
                 setShowBadge(false)
             }
 
@@ -71,9 +76,10 @@ private fun createChannel(channelId: String, channelName: String, context: Conte
         notificationChannel.enableVibration(true)
         notificationChannel.description = context.getString(R.string.app_name)
 
-        val notificationManager = context.getSystemService(
-            NotificationManager::class.java
-        )
+        val notificationManager =
+            context.getSystemService(
+                NotificationManager::class.java,
+            )
         notificationManager?.createNotificationChannel(notificationChannel)
     }
 }

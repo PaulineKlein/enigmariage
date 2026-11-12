@@ -1,23 +1,23 @@
 package com.pklein.mariage.utils
 
-import java.util.*
+import java.util.Date
 import java.util.concurrent.TimeUnit
 
-fun calculateTimeDifference(startTime: String, endTime: String): String {
-    val date1 = Date(startTime.toLong())
-    val date2 = Date(endTime.toLong())
-    val diff: Long = date2.time - date1.time
+fun calculateTimeDifference(startTime: String, endTime: String): String? =
+    try {
+        val diff = Date(endTime.toLong()).time - Date(startTime.toLong()).time
 
-    return String.format(
-        "%02dh %02dmin %02ds",
-        TimeUnit.MILLISECONDS.toHours(diff),
-        TimeUnit.MILLISECONDS.toMinutes(diff) -
-                TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(diff)),
-        TimeUnit.MILLISECONDS.toSeconds(diff) -
-                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(diff))
-    )
-}
+        val hours = TimeUnit.MILLISECONDS.toHours(diff)
+        val minutes = TimeUnit.MILLISECONDS.toMinutes(diff) % 60
+        val seconds = TimeUnit.MILLISECONDS.toSeconds(diff) % 60
 
-fun currentTimeToString(): String {
-    return System.currentTimeMillis().toString()
-}
+        buildString {
+            if (hours > 0) append("${hours}h ")
+            if (minutes > 0 || hours > 0) append("${minutes}min ")
+            append("${seconds}s")
+        }
+    } catch (_: NumberFormatException) {
+        null
+    }
+
+fun currentTimeToString(): String = System.currentTimeMillis().toString()

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_salle_diner_tanzanie"
+    app:startDestination="@id/salleDinerTanzanieOne">
+
+    <fragment
+        android:id="@+id/salleDinerTanzanieOne"
+        android:name="com.pklein.mariage.presentation.destinations.tanzanie.SalleDinerTanzanieOneFragment"
+        android:label="salleDinerTanzanieOne">
+        <action
+            android:id="@+id/action_tanzanie_one_to_two"
+            app:destination="@id/salleDinerTanzanieTwo"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerTanzanieTwo"
+        android:name="com.pklein.mariage.presentation.destinations.tanzanie.SalleDinerTanzanieTwoFragment"
+        android:label="salleDinerTanzanieTwo">
+        <action
+            android:id="@+id/action_tanzanie_two_to_three"
+            app:destination="@id/salleDinerTanzanieThree"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerTanzanieThree"
+        android:name="com.pklein.mariage.presentation.destinations.tanzanie.SalleDinerTanzanieThreeFragment"
+        android:label="salleDinerTanzanieThree">
+        <action
+            android:id="@+id/action_tanzanie_three_to_four"
+            app:destination="@id/salleDinerTanzanieFour"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerTanzanieFour"
+        android:name="com.pklein.mariage.presentation.destinations.tanzanie.SalleDinerTanzanieFourFragment"
+        android:label="salleDinerTanzanieFour">
+        <action
+            android:id="@+id/action_tanzanie_four_to_five"
+            app:destination="@id/salleDinerTanzanieFive"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerTanzanieFive"
+        android:name="com.pklein.mariage.presentation.destinations.tanzanie.SalleDinerTanzanieFiveFragment"
+        android:label="salleDinerTanzanieFive">
+        <action
+            android:id="@+id/action_tanzanie_five_to_six"
+            app:destination="@id/salleDinerTanzanieSix"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerTanzanieSix"
+        android:name="com.pklein.mariage.presentation.destinations.tanzanie.SalleDinerTanzanieSixFragment"
+        android:label="salleDinerTanzanieSix">
+        <action
+            android:id="@+id/action_tanzanie_six_to_seven"
+            app:destination="@id/salleDinerTanzanieSeven"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerTanzanieSeven"
+        android:name="com.pklein.mariage.presentation.destinations.tanzanie.SalleDinerTanzanieSevenFragment"
+        android:label="salleDinerTanzanieSeven" />
+
+</navigation>

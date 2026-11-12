@@ -1,13 +1,12 @@
 package com.pklein.mariage.utils.uiUtils
 
 import android.view.View
-import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 
 private const val MIN_SCALE = 0.95f
 private const val MIN_ALPHA = 0.6f
 
-class ZoomOutPageTransformer : ViewPager.PageTransformer {
-
+class ZoomOutPageTransformer : ViewPager2.PageTransformer {
     override fun transformPage(view: View, position: Float) {
         view.apply {
             val pageWidth = width

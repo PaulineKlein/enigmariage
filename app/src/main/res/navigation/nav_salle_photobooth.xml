@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_salle_photobooth"
+    app:startDestination="@id/sallePhotoboothOneFragment">
+
+    <fragment
+        android:id="@+id/sallePhotoboothOneFragment"
+        android:name="com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothOneFragment"
+        android:label="SallePhotoboothOne">
+        <action
+            android:id="@+id/action_photobooth_one_to_two"
+            app:destination="@id/sallePhotoboothTwoFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sallePhotoboothTwoFragment"
+        android:name="com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothTwoFragment"
+        android:label="SallePhotoboothTwo">
+        <action
+            android:id="@+id/action_photobooth_two_to_three"
+            app:destination="@id/sallePhotoboothThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/sallePhotoboothThreeFragment"
+        android:name="com.pklein.mariage.presentation.sallePhotobooth.SallePhotoboothThreeFragment"
+        android:label="SallePhotoboothThree" />
+
+</navigation>

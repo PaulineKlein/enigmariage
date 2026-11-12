@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:ignore="LockedOrientationActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:name=".MariageApplication"
         android:allowBackup="false"
+        android:enableOnBackInvokedCallback="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="${crashlyticsCollectionEnabled}" />
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.pklein.mariage.fileprovider"
@@ -22,160 +25,49 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/filepaths" />
         </provider>
+
         <activity
-            android:name=".presentation.SplashActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+            android:name=".presentation.introduction.SplashActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.introduction.IntroductionActivity" />
+        <activity android:name=".presentation.introduction.AddPlayerActivity" />
+        <activity android:name=".presentation.localisationBateau.LocalisationBateauActivity" />
+        <activity android:name=".presentation.salleCocktails.SalleCocktailsActivity" />
         <activity
-            android:name=".presentation.introduction.PasswordActivity"
-            android:screenOrientation="portrait" />
+            android:name=".presentation.salleReception.ReceptionActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".presentation.introduction.IntroductionActivity"
-            android:screenOrientation="portrait" />
+            android:name=".presentation.destinations.caraibes.SalleDinerCaraibesActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".presentation.introduction.AddPlayerActivity"
-            android:screenOrientation="portrait" />
+            android:name=".presentation.destinations.tanzanie.SalleDinerTanzanieActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".presentation.localisationBateau.LocalisationBateauOneActivity"
-            android:screenOrientation="portrait" />
+            android:name=".presentation.destinations.italie.SalleDinerItalieActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".presentation.destinations.canada.SalleDinerCanadaActivity" />
+        <activity android:name=".presentation.destinations.japon.SalleDinerJaponActivity" />
+        <activity android:name=".presentation.destinations.cambodge.SalleDinerCambodgeActivity" />
+        <activity android:name=".presentation.sallePhotobooth.SallePhotoboothActivity" />
         <activity
-            android:name=".presentation.localisationBateau.LocalisationBateauTwoActivity"
-            android:screenOrientation="portrait" />
+            android:name=".presentation.combatFinal.CombatFinalActivity"
+            android:launchMode="singleTask" />
         <activity
-            android:name=".presentation.localisationBateau.LocalisationBateauThreeActivity"
-            android:screenOrientation="portrait" />
+            android:name=".presentation.carnetBord.CarnetBordActivity"
+            android:launchMode="singleTask" />
         <activity
-            android:name=".presentation.fairePart.FairePartActivity"
-            android:screenOrientation="portrait" />
+            android:name=".presentation.carnetBord.CarnetBordUniversActivity"
+            android:launchMode="singleTask" />
         <activity
-            android:name=".presentation.fairePart.FairePartResponseActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.fairePart.FairePartKanjiActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleEmbarquement.SalleEmbarquementOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleEmbarquement.SalleEmbarquementTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleEmbarquement.SalleEmbarquementTwoNotificationActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleEmbarquement.SalleEmbarquementThreeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleCoktails.SalleCoktailsOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleCoktails.SalleCoktailsTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleCoktails.SalleCoktailsThreeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleCoktails.SalleCoktailsFourActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleCoktails.SalleCoktailsFiveActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleCoktails.SalleCoktailsSixActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleCoktails.SalleCoktailsSevenActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.SalleDinerOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.SalleDinerTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.canada.SalleDinerCanadaOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.canada.SalleDinerCanadaTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.canada.SalleDinerCanadaThreeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.canada.SalleDinerCanadaFourActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.canada.SalleDinerCanadaFiveActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.canada.SalleDinerCanadaSixActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.japon.SalleDinerJaponOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.japon.SalleDinerJaponTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.japon.SalleDinerJaponThreeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.japon.SalleDinerJaponFourActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.japon.SalleDinerJaponFiveActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.japon.SalleDinerJaponSixActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeThreeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeFourActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.salleDiner.cambodge.SalleDinerCambodgeFiveActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.sallePhotobooth.SallePhotoboothZeroActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.sallePhotobooth.SallePhotoboothOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.sallePhotobooth.SallePhotoboothTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.combatFinal.CombatFinalOneActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.combatFinal.CombatFinalTwoActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.combatFinal.CombatFinalThreeActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.resultat.ResultsActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.CarnetBordActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".presentation.CarnetBord2Activity"
-            android:screenOrientation="portrait" />
+            android:name=".presentation.trophies.TrophyActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_salle_diner_caraibes"
+    app:startDestination="@id/salleDinerCaraibesOne">
+
+    <fragment
+        android:id="@+id/salleDinerCaraibesOne"
+        android:name="com.pklein.mariage.presentation.destinations.caraibes.SalleDinerCaraibesOneFragment"
+        android:label="salleDinerCaraibesOne">
+        <action
+            android:id="@+id/action_caraibes_one_to_two"
+            app:destination="@id/salleDinerCaraibesTwo"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCaraibesTwo"
+        android:name="com.pklein.mariage.presentation.destinations.caraibes.SalleDinerCaraibesTwoFragment"
+        android:label="salleDinerCaraibesTwo">
+        <action
+            android:id="@+id/action_caraibes_two_to_three"
+            app:destination="@id/salleDinerCaraibesThree"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCaraibesThree"
+        android:name="com.pklein.mariage.presentation.destinations.caraibes.SalleDinerCaraibesThreeFragment"
+        android:label="salleDinerCaraibesThree">
+        <action
+            android:id="@+id/action_caraibes_three_to_four"
+            app:destination="@id/salleDinerCaraibesFour"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCaraibesFour"
+        android:name="com.pklein.mariage.presentation.destinations.caraibes.SalleDinerCaraibesFourFragment"
+        android:label="salleDinerCaraibesFour">
+        <action
+            android:id="@+id/action_caraibes_four_to_five"
+            app:destination="@id/salleDinerCaraibesFive"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCaraibesFive"
+        android:name="com.pklein.mariage.presentation.destinations.caraibes.SalleDinerCaraibesFiveFragment"
+        android:label="salleDinerCaraibesFive">
+        <action
+            android:id="@+id/action_caraibes_five_to_six"
+            app:destination="@id/salleDinerCaraibesSix"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/salleDinerCaraibesSix"
+        android:name="com.pklein.mariage.presentation.destinations.caraibes.SalleDinerCaraibesSixFragment"
+        android:label="salleDinerCaraibesSix" />
+
+</navigation>

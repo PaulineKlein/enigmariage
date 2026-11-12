@@ -75,6 +75,15 @@ class CadenaLayout @JvmOverloads constructor(
         return cadenaValue?.text.toString()
     }
 
+    fun setListener(listener: CadenaLayoutListener) {
+        this.listener = listener
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        listener = null
+    }
+
     override fun onTextEmpty() {
         buttonCheck?.setImageDrawable(getDrawable(context, R.drawable.image_check_disabled))
         buttonCheck?.isClickable = false

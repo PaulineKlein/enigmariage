@@ -5,16 +5,18 @@
     <dimen name="margin_32">32dp</dimen>
     <dimen name="margin_24">24dp</dimen>
     <dimen name="margin_16">16dp</dimen>
+    <dimen name="margin_12">12dp</dimen>
     <dimen name="margin_8">8dp</dimen>
     <dimen name="margin_4">4dp</dimen>
-    <dimen name="editText_radius">15dp</dimen>
+    <dimen name="editText_radius">12dp</dimen>
     <dimen name="editText_padding">13dp</dimen>
-    <dimen name="button_radius">15dp</dimen>
+    <dimen name="button_radius">12dp</dimen>
     <dimen name="button_cadena_radius">10dp</dimen>
     <dimen name="button_padding">13dp</dimen>
-    <dimen name="button_width">200dp</dimen>
-    <dimen name="button_elevation">4dp</dimen>
+    <dimen name="button_elevation">0dp</dimen>
+    <dimen name="button_radius_inner">11dp</dimen>
+    <dimen name="button_shadow_elevation">3dp</dimen>
+    <dimen name="button_shadow_elevation_negative">-3dp</dimen>
     <dimen name="popup_corner">8dp</dimen>
-    <dimen name="carnet_bord_elevated">7dp</dimen>
-    <dimen name="carnet_bord_flat">0dp</dimen>
+    <dimen name="home_icon_size">32dp</dimen>
 </resources>

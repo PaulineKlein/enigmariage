@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_combat_final"
+    app:startDestination="@id/combatFinalOneFragment">
+
+    <fragment
+        android:id="@+id/combatFinalOneFragment"
+        android:name="com.pklein.mariage.presentation.combatFinal.CombatFinalOneFragment"
+        android:label="CombatFinalOne">
+        <action
+            android:id="@+id/action_combat_one_to_two_rabbit"
+            app:destination="@id/combatFinalTwoRabbitFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+
+        <action
+            android:id="@+id/action_combat_one_to_two_dog"
+            app:destination="@id/combatFinalTwoDogFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/combatFinalTwoRabbitFragment"
+        android:name="com.pklein.mariage.presentation.combatFinal.CombatFinalTwoRabbitFragment"
+        android:label="CombatFinalTwoRabbit">
+        <action
+            android:id="@+id/action_combat_two_rabbit_to_three"
+            app:destination="@id/combatFinalThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/combatFinalTwoDogFragment"
+        android:name="com.pklein.mariage.presentation.combatFinal.CombatFinalTwoDogFragment"
+        android:label="CombatFinalTwoDog">
+        <action
+            android:id="@+id/action_combat_two_dog_to_three"
+            app:destination="@id/combatFinalThreeFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/combatFinalThreeFragment"
+        android:name="com.pklein.mariage.presentation.combatFinal.CombatFinalThreeFragment"
+        android:label="CombatFinalThree">
+        <action
+            android:id="@+id/action_combat_three_to_results"
+            app:destination="@id/resultsFragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.pklein.mariage.presentation.combatFinal.resultat.ResultsFragment"
+        android:label="Results" />
+
+</navigation>
