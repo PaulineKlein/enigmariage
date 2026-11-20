@@ -10,20 +10,22 @@ import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pklein.mariage.R
-import com.pklein.mariage.ui.atome.PagerDots
+import com.pklein.mariage.ui.atome.PagerNavigationBar
 import com.pklein.mariage.ui.modifier.zoomOutTransform
 import com.pklein.mariage.ui.theme.AppTheme
 
 private const val PAGE_COUNT = 2
 
-/** Two swipeable pages with dots and a zoom-out transition, equivalent to a 2-item ViewPager2. */
+/** Two swipeable pages with dots and a zoom-out transition, equivalent to a 2-item ViewPager2. [header] stays above both pages. */
 @Composable
 fun TwoPageScreen(
     firstPage: @Composable () -> Unit,
     secondPage: @Composable () -> Unit,
+    header: @Composable () -> Unit = {},
 ) {
     val pagerState = rememberPagerState(pageCount = { PAGE_COUNT })
 
@@ -35,6 +37,8 @@ fun TwoPageScreen(
                     .safeDrawingPadding()
                     .padding(16.dp),
         ) {
+            header()
+
             HorizontalPager(
                 state = pagerState,
                 modifier =
@@ -52,7 +56,7 @@ fun TwoPageScreen(
                 }
             }
 
-            PagerDots(pageCount = PAGE_COUNT, currentPage = pagerState.currentPage)
+            PagerNavigationBar(pagerState = pagerState)
         }
     }
 }
@@ -64,7 +68,10 @@ private fun TwoPageScreenPreview() {
         firstPage = {
             ImageEnigmePage(
                 title = R.string.reception_titre,
-                message = "Cherchons un indice dans cette image !\nCompte le nombre de bateaux, de lunettes et d'objets roses.",
+                message =
+                    AnnotatedString(
+                        "Cherchons un indice dans cette image !\nCompte le nombre de bateaux, de lunettes et d'objets roses.",
+                    ),
                 image = R.drawable.image_maze_japan,
                 imageDescription = "Image de l'énigme",
                 onHomeClick = {},

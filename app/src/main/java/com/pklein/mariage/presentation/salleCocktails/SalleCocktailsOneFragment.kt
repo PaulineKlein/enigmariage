@@ -5,73 +5,79 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
-import com.pklein.mariage.databinding.FragmentSalleCocktailsOneBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
-import com.pklein.mariage.utils.ViewPager2DotsUtils
-import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
+import com.pklein.mariage.ui.screen.CadenaPage
+import com.pklein.mariage.ui.screen.ImageEnigmePage
+import com.pklein.mariage.ui.screen.TwoPageScreen
+import com.pklein.mariage.ui.theme.annotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.PopinType
-import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val RESPONSE = "124"
 
 @AndroidEntryPoint
-class SalleCocktailsOneFragment :
-    Fragment(),
-    CadenaLayoutListener,
-    SalleCocktailsOneLayoutListener {
+class SalleCocktailsOneFragment : Fragment() {
+    private val gameStep = GameStep.SalleCocktail1
+    private val universStep = SharedPreferenceKey.UNIVERS_2_COCKTAILS
     private val gameProgress: GameProgressViewModel by activityViewModels()
-    private var binding: FragmentSalleCocktailsOneBinding? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View =
-        FragmentSalleCocktailsOneBinding
-            .inflate(inflater, container, false)
-            .also { binding = it }
-            .root
+    ): View {
+        gameProgress.storePage(gameStep)
+        gameProgress.storeUniversPage(universStep, gameStep)
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?,
-    ) {
-        super.onViewCreated(view, savedInstanceState)
-        val binding = binding ?: return
-        gameProgress.storePage(GameStep.SalleCocktail1)
-        gameProgress.storeUniversPage(
-            SharedPreferenceKey.UNIVERS_2_COCKTAILS,
-            GameStep.SalleCocktail1,
-        )
-
-        val adapter = SalleCocktailsOneViewPagerAdapter(gameProgress.playerName, this, this)
-        context?.let {
-            val dotsUtils = ViewPager2DotsUtils(adapter.itemCount).setupDots(it)
-            dotsUtils.addDotsTo(binding.pagerDots)
+        return ComposeView(requireContext()).apply {
+            setContent {
+                TwoPageScreen(
+                    firstPage = {
+                        ImageEnigmePage(
+                            title = R.string.cocktail_one_titre,
+                            message = annotatedStringResource(id = R.string.cocktail_one_message),
+                            image = R.drawable.image_number_two,
+                            imageDescription = stringResource(id = R.string.image_enigme_accessibility),
+                            onHomeClick = {
+                                startActivity(
+                                    Intent(
+                                        requireContext(),
+                                        CarnetBordActivity::class.java,
+                                    ),
+                                )
+                            },
+                            onImageClick = ::onImageClicked,
+                        )
+                    },
+                    secondPage = {
+                        CadenaPage(
+                            question =
+                                stringResource(
+                                    id = R.string.cocktail_one_question,
+                                    gameProgress.playerName.orEmpty(),
+                                ),
+                            onValidateClick = ::onValidateClicked,
+                        )
+                    },
+                )
+            }
         }
-        binding.viewpagerSalleCocktailsOne.adapter = adapter
-        binding.viewpagerSalleCocktailsOne.setPageTransformer(ZoomOutPageTransformer())
-        binding.root.addSystemWindowInsetToMargin()
     }
 
-    override fun onClickButtonHome() {
-        activity?.startActivity(Intent(requireContext(), CarnetBordActivity::class.java))
-    }
-
-    override fun onClickImage(drawable: Int) {
+    private fun onImageClicked(drawable: Int) {
         context?.let {
             showImageWithStfalconViewer(it, drawable)
             if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_LENS)) {
@@ -81,7 +87,7 @@ class SalleCocktailsOneFragment :
         }
     }
 
-    override fun onValidateCLicked(response: String) {
+    private fun onValidateClicked(response: String) {
         context?.let {
             if (response.formatAnswer() == RESPONSE) {
                 Alerts.showSuccess(
@@ -101,10 +107,5 @@ class SalleCocktailsOneFragment :
 
     private fun launchNext() {
         findNavController().navigate(R.id.action_one_to_two)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 }

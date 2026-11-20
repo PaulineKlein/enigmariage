@@ -1,5 +1,6 @@
 package com.pklein.mariage.utils.uiUtils
 
+import android.app.Activity
 import android.app.Dialog
 import android.content.Context
 import android.graphics.Color
@@ -23,6 +24,15 @@ enum class PopinType {
     ERROR,
     CLAPPING,
     CLUE,
+}
+
+// The delayed dismiss can run after the activity was destroyed (e.g. rotation), when the window is already removed.
+private fun Dialog.dismissSafely() {
+    try {
+        dismiss()
+    } catch (_: IllegalArgumentException) {
+        // window already gone
+    }
 }
 
 object Alerts {
@@ -136,7 +146,7 @@ object Alerts {
         }
 
         val handler = Handler()
-        handler.postDelayed({ dialog.dismiss() }, delay.toLong())
+        handler.postDelayed({ dialog.dismissSafely() }, delay.toLong())
     }
 
     fun showSuccess(
@@ -194,7 +204,8 @@ object Alerts {
             addFlags(android.view.WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH)
         }
         dialog.setCanceledOnTouchOutside(true)
-        dialog.findViewById<TextView>(R.id.tv_trophy_message).text = context.getString(trophy.message)
+        dialog.findViewById<TextView>(R.id.tv_trophy_message).text =
+            context.getString(trophy.message)
         dialog.findViewById<AppCompatImageView>(R.id.iv_trophy_icon).imageTintList =
             trophy.state.tintColor?.let { ContextCompat.getColorStateList(context, it) }
         dialog.window?.apply {
@@ -212,7 +223,7 @@ object Alerts {
 
         dialog.show()
         isPopupShown = true
-        Handler().postDelayed({ dialog.dismiss() }, 6000)
+        Handler().postDelayed({ dialog.dismissSafely() }, 6000)
     }
 
     fun showCountDown(
@@ -261,12 +272,15 @@ object Alerts {
             }
 
             if (isPopupShown) {
-                Handler().postDelayed({ dialog.show() }, 10000)
+                Handler().postDelayed({
+                    val activity = context as? Activity
+                    if (activity == null || !(activity.isFinishing || activity.isDestroyed)) dialog.show()
+                }, 10000)
             } else {
                 dialog.show()
             }
 
-            Handler().postDelayed({ dialog.dismiss() }, 10000)
+            Handler().postDelayed({ dialog.dismissSafely() }, 10000)
         }
     }
 }

@@ -1,15 +1,23 @@
 package com.pklein.mariage.presentation.destinations.cambodge
 
 import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
-import com.pklein.mariage.databinding.FragmentQuestionBinding
+import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
-import com.pklein.mariage.presentation.QuestionFragment
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
+import com.pklein.mariage.ui.screen.QuestionScreen
+import com.pklein.mariage.ui.theme.annotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,32 +25,45 @@ import dagger.hilt.android.AndroidEntryPoint
 private const val RESPONSE = "mangue"
 
 @AndroidEntryPoint
-class SalleDinerCambodgeFourFragment : QuestionFragment() {
-    override val gameStep = GameStep.SalleDinerCambodge4
-    override val universStep = SharedPreferenceKey.UNIVERS_2_CAMBODGE
+class SalleDinerCambodgeFourFragment : Fragment() {
+    private val gameStep = GameStep.SalleDinerCambodge4
+    private val universStep = SharedPreferenceKey.UNIVERS_2_CAMBODGE
+    private val gameProgress: GameProgressViewModel by activityViewModels()
 
-    override fun onSetupView(binding: FragmentQuestionBinding) {
-        binding.ivHome.setOnClickListener {
-            requireActivity().startActivity(
-                Intent(
-                    requireContext(),
-                    CarnetBordUniversActivity::class.java,
-                ),
-            )
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        gameProgress.storePage(gameStep)
+        gameProgress.storeUniversPage(universStep, gameStep)
+
+        return ComposeView(requireContext()).apply {
+            setContent {
+                QuestionScreen(
+                    title = R.string.diner_titre_cambodge,
+                    message = annotatedStringResource(id = R.string.diner_cambodge_four_question),
+                    enigmeImage = R.drawable.image_parchemin_mangue,
+                    enigmeImageDescription = stringResource(R.string.salle_diner_cambodge_mangue_accessibility),
+                    onHomeClick = {
+                        startActivity(
+                            Intent(
+                                requireContext(),
+                                CarnetBordUniversActivity::class.java,
+                            ),
+                        )
+                    },
+                    onClueClick = ::onClueClicked,
+                    onValidateClick = ::onValidateClicked,
+                )
+            }
         }
-        binding.tvQuestionTitre.text = getString(R.string.diner_titre_cambodge)
-        binding.tvQuestionMessage.text = resources.getText(R.string.diner_cambodge_four_question)
-        binding.animationQuestionLottie.visibility = View.GONE
-        binding.animationQuestionImage.visibility = View.VISIBLE
-        binding.animationQuestionImage.setImageResource(R.drawable.image_parchemin_mangue)
-        binding.animationQuestionImage.contentDescription =
-            getString(R.string.salle_diner_cambodge_mangue_accessibility)
-        binding.layoutIndice.root.visibility = View.VISIBLE
-        binding.layoutIndice.root.setOnClickListener {
-            context?.let {
-                Alerts.showClue(it, getString(R.string.diner_cambodge_four_indice)) {
-                    updateClue()
-                }
+    }
+
+    private fun onClueClicked() {
+        context?.let {
+            Alerts.showClue(it, getString(R.string.diner_cambodge_four_indice)) {
+                updateClue()
             }
         }
     }
@@ -60,7 +81,7 @@ class SalleDinerCambodgeFourFragment : QuestionFragment() {
         }
     }
 
-    override fun onValidateCLicked(response: String) {
+    private fun onValidateClicked(response: String) {
         context?.let {
             if (response.formatAnswer() == RESPONSE) {
                 Alerts.showSuccess(it, gameProgress.playerName, gameProgress.gender, ::launchNext)
@@ -72,7 +93,7 @@ class SalleDinerCambodgeFourFragment : QuestionFragment() {
         }
     }
 
-    override fun launchNext() {
+    private fun launchNext() {
         findNavController().navigate(R.id.action_cambodge_four_to_five)
     }
 }

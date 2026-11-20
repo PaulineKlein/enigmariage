@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.ui.platform.ComposeView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -16,12 +17,11 @@ import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
-import com.pklein.mariage.databinding.FragmentSalleEmbarquementTwoBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
+import com.pklein.mariage.presentation.localisationBateau.salleEmbarquement.screen.EmbarquementTwoScreen
 import com.pklein.mariage.utils.Notification
-import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +29,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class SalleEmbarquementTwoFragment : Fragment() {
     private val gameStep = GameStep.SalleEmbarquement2
     private val universStep = SharedPreferenceKey.UNIVERS_1
-    private var binding: FragmentSalleEmbarquementTwoBinding? = null
     private val gameProgress: GameProgressViewModel by activityViewModels()
 
     // Granted or denied, the story goes on: without permission the notification is simply not shown.
@@ -40,18 +39,29 @@ class SalleEmbarquementTwoFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View =
-        FragmentSalleEmbarquementTwoBinding
-            .inflate(inflater, container, false)
-            .also { binding = it }
-            .root
+    ): View {
+        val description =
+            gameProgress.getDescription(gameStep)
+                ?: throw Exception("Informations cannot be null")
+
+        return ComposeView(requireContext()).apply {
+            setContent {
+                EmbarquementTwoScreen(
+                    description = description,
+                    onHomeClick = {
+                        startActivity(Intent(requireContext(), CarnetBordActivity::class.java))
+                    },
+                    onContinueClick = ::requestNotificationPermissionIfNeeded,
+                )
+            }
+        }
+    }
 
     override fun onViewCreated(
         view: View,
         savedInstanceState: Bundle?,
     ) {
         super.onViewCreated(view, savedInstanceState)
-        val binding = binding ?: return
         gameProgress.storePage(gameStep)
         gameProgress.storeUniversPage(universStep, gameStep)
 
@@ -61,22 +71,6 @@ class SalleEmbarquementTwoFragment : Fragment() {
                 Alerts.showTrophyUnlocked(it, Trophies.TROPHY_EMBARQUEMENT)
             }
         }
-        gameProgress.getDescription(gameStep)?.let {
-            binding.tvEmbarquementTwoMessage.text = getText(it)
-        }
-
-        binding.ivHome.setOnClickListener {
-            activity?.startActivity(
-                Intent(
-                    requireContext(),
-                    CarnetBordActivity::class.java,
-                ),
-            )
-        }
-        binding.buttonEmbarquementTwo.setOnClickListener {
-            requestNotificationPermissionIfNeeded()
-        }
-        binding.root.addSystemWindowInsetToMargin()
     }
 
     private fun requestNotificationPermissionIfNeeded() {
@@ -103,10 +97,5 @@ class SalleEmbarquementTwoFragment : Fragment() {
             Notification.cancelNotification(it)
             Notification.sendNotificationSalleEmbarquement(it)
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 }

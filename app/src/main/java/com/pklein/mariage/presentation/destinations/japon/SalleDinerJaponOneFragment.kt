@@ -1,17 +1,23 @@
 package com.pklein.mariage.presentation.destinations.japon
 
-import android.animation.ValueAnimator
 import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.view.inputmethod.EditorInfo
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
-import com.pklein.mariage.databinding.FragmentQuestionBinding
+import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
-import com.pklein.mariage.presentation.QuestionFragment
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
+import com.pklein.mariage.ui.screen.QuestionScreen
+import com.pklein.mariage.ui.theme.annotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,34 +25,46 @@ import dagger.hilt.android.AndroidEntryPoint
 private const val RESPONSE = "2021"
 
 @AndroidEntryPoint
-class SalleDinerJaponOneFragment : QuestionFragment() {
-    override val gameStep = GameStep.SalleDinerJapon1
-    override val universStep = SharedPreferenceKey.UNIVERS_2_JAPON
+class SalleDinerJaponOneFragment : Fragment() {
+    private val gameStep = GameStep.SalleDinerJapon1
+    private val universStep = SharedPreferenceKey.UNIVERS_2_JAPON
+    private val gameProgress: GameProgressViewModel by activityViewModels()
 
-    override fun onSetupView(binding: FragmentQuestionBinding) {
-        binding.ivHome.setOnClickListener {
-            activity?.startActivity(
-                Intent(
-                    requireContext(),
-                    CarnetBordUniversActivity::class.java,
-                ),
-            )
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        gameProgress.storePage(gameStep)
+        gameProgress.storeUniversPage(universStep, gameStep)
+
+        return ComposeView(requireContext()).apply {
+            setContent {
+                QuestionScreen(
+                    title = R.string.diner_titre_japon,
+                    message = annotatedStringResource(id = R.string.diner_japon_one_question),
+                    enigmeLottie = "animation_japan.json",
+                    enigmeLottieInfinite = true,
+                    onHomeClick = {
+                        startActivity(
+                            Intent(
+                                requireContext(),
+                                CarnetBordUniversActivity::class.java,
+                            ),
+                        )
+                    },
+                    keyboardType = KeyboardType.Number,
+                    onClueClick = ::onClueClicked,
+                    onValidateClick = ::onValidateClicked,
+                )
+            }
         }
-        binding.animationQuestionLottie.apply {
-            visibility = View.VISIBLE
-            setAnimation("animation_japan.json")
-            playAnimation()
-            repeatCount = ValueAnimator.INFINITE
-        }
-        binding.tvQuestionTitre.text = getString(R.string.diner_titre_japon)
-        binding.tvQuestionMessage.text = resources.getText(R.string.diner_japon_one_question)
-        binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER
-        binding.layoutIndice.root.visibility = View.VISIBLE
-        binding.layoutIndice.root.setOnClickListener {
-            context?.let {
-                Alerts.showClue(requireContext(), getString(R.string.diner_japon_one_help)) {
-                    updateClue()
-                }
+    }
+
+    private fun onClueClicked() {
+        context?.let {
+            Alerts.showClue(it, getString(R.string.diner_japon_one_help)) {
+                updateClue()
             }
         }
     }
@@ -64,7 +82,7 @@ class SalleDinerJaponOneFragment : QuestionFragment() {
         }
     }
 
-    override fun onValidateCLicked(response: String) {
+    private fun onValidateClicked(response: String) {
         context?.let {
             if (response.formatAnswer() == RESPONSE) {
                 Alerts.showSuccess(it, gameProgress.playerName, gameProgress.gender, ::launchNext)
@@ -76,7 +94,7 @@ class SalleDinerJaponOneFragment : QuestionFragment() {
         }
     }
 
-    override fun launchNext() {
+    private fun launchNext() {
         findNavController().navigate(R.id.action_japon_one_to_two)
     }
 }

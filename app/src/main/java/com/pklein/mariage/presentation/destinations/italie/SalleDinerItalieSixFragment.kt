@@ -19,7 +19,9 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -32,12 +34,16 @@ import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
 import com.pklein.mariage.ui.atome.HelpCard
 import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.screen.QuestionScreen
+import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.splashFontFamily
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
 private const val RESPONSE = "jus de citron"
+private val CODE_FONT_SIZE = 32.sp
+private val CODE_LETTER_SPACING = 2.sp
 
 @AndroidEntryPoint
 class SalleDinerItalieSixFragment : Fragment() {
@@ -61,7 +67,17 @@ class SalleDinerItalieSixFragment : Fragment() {
                     message = annotatedStringResource(id = R.string.diner_italie_six_message),
                     enigmeContent = {
                         Column {
-                            ParcheminCard(text = stringResource(id = R.string.diner_italie_six_code))
+                            ParcheminCard(
+                                text = stringResource(id = R.string.diner_italie_six_code),
+                                textAlign = TextAlign.Center,
+                                textStyle =
+                                    DefaultTextStyles.bodyParchemin.copy(
+                                        fontFamily = splashFontFamily,
+                                        fontSize = CODE_FONT_SIZE,
+                                        lineHeight = CODE_FONT_SIZE * 1.2f,
+                                        letterSpacing = CODE_LETTER_SPACING,
+                                    ),
+                            )
                             Spacer(modifier = Modifier.height(16.dp))
                             HelpCard(text = annotatedStringResource(id = R.string.diner_italie_six_help))
                             if (isClueDisplayed) {

@@ -1,13 +1,14 @@
 package com.pklein.mariage.ui.screen
 
 import androidx.annotation.StringRes
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.fadeIn
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.widthIn
@@ -16,9 +17,12 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +32,7 @@ import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.atome.GlassContent
 import com.pklein.mariage.ui.atome.IceBlock
 import com.pklein.mariage.ui.atome.IceBlockState
+import com.pklein.mariage.ui.modifier.UpperThirdArrangement
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 
@@ -47,6 +52,11 @@ fun IceBlockScreen(
         if (state.isShattered) resultAction()
     }
 
+    val resultAlpha by animateFloatAsState(
+        targetValue = if (state.isShattered) 1f else 0f,
+        label = "resultAlpha",
+    )
+
     AppTheme {
         Column(
             modifier =
@@ -55,47 +65,53 @@ fun IceBlockScreen(
                     .safeDrawingPadding()
                     .padding(horizontal = 16.dp, vertical = 16.dp),
         ) {
-            Column(
-                modifier =
-                    Modifier
-                        .weight(1f)
-                        .verticalScroll(rememberScrollState()),
-            ) {
-                MyNavigationBar(
-                    title = title,
-                    onHomeClick = onHomeClick,
-                )
+            MyNavigationBar(
+                title = title,
+                onHomeClick = onHomeClick,
+            )
 
-                Spacer(modifier = Modifier.height(44.dp))
-
-                Text(
-                    text = message,
-                    style = DefaultTextStyles.body,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                IceBlock(
-                    state = state,
-                    description = stringResource(id = blockDescription),
-                    glassContent = glassContent,
+            BoxWithConstraints(modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()) {
+                Column(
                     modifier =
                         Modifier
-                            .widthIn(max = 360.dp)
-                            .align(Alignment.CenterHorizontally),
-                )
-
-                AnimatedVisibility(
-                    visible = state.isShattered,
-                    enter = fadeIn(),
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                            .fillMaxWidth()
+                            .verticalScroll(rememberScrollState())
+                            .heightIn(min = maxHeight),
+                    verticalArrangement = UpperThirdArrangement,
                 ) {
+                    Spacer(modifier = Modifier.height(44.dp))
+
+                    Text(
+                        text = message,
+                        style = DefaultTextStyles.body,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    IceBlock(
+                        state = state,
+                        description = stringResource(id = blockDescription),
+                        glassContent = glassContent,
+                        modifier =
+                            Modifier
+                                .widthIn(max = 360.dp)
+                                .align(Alignment.CenterHorizontally),
+                    )
+
+                    // Space stays reserved so the group doesn't jump when the block shatters.
                     Text(
                         text = stringResource(id = resultMessage),
                         style = DefaultTextStyles.body,
                         textAlign = TextAlign.Center,
+                        modifier =
+                            Modifier
+                                .align(Alignment.CenterHorizontally)
+                                .alpha(resultAlpha)
+                                .then(if (state.isShattered) Modifier else Modifier.clearAndSetSemantics {}),
                     )
                 }
             }

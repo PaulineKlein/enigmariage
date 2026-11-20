@@ -1,11 +1,13 @@
 package com.pklein.mariage.ui.screen
 
 import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.layout.widthIn
@@ -28,6 +30,7 @@ import com.pklein.mariage.presentation.salleReception.screen.data.ReceptionFourP
 import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.atome.MatchstickPuzzle
 import com.pklein.mariage.ui.atome.MatchstickPuzzleState
+import com.pklein.mariage.ui.modifier.UpperThirdArrangement
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorHint
 import com.pklein.mariage.ui.theme.DefaultTextStyles
@@ -52,45 +55,54 @@ fun MatchstickPuzzleScreen(
                     .safeDrawingPadding()
                     .padding(horizontal = 16.dp, vertical = 16.dp),
         ) {
-            Column(
+            MyNavigationBar(
+                title = title,
+                onHomeClick = onHomeClick,
+            )
+
+            BoxWithConstraints(
                 modifier =
                     Modifier
                         .weight(1f)
-                        .verticalScroll(rememberScrollState()),
+                        .fillMaxWidth(),
             ) {
-                MyNavigationBar(
-                    title = title,
-                    onHomeClick = onHomeClick,
-                )
-
-                Spacer(modifier = Modifier.height(44.dp))
-
-                Text(
-                    text = message,
-                    style = DefaultTextStyles.body,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                MatchstickPuzzle(
-                    state = state,
-                    description = stringResource(id = puzzleDescription),
+                Column(
                     modifier =
                         Modifier
-                            .widthIn(max = 600.dp)
-                            .align(Alignment.CenterHorizontally),
-                )
-
-                TextButton(
-                    onClick = { scope.launch { state.reset() } },
-                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                            .fillMaxWidth()
+                            .verticalScroll(rememberScrollState())
+                            .heightIn(min = maxHeight),
+                    verticalArrangement = UpperThirdArrangement,
                 ) {
+                    Spacer(modifier = Modifier.height(44.dp))
+
                     Text(
-                        text = stringResource(id = R.string.recommencer),
-                        style = DefaultTextStyles.body.copy(color = ColorHint),
+                        text = message,
+                        style = DefaultTextStyles.body,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
                     )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    MatchstickPuzzle(
+                        state = state,
+                        description = stringResource(id = puzzleDescription),
+                        modifier =
+                            Modifier
+                                .widthIn(max = 600.dp)
+                                .align(Alignment.CenterHorizontally),
+                    )
+
+                    TextButton(
+                        onClick = { scope.launch { state.reset() } },
+                        modifier = Modifier.align(Alignment.CenterHorizontally),
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.recommencer),
+                            style = DefaultTextStyles.body.copy(color = ColorHint),
+                        )
+                    }
                 }
             }
 

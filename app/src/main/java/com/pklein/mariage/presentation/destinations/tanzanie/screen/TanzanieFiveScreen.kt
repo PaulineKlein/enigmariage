@@ -1,10 +1,12 @@
 package com.pklein.mariage.presentation.destinations.tanzanie.screen
 
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
@@ -32,6 +34,7 @@ import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.atome.RadioCard
 import com.pklein.mariage.ui.atome.RadioCardGroup
+import com.pklein.mariage.ui.modifier.UpperThirdArrangement
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
@@ -60,53 +63,60 @@ fun TanzanieFiveScreen(
                 .imePadding()
                 .padding(horizontal = 16.dp, vertical = 16.dp),
     ) {
-        Column(
-            modifier =
-                Modifier
-                    .weight(1f)
-                    .verticalScroll(rememberScrollState()),
-        ) {
-            MyNavigationBar(
-                title = R.string.diner_titre_tanzanie,
-                onHomeClick = onHomeClick,
-            )
+        MyNavigationBar(
+            title = R.string.diner_titre_tanzanie,
+            onHomeClick = onHomeClick,
+        )
 
-            Spacer(modifier = Modifier.height(32.dp))
-
-            Text(
-                text = annotatedStringResource(id = R.string.diner_tanzanie_five_message),
-                style = DefaultTextStyles.body,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth(),
-            )
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            ParcheminCard(text = stringResource(id = R.string.diner_tanzanie_five_enigme))
-
-            Spacer(modifier = Modifier.height(12.dp))
-
-            RadioCardGroup {
-                choices.forEachIndexed { index, choice ->
-                    val number = index + 1
-                    RadioCard(
-                        text = annotatedStringResource(id = choice),
-                        isSelected = selected == number,
-                        onClick = { selected = number },
-                    )
-                }
-            }
-            Spacer(modifier = Modifier.height(12.dp))
-
-            LottieAnimation(
-                composition = composition,
-                iterations = LottieConstants.IterateForever,
+        BoxWithConstraints(modifier = Modifier
+            .weight(1f)
+            .fillMaxWidth()) {
+            Column(
                 modifier =
                     Modifier
-                        .size(120.dp)
-                        .align(Alignment.CenterHorizontally),
-            )
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .heightIn(min = maxHeight),
+                verticalArrangement = UpperThirdArrangement,
+            ) {
+                Spacer(modifier = Modifier.height(32.dp))
+
+                Text(
+                    text = annotatedStringResource(id = R.string.diner_tanzanie_five_message),
+                    style = DefaultTextStyles.body,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth(),
+                )
+
+                Spacer(modifier = Modifier.height(24.dp))
+
+                ParcheminCard(text = stringResource(id = R.string.diner_tanzanie_five_enigme))
+
+                Spacer(modifier = Modifier.height(12.dp))
+
+                RadioCardGroup {
+                    choices.forEachIndexed { index, choice ->
+                        val number = index + 1
+                        RadioCard(
+                            text = annotatedStringResource(id = choice),
+                            isSelected = selected == number,
+                            onClick = { selected = number },
+                        )
+                    }
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+
+                LottieAnimation(
+                    composition = composition,
+                    iterations = LottieConstants.IterateForever,
+                    modifier =
+                        Modifier
+                            .size(160.dp)
+                            .align(Alignment.CenterHorizontally),
+                )
+            }
         }
+
         AppButton(
             text = stringResource(id = R.string.valider),
             onClick = { selected?.let(onValidateClick) },

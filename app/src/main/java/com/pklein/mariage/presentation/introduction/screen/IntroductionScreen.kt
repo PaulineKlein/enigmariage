@@ -3,12 +3,6 @@ package com.pklein.mariage.presentation.introduction.screen
 import android.content.res.Configuration
 import android.view.HapticFeedbackConstants
 import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.animation.core.FastOutSlowInEasing
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.Image
@@ -28,15 +22,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -52,7 +43,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalView
@@ -70,6 +60,7 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.AppButton
+import com.pklein.mariage.ui.atome.NextArrow
 import com.pklein.mariage.ui.atome.NoxImage
 import com.pklein.mariage.ui.atome.PagerDots
 import com.pklein.mariage.ui.modifier.pulse
@@ -95,8 +86,6 @@ private val TYPEWRITER_PAUSE = 200.milliseconds
 private const val TYPEWRITER_PAUSE_CHARS = ".!?…"
 private val ELIXIR_DOTS_DELAY = 400.milliseconds
 private const val ELIXIR_MAX_DOTS = 3
-private const val ARROW_NUDGE_DP = 8f
-private const val ARROW_NUDGE_DURATION_MS = 700
 
 /** Three swipeable story pages (Nox, the mayor, the couple + start button), replaces activity_introduction.xml. */
 @Composable
@@ -198,37 +187,6 @@ private fun IntroBottomBar(
                 },
             )
         }
-    }
-}
-
-@Composable
-private fun NextArrow(onClick: () -> Unit) {
-    val transition = rememberInfiniteTransition(label = "nextArrow")
-    val nudge by transition.animateFloat(
-        initialValue = 0f,
-        targetValue = ARROW_NUDGE_DP,
-        animationSpec =
-            infiniteRepeatable(
-                animation =
-                    tween(
-                        durationMillis = ARROW_NUDGE_DURATION_MS,
-                        easing = FastOutSlowInEasing,
-                    ),
-                repeatMode = RepeatMode.Reverse,
-            ),
-        label = "nextArrowNudge",
-    )
-
-    IconButton(onClick = onClick) {
-        Icon(
-            painter = painterResource(R.drawable.ic_arrow_next),
-            contentDescription = stringResource(R.string.introduction_suivant),
-            tint = ColorBleuFonce,
-            modifier =
-                Modifier
-                    .size(32.dp)
-                    .graphicsLayer { translationX = nudge.dp.toPx() },
-        )
     }
 }
 

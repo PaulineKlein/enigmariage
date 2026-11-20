@@ -92,80 +92,82 @@ fun CombatFinalTwoRabbitScreen(
 ) {
     var selected by rememberSaveable { mutableIntStateOf(NO_COUP) }
 
-    Column(
-        modifier =
-            Modifier
-                .fillMaxSize()
-                .safeDrawingPadding()
-                .padding(16.dp),
-    ) {
+    AppTheme {
         Column(
             modifier =
                 Modifier
-                    .weight(1f)
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally,
+                    .fillMaxSize()
+                    .safeDrawingPadding()
+                    .padding(16.dp),
         ) {
-            MyNavigationBar(
-                title = R.string.combatFinal_titre,
-                onHomeClick = onHomeClick,
-            )
-
             Column(
-                modifier = Modifier.widthIn(max = CONTENT_MAX_WIDTH),
+                modifier =
+                    Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Spacer(modifier = Modifier.height(24.dp))
-
-                Text(
-                    text = annotatedStringResource(id = R.string.combatFinal_two_message_1),
-                    style = DefaultTextStyles.bodyBig,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = annotatedStringResource(id = R.string.combatFinal_two_message_2),
-                    style = DefaultTextStyles.bodyBig,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
+                MyNavigationBar(
+                    title = R.string.combatFinal_titre,
+                    onHomeClick = onHomeClick,
                 )
 
-                Spacer(modifier = Modifier.height(24.dp))
+                Column(
+                    modifier = Modifier.widthIn(max = CONTENT_MAX_WIDTH),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Spacer(modifier = Modifier.height(24.dp))
 
-                Image(
-                    painter = painterResource(R.drawable.image_maze_final_rabbit),
-                    contentDescription = stringResource(R.string.salle_combat_final_accessibility),
-                    contentScale = ContentScale.FillWidth,
-                    modifier =
-                        Modifier
-                            .widthIn(max = MAZE_MAX_WIDTH)
-                            .fillMaxWidth()
-                            .shadow(6.dp, RoundedCornerShape(CARD_CORNER_RADIUS))
-                            .clip(RoundedCornerShape(CARD_CORNER_RADIUS))
-                            .border(3.dp, Color.White, RoundedCornerShape(CARD_CORNER_RADIUS)),
-                )
+                    Text(
+                        text = annotatedStringResource(id = R.string.combatFinal_two_message_1),
+                        style = DefaultTextStyles.bodyBig,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    Text(
+                        text = annotatedStringResource(id = R.string.combatFinal_two_message_2),
+                        style = DefaultTextStyles.bodyBig,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
 
-                Spacer(modifier = Modifier.height(24.dp))
+                    Spacer(modifier = Modifier.height(24.dp))
 
-                CoupsGrid(selected = selected, onSelect = { selected = it })
+                    Image(
+                        painter = painterResource(R.drawable.image_maze_final_rabbit),
+                        contentDescription = stringResource(R.string.salle_combat_final_accessibility),
+                        contentScale = ContentScale.FillWidth,
+                        modifier =
+                            Modifier
+                                .widthIn(max = MAZE_MAX_WIDTH)
+                                .fillMaxWidth()
+                                .shadow(6.dp, RoundedCornerShape(CARD_CORNER_RADIUS))
+                                .clip(RoundedCornerShape(CARD_CORNER_RADIUS))
+                                .border(3.dp, Color.White, RoundedCornerShape(CARD_CORNER_RADIUS)),
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    CoupsGrid(selected = selected, onSelect = { selected = it })
+                }
             }
-        }
 
-        AppButton(
-            text = stringResource(id = R.string.combatFinal_two_attack),
-            onClick = { onValidateClick(selected) },
-            enabled = selected != NO_COUP,
-            textSize = 18.sp,
-            contentPadding = 16.dp,
-            modifier =
-                Modifier
-                    .padding(top = 8.dp)
-                    .align(Alignment.CenterHorizontally)
-                    .widthIn(max = CONTENT_MAX_WIDTH)
-                    .fillMaxWidth(0.8f),
-        )
+            AppButton(
+                text = stringResource(id = R.string.combatFinal_two_attack),
+                onClick = { onValidateClick(selected) },
+                enabled = selected != NO_COUP,
+                textSize = 18.sp,
+                contentPadding = 16.dp,
+                modifier =
+                    Modifier
+                        .padding(top = 8.dp)
+                        .align(Alignment.CenterHorizontally)
+                        .widthIn(max = CONTENT_MAX_WIDTH)
+                        .fillMaxWidth(0.8f),
+            )
+        }
     }
 }
 
@@ -177,9 +179,10 @@ private fun CoupsGrid(
 ) {
     val view = LocalView.current
     Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .selectableGroup(),
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .selectableGroup(),
         verticalArrangement = Arrangement.spacedBy(CARD_SPACING),
     ) {
         coups.withIndex().toList().chunked(COUPS_PER_ROW).forEach { rowCoups ->
@@ -248,13 +251,11 @@ private fun CoupCard(
                                 BorderStroke(1.dp, Color.White)
                             },
                         shape = shape,
-                    )
-                    .selectable(
+                    ).selectable(
                         selected = isSelected,
                         onClick = onClick,
                         role = Role.RadioButton,
-                    )
-                    .padding(8.dp),
+                    ).padding(8.dp),
         ) {
             Image(
                 painter = painterResource(coup.image),
@@ -299,10 +300,8 @@ private fun CoupCard(
 @Preview(showSystemUi = true, name = "Combat final Nox")
 @Composable
 private fun CombatFinalTwoRabbitScreenPreview() {
-    AppTheme {
-        CombatFinalTwoRabbitScreen(
-            onHomeClick = {},
-            onValidateClick = {},
-        )
-    }
+    CombatFinalTwoRabbitScreen(
+        onHomeClick = {},
+        onValidateClick = {},
+    )
 }

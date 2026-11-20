@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,7 +28,7 @@ import com.pklein.mariage.ui.atome.CadenaKeypad
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 
-/** A question with a digit keypad, like fragment_salle_cocktails_one_2.xml. */
+/** A question with a digit keypad; side by side in landscape. */
 @Composable
 fun CadenaPage(
     question: String,
@@ -36,26 +37,53 @@ fun CadenaPage(
     var value by remember { mutableStateOf("") }
 
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        Column(
-            modifier =
-                Modifier
-                    .fillMaxWidth()
-                    .verticalScroll(rememberScrollState())
-                    .heightIn(min = maxHeight),
-            verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Text(
-                text = question,
-                style = DefaultTextStyles.bodyBig,
-                textAlign = TextAlign.Center,
-            )
-            Spacer(modifier = Modifier.height(32.dp))
-            CadenaKeypad(
-                value = value,
-                onValueChange = { value = it },
-                onValidate = onValidateClick,
-            )
+        if (maxWidth > maxHeight) {
+            Row(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .heightIn(min = maxHeight),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(
+                    text = question,
+                    style = DefaultTextStyles.bodyBig,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .weight(1f)
+                        .padding(16.dp),
+                )
+                CadenaKeypad(
+                    value = value,
+                    onValueChange = { value = it },
+                    onValidate = onValidateClick,
+                    modifier = Modifier.weight(1f),
+                )
+            }
+        } else {
+            Column(
+                modifier =
+                    Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState())
+                        .heightIn(min = maxHeight),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                Text(
+                    text = question,
+                    style = DefaultTextStyles.bodyBig,
+                    textAlign = TextAlign.Center,
+                )
+                Spacer(modifier = Modifier.height(32.dp))
+                CadenaKeypad(
+                    value = value,
+                    onValueChange = { value = it },
+                    onValidate = onValidateClick,
+                )
+            }
         }
     }
 }
@@ -63,6 +91,19 @@ fun CadenaPage(
 @Preview(name = "Page cadenas", showSystemUi = true)
 @Composable
 private fun CadenaPagePreview() {
+    AppTheme {
+        Box(modifier = Modifier.padding(16.dp)) {
+            CadenaPage(
+                question = "Place les chiffres obtenus dans l'ordre croissant.",
+                onValidateClick = {},
+            )
+        }
+    }
+}
+
+@Preview(name = "Page cadenas - paysage", showSystemUi = true, widthDp = 800, heightDp = 360)
+@Composable
+private fun CadenaPageLandscapePreview() {
     AppTheme {
         Box(modifier = Modifier.padding(16.dp)) {
             CadenaPage(

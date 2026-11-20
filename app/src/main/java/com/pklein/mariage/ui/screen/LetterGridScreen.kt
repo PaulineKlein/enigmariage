@@ -4,6 +4,7 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -34,6 +35,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.AppButton
+import com.pklein.mariage.ui.modifier.UpperThirdArrangement
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorAccent
 import com.pklein.mariage.ui.theme.ColorParchemin
@@ -72,63 +74,69 @@ fun LetterGridScreen(
                     .safeDrawingPadding()
                     .padding(horizontal = 16.dp, vertical = 16.dp),
         ) {
-            Column(
-                modifier =
-                    Modifier
-                        .weight(1f)
-                        .verticalScroll(rememberScrollState()),
-            ) {
-                MyNavigationBar(
-                    title = title,
-                    onHomeClick = onHomeClick,
-                )
+            MyNavigationBar(
+                title = title,
+                onHomeClick = onHomeClick,
+            )
 
-                Spacer(modifier = Modifier.height(32.dp))
-
-                Text(
-                    text = message,
-                    style = DefaultTextStyles.body,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-
-                Spacer(modifier = Modifier.height(24.dp))
-
+            BoxWithConstraints(modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()) {
                 Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalArrangement = Arrangement.spacedBy(4.dp),
-                ) {
-                    grid.forEachIndexed { rowIndex, row ->
-                        Row(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.spacedBy(4.dp),
-                        ) {
-                            row.forEachIndexed { columnIndex, letter ->
-                                val cell = rowIndex * GRID_SIZE + columnIndex
-                                LetterCell(
-                                    letter = letter,
-                                    selected = cell in selectedCells,
-                                    onClick = {
-                                        if (!selectedCells.remove(cell)) selectedCells.add(cell)
-                                    },
-                                    modifier = Modifier.weight(1f),
-                                )
-                            }
-                        }
-                    }
-                }
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                Text(
-                    text = selectedWord,
-                    style = DefaultTextStyles.sousTitre,
-                    textAlign = TextAlign.Center,
                     modifier =
                         Modifier
                             .fillMaxWidth()
-                            .heightIn(min = 28.dp),
-                )
+                            .verticalScroll(rememberScrollState())
+                            .heightIn(min = maxHeight),
+                    verticalArrangement = UpperThirdArrangement,
+                ) {
+                    Spacer(modifier = Modifier.height(32.dp))
+
+                    Text(
+                        text = message,
+                        style = DefaultTextStyles.body,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    Column(
+                        modifier = Modifier.fillMaxWidth(),
+                        verticalArrangement = Arrangement.spacedBy(4.dp),
+                    ) {
+                        grid.forEachIndexed { rowIndex, row ->
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                horizontalArrangement = Arrangement.spacedBy(4.dp),
+                            ) {
+                                row.forEachIndexed { columnIndex, letter ->
+                                    val cell = rowIndex * GRID_SIZE + columnIndex
+                                    LetterCell(
+                                        letter = letter,
+                                        selected = cell in selectedCells,
+                                        onClick = {
+                                            if (!selectedCells.remove(cell)) selectedCells.add(cell)
+                                        },
+                                        modifier = Modifier.weight(1f),
+                                    )
+                                }
+                            }
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    Text(
+                        text = selectedWord,
+                        style = DefaultTextStyles.sousTitre,
+                        textAlign = TextAlign.Center,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .heightIn(min = 28.dp),
+                    )
+                }
             }
 
             Row(
@@ -165,7 +173,8 @@ private fun LetterCell(
                 .clip(shape)
                 .drawBehind {
                     drawRect(if (selected) ColorAccent else ColorParchemin)
-                }.clickable(role = Role.Checkbox, onClick = onClick)
+                }
+                .clickable(role = Role.Checkbox, onClick = onClick)
                 .padding(1.dp),
     ) {
         Text(

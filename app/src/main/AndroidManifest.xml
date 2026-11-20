@@ -37,9 +37,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.introduction.IntroductionActivity" />
-        <activity android:name=".presentation.introduction.AddPlayerActivity" />
-        <activity android:name=".presentation.localisationBateau.LocalisationBateauActivity" />
-        <activity android:name=".presentation.salleCocktails.SalleCocktailsActivity" />
+        <activity
+            android:name=".presentation.introduction.AddPlayerActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.localisationBateau.LocalisationBateauActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.salleCocktails.SalleCocktailsActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.salleReception.ReceptionActivity"
             android:windowSoftInputMode="adjustResize" />
@@ -52,10 +58,18 @@
         <activity
             android:name=".presentation.destinations.italie.SalleDinerItalieActivity"
             android:windowSoftInputMode="adjustResize" />
-        <activity android:name=".presentation.destinations.canada.SalleDinerCanadaActivity" />
-        <activity android:name=".presentation.destinations.japon.SalleDinerJaponActivity" />
-        <activity android:name=".presentation.destinations.cambodge.SalleDinerCambodgeActivity" />
-        <activity android:name=".presentation.sallePhotobooth.SallePhotoboothActivity" />
+        <activity
+            android:name=".presentation.destinations.canada.SalleDinerCanadaActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.destinations.japon.SalleDinerJaponActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.destinations.cambodge.SalleDinerCambodgeActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".presentation.sallePhotobooth.SallePhotoboothActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".presentation.combatFinal.CombatFinalActivity"
             android:launchMode="singleTask" />

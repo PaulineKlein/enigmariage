@@ -5,53 +5,38 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
-import com.pklein.mariage.databinding.FragmentSalleEmbarquementOneBinding
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
-import com.pklein.mariage.utils.ViewPager2DotsUtils
-import com.pklein.mariage.utils.extension.addSystemWindowInsetToMargin
+import com.pklein.mariage.ui.screen.CadenaPage
+import com.pklein.mariage.ui.screen.ImageEnigmePage
+import com.pklein.mariage.ui.screen.TwoPageScreen
+import com.pklein.mariage.ui.theme.annotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
-import com.pklein.mariage.utils.uiUtils.CadenaLayoutListener
 import com.pklein.mariage.utils.uiUtils.PopinType
-import com.pklein.mariage.utils.uiUtils.ZoomOutPageTransformer
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class SalleEmbarquementOneFragment :
-    Fragment(),
-    CadenaLayoutListener,
-    SalleEmbarquementOneLayoutListener {
+class SalleEmbarquementOneFragment : Fragment() {
     private val gameStep = GameStep.SalleEmbarquement1
     private val universStep = SharedPreferenceKey.UNIVERS_1
-    private var binding: FragmentSalleEmbarquementOneBinding? = null
     private val gameProgress: GameProgressViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View =
-        FragmentSalleEmbarquementOneBinding
-            .inflate(inflater, container, false)
-            .also { binding = it }
-            .root
-
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?,
-    ) {
-        super.onViewCreated(view, savedInstanceState)
-        val binding = binding ?: return
-
+    ): View {
         val description = gameProgress.getDescription(gameStep)
         val enigme = gameProgress.getEnigme(gameStep)
         val enigmeAccessibility = gameProgress.getEnigmeAccessibility(gameStep)
@@ -63,26 +48,48 @@ class SalleEmbarquementOneFragment :
         gameProgress.storePage(gameStep)
         gameProgress.storeUniversPage(universStep, gameStep)
 
-        val adapter =
-            SalleEmbarquementOneViewPagerAdapter(
-                listener = this,
-                cadenaListener = this,
-                description = getText(description),
-                enigmeImage = enigme,
-                enigmeAccessibility = getString(enigmeAccessibility),
-            )
-        context?.let {
-            val dotsUtils = ViewPager2DotsUtils(adapter.itemCount).setupDots(it)
-            dotsUtils.addDotsTo(binding.pagerDots)
+        return ComposeView(requireContext()).apply {
+            setContent {
+                TwoPageScreen(
+                    firstPage = {
+                        ImageEnigmePage(
+                            title = R.string.embarquement_one_titre,
+                            message = annotatedStringResource(id = description),
+                            image = enigme,
+                            imageDescription = stringResource(enigmeAccessibility),
+                            onHomeClick = {
+                                startActivity(
+                                    Intent(
+                                        requireContext(),
+                                        CarnetBordActivity::class.java,
+                                    ),
+                                )
+                            },
+                            onImageClick = ::onImageClicked,
+                        )
+                    },
+                    secondPage = {
+                        CadenaPage(
+                            question = stringResource(id = R.string.embarquement_one_message_3),
+                            onValidateClick = ::onValidateClicked,
+                        )
+                    },
+                )
+            }
         }
-
-        binding.viewpagerSalleEmbarquementOne.adapter = adapter
-        binding.viewpagerSalleEmbarquementOne.setPageTransformer(ZoomOutPageTransformer())
-
-        binding.root.addSystemWindowInsetToMargin()
     }
 
-    override fun onValidateCLicked(response: String) {
+    private fun onImageClicked(drawable: Int) {
+        context?.let {
+            showImageWithStfalconViewer(it, drawable)
+            if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_LENS)) {
+                gameProgress.saveTrophy(Trophies.TROPHY_LENS)
+                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_LENS)
+            }
+        }
+    }
+
+    private fun onValidateClicked(response: String) {
         context?.let { ctx ->
             val responseStep = gameProgress.getReponse(gameStep)?.let { getString(it) }
             if (responseStep != null && response.formatAnswer() == responseStep) {
@@ -103,24 +110,5 @@ class SalleEmbarquementOneFragment :
 
     private fun launchNext() {
         findNavController().navigate(R.id.action_one_to_two)
-    }
-
-    override fun onClickButtonHome() {
-        activity?.startActivity(Intent(requireContext(), CarnetBordActivity::class.java))
-    }
-
-    override fun onClickImage(drawable: Int) {
-        context?.let {
-            showImageWithStfalconViewer(it, drawable)
-            if (!gameProgress.isTrophyUnlocked(Trophies.TROPHY_LENS)) {
-                gameProgress.saveTrophy(Trophies.TROPHY_LENS)
-                Alerts.showTrophyUnlocked(it, Trophies.TROPHY_LENS)
-            }
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        binding = null
     }
 }

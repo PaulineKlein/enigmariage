@@ -4,12 +4,14 @@ import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawingPadding
@@ -29,6 +31,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -41,6 +44,8 @@ import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.atome.ClueButton
 import com.pklein.mariage.ui.atome.CustomInput
 import com.pklein.mariage.ui.atome.ZoomHint
+import com.pklein.mariage.ui.modifier.UpperThirdArrangement
+import com.pklein.mariage.ui.modifier.clearFocusOnTap
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
@@ -60,6 +65,7 @@ fun QuestionScreen(
     onImageClick: ((Int) -> Unit)? = null,
     onClueClick: (() -> Unit)? = null,
     @StringRes hint: Int = R.string.reponse,
+    keyboardType: KeyboardType = KeyboardType.Text,
 ) {
     var answer by remember { mutableStateOf("") }
     val context = LocalContext.current
@@ -69,90 +75,99 @@ fun QuestionScreen(
             modifier =
                 Modifier
                     .fillMaxSize()
+                    .clearFocusOnTap()
                     .safeDrawingPadding()
                     .imePadding()
                     .padding(horizontal = 16.dp, vertical = 16.dp),
         ) {
-            Column(
-                modifier =
-                    Modifier
-                        .weight(1f)
-                        .verticalScroll(rememberScrollState()),
-            ) {
-                MyNavigationBar(
-                    title = title,
-                    onHomeClick = onHomeClick,
-                )
+            MyNavigationBar(
+                title = title,
+                onHomeClick = onHomeClick,
+            )
 
-                Spacer(modifier = Modifier.height(32.dp))
+            BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxWidth()) {
+                Column(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .verticalScroll(rememberScrollState())
+                            .heightIn(min = maxHeight),
+                    verticalArrangement = UpperThirdArrangement,
+                ) {
+                    Spacer(modifier = Modifier.height(32.dp))
 
-                Text(
-                    text = message,
-                    style = DefaultTextStyles.body,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-
-                if (enigmeLottie != null) {
-                    Spacer(modifier = Modifier.height(24.dp))
-                    val composition by rememberLottieComposition(
-                        LottieCompositionSpec.Asset(
-                            enigmeLottie,
-                        ),
+                    Text(
+                        text = message,
+                        style = DefaultTextStyles.body,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.fillMaxWidth(),
                     )
-                    LottieAnimation(
-                        composition = composition,
-                        iterations = if (enigmeLottieInfinite) LottieConstants.IterateForever else 1,
-                        modifier =
-                            Modifier
-                                .size(120.dp)
-                                .align(Alignment.CenterHorizontally),
-                    )
-                }
 
-                if (enigmeImage != null) {
-                    Spacer(modifier = Modifier.height(24.dp))
-                    Image(
-                        painter = painterResource(enigmeImage),
-                        contentDescription = enigmeImageDescription,
-                        contentScale = ContentScale.FillWidth,
-                        modifier =
-                            Modifier
-                                .fillMaxWidth()
-                                .then(
-                                    if (enigmeImageZoomable) {
-                                        Modifier.clickable {
-                                            onImageClick?.invoke(enigmeImage)
-                                                ?: showImageWithStfalconViewer(context, enigmeImage)
-                                        }
-                                    } else {
-                                        Modifier
-                                    },
-                                ),
-                    )
-                    if (enigmeImageZoomable) {
-                        ZoomHint(
+                    if (enigmeLottie != null) {
+                        Spacer(modifier = Modifier.height(24.dp))
+                        val composition by rememberLottieComposition(
+                            LottieCompositionSpec.Asset(
+                                enigmeLottie,
+                            ),
+                        )
+                        LottieAnimation(
+                            composition = composition,
+                            iterations = if (enigmeLottieInfinite) LottieConstants.IterateForever else 1,
                             modifier =
                                 Modifier
-                                    .padding(top = 8.dp)
+                                    .size(200.dp)
                                     .align(Alignment.CenterHorizontally),
                         )
                     }
+
+                    if (enigmeImage != null) {
+                        Spacer(modifier = Modifier.height(24.dp))
+                        Image(
+                            painter = painterResource(enigmeImage),
+                            contentDescription = enigmeImageDescription,
+                            contentScale = ContentScale.FillWidth,
+                            modifier =
+                                Modifier
+                                    .fillMaxWidth()
+                                    .then(
+                                        if (enigmeImageZoomable) {
+                                            Modifier.clickable {
+                                                onImageClick?.invoke(enigmeImage)
+                                                    ?: showImageWithStfalconViewer(
+                                                        context,
+                                                        enigmeImage,
+                                                    )
+                                            }
+                                        } else {
+                                            Modifier
+                                        },
+                                    ),
+                        )
+                        if (enigmeImageZoomable) {
+                            ZoomHint(
+                                modifier =
+                                    Modifier
+                                        .padding(top = 8.dp)
+                                        .align(Alignment.CenterHorizontally),
+                            )
+                        }
+                    }
+
+                    if (enigmeContent != null) {
+                        Spacer(modifier = Modifier.height(24.dp))
+                        enigmeContent()
+                    }
+
+                    Spacer(modifier = Modifier.height(32.dp))
+
+                    CustomInput(
+                        value = answer,
+                        onValueChange = { answer = it },
+                        hint = stringResource(id = hint),
+                        keyboardType = keyboardType,
+                        modifier = Modifier.fillMaxWidth(),
+                    )
                 }
-
-                if (enigmeContent != null) {
-                    Spacer(modifier = Modifier.height(24.dp))
-                    enigmeContent()
-                }
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                CustomInput(
-                    value = answer,
-                    onValueChange = { answer = it },
-                    hint = stringResource(id = hint),
-                    modifier = Modifier.fillMaxWidth(),
-                )
             }
 
             Row(

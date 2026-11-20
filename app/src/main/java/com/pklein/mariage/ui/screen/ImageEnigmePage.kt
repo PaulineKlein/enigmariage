@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -22,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,11 +30,11 @@ import com.pklein.mariage.ui.atome.ZoomHint
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 
-/** Home button, title, message and a zoomable image, like fragment_salle_cocktails_one_1.xml. */
+/** Home button, title, message and a zoomable image; the image sits beside the text in landscape. */
 @Composable
 fun ImageEnigmePage(
     @StringRes title: Int,
-    message: String,
+    message: AnnotatedString,
     image: Int,
     imageDescription: String,
     onHomeClick: () -> Unit,
@@ -52,35 +52,80 @@ fun ImageEnigmePage(
                     .weight(1f)
                     .fillMaxWidth(),
         ) {
-            Column(
-                modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .verticalScroll(rememberScrollState())
-                        .heightIn(min = maxHeight),
-                verticalArrangement = Arrangement.SpaceEvenly,
-                horizontalAlignment = Alignment.CenterHorizontally,
-            ) {
-                Text(
-                    text = message,
-                    style = DefaultTextStyles.bodyBig,
-                    textAlign = TextAlign.Center,
+            if (maxWidth > maxHeight) {
+                Row(
+                    modifier = Modifier.fillMaxSize(),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(
+                        modifier =
+                            Modifier
+                                .weight(1f)
+                                .fillMaxHeight()
+                                .verticalScroll(rememberScrollState()),
+                        verticalArrangement =
+                            Arrangement.spacedBy(
+                                16.dp,
+                                Alignment.CenterVertically,
+                            ),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                    ) {
+                        Text(
+                            text = message,
+                            style = DefaultTextStyles.bodyBig,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth(),
+                        )
+                        ZoomHint()
+                    }
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight(),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Image(
+                            painter = painterResource(image),
+                            contentDescription = imageDescription,
+                            contentScale = ContentScale.Fit,
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .clickable { onImageClick(image) },
+                        )
+                    }
+                }
+            } else {
+                Column(
                     modifier =
                         Modifier
                             .fillMaxWidth()
-                            .padding(top = 16.dp),
-                )
-                Image(
-                    painter = painterResource(image),
-                    contentDescription = imageDescription,
-                    contentScale = ContentScale.FillWidth,
-                    modifier =
-                        Modifier
-                            .fillMaxWidth()
-                            .padding(top = 16.dp)
-                            .clickable { onImageClick(image) },
-                )
-                ZoomHint(modifier = Modifier.padding(top = 4.dp))
+                            .verticalScroll(rememberScrollState())
+                            .heightIn(min = maxHeight),
+                    verticalArrangement = Arrangement.SpaceEvenly,
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                ) {
+                    Text(
+                        text = message,
+                        style = DefaultTextStyles.bodyBig,
+                        textAlign = TextAlign.Center,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(top = 16.dp),
+                    )
+                    Image(
+                        painter = painterResource(image),
+                        contentDescription = imageDescription,
+                        contentScale = ContentScale.FillWidth,
+                        modifier =
+                            Modifier
+                                .fillMaxWidth()
+                                .padding(top = 16.dp)
+                                .clickable { onImageClick(image) },
+                    )
+                    ZoomHint(modifier = Modifier.padding(top = 4.dp))
+                }
             }
         }
     }
@@ -93,7 +138,24 @@ private fun ImageEnigmePagePreview() {
         Box(modifier = Modifier.padding(16.dp)) {
             ImageEnigmePage(
                 title = R.string.reception_titre,
-                message = "Cherchons un indice dans cette image !",
+                message = AnnotatedString("Cherchons un indice dans cette image !"),
+                image = R.drawable.image_maze_japan,
+                imageDescription = "Image de l'énigme",
+                onHomeClick = {},
+                onImageClick = {},
+            )
+        }
+    }
+}
+
+@Preview(name = "Page image - paysage", showSystemUi = true, widthDp = 800, heightDp = 360)
+@Composable
+private fun ImageEnigmePageLandscapePreview() {
+    AppTheme {
+        Box(modifier = Modifier.padding(16.dp)) {
+            ImageEnigmePage(
+                title = R.string.reception_titre,
+                message = AnnotatedString("Cherchons un indice dans cette image !"),
                 image = R.drawable.image_maze_japan,
                 imageDescription = "Image de l'énigme",
                 onHomeClick = {},

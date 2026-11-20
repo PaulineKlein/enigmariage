@@ -46,7 +46,7 @@ import com.pklein.mariage.ui.theme.ColorHelpFonce
 import com.pklein.mariage.ui.theme.ColorHelpText
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 
-/** Compose equivalent of layout/indice.xml, styled like [AppButton]: soft gradient, tinted shadow, tactile press. */
+/** Clue button styled like [AppButton]: soft gradient, tinted shadow, tactile press. */
 @Composable
 fun ClueButton(
     text: String,

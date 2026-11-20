@@ -19,6 +19,7 @@ import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
 import com.pklein.mariage.ui.screen.CadenaPage
 import com.pklein.mariage.ui.screen.ImageEnigmePage
 import com.pklein.mariage.ui.screen.TwoPageScreen
+import com.pklein.mariage.ui.theme.annotatedStringResource
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -45,7 +46,7 @@ class SalleDinerCaraibesFourFragment : Fragment() {
                     firstPage = {
                         ImageEnigmePage(
                             title = R.string.diner_titre_caraibes,
-                            message = stringResource(id = R.string.diner_caraibes_four_message),
+                            message = annotatedStringResource(id = R.string.diner_caraibes_four_message),
                             image = R.drawable.image_coco,
                             imageDescription = stringResource(id = R.string.image_enigme_accessibility),
                             onHomeClick = {

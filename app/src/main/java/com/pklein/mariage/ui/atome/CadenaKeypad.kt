@@ -46,7 +46,6 @@ private val DigitRows =
         listOf(R.string.sept, R.string.huit, R.string.neuf),
     )
 
-/** Compose equivalent of CadenaLayout (layout/cadena.xml). */
 @Composable
 fun CadenaKeypad(
     value: String,
@@ -142,7 +141,6 @@ private fun CadenaDisplay(
     }
 }
 
-/** Compose equivalent of style="@style/button_cadena". */
 @Composable
 private fun CadenaDigitButton(
     digit: String,

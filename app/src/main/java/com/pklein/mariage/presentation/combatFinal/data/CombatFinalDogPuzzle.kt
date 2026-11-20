@@ -19,11 +19,11 @@ internal object CombatFinalDogPuzzle {
 
     val rowLabels =
         listOf(
-            R.string.combatFinal_dog_uppercut,
-            R.string.combatFinal_dog_crochet,
-            R.string.combatFinal_dog_balayage,
-            R.string.combatFinal_dog_rapide,
-            R.string.combatFinal_dog_moyen,
+            R.string.combatFinal_dog_poing_fer,
+            R.string.combatFinal_dog_frappe_belier,
+            R.string.combatFinal_dog_onde_choc,
+            R.string.combatFinal_dog_vif,
+            R.string.combatFinal_dog_modere,
             R.string.combatFinal_dog_lent,
         )
 
@@ -32,19 +32,23 @@ internal object CombatFinalDogPuzzle {
             R.string.combatFinal_dog_tete,
             R.string.combatFinal_dog_ventre,
             R.string.combatFinal_dog_jambes,
-            R.string.combatFinal_dog_rapide,
-            R.string.combatFinal_dog_moyen,
+            R.string.combatFinal_dog_vif,
+            R.string.combatFinal_dog_modere,
             R.string.combatFinal_dog_lent,
         )
 
     // Listed by category, 3 per row: the pool displays them in this order.
     val words =
         listOf(
-            LogigrammeWord(UPPERCUT, R.string.combatFinal_dog_uppercut, LogigrammeCategory.COUP),
-            LogigrammeWord(CROCHET, R.string.combatFinal_dog_crochet, LogigrammeCategory.COUP),
-            LogigrammeWord(BALAYAGE, R.string.combatFinal_dog_balayage, LogigrammeCategory.COUP),
-            LogigrammeWord(RAPIDE, R.string.combatFinal_dog_rapide, LogigrammeCategory.VITESSE),
-            LogigrammeWord(MOYEN, R.string.combatFinal_dog_moyen, LogigrammeCategory.VITESSE),
+            LogigrammeWord(UPPERCUT, R.string.combatFinal_dog_poing_fer, LogigrammeCategory.COUP),
+            LogigrammeWord(
+                CROCHET,
+                R.string.combatFinal_dog_frappe_belier,
+                LogigrammeCategory.COUP,
+            ),
+            LogigrammeWord(BALAYAGE, R.string.combatFinal_dog_onde_choc, LogigrammeCategory.COUP),
+            LogigrammeWord(RAPIDE, R.string.combatFinal_dog_vif, LogigrammeCategory.VITESSE),
+            LogigrammeWord(MOYEN, R.string.combatFinal_dog_modere, LogigrammeCategory.VITESSE),
             LogigrammeWord(LENT, R.string.combatFinal_dog_lent, LogigrammeCategory.VITESSE),
             LogigrammeWord(TETE, R.string.combatFinal_dog_tete, LogigrammeCategory.ZONE),
             LogigrammeWord(VENTRE, R.string.combatFinal_dog_ventre, LogigrammeCategory.ZONE),

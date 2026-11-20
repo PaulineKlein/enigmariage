@@ -76,9 +76,9 @@ fun LogigrammeGrid(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         text = rowLabel,
-                        style = DefaultTextStyles.body.copy(fontSize = 13.sp),
+                        style = DefaultTextStyles.body.copy(fontSize = 13.sp, lineHeight = 15.sp),
                         textAlign = TextAlign.End,
-                        maxLines = 1,
+                        maxLines = 2,
                         modifier = Modifier.width(ROW_LABEL_WIDTH).padding(end = 6.dp),
                     )
                     columnLabels.forEachIndexed { column, columnLabel ->
@@ -190,8 +190,8 @@ private fun GridCell(
 private fun LogigrammeGridPreview() {
     AppTheme {
         LogigrammeGrid(
-            rowLabels = listOf("Uppercut", "Crochet", "Balayage", "Rapide", "Moyen", "Lent"),
-            columnLabels = listOf("Tête", "Ventre", "Jambes", "Rapide", "Moyen", "Lent"),
+            rowLabels = listOf("Poing de fer", "Frappe du bélier", "Onde de choc", "Vif", "Modéré", "Lent"),
+            columnLabels = listOf("Tête", "Ventre", "Jambes", "Vif", "Modéré", "Lent"),
             cells =
                 List(36) {
                     when (it % 3) {

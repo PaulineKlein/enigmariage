@@ -1,15 +1,23 @@
 package com.pklein.mariage.presentation.destinations.canada
 
 import android.content.Intent
+import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.view.inputmethod.EditorInfo
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.SharedPreferenceKey
-import com.pklein.mariage.databinding.FragmentQuestionBinding
+import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
-import com.pklein.mariage.presentation.QuestionFragment
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
+import com.pklein.mariage.ui.screen.QuestionScreen
+import com.pklein.mariage.ui.theme.annotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -17,30 +25,42 @@ import dagger.hilt.android.AndroidEntryPoint
 private const val RESPONSE = "104"
 
 @AndroidEntryPoint
-class SalleDinerCanadaThreeFragment : QuestionFragment() {
-    override val gameStep = GameStep.SalleDinerCanada3
-    override val universStep = SharedPreferenceKey.UNIVERS_2_CANADA
+class SalleDinerCanadaThreeFragment : Fragment() {
+    private val gameStep = GameStep.SalleDinerCanada3
+    private val universStep = SharedPreferenceKey.UNIVERS_2_CANADA
+    private val gameProgress: GameProgressViewModel by activityViewModels()
 
-    override fun onSetupView(binding: FragmentQuestionBinding) {
-        binding.ivHome.setOnClickListener {
-            activity?.startActivity(
-                Intent(
-                    requireContext(),
-                    CarnetBordUniversActivity::class.java,
-                ),
-            )
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?,
+    ): View {
+        gameProgress.storePage(gameStep)
+        gameProgress.storeUniversPage(universStep, gameStep)
+
+        return ComposeView(requireContext()).apply {
+            setContent {
+                QuestionScreen(
+                    title = R.string.diner_titre_canada,
+                    message = annotatedStringResource(id = R.string.diner_canada_three_message),
+                    enigmeImage = R.drawable.image_calcul_1,
+                    enigmeImageDescription = stringResource(R.string.salle_diner_canada_calcul_1_accessibility),
+                    onHomeClick = {
+                        startActivity(
+                            Intent(
+                                requireContext(),
+                                CarnetBordUniversActivity::class.java,
+                            ),
+                        )
+                    },
+                    keyboardType = KeyboardType.Number,
+                    onValidateClick = ::onValidateClicked,
+                )
+            }
         }
-        binding.tvQuestionTitre.text = getString(R.string.diner_titre_canada)
-        binding.tvQuestionMessage.text = resources.getText(R.string.diner_canada_three_message)
-        binding.animationQuestionLottie.visibility = View.GONE
-        binding.animationQuestionImage.visibility = View.VISIBLE
-        binding.animationQuestionImage.setImageResource(R.drawable.image_calcul_1)
-        binding.animationQuestionImage.contentDescription =
-            getString(R.string.salle_diner_canada_calcul_1_accessibility)
-        binding.etQuestionAnswer.inputType = EditorInfo.TYPE_CLASS_NUMBER
     }
 
-    override fun onValidateCLicked(response: String) {
+    private fun onValidateClicked(response: String) {
         context?.let {
             if (response.formatAnswer() == RESPONSE) {
                 Alerts.showSuccess(it, gameProgress.playerName, gameProgress.gender, ::launchNext)
@@ -52,7 +72,7 @@ class SalleDinerCanadaThreeFragment : QuestionFragment() {
         }
     }
 
-    override fun launchNext() {
+    private fun launchNext() {
         findNavController().navigate(R.id.action_canada_three_to_four)
     }
 }

@@ -31,9 +31,10 @@ import androidx.compose.ui.unit.dp
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.atome.CustomInput
-import com.pklein.mariage.ui.atome.PagerDots
+import com.pklein.mariage.ui.atome.PagerNavigationBar
 import com.pklein.mariage.ui.atome.ParcheminImageCard
 import com.pklein.mariage.ui.atome.RoundedImage
+import com.pklein.mariage.ui.modifier.clearFocusOnTap
 import com.pklein.mariage.ui.modifier.zoomOutTransform
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
@@ -54,6 +55,7 @@ fun JaponSixScreen(
             modifier =
                 Modifier
                     .fillMaxSize()
+                    .clearFocusOnTap()
                     .safeDrawingPadding()
                     .imePadding()
                     .padding(16.dp),
@@ -89,7 +91,7 @@ fun JaponSixScreen(
                 }
             }
 
-            PagerDots(pageCount = PAGE_COUNT, currentPage = pagerState.currentPage)
+            PagerNavigationBar(pagerState = pagerState)
         }
     }
 }

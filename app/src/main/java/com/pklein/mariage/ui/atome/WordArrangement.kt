@@ -220,9 +220,9 @@ private fun WordChip(
     ) {
         Text(
             text = stringResource(id = word.label),
-            style = DefaultTextStyles.body.copy(fontSize = 14.sp),
+            style = DefaultTextStyles.body.copy(fontSize = 14.sp, lineHeight = 16.sp),
             textAlign = TextAlign.Center,
-            maxLines = 1,
+            maxLines = 2,
         )
     }
 }
@@ -234,11 +234,11 @@ private fun WordArrangementPreview() {
         WordArrangement(
             words =
                 listOf(
-                    LogigrammeWord(0, R.string.combatFinal_dog_uppercut, LogigrammeCategory.COUP),
-                    LogigrammeWord(1, R.string.combatFinal_dog_crochet, LogigrammeCategory.COUP),
-                    LogigrammeWord(2, R.string.combatFinal_dog_balayage, LogigrammeCategory.COUP),
-                    LogigrammeWord(3, R.string.combatFinal_dog_rapide, LogigrammeCategory.VITESSE),
-                    LogigrammeWord(4, R.string.combatFinal_dog_moyen, LogigrammeCategory.VITESSE),
+                    LogigrammeWord(0, R.string.combatFinal_dog_poing_fer, LogigrammeCategory.COUP),
+                    LogigrammeWord(1, R.string.combatFinal_dog_frappe_belier, LogigrammeCategory.COUP),
+                    LogigrammeWord(2, R.string.combatFinal_dog_onde_choc, LogigrammeCategory.COUP),
+                    LogigrammeWord(3, R.string.combatFinal_dog_vif, LogigrammeCategory.VITESSE),
+                    LogigrammeWord(4, R.string.combatFinal_dog_modere, LogigrammeCategory.VITESSE),
                     LogigrammeWord(5, R.string.combatFinal_dog_lent, LogigrammeCategory.VITESSE),
                     LogigrammeWord(6, R.string.combatFinal_dog_tete, LogigrammeCategory.ZONE),
                     LogigrammeWord(7, R.string.combatFinal_dog_ventre, LogigrammeCategory.ZONE),

@@ -34,7 +34,6 @@ import com.pklein.mariage.ui.theme.ColorHint
 import com.pklein.mariage.ui.theme.ColorPrimary
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 
-/** Compose equivalent of style="@style/CustomInput". */
 @Composable
 fun CustomInput(
     value: String,
@@ -42,6 +41,7 @@ fun CustomInput(
     hint: String,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
+    keyboardType: KeyboardType = KeyboardType.Text,
     keyboardActions: KeyboardActions = KeyboardActions.Default,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
@@ -59,7 +59,7 @@ fun CustomInput(
         interactionSource = interactionSource,
         keyboardOptions =
             KeyboardOptions(
-                keyboardType = KeyboardType.Text,
+                keyboardType = keyboardType,
                 imeAction = ImeAction.Done,
             ),
         keyboardActions = keyboardActions,
