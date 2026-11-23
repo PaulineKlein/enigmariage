@@ -69,6 +69,8 @@ import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorBleuFonce
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
+import com.pklein.mariage.ui.theme.gameStringResource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.time.Duration.Companion.milliseconds
@@ -119,9 +121,9 @@ fun IntroductionScreen(
 
                         1 -> {
                             StoryPage(
-                                text = annotatedStringResource(R.string.introduction_maire),
+                                text = gameAnnotatedStringResource(R.string.introduction_maire),
                                 image = R.drawable.image_maire,
-                                imageDescription = stringResource(R.string.introduction_maire_image),
+                                imageDescription = gameStringResource(R.string.introduction_maire_image),
                                 active = pagerState.currentPage == page,
                             )
                         }
@@ -130,7 +132,7 @@ fun IntroductionScreen(
                             StoryPage(
                                 text = annotatedStringResource(R.string.introduction_Bottom),
                                 image = R.drawable.image_couple,
-                                imageDescription = stringResource(R.string.introduction_couple_image),
+                                imageDescription = gameStringResource(R.string.introduction_couple_image),
                                 active = pagerState.currentPage == page,
                                 showElixirHint = true,
                                 onStartClick = onStartClick,
@@ -197,7 +199,7 @@ private fun NoxPage(
 ) {
     val paragraphs =
         listOf(
-            annotatedStringResource(R.string.introduction_top),
+            gameAnnotatedStringResource(R.string.introduction_top),
             annotatedStringResource(R.string.introduction_top_2),
         )
     val revealed = rememberRevealedCount(paragraphs, active)
@@ -371,7 +373,7 @@ private fun StartButton(
     modifier: Modifier = Modifier,
 ) {
     AppButton(
-        text = stringResource(R.string.introduction_start),
+        text = gameStringResource(R.string.introduction_start),
         onClick = onClick,
         modifier =
             modifier

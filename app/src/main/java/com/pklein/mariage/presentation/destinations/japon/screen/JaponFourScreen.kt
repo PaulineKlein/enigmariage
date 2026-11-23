@@ -21,7 +21,7 @@ import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.screen.QuestionScreen
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.ui.theme.splashFontFamily
 
 private val MORSE_FONT_SIZE = 36.sp
@@ -33,7 +33,7 @@ fun JaponFourScreen(
 ) {
     QuestionScreen(
         title = R.string.diner_titre_japon,
-        message = annotatedStringResource(id = R.string.diner_japon_four_message_1),
+        message = gameAnnotatedStringResource(id = R.string.diner_japon_four_message_1),
         hint = R.string.embarquement_three_reponse_hint,
         enigmeContent = {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {

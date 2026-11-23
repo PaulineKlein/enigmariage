@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.stringResource
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -17,7 +16,7 @@ import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -42,7 +41,7 @@ class ReceptionSixFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.chambre_froide_title,
-                    message = annotatedStringResource(id = R.string.reception_six_message),
+                    message = gameAnnotatedStringResource(id = R.string.reception_six_message),
                     enigmeImage = R.drawable.image_rebus_soupiere,
                     onHomeClick = {
                         startActivity(Intent(requireContext(), CarnetBordActivity::class.java))

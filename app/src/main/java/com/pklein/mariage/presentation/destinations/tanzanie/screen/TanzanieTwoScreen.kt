@@ -35,7 +35,7 @@ import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorHint
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 private val FOOTPRINT_ORDER = listOf(2, 0, 4, 1, 3)
 private val ANIMAL_ORDER = listOf(0, 3, 1, 4, 2)
@@ -97,7 +97,7 @@ fun TanzanieTwoScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             Text(
-                text = annotatedStringResource(id = R.string.diner_tanzanie_two_message),
+                text = gameAnnotatedStringResource(id = R.string.diner_tanzanie_two_message),
                 style = DefaultTextStyles.body,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),
@@ -146,7 +146,7 @@ fun TanzanieTwoScreen(
 
         Row(
             verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier.padding(top = 24.dp),
+            modifier = Modifier.padding(top = 12.dp),
         ) {
             AppButton(
                 text = stringResource(id = R.string.valider),

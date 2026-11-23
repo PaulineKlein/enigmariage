@@ -21,8 +21,10 @@ class IntroductionActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
             val roomCode = gameProgress.roomCode.orEmpty()
+            val gameNames = gameProgress.gameNames
             SharedPreferenceStored.resetPreference()
             gameProgress.storeRoomCode(roomCode)
+            gameProgress.storeGameNames(gameNames)
             gameProgress.storePage(GameStep.Introduction)
             stopCountDown()
         }

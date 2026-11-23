@@ -18,6 +18,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.InputTransformation
 import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.maxLength
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
@@ -46,9 +47,12 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
 import kotlinx.coroutines.launch
 import com.pklein.mariage.R
+import com.pklein.mariage.data.model.GAME_NAME_MAX_LENGTH
+import com.pklein.mariage.data.model.GameNames
 import com.pklein.mariage.data.model.ROOM_CODE_MIN_LENGTH
 import com.pklein.mariage.data.model.generateRoomCode
 import com.pklein.mariage.data.model.toRoomCode
+import com.pklein.mariage.data.repository.RoomCheck
 import com.pklein.mariage.data.repository.RoomResult
 import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.atome.CustomInput
@@ -74,18 +78,22 @@ private val RoomCodeInput =
 
 /**
  * Pick "create a room" (shows a fresh code to share) or "join a room" (type the host's code). The room is created or
- * looked up online first, and only an [RoomResult.OK] calls [onStart] with the code.
+ * looked up online first, and only an [RoomResult.OK] calls [onStart] with the code. The host can also rename the
+ * couple and the villain; a joining player gets the host's names back from [onJoinRoom].
  */
 @Composable
 fun MultiplayerDialog(
-    onCreateRoom: suspend (roomCode: String) -> RoomResult,
-    onJoinRoom: suspend (roomCode: String) -> RoomResult,
-    onStart: (roomCode: String) -> Unit,
+    onCreateRoom: suspend (roomCode: String, names: GameNames) -> RoomResult,
+    onJoinRoom: suspend (roomCode: String) -> RoomCheck,
+    onStart: (roomCode: String, names: GameNames) -> Unit,
     onDismiss: () -> Unit,
 ) {
     var step by rememberSaveable { mutableStateOf(MultiplayerStep.CHOICE) }
     val createdCode = rememberSaveable { generateRoomCode() }
     val joinCodeState = rememberTextFieldState()
+    val brideState = rememberTextFieldState()
+    val groomState = rememberTextFieldState()
+    val villainState = rememberTextFieldState()
     var checking by remember { mutableStateOf(false) }
     var error by remember { mutableStateOf<RoomResult?>(null) }
     val scope = rememberCoroutineScope()
@@ -96,14 +104,14 @@ fun MultiplayerDialog(
 
     fun check(
         code: String,
-        action: suspend (String) -> RoomResult,
+        action: suspend () -> RoomCheck,
     ) {
         checking = true
         error = null
         scope.launch {
-            val result = action(code)
+            val room = action()
             checking = false
-            if (result == RoomResult.OK) onStart(code) else error = result
+            if (room.result == RoomResult.OK) onStart(code, room.names) else error = room.result
         }
     }
 
@@ -138,9 +146,20 @@ fun MultiplayerDialog(
                 MultiplayerStep.CREATE -> {
                     CreateContent(
                         code = createdCode,
+                        brideState = brideState,
+                        groomState = groomState,
+                        villainState = villainState,
                         checking = checking,
                         error = error,
-                        onStart = { check(createdCode, onCreateRoom) },
+                        onStart = {
+                            val names =
+                                GameNames.of(
+                                    brideState.text.toString(),
+                                    groomState.text.toString(),
+                                    villainState.text.toString(),
+                                )
+                            check(createdCode) { RoomCheck(onCreateRoom(createdCode, names), names) }
+                        },
                         onBack = { goTo(MultiplayerStep.CHOICE) },
                     )
                 }
@@ -150,7 +169,10 @@ fun MultiplayerDialog(
                         codeState = joinCodeState,
                         checking = checking,
                         error = error,
-                        onJoin = { check(joinCodeState.text.toString(), onJoinRoom) },
+                        onJoin = {
+                            val code = joinCodeState.text.toString()
+                            check(code) { onJoinRoom(code) }
+                        },
                         onBack = { goTo(MultiplayerStep.CHOICE) },
                     )
                 }
@@ -183,6 +205,9 @@ private fun ChoiceContent(
 @Composable
 private fun CreateContent(
     code: String,
+    brideState: TextFieldState,
+    groomState: TextFieldState,
+    villainState: TextFieldState,
     checking: Boolean,
     error: RoomResult?,
     onStart: () -> Unit,
@@ -217,6 +242,11 @@ private fun CreateContent(
             modifier = Modifier.weight(1f),
         )
     }
+    DialogMessage(stringResource(R.string.multiplayer_names_message))
+    val defaults = GameNames()
+    NameInput(brideState, stringResource(R.string.multiplayer_bride_hint, defaults.bride))
+    NameInput(groomState, stringResource(R.string.multiplayer_groom_hint, defaults.groom))
+    NameInput(villainState, stringResource(R.string.multiplayer_villain_hint, defaults.villain))
     CheckStatus(checking = checking, error = error)
     AppButton(
         text = stringResource(R.string.multiplayer_start),
@@ -225,6 +255,21 @@ private fun CreateContent(
         modifier = Modifier.fillMaxWidth(),
     )
     SecondaryAction(text = stringResource(R.string.multiplayer_back), onClick = onBack)
+}
+
+@Composable
+private fun NameInput(
+    state: TextFieldState,
+    hint: String,
+) {
+    val focusManager = LocalFocusManager.current
+    CustomInput(
+        state = state,
+        hint = hint,
+        inputTransformation = InputTransformation.maxLength(GAME_NAME_MAX_LENGTH),
+        onKeyboardAction = { focusManager.clearFocus() },
+        modifier = Modifier.fillMaxWidth(),
+    )
 }
 
 private fun copyCode(
@@ -351,9 +396,9 @@ private fun SecondaryAction(
 private fun MultiplayerDialogPreview() {
     AppTheme {
         MultiplayerDialog(
-            onCreateRoom = { RoomResult.OK },
-            onJoinRoom = { RoomResult.OK },
-            onStart = {},
+            onCreateRoom = { _, _ -> RoomResult.OK },
+            onJoinRoom = { RoomCheck(RoomResult.OK) },
+            onStart = { _, _ -> },
             onDismiss = {},
         )
     }

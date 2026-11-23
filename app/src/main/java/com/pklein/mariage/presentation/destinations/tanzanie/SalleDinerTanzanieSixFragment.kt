@@ -17,7 +17,7 @@ import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -43,7 +43,7 @@ class SalleDinerTanzanieSixFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.diner_titre_tanzanie,
-                    message = annotatedStringResource(R.string.diner_tanzanie_six_message),
+                    message = gameAnnotatedStringResource(R.string.diner_tanzanie_six_message),
                     enigmeImage = R.drawable.image_cacao,
                     enigmeImageDescription = stringResource(R.string.image_enigme_accessibility),
                     enigmeImageZoomable = true,

@@ -29,6 +29,7 @@ import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorPrimaryDark
 import com.pklein.mariage.ui.theme.ColorText
 import com.pklein.mariage.ui.theme.DefaultTextStyles
+import com.pklein.mariage.ui.theme.gameStringResource
 
 private val TROPHY_ICON_SIZE = 40.dp
 
@@ -43,12 +44,12 @@ fun TrophyItem(
     val messageColor = if (unlocked) ColorText else grey
     val title =
         if (unlocked || !trophy.isHidden) {
-            stringResource(trophy.title)
+            gameStringResource(trophy.title)
         } else {
             stringResource(R.string.trophy_locked)
         }
     val message =
-        if (unlocked) stringResource(trophy.message) else stringResource(R.string.trophy_locked)
+        if (unlocked) gameStringResource(trophy.message) else stringResource(R.string.trophy_locked)
     val tint =
         if (unlocked) {
             trophy.state.tintColor?.let { colorResource(it) }

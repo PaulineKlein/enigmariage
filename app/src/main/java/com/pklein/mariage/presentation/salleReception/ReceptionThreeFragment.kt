@@ -19,7 +19,7 @@ import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.ui.screen.CadenaPage
 import com.pklein.mariage.ui.screen.ImageEnigmePage
 import com.pklein.mariage.ui.screen.TwoPageScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -48,7 +48,7 @@ class ReceptionThreeFragment : Fragment() {
                     firstPage = {
                         ImageEnigmePage(
                             title = R.string.reception_titre,
-                            message = annotatedStringResource(id = R.string.reception_three_message),
+                            message = gameAnnotatedStringResource(id = R.string.reception_three_message),
                             image = R.drawable.image_maze_bateau,
                             imageDescription = stringResource(id = R.string.image_enigme_accessibility),
                             onHomeClick = {

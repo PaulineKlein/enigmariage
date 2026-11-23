@@ -32,7 +32,7 @@ import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 private val CONTENT_MAX_WIDTH = 480.dp
 private const val CONTINUE_BUTTON_WIDTH_RATIO = 0.7f
@@ -58,9 +58,12 @@ fun PhotoboothOneScreen(
                 onHomeClick = onHomeClick,
             )
 
-            BoxWithConstraints(modifier = Modifier
-                .weight(1f)
-                .fillMaxWidth()) {
+            BoxWithConstraints(
+                modifier =
+                    Modifier
+                        .weight(1f)
+                        .fillMaxWidth(),
+            ) {
                 if (maxWidth > maxHeight) {
                     LandscapeContent(
                         enigme = enigme,
@@ -86,9 +89,12 @@ private fun PortraitContent(
     onContinueClick: () -> Unit,
 ) {
     Column(modifier = Modifier.fillMaxSize()) {
-        BoxWithConstraints(modifier = Modifier
-            .weight(1f)
-            .fillMaxWidth()) {
+        BoxWithConstraints(
+            modifier =
+                Modifier
+                    .weight(1f)
+                    .fillMaxWidth(),
+        ) {
             Column(
                 modifier =
                     Modifier
@@ -113,9 +119,10 @@ private fun PortraitContent(
         }
         ContinueButton(
             onClick = onContinueClick,
-            modifier = Modifier
-                .padding(top = 8.dp)
-                .align(Alignment.CenterHorizontally),
+            modifier =
+                Modifier
+                    .padding(top = 8.dp)
+                    .align(Alignment.CenterHorizontally),
         )
     }
 }
@@ -145,18 +152,20 @@ private fun LandscapeContent(
             ContinueButton(onClick = onContinueClick)
         }
         Box(
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxHeight(),
+            modifier =
+                Modifier
+                    .weight(1f)
+                    .fillMaxHeight(),
             contentAlignment = Alignment.Center,
         ) {
             EnigmeImage(
                 enigme = enigme,
                 description = enigmeDescription,
                 contentScale = ContentScale.Fit,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(vertical = 8.dp),
+                modifier =
+                    Modifier
+                        .fillMaxSize()
+                        .padding(vertical = 8.dp),
             )
         }
     }
@@ -165,7 +174,7 @@ private fun LandscapeContent(
 @Composable
 private fun PhotoboothMessage(modifier: Modifier = Modifier) {
     Text(
-        text = annotatedStringResource(id = R.string.photobooth_one_message),
+        text = gameAnnotatedStringResource(id = R.string.photobooth_one_message),
         style = DefaultTextStyles.bodyBig,
         textAlign = TextAlign.Center,
         modifier =

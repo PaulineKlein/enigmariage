@@ -17,7 +17,7 @@ import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -49,7 +49,7 @@ class LocalisationBateauTwoFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.faire_part_titre,
-                    message = annotatedStringResource(id = description),
+                    message = gameAnnotatedStringResource(id = description),
                     enigmeImage = enigme,
                     enigmeImageDescription = stringResource(enigmeAccessibility),
                     onHomeClick = {

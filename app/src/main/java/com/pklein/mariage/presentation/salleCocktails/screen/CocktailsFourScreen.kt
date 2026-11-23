@@ -57,7 +57,7 @@ import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorAccent
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 private val CONTENT_MAX_WIDTH = 480.dp
 private val CARD_CORNER_RADIUS = 16.dp
@@ -119,7 +119,7 @@ fun CocktailsFourScreen(
                     Spacer(modifier = Modifier.height(32.dp))
 
                     Text(
-                        text = annotatedStringResource(R.string.cocktail_four_message, playerName),
+                        text = gameAnnotatedStringResource(R.string.cocktail_four_message, playerName),
                         style = DefaultTextStyles.body,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),

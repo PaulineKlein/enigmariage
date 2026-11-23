@@ -1,6 +1,7 @@
 package com.pklein.mariage.presentation
 
 import androidx.lifecycle.ViewModel
+import com.pklein.mariage.data.model.GameNames
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.data.repository.PlayerGender
@@ -36,6 +37,9 @@ class GameProgressViewModel
         val roomCode: String?
             get() = playerRepository.roomCode?.takeIf { it.isNotBlank() }
 
+        val gameNames: GameNames
+            get() = playerRepository.gameNames
+
         val unlockedTrophiesCount: Int
             get() = getAllTrophies().count { it.second }
 
@@ -58,11 +62,16 @@ class GameProgressViewModel
 
         fun storeRoomCode(roomCode: String) = playerRepository.storeRoomCode(roomCode)
 
+        fun storeGameNames(names: GameNames) = playerRepository.storeGameNames(names)
+
         fun storeStartTime() = scoreRepository.storeStartTime()
 
         fun storeEndTime() = scoreRepository.storeEndTime()
 
-        suspend fun createRoom(roomCode: String) = roomFirebaseRepository.createRoom(roomCode)
+        suspend fun createRoom(
+            roomCode: String,
+            names: GameNames,
+        ) = roomFirebaseRepository.createRoom(roomCode, names)
 
         suspend fun joinRoom(roomCode: String) = roomFirebaseRepository.joinRoom(roomCode)
 

@@ -46,6 +46,8 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pklein.mariage.R
+import com.pklein.mariage.data.model.GameNames
+import com.pklein.mariage.data.repository.RoomCheck
 import com.pklein.mariage.data.repository.RoomResult
 import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.modifier.pulse
@@ -88,9 +90,9 @@ fun SplashScreen(
     onNewGame: () -> Unit,
     onContinue: () -> Unit,
     onTrophies: () -> Unit,
-    onCreateRoom: suspend (roomCode: String) -> RoomResult,
-    onJoinRoom: suspend (roomCode: String) -> RoomResult,
-    onMultiplayer: (roomCode: String) -> Unit,
+    onCreateRoom: suspend (roomCode: String, names: GameNames) -> RoomResult,
+    onJoinRoom: suspend (roomCode: String) -> RoomCheck,
+    onMultiplayer: (roomCode: String, names: GameNames) -> Unit,
 ) {
     var showMultiplayer by rememberSaveable { mutableStateOf(false) }
     val onShowMultiplayer = { showMultiplayer = true }
@@ -100,9 +102,9 @@ fun SplashScreen(
             MultiplayerDialog(
                 onCreateRoom = onCreateRoom,
                 onJoinRoom = onJoinRoom,
-                onStart = {
+                onStart = { roomCode, names ->
                     showMultiplayer = false
-                    onMultiplayer(it)
+                    onMultiplayer(roomCode, names)
                 },
                 onDismiss = { showMultiplayer = false },
             )
@@ -514,8 +516,8 @@ private fun SplashScreenPreview() {
         onNewGame = {},
         onContinue = {},
         onTrophies = {},
-        onCreateRoom = { RoomResult.OK },
-        onJoinRoom = { RoomResult.OK },
-        onMultiplayer = {},
+        onCreateRoom = { _, _ -> RoomResult.OK },
+        onJoinRoom = { RoomCheck(RoomResult.OK) },
+        onMultiplayer = { _, _ -> },
     )
 }

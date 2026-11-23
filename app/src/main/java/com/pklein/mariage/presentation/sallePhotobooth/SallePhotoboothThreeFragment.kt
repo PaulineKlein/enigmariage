@@ -20,6 +20,7 @@ import com.pklein.mariage.ui.screen.CadenaPage
 import com.pklein.mariage.ui.screen.ImageEnigmePage
 import com.pklein.mariage.ui.screen.TwoPageScreen
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -68,7 +69,7 @@ class SallePhotoboothThreeFragment : Fragment() {
                     },
                     secondPage = {
                         CadenaPage(
-                            question = stringResource(id = description),
+                            question = gameStringResource(id = description),
                             onValidateClick = ::onValidateClicked,
                         )
                     },

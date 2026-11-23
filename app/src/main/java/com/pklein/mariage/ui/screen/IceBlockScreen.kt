@@ -35,6 +35,7 @@ import com.pklein.mariage.ui.atome.IceBlockState
 import com.pklein.mariage.ui.modifier.UpperThirdArrangement
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
+import com.pklein.mariage.ui.theme.gameStringResource
 
 @Composable
 fun IceBlockScreen(
@@ -104,7 +105,7 @@ fun IceBlockScreen(
 
                     // Space stays reserved so the group doesn't jump when the block shatters.
                     Text(
-                        text = stringResource(id = resultMessage),
+                        text = gameStringResource(id = resultMessage),
                         style = DefaultTextStyles.body,
                         textAlign = TextAlign.Center,
                         modifier =

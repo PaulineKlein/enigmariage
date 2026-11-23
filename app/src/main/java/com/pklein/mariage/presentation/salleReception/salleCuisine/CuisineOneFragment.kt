@@ -18,7 +18,7 @@ import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,7 +44,7 @@ class CuisineOneFragment : Fragment() {
                 QuestionScreen(
                     title = R.string.cuisine_titre,
                     message =
-                        annotatedStringResource(
+                        gameAnnotatedStringResource(
                             id = R.string.cuisine_one_message,
                             gameProgress.playerName,
                         ),

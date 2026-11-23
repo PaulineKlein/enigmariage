@@ -16,7 +16,7 @@ import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -41,7 +41,7 @@ class SalleDinerCanadaTwoFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.diner_titre_canada,
-                    message = annotatedStringResource(id = R.string.diner_canada_two_message),
+                    message = gameAnnotatedStringResource(id = R.string.diner_canada_two_message),
                     enigmeImage = R.drawable.image_maze_canada,
                     enigmeImageDescription = stringResource(R.string.salle_diner_canada_feuilles_accessibility),
                     onHomeClick = {

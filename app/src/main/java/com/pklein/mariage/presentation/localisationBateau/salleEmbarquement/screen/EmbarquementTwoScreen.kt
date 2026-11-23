@@ -32,7 +32,7 @@ import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 private val NOX_HEIGHT = 250.dp
 private val CONTENT_MAX_WIDTH = 480.dp
@@ -159,7 +159,7 @@ private fun Description(
     modifier: Modifier = Modifier,
 ) {
     Text(
-        text = annotatedStringResource(id = description),
+        text = gameAnnotatedStringResource(id = description),
         style = DefaultTextStyles.bodyBig,
         textAlign = TextAlign.Center,
         modifier =

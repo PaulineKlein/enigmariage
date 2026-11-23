@@ -19,6 +19,8 @@ import com.pklein.mariage.presentation.combatFinal.data.CombatFinalDogPuzzle
 import com.pklein.mariage.ui.atome.LogigrammeState
 import com.pklein.mariage.ui.screen.LogigrammeScreen
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
+import com.pklein.mariage.ui.theme.getGameString
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
 import dagger.hilt.android.AndroidEntryPoint
@@ -46,7 +48,7 @@ class CombatFinalTwoDogFragment : Fragment() {
                 LogigrammeScreen(
                     title = R.string.combatFinal_titre,
                     clue = CombatFinalDogPuzzle.clue,
-                    question = annotatedStringResource(id = R.string.combatFinal_dog_question),
+                    question = gameAnnotatedStringResource(id = R.string.combatFinal_dog_question),
                     help = annotatedStringResource(id = R.string.combatFinal_dog_help),
                     rowLabels = CombatFinalDogPuzzle.rowLabels,
                     columnLabels = CombatFinalDogPuzzle.columnLabels,
@@ -66,7 +68,7 @@ class CombatFinalTwoDogFragment : Fragment() {
             if (isSolved) {
                 Alerts.showPopup(
                     it,
-                    getString(R.string.combatFinal_sucess),
+                    it.getGameString(R.string.combatFinal_sucess),
                     ::launchNext,
                     PopinType.FINAL_SUCCESS,
                 )

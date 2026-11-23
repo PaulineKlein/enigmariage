@@ -15,6 +15,7 @@ import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.presentation.combatFinal.screen.CombatFinalTwoRabbitScreen
+import com.pklein.mariage.ui.theme.getGameString
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
 import dagger.hilt.android.AndroidEntryPoint
@@ -52,7 +53,7 @@ class CombatFinalTwoRabbitFragment : Fragment() {
             if (selected == RESPONSE) {
                 Alerts.showPopup(
                     it,
-                    getString(R.string.combatFinal_sucess),
+                    it.getGameString(R.string.combatFinal_sucess),
                     ::launchNext,
                     PopinType.FINAL_SUCCESS,
                 )

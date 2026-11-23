@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
@@ -25,6 +24,7 @@ import com.pklein.mariage.ui.atome.HelpCard
 import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.screen.QuestionScreen
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -53,7 +53,7 @@ class SalleDinerTanzanieFourFragment : Fragment() {
                     enigmeImage = R.drawable.image_zanzibar,
                     enigmeContent = {
                         Column {
-                            ParcheminCard(text = stringResource(id = R.string.diner_tanzanie_four_marchand))
+                            ParcheminCard(text = gameStringResource(id = R.string.diner_tanzanie_four_marchand))
                             Spacer(modifier = Modifier.height(16.dp))
                             HelpCard(
                                 text = annotatedStringResource(id = R.string.diner_tanzanie_four_help),

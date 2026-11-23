@@ -36,6 +36,7 @@ import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 private val choices =
     listOf(
@@ -74,7 +75,7 @@ fun TanzanieOneScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             Text(
-                text = annotatedStringResource(id = R.string.diner_tanzanie_one_message),
+                text = gameAnnotatedStringResource(id = R.string.diner_tanzanie_one_message),
                 style = DefaultTextStyles.body,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),

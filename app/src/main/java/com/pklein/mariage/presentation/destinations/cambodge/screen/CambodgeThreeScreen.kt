@@ -38,6 +38,7 @@ import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 private val CONTENT_MAX_WIDTH = 480.dp
 private val KANJI_MAX_WIDTH = 300.dp
@@ -89,7 +90,7 @@ fun CambodgeThreeScreen(
                     Spacer(modifier = Modifier.height(24.dp))
 
                     Text(
-                        text = annotatedStringResource(R.string.diner_cambodge_three_message_1),
+                        text = gameAnnotatedStringResource(R.string.diner_cambodge_three_message_1),
                         style = DefaultTextStyles.body,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),

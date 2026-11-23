@@ -32,6 +32,8 @@ import com.pklein.mariage.ui.screen.TwoPageScreen
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
+import com.pklein.mariage.ui.theme.gameStringResource
 
 /** The home bar stays above two swipeable pages: Angkor's zoomable picture, then the code to find in it. */
 @Composable
@@ -50,7 +52,7 @@ fun CambodgeOneScreen(
         firstPage = { AngkorPage(onImageClick = onImageClick) },
         secondPage = {
             CadenaPage(
-                question = stringResource(R.string.diner_cambodge_one_message_3),
+                question = gameStringResource(R.string.diner_cambodge_one_message_3),
                 onValidateClick = onValidateClick,
             )
         },
@@ -124,7 +126,7 @@ private fun AngkorMessages() {
             modifier = Modifier.fillMaxWidth(),
         )
         Text(
-            text = annotatedStringResource(R.string.diner_cambodge_one_message_2),
+            text = gameAnnotatedStringResource(R.string.diner_cambodge_one_message_2),
             style = DefaultTextStyles.body,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),

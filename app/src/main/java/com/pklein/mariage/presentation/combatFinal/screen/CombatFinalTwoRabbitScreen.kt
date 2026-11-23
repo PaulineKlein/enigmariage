@@ -57,7 +57,7 @@ import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorAccent
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 private val CONTENT_MAX_WIDTH = 480.dp
 private val MAZE_MAX_WIDTH = 300.dp
@@ -120,14 +120,14 @@ fun CombatFinalTwoRabbitScreen(
                     Spacer(modifier = Modifier.height(24.dp))
 
                     Text(
-                        text = annotatedStringResource(id = R.string.combatFinal_two_message_1),
+                        text = gameAnnotatedStringResource(id = R.string.combatFinal_two_message_1),
                         style = DefaultTextStyles.bodyBig,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),
                     )
                     Spacer(modifier = Modifier.height(8.dp))
                     Text(
-                        text = annotatedStringResource(id = R.string.combatFinal_two_message_2),
+                        text = gameAnnotatedStringResource(id = R.string.combatFinal_two_message_2),
                         style = DefaultTextStyles.bodyBig,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.fillMaxWidth(),
@@ -251,11 +251,13 @@ private fun CoupCard(
                                 BorderStroke(1.dp, Color.White)
                             },
                         shape = shape,
-                    ).selectable(
+                    )
+                    .selectable(
                         selected = isSelected,
                         onClick = onClick,
                         role = Role.RadioButton,
-                    ).padding(8.dp),
+                    )
+                    .padding(8.dp),
         ) {
             Image(
                 painter = painterResource(coup.image),

@@ -32,13 +32,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
+import com.pklein.mariage.ui.theme.gameStringResource
 import kotlinx.coroutines.delay
 import kotlin.time.Duration.Companion.seconds
 
@@ -126,7 +126,7 @@ fun NoxImage(
     ) {
         Image(
             painter = painter,
-            contentDescription = stringResource(R.string.introduction_nox_image),
+            contentDescription = gameStringResource(R.string.introduction_nox_image),
             contentScale = ContentScale.Fit,
             modifier = Modifier.fillMaxSize(),
         )

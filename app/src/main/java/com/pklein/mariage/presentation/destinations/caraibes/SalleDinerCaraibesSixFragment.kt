@@ -25,7 +25,7 @@ import com.pklein.mariage.presentation.destinations.caraibes.screen.cassisSpots
 import com.pklein.mariage.ui.atome.HelpCard
 import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -56,7 +56,7 @@ class SalleDinerCaraibesSixFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.diner_titre_caraibes,
-                    message = annotatedStringResource(id = R.string.diner_caraibes_six_message),
+                    message = gameAnnotatedStringResource(id = R.string.diner_caraibes_six_message),
                     enigmeContent = {
                         Column {
                             ParcheminCard(
@@ -65,7 +65,7 @@ class SalleDinerCaraibesSixFragment : Fragment() {
                                 modifier = Modifier.cassisSpots(),
                             )
                             Spacer(modifier = Modifier.height(16.dp))
-                            HelpCard(text = annotatedStringResource(id = R.string.diner_caraibes_six_help))
+                            HelpCard(text = gameAnnotatedStringResource(id = R.string.diner_caraibes_six_help))
                         }
                     },
                     onHomeClick = {

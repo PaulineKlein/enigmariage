@@ -19,7 +19,7 @@ import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.ui.atome.GlassContent
 import com.pklein.mariage.ui.atome.IceBlockState
 import com.pklein.mariage.ui.screen.IceBlockScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,7 +42,7 @@ class ReceptionFiveFragment : Fragment() {
                 val iceBlock = rememberSaveable(saver = IceBlockState.Saver) { IceBlockState() }
                 IceBlockScreen(
                     title = R.string.chambre_froide_title,
-                    message = annotatedStringResource(id = R.string.reception_five_message),
+                    message = gameAnnotatedStringResource(id = R.string.reception_five_message),
                     state = iceBlock,
                     glassContent = GlassContent.CrushedIce,
                     blockDescription = R.string.reception_five_ice_description,

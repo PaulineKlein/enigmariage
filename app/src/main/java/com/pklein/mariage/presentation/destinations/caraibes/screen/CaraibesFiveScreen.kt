@@ -49,7 +49,7 @@ import com.pklein.mariage.ui.theme.ColorBleuFonce
 import com.pklein.mariage.ui.theme.ColorHint
 import com.pklein.mariage.ui.theme.ColorJusCoco
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 private val CAPACITIES = intArrayOf(3, 5, 8)
 private val INITIAL_AMOUNTS = intArrayOf(0, 0, 8)
@@ -114,7 +114,7 @@ fun CaraibesFiveScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             Text(
-                text = annotatedStringResource(id = R.string.diner_caraibes_five_message),
+                text = gameAnnotatedStringResource(id = R.string.diner_caraibes_five_message),
                 style = DefaultTextStyles.body,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),

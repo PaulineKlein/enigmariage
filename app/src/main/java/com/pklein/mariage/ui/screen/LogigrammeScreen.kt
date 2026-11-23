@@ -33,6 +33,7 @@ import com.pklein.mariage.ui.atome.WordArrangement
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorHint
 import com.pklein.mariage.ui.theme.DefaultTextStyles
+import com.pklein.mariage.ui.theme.gameStringResource
 
 @Composable
 fun LogigrammeScreen(
@@ -144,7 +145,7 @@ private fun LogigrammeScreenPreview() {
     LogigrammeScreen(
         title = R.string.combatFinal_titre,
         clue = R.string.combatFinal_dog_clue,
-        question = AnnotatedString(stringResource(R.string.combatFinal_dog_question)),
+        question = AnnotatedString(gameStringResource(R.string.combatFinal_dog_question)),
         help = AnnotatedString(stringResource(R.string.combatFinal_dog_help)),
         rowLabels =
             listOf(

@@ -73,25 +73,27 @@ fun ImageEnigmePage(
                     ) {
                         Text(
                             text = message,
-                            style = DefaultTextStyles.bodyBig,
+                            style = DefaultTextStyles.body,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth(),
                         )
                         ZoomHint()
                     }
                     Box(
-                        modifier = Modifier
-                            .weight(1f)
-                            .fillMaxHeight(),
+                        modifier =
+                            Modifier
+                                .weight(1f)
+                                .fillMaxHeight(),
                         contentAlignment = Alignment.Center,
                     ) {
                         Image(
                             painter = painterResource(image),
                             contentDescription = imageDescription,
                             contentScale = ContentScale.Fit,
-                            modifier = Modifier
-                                .fillMaxSize()
-                                .clickable { onImageClick(image) },
+                            modifier =
+                                Modifier
+                                    .fillMaxSize()
+                                    .clickable { onImageClick(image) },
                         )
                     }
                 }
@@ -107,7 +109,7 @@ fun ImageEnigmePage(
                 ) {
                     Text(
                         text = message,
-                        style = DefaultTextStyles.bodyBig,
+                        style = DefaultTextStyles.body,
                         textAlign = TextAlign.Center,
                         modifier =
                             Modifier

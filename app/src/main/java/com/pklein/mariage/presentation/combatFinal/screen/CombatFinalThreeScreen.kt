@@ -22,6 +22,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -35,10 +36,13 @@ import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.AppButton
+import com.pklein.mariage.ui.modifier.framed
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
+import com.pklein.mariage.ui.theme.gameStringResource
 
 private const val BURST_ANIMATION = "animation_burst.json"
 private const val BURST_ITERATIONS = 2
@@ -69,7 +73,9 @@ fun CombatFinalThreeScreen(
                 onHomeClick = onHomeClick,
             )
 
-            BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxWidth()) {
+            BoxWithConstraints(modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()) {
                 Column(
                     modifier =
                         Modifier
@@ -80,12 +86,14 @@ fun CombatFinalThreeScreen(
                     horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Column(
-                        modifier = Modifier.widthIn(max = CONTENT_MAX_WIDTH).padding(top = 24.dp),
+                        modifier = Modifier
+                            .widthIn(max = CONTENT_MAX_WIDTH)
+                            .padding(top = 24.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp),
                     ) {
                         Text(
                             text =
-                                annotatedStringResource(
+                                gameAnnotatedStringResource(
                                     R.string.combatFinal_three_message_1,
                                     playerName,
                                 ),
@@ -104,9 +112,12 @@ fun CombatFinalThreeScreen(
                     if (animationFinished) {
                         Image(
                             painter = painterResource(R.drawable.image_nox_finish),
-                            contentDescription = stringResource(R.string.fin_nox_accessibility),
-                            contentScale = ContentScale.FillWidth,
-                            modifier = Modifier.widthIn(max = NOX_FINISH_MAX_WIDTH).fillMaxWidth(),
+                            contentDescription = gameStringResource(R.string.fin_nox_accessibility),
+                            contentScale = ContentScale.Fit,
+                            modifier =
+                                Modifier
+                                    .size(NOX_FINISH_MAX_WIDTH)
+                                    .framed(Color.Black),
                         )
                     } else {
                         BurstAnimation(onFinished = { animationFinished = true })

@@ -8,6 +8,7 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.google.firebase.firestore.Source
+import com.pklein.mariage.data.model.GameNames
 import com.pklein.mariage.data.model.RoomPlayer
 import com.pklein.mariage.data.model.ranked
 import kotlinx.coroutines.CancellationException
@@ -39,6 +40,12 @@ enum class RoomResult {
     RATE_LIMITED,
 }
 
+/** The outcome of checking a room, with the names its story uses (the host's when joining). */
+data class RoomCheck(
+    val result: RoomResult,
+    val names: GameNames = GameNames(),
+)
+
 @Singleton
 class RoomFirebaseRepository
     @Inject
@@ -47,9 +54,13 @@ class RoomFirebaseRepository
          * Writes the room document, so that [joinRoom] can find it; needs the server, not just the local cache.
          * The rules only accept it together with a fresh `lastRoomAt` on the host's own `creators` document, which
          * limits an account to one room per minute. Asking again for a room this device already created is fine.
+         * The room keeps the [names] the host chose for the couple and the villain, so that every player gets them.
          */
-        suspend fun createRoom(roomCode: String): RoomResult =
-            online {
+        suspend fun createRoom(
+            roomCode: String,
+            names: GameNames,
+        ): RoomResult =
+            online(RoomResult.UNAVAILABLE) {
                 val uid = signIn()
                 val db = FirebaseFirestore.getInstance()
                 val room = roomDocument(roomCode)
@@ -68,31 +79,53 @@ class RoomFirebaseRepository
 
                 db
                     .batch()
-                    .set(room, mapOf("createdAt" to FieldValue.serverTimestamp(), "ownerUid" to uid))
-                    .set(creator, mapOf("lastRoomAt" to FieldValue.serverTimestamp()))
+                    .set(
+                        room,
+                        mapOf(
+                            "createdAt" to FieldValue.serverTimestamp(),
+                            "ownerUid" to uid,
+                            "bride" to names.bride,
+                            "groom" to names.groom,
+                            "villain" to names.villain,
+                        ),
+                    ).set(creator, mapOf("lastRoomAt" to FieldValue.serverTimestamp()))
                     .commit()
                     .awaitResult()
                 RoomResult.OK
             }
 
-        /** Checks on the server that a host created [roomCode], so a mistyped code is caught before the game starts. */
-        suspend fun joinRoom(roomCode: String): RoomResult =
-            online {
+        /**
+         * Checks on the server that a host created [roomCode], so a mistyped code is caught before the game starts.
+         * A room made before hosts could pick names, or with a blank one, keeps the default names.
+         */
+        suspend fun joinRoom(roomCode: String): RoomCheck =
+            online(RoomCheck(RoomResult.UNAVAILABLE)) {
                 signIn()
-                if (roomDocument(roomCode).get(Source.SERVER).awaitResult().exists()) {
-                    RoomResult.OK
+                val room = roomDocument(roomCode).get(Source.SERVER).awaitResult()
+                if (room.exists()) {
+                    RoomCheck(
+                        RoomResult.OK,
+                        GameNames.of(
+                            room.getString("bride"),
+                            room.getString("groom"),
+                            room.getString("villain"),
+                        ),
+                    )
                 } else {
-                    RoomResult.NOT_FOUND
+                    RoomCheck(RoomResult.NOT_FOUND)
                 }
             }
 
-        private suspend fun online(block: suspend () -> RoomResult): RoomResult =
+        private suspend fun <T> online(
+            unavailable: T,
+            block: suspend () -> T,
+        ): T =
             try {
-                withTimeoutOrNull(NETWORK_TIMEOUT_MS.milliseconds) { block() } ?: RoomResult.UNAVAILABLE
+                withTimeoutOrNull(NETWORK_TIMEOUT_MS.milliseconds) { block() } ?: unavailable
             } catch (cancellation: CancellationException) {
                 throw cancellation
             } catch (_: Exception) {
-                RoomResult.UNAVAILABLE
+                unavailable
             }
 
         private suspend fun signIn(): String {

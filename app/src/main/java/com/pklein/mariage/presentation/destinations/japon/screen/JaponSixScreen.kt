@@ -37,6 +37,7 @@ import com.pklein.mariage.ui.modifier.zoomOutTransform
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
+import com.pklein.mariage.ui.theme.gameStringResource
 
 private const val PAGE_COUNT = 2
 
@@ -138,7 +139,7 @@ private fun TicketPage(
         ) {
             Spacer(modifier = Modifier.height(24.dp))
             Text(
-                text = stringResource(id = R.string.diner_japon_six_message_2),
+                text = gameStringResource(id = R.string.diner_japon_six_message_2),
                 style = DefaultTextStyles.body,
                 textAlign = TextAlign.Center,
             )

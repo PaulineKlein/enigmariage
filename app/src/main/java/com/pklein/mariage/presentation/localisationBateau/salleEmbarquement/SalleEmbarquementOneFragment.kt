@@ -19,7 +19,7 @@ import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.ui.screen.CadenaPage
 import com.pklein.mariage.ui.screen.ImageEnigmePage
 import com.pklein.mariage.ui.screen.TwoPageScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -54,7 +54,7 @@ class SalleEmbarquementOneFragment : Fragment() {
                     firstPage = {
                         ImageEnigmePage(
                             title = R.string.embarquement_one_titre,
-                            message = annotatedStringResource(id = description),
+                            message = gameAnnotatedStringResource(id = description),
                             image = enigme,
                             imageDescription = stringResource(enigmeAccessibility),
                             onHomeClick = {

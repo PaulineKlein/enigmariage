@@ -15,6 +15,7 @@ import androidx.core.graphics.drawable.toDrawable
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.data.repository.PlayerGender
+import com.pklein.mariage.ui.theme.getGameString
 import com.pklein.mariage.utils.CountDown
 
 enum class PopinType {
@@ -205,7 +206,7 @@ object Alerts {
         }
         dialog.setCanceledOnTouchOutside(true)
         dialog.findViewById<TextView>(R.id.tv_trophy_message).text =
-            context.getString(trophy.message)
+            context.getGameString(trophy.message)
         dialog.findViewById<AppCompatImageView>(R.id.iv_trophy_icon).imageTintList =
             trophy.state.tintColor?.let { ContextCompat.getColorStateList(context, it) }
         dialog.window?.apply {
@@ -250,7 +251,7 @@ object Alerts {
                     .getIdentifier("countdown_$step", "string", context.packageName)
 
             dialog.findViewById<TextView>(R.id.tv_popup_title).text =
-                context.getString(countdownStr)
+                context.getGameString(countdownStr)
 
             dialog.setOnDismissListener {
                 if (step < 11) {

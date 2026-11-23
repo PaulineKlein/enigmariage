@@ -29,7 +29,7 @@ import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 @Composable
 fun TanzanieSevenScreen(
@@ -60,7 +60,7 @@ fun TanzanieSevenScreen(
             Spacer(modifier = Modifier.height(32.dp))
 
             Text(
-                text = annotatedStringResource(id = R.string.diner_tanzanie_seven_message),
+                text = gameAnnotatedStringResource(id = R.string.diner_tanzanie_seven_message),
                 style = DefaultTextStyles.body,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth(),

@@ -15,7 +15,7 @@ import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +40,7 @@ class SalleDinerJaponTwoFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.diner_titre_japon,
-                    message = annotatedStringResource(id = R.string.diner_japon_two_question),
+                    message = gameAnnotatedStringResource(id = R.string.diner_japon_two_question),
                     enigmeImage = R.drawable.image_video_games,
                     onHomeClick = {
                         startActivity(

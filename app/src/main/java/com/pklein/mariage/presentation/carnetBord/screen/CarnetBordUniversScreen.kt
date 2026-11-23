@@ -50,6 +50,7 @@ import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorBleuFonce
 import com.pklein.mariage.ui.theme.DefaultTextStyles
+import com.pklein.mariage.ui.theme.gameStringResource
 
 private val SCREEN_PADDING = 16.dp
 private val MAP_TOP_SPACING = 24.dp
@@ -254,7 +255,7 @@ private fun Celebration(
             modifier = Modifier.clearAndSetSemantics { },
         )
         Text(
-            text = stringResource(R.string.carnet_bord2_bravo),
+            text = gameStringResource(R.string.carnet_bord2_bravo),
             style = DefaultTextStyles.success,
             textAlign = TextAlign.Center,
         )

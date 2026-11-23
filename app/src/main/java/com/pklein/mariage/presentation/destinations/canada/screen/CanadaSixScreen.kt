@@ -17,7 +17,7 @@ import com.pklein.mariage.ui.atome.ParcheminImageCard
 import com.pklein.mariage.ui.atome.RoundedImage
 import com.pklein.mariage.ui.screen.QuestionScreen
 import com.pklein.mariage.ui.theme.DefaultTextStyles
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 
 @Composable
 fun CanadaSixScreen(
@@ -26,7 +26,7 @@ fun CanadaSixScreen(
 ) {
     QuestionScreen(
         title = R.string.diner_titre_canada,
-        message = annotatedStringResource(id = R.string.diner_canada_six_message_1),
+        message = gameAnnotatedStringResource(id = R.string.diner_canada_six_message_1),
         hint = R.string.embarquement_three_reponse_hint,
         enigmeContent = {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {

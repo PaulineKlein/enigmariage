@@ -19,6 +19,7 @@ import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.screen.QuestionScreen
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.ui.theme.splashFontFamily
 
 private val CODE_FONT_SIZE = 32.sp
@@ -35,7 +36,7 @@ fun EmbarquementThreeScreen(
 ) {
     QuestionScreen(
         title = R.string.embarquement_one_titre,
-        message = annotatedStringResource(id = R.string.embarquement_three_message_1),
+        message = gameAnnotatedStringResource(id = R.string.embarquement_three_message_1),
         hint = R.string.embarquement_three_reponse_hint,
         enigmeContent = {
             Column {

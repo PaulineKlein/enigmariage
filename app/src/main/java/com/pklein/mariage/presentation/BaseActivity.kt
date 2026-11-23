@@ -1,21 +1,30 @@
 package com.pklein.mariage.presentation
 
-import android.content.Context
 import android.os.Build
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.pklein.mariage.R
 import com.pklein.mariage.data.SharedPreferenceStored
 import com.pklein.mariage.data.SharedPreferenceStored.storeValue
+import com.pklein.mariage.data.model.GameNames
 import com.pklein.mariage.data.model.SharedPreferenceKey
+import com.pklein.mariage.ui.theme.GameNamesOwner
 import com.pklein.mariage.utils.CountDown
 import com.pklein.mariage.utils.uiUtils.Alerts
 
 private const val COUNTDOWN_MAX_VALUE = 11
 
-abstract class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity :
+    AppCompatActivity(),
+    GameNamesOwner {
+    private val gameProgress: GameProgressViewModel by viewModels()
+
+    override val gameNames: GameNames
+        get() = gameProgress.gameNames
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

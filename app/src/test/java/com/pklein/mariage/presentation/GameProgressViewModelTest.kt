@@ -1,5 +1,6 @@
 package com.pklein.mariage.presentation
 
+import com.pklein.mariage.data.model.GameNames
 import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.data.repository.PlayerGender
@@ -47,6 +48,23 @@ class GameProgressViewModelTest {
                 roomFirebaseRepository,
                 inspector,
             )
+    }
+
+    @Test
+    fun `gameNames returns the names from the player repository`() {
+        every { playerRepository.gameNames } returns GameNames("Léa", "Tom", "Zorg")
+
+        assertEquals(GameNames("Léa", "Tom", "Zorg"), viewModel.gameNames)
+    }
+
+    @Test
+    fun `storeGameNames delegates to the player repository`() {
+        val names = GameNames("Léa", "Tom", "Zorg")
+        every { playerRepository.storeGameNames(names) } just runs
+
+        viewModel.storeGameNames(names)
+
+        verify(exactly = 1) { playerRepository.storeGameNames(names) }
     }
 
     @Test

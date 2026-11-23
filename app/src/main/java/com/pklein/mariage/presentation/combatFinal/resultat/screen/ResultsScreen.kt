@@ -51,6 +51,7 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.pklein.mariage.R
 import com.pklein.mariage.presentation.combatFinal.resultat.model.PodiumState
 import com.pklein.mariage.ui.atome.AppButton
+import com.pklein.mariage.ui.modifier.framed
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorHint
@@ -58,6 +59,8 @@ import com.pklein.mariage.ui.theme.ColorPrimaryDark
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.GradientEndColor
 import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
+import com.pklein.mariage.ui.theme.gameStringResource
 import kotlin.math.roundToInt
 
 private val SCREEN_PADDING = 16.dp
@@ -71,9 +74,6 @@ private const val SCORE_COUNT_MS = 1500
 private val CHIP_CORNER_RADIUS = 16.dp
 private const val CHIP_BACKGROUND_ALPHA = 0.6f
 private val CHIP_ICON_SIZE = 22.dp
-private val FRAME_CORNER_RADIUS = 16.dp
-private val FRAME_SHADOW = 6.dp
-private val FRAME_BORDER = 3.dp
 private val THANKS_IMAGE_SIZE = 200.dp
 private val SHARE_CARD_MAX_WIDTH = 360.dp
 private const val SHARE_BUTTON_WIDTH_RATIO = 0.8f
@@ -133,7 +133,7 @@ fun ResultsScreen(
                                 .widthIn(max = SHARE_CARD_MAX_WIDTH)
                                 .fillMaxWidth()
                                 .align(Alignment.CenterHorizontally)
-                                .framed(),
+                                .framed(Color.White),
                     )
                 }
 
@@ -179,15 +179,15 @@ private fun ThanksCard() {
         )
         Image(
             painter = painterResource(R.drawable.image_merci),
-            contentDescription = stringResource(R.string.fin_mariage_accessibility),
-            contentScale = ContentScale.Crop,
+            contentDescription = gameStringResource(R.string.fin_mariage_accessibility),
+            contentScale = ContentScale.Fit,
             modifier =
                 Modifier
                     .size(THANKS_IMAGE_SIZE)
-                    .framed(),
+                    .framed(Color.White),
         )
         Text(
-            text = annotatedStringResource(R.string.resultat_message),
+            text = gameAnnotatedStringResource(R.string.resultat_message),
             style = DefaultTextStyles.body,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
@@ -308,15 +308,6 @@ private fun rankFor(score: Int): Int =
         score >= SCORE_GOOD -> R.string.resultat_rank_good
         else -> R.string.resultat_rank_rookie
     }
-
-/** Rounded picture with a soft shadow and a thin white border, like a printed photo. */
-private fun Modifier.framed(): Modifier {
-    val shape = RoundedCornerShape(FRAME_CORNER_RADIUS)
-    return this
-        .shadow(FRAME_SHADOW, shape)
-        .clip(shape)
-        .border(FRAME_BORDER, Color.White, shape)
-}
 
 @Preview(name = "Résultats", showSystemUi = true)
 @Composable

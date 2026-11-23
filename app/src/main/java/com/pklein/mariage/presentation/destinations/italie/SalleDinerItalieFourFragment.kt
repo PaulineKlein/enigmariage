@@ -25,10 +25,9 @@ import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
-import com.pklein.mariage.ui.atome.HelpCard
 import com.pklein.mariage.ui.atome.ParcheminCard
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.extension.showImageWithStfalconViewer
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -54,7 +53,7 @@ class SalleDinerItalieFourFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.diner_titre_italie,
-                    message = annotatedStringResource(id = R.string.diner_italie_four_message),
+                    message = gameAnnotatedStringResource(id = R.string.diner_italie_four_message),
                     enigmeImage = R.drawable.image_semaphore_enigme,
                     enigmeImageDescription = stringResource(R.string.image_enigme_accessibility),
                     enigmeImageZoomable = true,

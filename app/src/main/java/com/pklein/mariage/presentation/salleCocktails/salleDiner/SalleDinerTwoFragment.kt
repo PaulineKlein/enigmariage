@@ -15,7 +15,7 @@ import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.presentation.carnetBord.CarnetBordUniversActivity
 import com.pklein.mariage.ui.screen.QuestionScreen
-import com.pklein.mariage.ui.theme.annotatedStringResource
+import com.pklein.mariage.ui.theme.gameAnnotatedStringResource
 import com.pklein.mariage.utils.extension.formatAnswer
 import com.pklein.mariage.utils.uiUtils.Alerts
 import com.pklein.mariage.utils.uiUtils.PopinType
@@ -41,7 +41,7 @@ class SalleDinerTwoFragment : Fragment() {
             setContent {
                 QuestionScreen(
                     title = R.string.diner_one_titre,
-                    message = annotatedStringResource(id = R.string.diner_two_message),
+                    message = gameAnnotatedStringResource(id = R.string.diner_two_message),
                     enigmeImage = R.drawable.image_jo_canada,
                     onHomeClick = {
                         startActivity(Intent(requireContext(), CarnetBordActivity::class.java))

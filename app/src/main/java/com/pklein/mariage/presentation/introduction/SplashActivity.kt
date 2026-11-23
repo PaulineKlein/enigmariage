@@ -8,6 +8,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ComposeView
 import com.pklein.mariage.R
+import com.pklein.mariage.data.model.GameNames
 import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.presentation.BaseActivity
 import com.pklein.mariage.presentation.GameProgressViewModel
@@ -64,14 +65,17 @@ class SplashActivity : BaseActivity() {
         trophyProgress = trophyProgress.copy(unlocked = gameProgress.unlockedTrophiesCount)
     }
 
-    private fun onNewGameClicked() = startNewGame(roomCode = "")
+    private fun onNewGameClicked() = startNewGame(roomCode = "", names = GameNames())
 
     // An empty room code means a solo game; a saved game must be confirmed before it is replaced.
-    private fun startNewGame(roomCode: String) {
+    private fun startNewGame(
+        roomCode: String,
+        names: GameNames,
+    ) {
         if (hasSavedGame) {
-            showAlert { launchNewGame(roomCode) }
+            showAlert { launchNewGame(roomCode, names) }
         } else {
-            gameProgress.storeRoomCode(roomCode)
+            storeRoom(roomCode, names)
             startActivity(Intent(this, IntroductionActivity::class.java))
         }
     }
@@ -98,9 +102,20 @@ class SplashActivity : BaseActivity() {
         )
     }
 
-    private fun launchNewGame(roomCode: String) {
+    private fun launchNewGame(
+        roomCode: String,
+        names: GameNames,
+    ) {
         gameProgress.resetStorage()
-        gameProgress.storeRoomCode(roomCode)
+        storeRoom(roomCode, names)
         startActivity(Intent(this, IntroductionActivity::class.java))
+    }
+
+    private fun storeRoom(
+        roomCode: String,
+        names: GameNames,
+    ) {
+        gameProgress.storeRoomCode(roomCode)
+        gameProgress.storeGameNames(names)
     }
 }
