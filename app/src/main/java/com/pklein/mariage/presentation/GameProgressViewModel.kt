@@ -5,6 +5,7 @@ import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.data.repository.PlayerGender
 import com.pklein.mariage.data.repository.PlayerRepository
+import com.pklein.mariage.data.repository.RoomFirebaseRepository
 import com.pklein.mariage.data.repository.ScoreRepository
 import com.pklein.mariage.data.repository.TrophyRepository
 import com.pklein.mariage.data.repository.UniversRepository
@@ -20,6 +21,7 @@ class GameProgressViewModel
         private val universRepository: UniversRepository,
         private val scoreRepository: ScoreRepository,
         private val trophyRepository: TrophyRepository,
+        private val roomFirebaseRepository: RoomFirebaseRepository,
         private val inspector: IInspector,
     ) : ViewModel() {
         val playerName: String?
@@ -30,6 +32,9 @@ class GameProgressViewModel
 
         val page: String?
             get() = playerRepository.page
+
+        val roomCode: String?
+            get() = playerRepository.roomCode?.takeIf { it.isNotBlank() }
 
         val unlockedTrophiesCount: Int
             get() = getAllTrophies().count { it.second }
@@ -51,9 +56,15 @@ class GameProgressViewModel
 
         fun storePlayerGender(gender: PlayerGender) = playerRepository.storeGender(gender)
 
+        fun storeRoomCode(roomCode: String) = playerRepository.storeRoomCode(roomCode)
+
         fun storeStartTime() = scoreRepository.storeStartTime()
 
         fun storeEndTime() = scoreRepository.storeEndTime()
+
+        suspend fun createRoom(roomCode: String) = roomFirebaseRepository.createRoom(roomCode)
+
+        suspend fun joinRoom(roomCode: String) = roomFirebaseRepository.joinRoom(roomCode)
 
         fun resetStorage() = playerRepository.resetStorage()
 

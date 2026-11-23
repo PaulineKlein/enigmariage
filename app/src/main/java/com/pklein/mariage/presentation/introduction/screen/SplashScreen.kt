@@ -5,6 +5,7 @@ import androidx.compose.animation.core.Animatable
 import androidx.compose.animation.core.FastOutSlowInEasing
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -24,7 +25,11 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -41,10 +46,12 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.pklein.mariage.R
+import com.pklein.mariage.data.repository.RoomResult
 import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.modifier.pulse
 import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.DefaultTextStyles
+import com.pklein.mariage.ui.theme.GradientEndColor
 import kotlinx.coroutines.delay
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
@@ -63,6 +70,8 @@ private const val SPARKLE_RISE_DP = 8f
 private const val BUTTONS_WIDTH_RATIO = 0.7f
 private val PRIMARY_TEXT_SIZE = 18.sp
 private val PRIMARY_PADDING = 18.dp
+private val ROOM_CHIP_CORNER_RADIUS = 16.dp
+private const val ROOM_CHIP_BACKGROUND_ALPHA = 0.6f
 
 /** Unlocked and total trophy counts shown on the trophies button. */
 data class TrophyProgress(
@@ -74,12 +83,30 @@ data class TrophyProgress(
 @Composable
 fun SplashScreen(
     hasSavedGame: Boolean,
+    roomCode: String?,
     trophyProgress: TrophyProgress,
     onNewGame: () -> Unit,
     onContinue: () -> Unit,
     onTrophies: () -> Unit,
+    onCreateRoom: suspend (roomCode: String) -> RoomResult,
+    onJoinRoom: suspend (roomCode: String) -> RoomResult,
+    onMultiplayer: (roomCode: String) -> Unit,
 ) {
+    var showMultiplayer by rememberSaveable { mutableStateOf(false) }
+    val onShowMultiplayer = { showMultiplayer = true }
+
     AppTheme {
+        if (showMultiplayer) {
+            MultiplayerDialog(
+                onCreateRoom = onCreateRoom,
+                onJoinRoom = onJoinRoom,
+                onStart = {
+                    showMultiplayer = false
+                    onMultiplayer(it)
+                },
+                onDismiss = { showMultiplayer = false },
+            )
+        }
         Box(
             modifier =
                 Modifier
@@ -87,9 +114,25 @@ fun SplashScreen(
                     .safeDrawingPadding(),
         ) {
             if (LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                SplashLandscape(hasSavedGame, trophyProgress, onNewGame, onContinue, onTrophies)
+                SplashLandscape(
+                    hasSavedGame,
+                    roomCode,
+                    trophyProgress,
+                    onNewGame,
+                    onContinue,
+                    onTrophies,
+                    onShowMultiplayer,
+                )
             } else {
-                SplashPortrait(hasSavedGame, trophyProgress, onNewGame, onContinue, onTrophies)
+                SplashPortrait(
+                    hasSavedGame,
+                    roomCode,
+                    trophyProgress,
+                    onNewGame,
+                    onContinue,
+                    onTrophies,
+                    onShowMultiplayer,
+                )
             }
         }
     }
@@ -98,10 +141,12 @@ fun SplashScreen(
 @Composable
 private fun SplashPortrait(
     hasSavedGame: Boolean,
+    roomCode: String?,
     trophyProgress: TrophyProgress,
     onNewGame: () -> Unit,
     onContinue: () -> Unit,
     onTrophies: () -> Unit,
+    onMultiplayer: () -> Unit,
 ) {
     BoxWithConstraints(
         modifier =
@@ -130,10 +175,12 @@ private fun SplashPortrait(
             )
             SplashButtons(
                 hasSavedGame = hasSavedGame,
+                roomCode = roomCode,
                 trophyProgress = trophyProgress,
                 onNewGame = onNewGame,
                 onContinue = onContinue,
                 onTrophies = onTrophies,
+                onMultiplayer = onMultiplayer,
                 modifier =
                     Modifier
                         .fillMaxWidth(BUTTONS_WIDTH_RATIO)
@@ -146,10 +193,12 @@ private fun SplashPortrait(
 @Composable
 private fun SplashLandscape(
     hasSavedGame: Boolean,
+    roomCode: String?,
     trophyProgress: TrophyProgress,
     onNewGame: () -> Unit,
     onContinue: () -> Unit,
     onTrophies: () -> Unit,
+    onMultiplayer: () -> Unit,
 ) {
     Column(
         modifier =
@@ -187,10 +236,12 @@ private fun SplashLandscape(
             ) {
                 SplashButtons(
                     hasSavedGame = hasSavedGame,
+                    roomCode = roomCode,
                     trophyProgress = trophyProgress,
                     onNewGame = onNewGame,
                     onContinue = onContinue,
                     onTrophies = onTrophies,
+                    onMultiplayer = onMultiplayer,
                     modifier =
                         Modifier
                             .fillMaxWidth(0.9f)
@@ -316,37 +367,48 @@ private fun Sparkle(
                 .graphicsLayer {
                     alpha = progress.value * SPARKLE_MAX_ALPHA
                     translationY = (1f - progress.value) * SPARKLE_RISE_DP.dp.toPx()
-                }
-                .clearAndSetSemantics {},
+                }.clearAndSetSemantics {},
     )
 }
 
 @Composable
 private fun SplashButtons(
     hasSavedGame: Boolean,
+    roomCode: String?,
     trophyProgress: TrophyProgress,
     onNewGame: () -> Unit,
     onContinue: () -> Unit,
     onTrophies: () -> Unit,
+    onMultiplayer: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    // The main action (Continuer with a saved game, otherwise Nouvelle partie) comes first, bigger and pulsing.
+    // The main action (Reprendre with a saved game, otherwise Jouer en solo) comes first, bigger and pulsing.
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
         if (hasSavedGame) {
-            PrimaryButton(text = stringResource(R.string.continuer), onClick = onContinue)
-            AppButton(
-                text = stringResource(R.string.new_game),
-                onClick = onNewGame,
-                modifier = Modifier.fillMaxWidth(),
+            Column(
+                verticalArrangement = Arrangement.spacedBy(8.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+            ) {
+                PrimaryButton(text = stringResource(R.string.splash_resume), onClick = onContinue)
+                if (roomCode != null) RoomChip(roomCode)
+            }
+            NewGameButtons(
+                primarySolo = false,
+                onSolo = onNewGame,
+                onMultiplayer = onMultiplayer,
             )
         } else {
-            PrimaryButton(text = stringResource(R.string.new_game), onClick = onNewGame)
+            NewGameButtons(
+                primarySolo = true,
+                onSolo = onNewGame,
+                onMultiplayer = onMultiplayer,
+            )
             AppButton(
-                text = stringResource(R.string.continuer),
+                text = stringResource(R.string.splash_resume),
                 onClick = onContinue,
                 enabled = false,
                 modifier = Modifier.fillMaxWidth(),
@@ -360,6 +422,49 @@ private fun SplashButtons(
                     trophyProgress.total,
                 ),
             onClick = onTrophies,
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+/** Which room the saved game belongs to, as a small pill under "Reprendre". */
+@Composable
+private fun RoomChip(roomCode: String) {
+    Text(
+        text = stringResource(R.string.splash_room, roomCode),
+        style = DefaultTextStyles.body,
+        modifier =
+            Modifier
+                .clip(RoundedCornerShape(ROOM_CHIP_CORNER_RADIUS))
+                .background(GradientEndColor.copy(alpha = ROOM_CHIP_BACKGROUND_ALPHA))
+                .padding(horizontal = 12.dp, vertical = 6.dp),
+    )
+}
+
+/** Both ways of starting a new game. */
+@Composable
+private fun NewGameButtons(
+    primarySolo: Boolean,
+    onSolo: () -> Unit,
+    onMultiplayer: () -> Unit,
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+    ) {
+        if (primarySolo) {
+            PrimaryButton(text = stringResource(R.string.splash_solo), onClick = onSolo)
+        } else {
+            AppButton(
+                text = stringResource(R.string.splash_solo),
+                onClick = onSolo,
+                modifier = Modifier.fillMaxWidth(),
+            )
+        }
+        AppButton(
+            text = stringResource(R.string.splash_multiplayer),
+            onClick = onMultiplayer,
             modifier = Modifier.fillMaxWidth(),
         )
     }
@@ -404,9 +509,13 @@ private fun Modifier.entrance(index: Int): Modifier {
 private fun SplashScreenPreview() {
     SplashScreen(
         hasSavedGame = true,
+        roomCode = "K7M2QX",
         trophyProgress = TrophyProgress(unlocked = 3, total = 12),
         onNewGame = {},
         onContinue = {},
         onTrophies = {},
+        onCreateRoom = { RoomResult.OK },
+        onJoinRoom = { RoomResult.OK },
+        onMultiplayer = {},
     )
 }

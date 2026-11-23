@@ -14,6 +14,7 @@ if (project.rootProject.file('local.properties').canRead()) {
 
 android {
     compileSdk 37
+    compileSdkMinor = 2
     namespace "com.pklein.mariage"
 
     compileOptions {
@@ -53,7 +54,7 @@ android {
             signingConfig signingConfigs.release
             enableUnitTestCoverage true
             enableAndroidTestCoverage true
-            manifestPlaceholders = [crashlyticsCollectionEnabled: "false"]
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
         }
         release {
             debuggable false
@@ -66,10 +67,6 @@ android {
             manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
         }
     }
-}
-
-afterEvaluate {
-    tasks.named('processDebugGoogleServices').configure { enabled = false }
 }
 
 dependencies {
@@ -103,6 +100,11 @@ dependencies {
     // firebase :
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.crashlytics
+    implementation libs.firebase.auth
+    implementation libs.firebase.firestore
+    // App Check lets Firebase refuse requests that do not come from the genuine app:
+    releaseImplementation libs.firebase.appcheck.playintegrity
+    debugImplementation libs.firebase.appcheck.debug
 
     // compose :
     implementation platform(libs.androidx.compose.bom)

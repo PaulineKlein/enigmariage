@@ -22,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class SplashActivity : BaseActivity() {
     private val gameProgress: GameProgressViewModel by viewModels()
     private var hasSavedGame by mutableStateOf(false)
+    private var roomCode by mutableStateOf<String?>(null)
     private var trophyProgress by mutableStateOf(
         TrophyProgress(
             unlocked = 0,
@@ -37,10 +38,14 @@ class SplashActivity : BaseActivity() {
                 setContent {
                     SplashScreen(
                         hasSavedGame = hasSavedGame,
+                        roomCode = roomCode,
                         trophyProgress = trophyProgress,
                         onNewGame = ::onNewGameClicked,
                         onContinue = ::onContinueClicked,
                         onTrophies = ::onTrophiesClicked,
+                        onCreateRoom = gameProgress::createRoom,
+                        onJoinRoom = gameProgress::joinRoom,
+                        onMultiplayer = ::startNewGame,
                     )
                 }
             },
@@ -55,13 +60,18 @@ class SplashActivity : BaseActivity() {
 
     private fun refreshState() {
         hasSavedGame = !gameProgress.page.isNullOrEmpty()
+        roomCode = if (hasSavedGame) gameProgress.roomCode else null
         trophyProgress = trophyProgress.copy(unlocked = gameProgress.unlockedTrophiesCount)
     }
 
-    private fun onNewGameClicked() {
+    private fun onNewGameClicked() = startNewGame(roomCode = "")
+
+    // An empty room code means a solo game; a saved game must be confirmed before it is replaced.
+    private fun startNewGame(roomCode: String) {
         if (hasSavedGame) {
-            showAlert()
+            showAlert { launchNewGame(roomCode) }
         } else {
+            gameProgress.storeRoomCode(roomCode)
             startActivity(Intent(this, IntroductionActivity::class.java))
         }
     }
@@ -77,19 +87,20 @@ class SplashActivity : BaseActivity() {
         startActivity(Intent(this, TrophyActivity::class.java))
     }
 
-    private fun showAlert() {
+    private fun showAlert(onConfirm: () -> Unit) {
         Alerts.showAlert(
             this,
             getString(R.string.attention),
             getString(R.string.popup_new_game),
             getString(R.string.oui),
             getString(R.string.non),
-            ::launchNewGame,
+            onConfirm,
         )
     }
 
-    private fun launchNewGame() {
+    private fun launchNewGame(roomCode: String) {
         gameProgress.resetStorage()
+        gameProgress.storeRoomCode(roomCode)
         startActivity(Intent(this, IntroductionActivity::class.java))
     }
 }

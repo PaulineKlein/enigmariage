@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.pklein.mariage.R
 import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.theme.AppTheme
+import com.pklein.mariage.ui.theme.ColorHint
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 
 private val PORTRAIT_PADDING = 32.dp
@@ -40,6 +41,7 @@ fun CarnetBordScreen(
     onUniversClick: (step: String) -> Unit,
     onTrophiesClick: () -> Unit,
     onCheckShown: (id: String) -> Unit,
+    roomCode: String? = null,
 ) {
     val landscape = isLandscape()
 
@@ -108,6 +110,15 @@ fun CarnetBordScreen(
                         onClick = onTrophiesClick,
                         modifier = Modifier.fillMaxWidth(TROPHIES_BUTTON_WIDTH_RATIO),
                     )
+
+                    if (roomCode != null) {
+                        Text(
+                            text = stringResource(R.string.carnet_bord_room, roomCode),
+                            style = DefaultTextStyles.body.copy(color = ColorHint),
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth().padding(top = 4.dp),
+                        )
+                    }
                 }
             }
         }
@@ -127,6 +138,7 @@ private fun CarnetBordScreenPreview() {
         onUniversClick = {},
         onTrophiesClick = {},
         onCheckShown = {},
+        roomCode = "K7M2QX",
     )
 }
 

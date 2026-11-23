@@ -20,7 +20,9 @@ class IntroductionActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         if (savedInstanceState == null) {
+            val roomCode = gameProgress.roomCode.orEmpty()
             SharedPreferenceStored.resetPreference()
+            gameProgress.storeRoomCode(roomCode)
             gameProgress.storePage(GameStep.Introduction)
             stopCountDown()
         }

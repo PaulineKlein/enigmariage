@@ -16,3 +16,4 @@ google-services.json
 CLAUDE.md
 .wolf/*
 app/build
+firestore.rules

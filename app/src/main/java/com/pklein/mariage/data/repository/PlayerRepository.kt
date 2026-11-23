@@ -24,12 +24,19 @@ class PlayerRepository
         val page: String?
             get() = preferences.getValue(SharedPreferenceKey.PLAYER_PAGE)
 
+        val roomCode: String?
+            get() = preferences.getValue(SharedPreferenceKey.ROOM_CODE)
+
         fun storeName(name: String) {
             preferences.storeValue(SharedPreferenceKey.PLAYER_NAME, name)
         }
 
         fun storeGender(gender: PlayerGender) {
             preferences.storeValue(SharedPreferenceKey.PLAYER_GENDER, gender.name)
+        }
+
+        fun storeRoomCode(roomCode: String) {
+            preferences.storeValue(SharedPreferenceKey.ROOM_CODE, roomCode)
         }
 
         fun storePage(page: GameStep) {
@@ -40,5 +47,6 @@ class PlayerRepository
             preferences.storeValue(SharedPreferenceKey.PLAYER_PAGE, null)
             preferences.storeValue(SharedPreferenceKey.PLAYER_GENDER, null)
             preferences.storeValue(SharedPreferenceKey.PLAYER_NAME, null)
+            preferences.storeValue(SharedPreferenceKey.ROOM_CODE, null)
         }
     }

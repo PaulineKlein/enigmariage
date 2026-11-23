@@ -1,4 +1,4 @@
-package com.pklein.mariage.presentation.combatFinal.resultat
+package com.pklein.mariage.presentation.combatFinal.resultat.model
 
 import android.content.Context
 import android.content.res.Resources
@@ -12,11 +12,18 @@ import android.net.Uri
 import androidx.core.content.FileProvider
 import androidx.lifecycle.ViewModel
 import com.pklein.mariage.R
+import com.pklein.mariage.data.model.RoomPlayer
 import com.pklein.mariage.data.repository.PlayerGender
 import com.pklein.mariage.data.repository.PlayerRepository
+import com.pklein.mariage.data.repository.RoomFirebaseRepository
 import com.pklein.mariage.data.repository.ScoreRepository
 import com.pklein.mariage.utils.calculateTimeDifference
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.onStart
 import java.io.File
 import java.io.FileOutputStream
 import java.util.concurrent.TimeUnit
@@ -32,6 +39,7 @@ class ResultsViewModel
     constructor(
         private val scoreRepository: ScoreRepository,
         private val playerRepository: PlayerRepository,
+        private val roomFirebaseRepository: RoomFirebaseRepository,
     ) : ViewModel() {
         val actualNbOfClue: Int
             get() = scoreRepository.actualNbOfClue
@@ -53,6 +61,38 @@ class ResultsViewModel
                 null
             }
         }
+
+        /** Sends this run to the joined room and follows its ranking; collecting it again just re-sends the same score. */
+        fun podium(
+            score: Int,
+            trophies: Int,
+        ): Flow<PodiumState> {
+            val roomCode =
+                playerRepository.roomCode?.takeIf { it.isNotBlank() } ?: return flowOf(
+                    PodiumState.Hidden,
+                )
+            val me =
+                RoomPlayer(
+                    id = "",
+                    name = playerRepository.name.orEmpty(),
+                    gender = playerRepository.gender,
+                    score = score.coerceIn(0, 100),
+                    trophies = trophies,
+                    timeMillis = elapsedMillis(),
+                )
+            return roomFirebaseRepository
+                .submitAndObserve(roomCode, me)
+                .map<List<RoomPlayer>, PodiumState> { PodiumState.Ready(roomCode, it) }
+                .onStart { emit(PodiumState.Loading) }
+                .catch { emit(PodiumState.Error) }
+        }
+
+        private fun elapsedMillis(): Long =
+            try {
+                scoreRepository.endTimeStr!!.toLong() - scoreRepository.startTimeStr!!.toLong()
+            } catch (_: Exception) {
+                0L
+            }
 
         fun isUnderThirtyMinutes(): Boolean {
             val startTimeStr = scoreRepository.startTimeStr

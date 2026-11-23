@@ -1,6 +1,5 @@
 package com.pklein.mariage.ui.atome
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -12,14 +11,17 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.foundation.text.input.KeyboardActionHandler
+import androidx.compose.foundation.text.input.TextFieldLineLimits
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.rememberTextFieldState
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.SolidColor
@@ -36,34 +38,34 @@ import com.pklein.mariage.ui.theme.DefaultTextStyles
 
 @Composable
 fun CustomInput(
-    value: String,
-    onValueChange: (String) -> Unit,
+    state: TextFieldState,
     hint: String,
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     keyboardType: KeyboardType = KeyboardType.Text,
-    keyboardActions: KeyboardActions = KeyboardActions.Default,
+    inputTransformation: InputTransformation? = null,
+    onKeyboardAction: KeyboardActionHandler? = null,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isFocused by interactionSource.collectIsFocusedAsState()
     val textStyle = DefaultTextStyles.bodyBig
 
     BasicTextField(
-        value = value,
-        onValueChange = onValueChange,
+        state = state,
         modifier = modifier,
         enabled = enabled,
-        singleLine = true,
+        lineLimits = TextFieldLineLimits.SingleLine,
         textStyle = textStyle,
         cursorBrush = SolidColor(ColorPrimary),
         interactionSource = interactionSource,
+        inputTransformation = inputTransformation,
         keyboardOptions =
             KeyboardOptions(
                 keyboardType = keyboardType,
                 imeAction = ImeAction.Done,
             ),
-        keyboardActions = keyboardActions,
-        decorationBox = { innerTextField ->
+        onKeyboardAction = onKeyboardAction,
+        decorator = { innerTextField ->
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier =
@@ -71,13 +73,14 @@ fun CustomInput(
                         .border(1.dp, ColorPrimary, RoundedCornerShape(12.dp))
                         .padding(13.dp),
             ) {
-                Image(
-                    painter = painterResource(if (isFocused) R.drawable.ic_arrow_focused else R.drawable.ic_arrow),
+                Icon(
+                    painter = painterResource(R.drawable.ic_arrow_next),
                     contentDescription = null,
+                    tint = if (isFocused) ColorPrimary else ColorHint,
                 )
                 Spacer(modifier = Modifier.width(13.dp))
                 Box(modifier = Modifier.weight(1f)) {
-                    if (value.isEmpty()) {
+                    if (state.text.isEmpty()) {
                         Text(text = hint, style = textStyle.copy(color = ColorHint))
                     }
                     innerTextField()
@@ -92,12 +95,12 @@ fun CustomInput(
 private fun CustomInputEmptyPreview() {
     AppTheme {
         CustomInput(
-            value = "",
-            onValueChange = {},
+            state = rememberTextFieldState(),
             hint = "Réponse",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
         )
     }
 }
@@ -107,12 +110,12 @@ private fun CustomInputEmptyPreview() {
 private fun CustomInputFilledPreview() {
     AppTheme {
         CustomInput(
-            value = "Ma réponse",
-            onValueChange = {},
+            state = rememberTextFieldState("Ma réponse"),
             hint = "Réponse",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
         )
     }
 }
@@ -120,15 +123,14 @@ private fun CustomInputFilledPreview() {
 @Preview(name = "Interactif")
 @Composable
 private fun CustomInputInteractivePreview() {
-    var value by remember { mutableStateOf("") }
     AppTheme {
         CustomInput(
-            value = value,
-            onValueChange = { value = it },
+            state = rememberTextFieldState(),
             hint = "Réponse",
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(16.dp),
+            modifier =
+                Modifier
+                    .fillMaxWidth()
+                    .padding(16.dp),
         )
     }
 }

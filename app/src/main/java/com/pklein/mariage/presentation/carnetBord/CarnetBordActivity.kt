@@ -24,6 +24,7 @@ class CarnetBordActivity : BaseActivity() {
     private val viewModel: CarnetBordViewModel by viewModels()
     private var universCards by mutableStateOf<List<UniversCardState>>(emptyList())
     private var unlockedTrophies by mutableIntStateOf(0)
+    private var roomCode by mutableStateOf<String?>(null)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +35,7 @@ class CarnetBordActivity : BaseActivity() {
                         univers = universCards,
                         unlockedTrophies = unlockedTrophies,
                         totalTrophies = viewModel.totalTrophiesCount,
+                        roomCode = roomCode,
                         onUniversClick = { step ->
                             SplashCoordinator.launchGame(
                                 step,
@@ -69,6 +71,7 @@ class CarnetBordActivity : BaseActivity() {
         universCards =
             listOf(univers1Card(step1), univers2Card(step2, step1), univers3Card(step3, step2))
         unlockedTrophies = viewModel.unlockedTrophiesCount
+        roomCode = viewModel.roomCode
     }
 
     private fun univers1Card(status: UniversStatus): UniversCardState {

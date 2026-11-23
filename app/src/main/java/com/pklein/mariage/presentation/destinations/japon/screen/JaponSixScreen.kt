@@ -15,13 +15,11 @@ import androidx.compose.foundation.layout.safeDrawingPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
@@ -48,7 +46,7 @@ fun JaponSixScreen(
     onValidateClick: (String) -> Unit,
 ) {
     val pagerState = rememberPagerState(pageCount = { PAGE_COUNT })
-    var answer by remember { mutableStateOf("") }
+    val answerState = rememberTextFieldState()
 
     AppTheme {
         Column(
@@ -83,8 +81,7 @@ fun JaponSixScreen(
                         TapiocaPage()
                     } else {
                         TicketPage(
-                            answer = answer,
-                            onAnswerChange = { answer = it },
+                            answerState = answerState,
                             onValidateClick = onValidateClick,
                         )
                     }
@@ -125,10 +122,11 @@ private fun TapiocaPage() {
 
 @Composable
 private fun TicketPage(
-    answer: String,
-    onAnswerChange: (String) -> Unit,
+    answerState: TextFieldState,
     onValidateClick: (String) -> Unit,
 ) {
+    val answer = answerState.text.toString()
+
     Column(modifier = Modifier.fillMaxSize()) {
         Column(
             modifier =
@@ -162,8 +160,7 @@ private fun TicketPage(
             )
             Spacer(modifier = Modifier.height(24.dp))
             CustomInput(
-                value = answer,
-                onValueChange = onAnswerChange,
+                state = answerState,
                 hint = stringResource(id = R.string.embarquement_three_reponse_hint),
                 modifier = Modifier.fillMaxWidth(),
             )
@@ -197,8 +194,7 @@ private fun TicketPagePreview() {
     AppTheme {
         Box(modifier = Modifier.padding(16.dp)) {
             TicketPage(
-                answer = "",
-                onAnswerChange = {},
+                answerState = rememberTextFieldState(),
                 onValidateClick = {},
             )
         }

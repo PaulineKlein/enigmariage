@@ -1,7 +1,9 @@
 package com.pklein.mariage.presentation.combatFinal.resultat
 
 import com.pklein.mariage.data.repository.PlayerRepository
+import com.pklein.mariage.data.repository.RoomFirebaseRepository
 import com.pklein.mariage.data.repository.ScoreRepository
+import com.pklein.mariage.presentation.combatFinal.resultat.model.ResultsViewModel
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Assert.assertEquals
@@ -15,13 +17,15 @@ import java.util.concurrent.TimeUnit
 class ResultsViewModelTest {
     private lateinit var scoreRepository: ScoreRepository
     private lateinit var playerRepository: PlayerRepository
+    private lateinit var roomFirebaseRepository: RoomFirebaseRepository
     private lateinit var viewModel: ResultsViewModel
 
     @Before
     fun setUp() {
         scoreRepository = mockk()
         playerRepository = mockk()
-        viewModel = ResultsViewModel(scoreRepository, playerRepository)
+        roomFirebaseRepository = mockk()
+        viewModel = ResultsViewModel(scoreRepository, playerRepository, roomFirebaseRepository)
     }
 
     @Test

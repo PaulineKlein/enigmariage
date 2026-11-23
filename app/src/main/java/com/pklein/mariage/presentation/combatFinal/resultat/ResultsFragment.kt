@@ -9,6 +9,8 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
@@ -22,6 +24,8 @@ import com.pklein.mariage.presentation.GameStep
 import com.pklein.mariage.presentation.carnetBord.CarnetBordActivity
 import com.pklein.mariage.presentation.combatFinal.CombatFinalActivity
 import com.pklein.mariage.presentation.combatFinal.CombatFinalActivity.Companion.EXTRA_USELESS_TROPHY
+import com.pklein.mariage.presentation.combatFinal.resultat.model.PodiumState
+import com.pklein.mariage.presentation.combatFinal.resultat.model.ResultsViewModel
 import com.pklein.mariage.presentation.combatFinal.resultat.screen.ResultsScreen
 import com.pklein.mariage.presentation.introduction.SplashActivity
 import com.pklein.mariage.utils.uiUtils.Alerts
@@ -119,10 +123,14 @@ class ResultsFragment : Fragment() {
         val shareBitmap =
             resultsViewModel.drawTextToBitmap(requireContext(), timeText, scoreText, trophiesText)
 
+        val podiumFlow = resultsViewModel.podium(score, unlockedTrophiesCount)
+
         return ComposeView(requireContext()).apply {
             setContent {
+                val podium by podiumFlow.collectAsState(initial = PodiumState.Hidden)
                 ResultsScreen(
                     score = score,
+                    podium = podium,
                     time = timeText,
                     trophies = trophiesText,
                     shareCard = shareBitmap?.asImageBitmap(),

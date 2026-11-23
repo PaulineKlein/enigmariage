@@ -29,9 +29,10 @@ val GradientCenterColor = Color(0xFFffe8f0)
 val GradientEndColor = Color(0xFFc8e6e7)
 val GradientEndColorFonce = Color(0xFF8A9FA3)
 
-// Mirrors drawable/background.xml: a 135° linear gradient (bottom-left to top-right).
-val WindowBackgroundBrush = Brush.linearGradient(
-    colors = listOf(GradientStartColor, GradientCenterColor, GradientEndColor),
-    start = Offset(0f, Float.POSITIVE_INFINITY),
-    end = Offset(Float.POSITIVE_INFINITY, 0f)
-)
+// Mirrors drawable/background.xml and background_dialog.xml: Android draws a 135° gradient from the bottom-right to the top-left.
+val WindowBackgroundBrush =
+    Brush.linearGradient(
+        colors = listOf(GradientStartColor, GradientCenterColor, GradientEndColor),
+        start = Offset(Float.POSITIVE_INFINITY, Float.POSITIVE_INFINITY),
+        end = Offset.Zero,
+    )

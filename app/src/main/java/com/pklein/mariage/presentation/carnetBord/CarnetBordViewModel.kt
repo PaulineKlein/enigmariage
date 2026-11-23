@@ -26,6 +26,8 @@ class CarnetBordViewModel
             get() = inspector.universPath
         val playerName: String?
             get() = playerRepository.name
+        val roomCode: String?
+            get() = playerRepository.roomCode?.takeIf { it.isNotBlank() }
 
         fun storePage(step: GameStep) {
             playerRepository.storePage(step)

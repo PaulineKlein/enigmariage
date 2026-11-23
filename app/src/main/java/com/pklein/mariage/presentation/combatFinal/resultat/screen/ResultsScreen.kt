@@ -49,6 +49,7 @@ import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.LottieConstants
 import com.airbnb.lottie.compose.rememberLottieComposition
 import com.pklein.mariage.R
+import com.pklein.mariage.presentation.combatFinal.resultat.model.PodiumState
 import com.pklein.mariage.ui.atome.AppButton
 import com.pklein.mariage.ui.screen.MyNavigationBar
 import com.pklein.mariage.ui.theme.AppTheme
@@ -91,6 +92,7 @@ fun ResultsScreen(
     time: String,
     trophies: String,
     shareCard: ImageBitmap?,
+    podium: PodiumState,
     onHomeClick: () -> Unit,
     onRestartClick: () -> Unit,
     onShareClick: () -> Unit,
@@ -115,46 +117,24 @@ fun ResultsScreen(
             ) {
                 MyNavigationBar(title = R.string.resultat_titre, onHomeClick = onHomeClick)
 
+                ThanksCard()
+
                 ResultsHero(score = score, time = time, trophies = trophies)
 
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.spacedBy(SECTION_SPACING),
-                ) {
-                    Text(
-                        text = annotatedStringResource(R.string.resultat_message_titre),
-                        style = DefaultTextStyles.sousTitre,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
+                RoomPodium(state = podium)
+
+                if (shareCard != null) {
                     Image(
-                        painter = painterResource(R.drawable.image_merci),
-                        contentDescription = stringResource(R.string.fin_mariage_accessibility),
-                        contentScale = ContentScale.Crop,
+                        bitmap = shareCard,
+                        contentDescription = stringResource(R.string.resultat_share_card_accessibility),
+                        contentScale = ContentScale.FillWidth,
                         modifier =
                             Modifier
-                                .size(THANKS_IMAGE_SIZE)
+                                .widthIn(max = SHARE_CARD_MAX_WIDTH)
+                                .fillMaxWidth()
+                                .align(Alignment.CenterHorizontally)
                                 .framed(),
                     )
-                    Text(
-                        text = annotatedStringResource(R.string.resultat_message),
-                        style = DefaultTextStyles.body,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.fillMaxWidth(),
-                    )
-                    if (shareCard != null) {
-                        Image(
-                            bitmap = shareCard,
-                            contentDescription = stringResource(R.string.resultat_share_card_accessibility),
-                            contentScale = ContentScale.FillWidth,
-                            modifier =
-                                Modifier
-                                    .widthIn(max = SHARE_CARD_MAX_WIDTH)
-                                    .fillMaxWidth()
-                                    .framed(),
-                        )
-                    }
                 }
 
                 Column(
@@ -175,6 +155,43 @@ fun ResultsScreen(
                 }
             }
         }
+    }
+}
+
+/** The mission-accomplished title, the wedding thank-you picture and the message, in the same card as the score. */
+@Composable
+private fun ThanksCard() {
+    Column(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .clip(RoundedCornerShape(HERO_CORNER_RADIUS))
+                .background(Color.White.copy(alpha = HERO_BACKGROUND_ALPHA))
+                .padding(HERO_PADDING),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(SECTION_SPACING),
+    ) {
+        Text(
+            text = annotatedStringResource(R.string.resultat_message_titre),
+            style = DefaultTextStyles.sousTitre,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+        )
+        Image(
+            painter = painterResource(R.drawable.image_merci),
+            contentDescription = stringResource(R.string.fin_mariage_accessibility),
+            contentScale = ContentScale.Crop,
+            modifier =
+                Modifier
+                    .size(THANKS_IMAGE_SIZE)
+                    .framed(),
+        )
+        Text(
+            text = annotatedStringResource(R.string.resultat_message),
+            style = DefaultTextStyles.body,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 
@@ -309,6 +326,7 @@ private fun ResultsScreenPreview() {
         time = "42 min 10 s",
         trophies = "12 / 40",
         shareCard = ImageBitmap(425, 225),
+        podium = PodiumState.Hidden,
         onHomeClick = {},
         onRestartClick = {},
         onShareClick = {},

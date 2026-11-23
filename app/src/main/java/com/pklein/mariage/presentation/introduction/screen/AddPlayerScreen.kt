@@ -28,7 +28,10 @@ import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.input.InputTransformation
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.maxLength
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -100,22 +103,20 @@ private val genderChoices =
 /** Pick a name and an inspector (dog or rabbit), then continue; replaces activity_add_player.xml. */
 @Composable
 fun AddPlayerScreen(onContinueClick: (name: String, gender: PlayerGender) -> Unit) {
-    var name by rememberSaveable { mutableStateOf("") }
+    val nameState = rememberTextFieldState()
     var gender by rememberSaveable { mutableStateOf<PlayerGender?>(null) }
 
     AddPlayerContent(
-        name = name,
-        onNameChange = { if (it.length <= NAME_MAX_LENGTH) name = it },
+        nameState = nameState,
         gender = gender,
         onGenderChange = { gender = it },
-        onContinueClick = { gender?.let { onContinueClick(name, it) } },
+        onContinueClick = { gender?.let { onContinueClick(nameState.text.toString(), it) } },
     )
 }
 
 @Composable
 private fun AddPlayerContent(
-    name: String,
-    onNameChange: (String) -> Unit,
+    nameState: TextFieldState,
     gender: PlayerGender?,
     onGenderChange: (PlayerGender) -> Unit,
     onContinueClick: () -> Unit,
@@ -152,10 +153,10 @@ private fun AddPlayerContent(
                         modifier = Modifier.padding(top = SECTION_SPACING),
                     )
                     CustomInput(
-                        value = name,
-                        onValueChange = onNameChange,
+                        state = nameState,
                         hint = stringResource(R.string.add_player_name_hint),
-                        keyboardActions = KeyboardActions(onDone = { focusManager.clearFocus() }),
+                        inputTransformation = InputTransformation.maxLength(NAME_MAX_LENGTH),
+                        onKeyboardAction = { focusManager.clearFocus() },
                         modifier =
                             Modifier
                                 .fillMaxWidth()
@@ -186,7 +187,7 @@ private fun AddPlayerContent(
             AppButton(
                 text = stringResource(R.string.continuer),
                 onClick = onContinueClick,
-                enabled = name.isNotEmpty() && gender != null,
+                enabled = nameState.text.isNotEmpty() && gender != null,
                 modifier =
                     Modifier
                         .padding(top = 8.dp)
@@ -286,16 +287,14 @@ private fun GenderCard(
                                 BorderStroke(1.dp, Color.White)
                             },
                         shape = shape,
-                    )
-                    .selectable(
+                    ).selectable(
                         selected = isSelected,
                         onClick = {
                             if (!isSelected) view.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
                             onClick()
                         },
                         role = Role.RadioButton,
-                    )
-                    .padding(8.dp),
+                    ).padding(8.dp),
         ) {
             Image(
                 painter = painterResource(choice.image),
@@ -392,8 +391,7 @@ private fun ClueCard(modifier: Modifier = Modifier) {
 @Composable
 private fun AddPlayerScreenEmptyPreview() {
     AddPlayerContent(
-        name = "",
-        onNameChange = {},
+        nameState = rememberTextFieldState(),
         gender = null,
         onGenderChange = {},
         onContinueClick = {},
@@ -404,8 +402,7 @@ private fun AddPlayerScreenEmptyPreview() {
 @Composable
 private fun AddPlayerScreenFilledPreview() {
     AddPlayerContent(
-        name = "Pauline",
-        onNameChange = {},
+        nameState = rememberTextFieldState("Pauline"),
         gender = PlayerGender.RABBIT,
         onGenderChange = {},
         onContinueClick = {},
@@ -420,8 +417,7 @@ private fun AddPlayerScreenFilledPreview() {
 @Composable
 private fun AddPlayerScreenLandscapePreview() {
     AddPlayerContent(
-        name = "Pauline",
-        onNameChange = {},
+        nameState = rememberTextFieldState("Pauline"),
         gender = PlayerGender.DOG,
         onGenderChange = {},
         onContinueClick = {},

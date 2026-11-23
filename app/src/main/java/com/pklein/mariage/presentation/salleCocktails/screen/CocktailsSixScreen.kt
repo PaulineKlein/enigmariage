@@ -13,13 +13,11 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.input.TextFieldState
+import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -49,7 +47,7 @@ fun CocktailsSixScreen(
     onHomeClick: () -> Unit,
     onValidateClick: (String) -> Unit,
 ) {
-    var answer by rememberSaveable { mutableStateOf("") }
+    val answerState = rememberTextFieldState()
 
     TwoPageScreen(
         header = {
@@ -61,8 +59,7 @@ fun CocktailsSixScreen(
         firstPage = { GourdePage(playerName = playerName) },
         secondPage = {
             RiddlePage(
-                answer = answer,
-                onAnswerChange = { answer = it },
+                answerState = answerState,
                 onValidateClick = onValidateClick,
             )
         },
@@ -157,10 +154,11 @@ private fun GourdeImage(
 
 @Composable
 private fun RiddlePage(
-    answer: String,
-    onAnswerChange: (String) -> Unit,
+    answerState: TextFieldState,
     onValidateClick: (String) -> Unit,
 ) {
+    val answer = answerState.text.toString()
+
     Column(modifier = Modifier.fillMaxSize().clearFocusOnTap()) {
         BoxWithConstraints(modifier = Modifier.weight(1f).fillMaxWidth()) {
             Column(
@@ -193,8 +191,7 @@ private fun RiddlePage(
                             .padding(vertical = 8.dp),
                 )
                 CustomInput(
-                    value = answer,
-                    onValueChange = onAnswerChange,
+                    state = answerState,
                     hint = stringResource(R.string.reponse),
                     modifier =
                         Modifier
@@ -234,8 +231,7 @@ private fun CocktailsSixScreenPreview() {
 private fun RiddlePagePreview() {
     AppTheme {
         RiddlePage(
-            answer = "",
-            onAnswerChange = {},
+            answerState = rememberTextFieldState(),
             onValidateClick = {},
         )
     }

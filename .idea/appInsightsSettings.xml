@@ -23,8 +23,8 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="com.pklein.enigmariage" />
-                  <option name="mobileSdkAppId" value="1:657772305400:android:80264a557bfc9025f1540d" />
+                  <option name="appId" value="com.pklein.enigmariage.ci" />
+                  <option name="mobileSdkAppId" value="1:657772305400:android:d006e9386216c2b3f1540d" />
                   <option name="projectId" value="enigmariage-66cde" />
                   <option name="projectNumber" value="657772305400" />
                 </ConnectionSetting>

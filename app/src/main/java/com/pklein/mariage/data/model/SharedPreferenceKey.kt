@@ -8,6 +8,7 @@ enum class SharedPreferenceKey {
     PLAYER_END_TIME,
     PLAYER_CLUES,
     PLAYER_ERRORS,
+    ROOM_CODE,
     COUNT_DOWN,
     UNIVERS_1,
     UNIVERS_2_COCKTAILS,
@@ -18,5 +19,5 @@ enum class SharedPreferenceKey {
     UNIVERS_2_CARAIBES,
     UNIVERS_2_TANZANIE,
     UNIVERS_2_ITALIE,
-    UNIVERS_3
+    UNIVERS_3,
 }
