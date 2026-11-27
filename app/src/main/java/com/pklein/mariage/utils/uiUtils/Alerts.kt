@@ -46,9 +46,11 @@ object Alerts {
         positiveButton: String,
         negativeButton: String,
         onClickButton: (() -> Unit)?,
+        onCancel: (() -> Unit)? = null,
     ) {
         val dialog = Dialog(context)
         dialog.setContentView(R.layout.dialog_custom_confirm)
+        dialog.setOnCancelListener { onCancel?.invoke() }
         dialog.window?.setBackgroundDrawable(Color.TRANSPARENT.toDrawable())
         dialog.window?.attributes?.windowAnimations = R.style.DialogAnimation
 
@@ -63,7 +65,10 @@ object Alerts {
         }
         dialog.findViewById<AppCompatButton>(R.id.btn_dialog_negative).apply {
             text = negativeButton
-            setOnClickListener { dialog.dismiss() }
+            setOnClickListener {
+                onCancel?.invoke()
+                dialog.dismiss()
+            }
         }
         dialog.show()
     }

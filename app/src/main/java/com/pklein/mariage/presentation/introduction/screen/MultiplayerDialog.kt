@@ -8,6 +8,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -15,12 +16,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.selectable
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.input.InputTransformation
 import androidx.compose.foundation.text.input.TextFieldState
 import androidx.compose.foundation.text.input.maxLength
 import androidx.compose.foundation.text.input.rememberTextFieldState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.RadioButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -35,17 +38,19 @@ import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusDirection
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
-import kotlinx.coroutines.launch
 import com.pklein.mariage.R
 import com.pklein.mariage.data.model.GAME_NAME_MAX_LENGTH
 import com.pklein.mariage.data.model.GameNames
@@ -61,13 +66,14 @@ import com.pklein.mariage.ui.theme.AppTheme
 import com.pklein.mariage.ui.theme.ColorErreur
 import com.pklein.mariage.ui.theme.DefaultTextStyles
 import com.pklein.mariage.ui.theme.WindowBackgroundBrush
+import kotlinx.coroutines.launch
 
 private val DIALOG_MAX_WIDTH = 400.dp
 private val DIALOG_CORNER_RADIUS = 24.dp
 private val DIALOG_PADDING = 24.dp
 private val CODE_LETTER_SPACING = 6.sp
 
-private enum class MultiplayerStep { CHOICE, CREATE, JOIN }
+private enum class MultiplayerStep { CHOICE, CREATE, JOIN, HELP }
 
 private val RoomCodeInput =
     InputTransformation {
@@ -79,15 +85,18 @@ private val RoomCodeInput =
 /**
  * Pick "create a room" (shows a fresh code to share) or "join a room" (type the host's code). The room is created or
  * looked up online first, and only an [RoomResult.OK] calls [onStart] with the code. The host can also rename the
- * couple and the villain; a joining player gets the host's names back from [onJoinRoom].
+ * couple and the villain; a joining player gets the host's names back from [onJoinRoom]. With a saved game
+ * ([hasSavedGame]), the player picks between bringing it into the room or starting a new one; [onStart] says which.
  */
 @Composable
 fun MultiplayerDialog(
     onCreateRoom: suspend (roomCode: String, names: GameNames) -> RoomResult,
     onJoinRoom: suspend (roomCode: String) -> RoomCheck,
-    onStart: (roomCode: String, names: GameNames) -> Unit,
+    onStart: (roomCode: String, names: GameNames, keepProgress: Boolean) -> Unit,
     onDismiss: () -> Unit,
+    hasSavedGame: Boolean = false,
 ) {
+    var keepProgress by rememberSaveable { mutableStateOf(true) }
     var step by rememberSaveable { mutableStateOf(MultiplayerStep.CHOICE) }
     val createdCode = rememberSaveable { generateRoomCode() }
     val joinCodeState = rememberTextFieldState()
@@ -111,7 +120,15 @@ fun MultiplayerDialog(
         scope.launch {
             val room = action()
             checking = false
-            if (room.result == RoomResult.OK) onStart(code, room.names) else error = room.result
+            if (room.result == RoomResult.OK) {
+                onStart(
+                    code,
+                    room.names,
+                    !hasSavedGame || keepProgress,
+                )
+            } else {
+                error = room.result
+            }
         }
     }
 
@@ -137,8 +154,12 @@ fun MultiplayerDialog(
             when (step) {
                 MultiplayerStep.CHOICE -> {
                     ChoiceContent(
+                        hasSavedGame = hasSavedGame,
+                        keepProgress = keepProgress,
+                        onKeepProgressChange = { keepProgress = it },
                         onCreate = { goTo(MultiplayerStep.CREATE) },
                         onJoin = { goTo(MultiplayerStep.JOIN) },
+                        onHelp = { goTo(MultiplayerStep.HELP) },
                         onCancel = onDismiss,
                     )
                 }
@@ -158,10 +179,19 @@ fun MultiplayerDialog(
                                     groomState.text.toString(),
                                     villainState.text.toString(),
                                 )
-                            check(createdCode) { RoomCheck(onCreateRoom(createdCode, names), names) }
+                            check(createdCode) {
+                                RoomCheck(
+                                    onCreateRoom(createdCode, names),
+                                    names,
+                                )
+                            }
                         },
                         onBack = { goTo(MultiplayerStep.CHOICE) },
                     )
+                }
+
+                MultiplayerStep.HELP -> {
+                    HelpContent(onBack = { goTo(MultiplayerStep.CHOICE) })
                 }
 
                 MultiplayerStep.JOIN -> {
@@ -183,12 +213,26 @@ fun MultiplayerDialog(
 
 @Composable
 private fun ChoiceContent(
+    hasSavedGame: Boolean,
+    keepProgress: Boolean,
+    onKeepProgressChange: (Boolean) -> Unit,
     onCreate: () -> Unit,
     onJoin: () -> Unit,
+    onHelp: () -> Unit,
     onCancel: () -> Unit,
 ) {
     DialogTitle(R.string.multiplayer_title)
     DialogMessage(stringResource(R.string.multiplayer_message))
+    if (hasSavedGame) {
+        ProgressChoice(
+            R.string.multiplayer_keep_game,
+            selected = keepProgress,
+        ) { onKeepProgressChange(true) }
+        ProgressChoice(
+            R.string.multiplayer_new_game,
+            selected = !keepProgress,
+        ) { onKeepProgressChange(false) }
+    }
     AppButton(
         text = stringResource(R.string.multiplayer_create),
         onClick = onCreate,
@@ -199,7 +243,45 @@ private fun ChoiceContent(
         onClick = onJoin,
         modifier = Modifier.fillMaxWidth(),
     )
+    SecondaryAction(text = stringResource(R.string.multiplayer_help), onClick = onHelp)
     SecondaryAction(text = stringResource(R.string.multiplayer_cancel), onClick = onCancel)
+}
+
+/** Who does what in a room: the organizer creates it and picks the names, the others join with its code. */
+@Composable
+private fun HelpContent(onBack: () -> Unit) {
+    DialogTitle(R.string.multiplayer_help)
+    DialogMessage(stringResource(R.string.multiplayer_help_step_1))
+    DialogMessage(stringResource(R.string.multiplayer_help_step_2))
+    DialogMessage(stringResource(R.string.multiplayer_help_step_3))
+    DialogMessage(stringResource(R.string.multiplayer_help_saved_game))
+    AppButton(
+        text = stringResource(R.string.multiplayer_help_ok),
+        onClick = onBack,
+        modifier = Modifier.fillMaxWidth(),
+    )
+}
+
+@Composable
+private fun ProgressChoice(
+    @StringRes text: Int,
+    selected: Boolean,
+    onSelect: () -> Unit,
+) {
+    Row(
+        modifier =
+            Modifier
+                .fillMaxWidth()
+                .selectable(selected = selected, onClick = onSelect, role = Role.RadioButton),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        RadioButton(selected = selected, onClick = null)
+        Text(
+            text = stringResource(text),
+            style = DefaultTextStyles.body,
+            modifier = Modifier.padding(start = 8.dp),
+        )
+    }
 }
 
 @Composable
@@ -215,6 +297,7 @@ private fun CreateContent(
 ) {
     DialogTitle(R.string.multiplayer_create)
     DialogMessage(stringResource(R.string.multiplayer_create_message))
+    val context = LocalContext.current
     val codeDescription =
         stringResource(
             R.string.multiplayer_create_code_accessibility,
@@ -224,29 +307,20 @@ private fun CreateContent(
         text = code,
         style = DefaultTextStyles.sousTitre.copy(letterSpacing = CODE_LETTER_SPACING),
         textAlign = TextAlign.Center,
-        modifier = Modifier.clearAndSetSemantics { contentDescription = codeDescription },
+        modifier =
+            Modifier
+                .combinedClickable(onClick = {}, onLongClick = { copyCode(context, code) })
+                .clearAndSetSemantics { contentDescription = codeDescription },
     )
-    val context = LocalContext.current
-    Row(
+    AppButton(
+        text = stringResource(R.string.multiplayer_share),
+        onClick = { shareCode(context, code) },
         modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
-    ) {
-        AppButton(
-            text = stringResource(R.string.multiplayer_copy),
-            onClick = { copyCode(context, code) },
-            modifier = Modifier.weight(1f),
-        )
-        AppButton(
-            text = stringResource(R.string.multiplayer_share),
-            onClick = { shareCode(context, code) },
-            modifier = Modifier.weight(1f),
-        )
-    }
+    )
     DialogMessage(stringResource(R.string.multiplayer_names_message))
-    val defaults = GameNames()
-    NameInput(brideState, stringResource(R.string.multiplayer_bride_hint, defaults.bride))
-    NameInput(groomState, stringResource(R.string.multiplayer_groom_hint, defaults.groom))
-    NameInput(villainState, stringResource(R.string.multiplayer_villain_hint, defaults.villain))
+    NameInput(brideState, stringResource(R.string.multiplayer_bride_hint))
+    NameInput(groomState, stringResource(R.string.multiplayer_groom_hint))
+    NameInput(villainState, stringResource(R.string.multiplayer_villain_hint), isLast = true)
     CheckStatus(checking = checking, error = error)
     AppButton(
         text = stringResource(R.string.multiplayer_start),
@@ -261,13 +335,17 @@ private fun CreateContent(
 private fun NameInput(
     state: TextFieldState,
     hint: String,
+    isLast: Boolean = false,
 ) {
     val focusManager = LocalFocusManager.current
     CustomInput(
         state = state,
         hint = hint,
+        imeAction = if (isLast) ImeAction.Done else ImeAction.Next,
         inputTransformation = InputTransformation.maxLength(GAME_NAME_MAX_LENGTH),
-        onKeyboardAction = { focusManager.clearFocus() },
+        onKeyboardAction = {
+            if (isLast) focusManager.clearFocus() else focusManager.moveFocus(FocusDirection.Next)
+        },
         modifier = Modifier.fillMaxWidth(),
     )
 }
@@ -277,7 +355,12 @@ private fun copyCode(
     code: String,
 ) {
     val clipboard = context.getSystemService(ClipboardManager::class.java)
-    clipboard.setPrimaryClip(ClipData.newPlainText(context.getString(R.string.multiplayer_title), code))
+    clipboard.setPrimaryClip(
+        ClipData.newPlainText(
+            context.getString(R.string.multiplayer_title),
+            code,
+        ),
+    )
     // Android 13+ already confirms a copy on its own.
     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
         Toast.makeText(context, R.string.multiplayer_copied, Toast.LENGTH_SHORT).show()
@@ -293,7 +376,12 @@ private fun shareCode(
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, context.getString(R.string.multiplayer_share_text, code))
         }
-    context.startActivity(Intent.createChooser(intent, context.getString(R.string.multiplayer_share_title)))
+    context.startActivity(
+        Intent.createChooser(
+            intent,
+            context.getString(R.string.multiplayer_share_title),
+        ),
+    )
 }
 
 @Composable
@@ -340,11 +428,17 @@ private fun CheckStatus(
             )
         }
 
-        error == RoomResult.NOT_FOUND -> ErrorMessage(R.string.multiplayer_error_not_found)
+        error == RoomResult.NOT_FOUND -> {
+            ErrorMessage(R.string.multiplayer_error_not_found)
+        }
 
-        error == RoomResult.UNAVAILABLE -> ErrorMessage(R.string.multiplayer_error_unavailable)
+        error == RoomResult.UNAVAILABLE -> {
+            ErrorMessage(R.string.multiplayer_error_unavailable)
+        }
 
-        error == RoomResult.RATE_LIMITED -> ErrorMessage(R.string.multiplayer_error_rate_limited)
+        error == RoomResult.RATE_LIMITED -> {
+            ErrorMessage(R.string.multiplayer_error_rate_limited)
+        }
     }
 }
 
@@ -398,7 +492,7 @@ private fun MultiplayerDialogPreview() {
         MultiplayerDialog(
             onCreateRoom = { _, _ -> RoomResult.OK },
             onJoinRoom = { RoomCheck(RoomResult.OK) },
-            onStart = { _, _ -> },
+            onStart = { _, _, _ -> },
             onDismiss = {},
         )
     }

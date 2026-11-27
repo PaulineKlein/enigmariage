@@ -35,8 +35,8 @@ android {
         applicationId "com.pklein.enigmariage"
         minSdkVersion 24
         targetSdkVersion 37
-        versionCode 10
-        versionName "5.0"
+        versionCode 11
+        versionName "5.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

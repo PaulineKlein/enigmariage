@@ -58,6 +58,14 @@ class PlayerRepository
             preferences.storeValue(SharedPreferenceKey.PLAYER_PAGE, page.name)
         }
 
+        /** Back to a solo game: keeps the progress, drops the room code and the room's names. */
+        fun leaveRoom() {
+            preferences.storeValue(SharedPreferenceKey.ROOM_CODE, null)
+            preferences.storeValue(SharedPreferenceKey.BRIDE_NAME, null)
+            preferences.storeValue(SharedPreferenceKey.GROOM_NAME, null)
+            preferences.storeValue(SharedPreferenceKey.VILLAIN_NAME, null)
+        }
+
         fun resetStorage() {
             preferences.storeValue(SharedPreferenceKey.PLAYER_PAGE, null)
             preferences.storeValue(SharedPreferenceKey.PLAYER_GENDER, null)

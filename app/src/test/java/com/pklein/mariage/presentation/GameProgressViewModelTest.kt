@@ -5,7 +5,6 @@ import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.data.repository.PlayerGender
 import com.pklein.mariage.data.repository.PlayerRepository
-import com.pklein.mariage.data.repository.RoomFirebaseRepository
 import com.pklein.mariage.data.repository.ScoreRepository
 import com.pklein.mariage.data.repository.TrophyRepository
 import com.pklein.mariage.data.repository.UniversRepository
@@ -28,7 +27,6 @@ class GameProgressViewModelTest {
     private lateinit var scoreRepository: ScoreRepository
     private lateinit var trophyRepository: TrophyRepository
     private lateinit var inspector: IInspector
-    private lateinit var roomFirebaseRepository: RoomFirebaseRepository
     private lateinit var viewModel: GameProgressViewModel
 
     @Before
@@ -38,14 +36,12 @@ class GameProgressViewModelTest {
         scoreRepository = mockk()
         trophyRepository = mockk()
         inspector = mockk()
-        roomFirebaseRepository = mockk()
         viewModel =
             GameProgressViewModel(
                 playerRepository,
                 universRepository,
                 scoreRepository,
                 trophyRepository,
-                roomFirebaseRepository,
                 inspector,
             )
     }

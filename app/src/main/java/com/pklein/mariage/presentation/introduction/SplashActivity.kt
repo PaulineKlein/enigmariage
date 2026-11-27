@@ -3,85 +3,63 @@ package com.pklein.mariage.presentation.introduction
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.platform.ComposeView
+import androidx.lifecycle.lifecycleScope
 import com.pklein.mariage.R
-import com.pklein.mariage.data.model.GameNames
-import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.presentation.BaseActivity
-import com.pklein.mariage.presentation.GameProgressViewModel
 import com.pklein.mariage.presentation.SplashCoordinator
 import com.pklein.mariage.presentation.introduction.screen.SplashScreen
-import com.pklein.mariage.presentation.introduction.screen.TrophyProgress
 import com.pklein.mariage.presentation.trophies.TrophyActivity
 import com.pklein.mariage.utils.uiUtils.Alerts
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SplashActivity : BaseActivity() {
-    private val gameProgress: GameProgressViewModel by viewModels()
-    private var hasSavedGame by mutableStateOf(false)
-    private var roomCode by mutableStateOf<String?>(null)
-    private var trophyProgress by mutableStateOf(
-        TrophyProgress(
-            unlocked = 0,
-            total = Trophies.entries.size,
-        ),
-    )
+    private val viewModel: SplashViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        refreshState()
         setContentView(
             ComposeView(this).apply {
                 setContent {
+                    val state by viewModel.uiState.collectAsState()
                     SplashScreen(
-                        hasSavedGame = hasSavedGame,
-                        roomCode = roomCode,
-                        trophyProgress = trophyProgress,
-                        onNewGame = ::onNewGameClicked,
+                        hasSavedGame = state.hasSavedGame,
+                        roomCode = state.roomCode,
+                        trophyProgress = state.trophyProgress,
+                        onNewGame = viewModel::onNewGame,
                         onContinue = ::onContinueClicked,
                         onTrophies = ::onTrophiesClicked,
-                        onCreateRoom = gameProgress::createRoom,
-                        onJoinRoom = gameProgress::joinRoom,
-                        onMultiplayer = ::startNewGame,
+                        onCreateRoom = viewModel::createRoom,
+                        onJoinRoom = viewModel::joinRoom,
+                        onMultiplayer = viewModel::onMultiplayer,
+                        onLeaveRoom = viewModel::onLeaveRoom,
                     )
                 }
             },
         )
+        lifecycleScope.launch {
+            viewModel.uiState.collect { state ->
+                state.confirmation?.let(::showConfirmation)
+                if (state.launchIntro) {
+                    viewModel.onIntroLaunched()
+                    startActivity(Intent(this@SplashActivity, IntroductionActivity::class.java))
+                }
+            }
+        }
     }
 
     // singleTask reuses this instance instead of recreating it, so refresh on every return to show fresh statuses.
     override fun onResume() {
         super.onResume()
-        refreshState()
-    }
-
-    private fun refreshState() {
-        hasSavedGame = !gameProgress.page.isNullOrEmpty()
-        roomCode = if (hasSavedGame) gameProgress.roomCode else null
-        trophyProgress = trophyProgress.copy(unlocked = gameProgress.unlockedTrophiesCount)
-    }
-
-    private fun onNewGameClicked() = startNewGame(roomCode = "", names = GameNames())
-
-    // An empty room code means a solo game; a saved game must be confirmed before it is replaced.
-    private fun startNewGame(
-        roomCode: String,
-        names: GameNames,
-    ) {
-        if (hasSavedGame) {
-            showAlert { launchNewGame(roomCode, names) }
-        } else {
-            storeRoom(roomCode, names)
-            startActivity(Intent(this, IntroductionActivity::class.java))
-        }
+        viewModel.refresh()
     }
 
     private fun onContinueClicked() {
-        gameProgress.page?.let {
+        viewModel.page?.let {
             SplashCoordinator.launchGame(it, this)
             launchCountDown()
         }
@@ -91,31 +69,43 @@ class SplashActivity : BaseActivity() {
         startActivity(Intent(this, TrophyActivity::class.java))
     }
 
-    private fun showAlert(onConfirm: () -> Unit) {
+    private fun showConfirmation(confirmation: SplashConfirmation) {
+        val message =
+            when (confirmation) {
+                is SplashConfirmation.ReplaceGame -> {
+                    getString(R.string.popup_new_game)
+                }
+
+                is SplashConfirmation.JoinRoom -> {
+                    getString(
+                        R.string.popup_join_room,
+                        confirmation.roomCode,
+                    )
+                }
+
+                is SplashConfirmation.SwitchRoom -> {
+                    getString(
+                        R.string.popup_switch_room,
+                        confirmation.from,
+                        confirmation.to,
+                    )
+                }
+
+                is SplashConfirmation.LeaveRoom -> {
+                    getString(
+                        R.string.popup_leave_room,
+                        confirmation.roomCode,
+                    )
+                }
+            }
         Alerts.showAlert(
             this,
             getString(R.string.attention),
-            getString(R.string.popup_new_game),
+            message,
             getString(R.string.oui),
             getString(R.string.non),
-            onConfirm,
+            onClickButton = viewModel::confirm,
+            onCancel = viewModel::dismiss,
         )
-    }
-
-    private fun launchNewGame(
-        roomCode: String,
-        names: GameNames,
-    ) {
-        gameProgress.resetStorage()
-        storeRoom(roomCode, names)
-        startActivity(Intent(this, IntroductionActivity::class.java))
-    }
-
-    private fun storeRoom(
-        roomCode: String,
-        names: GameNames,
-    ) {
-        gameProgress.storeRoomCode(roomCode)
-        gameProgress.storeGameNames(names)
     }
 }

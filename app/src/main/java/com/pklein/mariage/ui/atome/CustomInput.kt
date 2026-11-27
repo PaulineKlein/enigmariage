@@ -43,6 +43,7 @@ fun CustomInput(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
     keyboardType: KeyboardType = KeyboardType.Text,
+    imeAction: ImeAction = ImeAction.Done,
     inputTransformation: InputTransformation? = null,
     onKeyboardAction: KeyboardActionHandler? = null,
 ) {
@@ -62,7 +63,7 @@ fun CustomInput(
         keyboardOptions =
             KeyboardOptions(
                 keyboardType = keyboardType,
-                imeAction = ImeAction.Done,
+                imeAction = imeAction,
             ),
         onKeyboardAction = onKeyboardAction,
         decorator = { innerTextField ->

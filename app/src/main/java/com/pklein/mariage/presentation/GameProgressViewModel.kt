@@ -6,7 +6,6 @@ import com.pklein.mariage.data.model.SharedPreferenceKey
 import com.pklein.mariage.data.model.Trophies
 import com.pklein.mariage.data.repository.PlayerGender
 import com.pklein.mariage.data.repository.PlayerRepository
-import com.pklein.mariage.data.repository.RoomFirebaseRepository
 import com.pklein.mariage.data.repository.ScoreRepository
 import com.pklein.mariage.data.repository.TrophyRepository
 import com.pklein.mariage.data.repository.UniversRepository
@@ -22,7 +21,6 @@ class GameProgressViewModel
         private val universRepository: UniversRepository,
         private val scoreRepository: ScoreRepository,
         private val trophyRepository: TrophyRepository,
-        private val roomFirebaseRepository: RoomFirebaseRepository,
         private val inspector: IInspector,
     ) : ViewModel() {
         val playerName: String?
@@ -67,13 +65,6 @@ class GameProgressViewModel
         fun storeStartTime() = scoreRepository.storeStartTime()
 
         fun storeEndTime() = scoreRepository.storeEndTime()
-
-        suspend fun createRoom(
-            roomCode: String,
-            names: GameNames,
-        ) = roomFirebaseRepository.createRoom(roomCode, names)
-
-        suspend fun joinRoom(roomCode: String) = roomFirebaseRepository.joinRoom(roomCode)
 
         fun resetStorage() = playerRepository.resetStorage()
 
